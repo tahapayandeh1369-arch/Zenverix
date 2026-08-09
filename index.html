@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,10 +23,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- PWA -->
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="images/icon-192x192.png">
 </head>
+
 <body>
 
     <!-- ===== SPLASH SCREEN ===== -->
@@ -37,7 +36,7 @@
             <div class="splash-loader">
                 <div class="splash-bar"></div>
             </div>
-            <p>Loading...</p>
+            <p data-key="splash-loading">Loading...</p>
         </div>
     </div>
 
@@ -48,27 +47,39 @@
             <span class="logo-name">Zenverix</span>
         </div>
 
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search..." class="search-input">
-            <button id="searchBtn" class="search-btn">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
 
-   <nav>
-    <a href="#home">Home</a>
-    <a href="about/about.html">About</a>
-    <a href="#services">Services</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-</nav>
+            <!-- انتخاب تم -->
+            <select id="themeSelect" class="theme-select">
+                <option value="default">🌓 Default</option>
+                <option value="dark">🌙 Dark</option>
+                <option value="cyberpunk">💜 Cyberpunk</option>
+                <option value="space">🌌 Space</option>
+                <option value="minimal">⬜ Minimal</option>
+                <option value="luxury">✨ Luxury</option>
+            </select>
 
-        <div class="header-controls">
-            <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">🌙</button>
-            <div class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
+
+
+            <nav>
+                <a href="#home" data-key="nav-home">Home</a>
+                <a href="about/about.html" data-key="nav-about">About</a>
+                <a href="./code-park.html" data-key="nav-editor">Code-Park</a>
+                <a href="#services" data-key="nav-services">Services</a>
+                <a href="#projects" data-key="nav-projects">Projects</a>
+                <a href="#space" data-key="nav-space">Space</a>
+                <a href="#contact" data-key="nav-contact">Contact</a>
+            </nav>
+
+            <div class="header-controls">
+                <button id="langToggle" class="lang-toggle" aria-label="Toggle Language">
+                    <i class="fas fa-globe"></i>
+                    <span id="langLabel">EN</span>
+                </button>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">🌙</button>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
-        </div>
     </header>
 
     <!-- ===== HERO ===== -->
@@ -76,13 +87,14 @@
         <div class="hero-container">
             <div class="hero-content">
                 <h1>
-                    Hi, I'm Taha
-                    <span class="highlight typed-text">Developer & Creative Thinker</span>
+                    <span data-key="hero-title">Hi, I'm Taha</span>
+                    <span class="highlight typed-text" data-key="hero-subtitle">Developer & Creative Thinker</span>
                 </h1>
-                <p class="hero-description">I build modern websites and explore AI technology.</p>
+                <p class="hero-description" data-key="hero-description">I build modern websites and explore AI
+                    technology.</p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    <a href="#projects" class="btn btn-primary" data-key="hero-btn-projects">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary" data-key="hero-btn-contact">Contact Me</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -91,7 +103,7 @@
                 </div>
                 <div class="floating-badge">
                     <i class="fas fa-code"></i>
-                    <span>Developer</span>
+                    <span data-key="hero-badge">Developer</span>
                 </div>
             </div>
         </div>
@@ -99,49 +111,55 @@
 
     <!-- ===== STATS ===== -->
     <section class="stats-section" id="stats">
-        <h2 class="section-title">Site Statistics</h2>
-        <p class="section-subtitle">Real-time statistics of this website.</p>
+        <h2 class="section-title" data-key="stats-title">Site Statistics</h2>
+        <p class="section-subtitle" data-key="stats-subtitle">Real-time statistics of this website.</p>
         <div class="stats-container">
             <div class="stat-card">
                 <div class="stat-icon"><i class="fas fa-eye"></i></div>
                 <div class="stat-number" id="visitCount">0</div>
-                <div class="stat-label">Total Visits</div>
+                <div class="stat-label" data-key="stats-visits">Total Visits</div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon"><i class="fas fa-users"></i></div>
                 <div class="stat-number" id="onlineCount">0</div>
-                <div class="stat-label">Online Now</div>
+                <div class="stat-label" data-key="stats-online">Online Now</div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon"><i class="fas fa-clock"></i></div>
                 <div class="stat-number" id="visitTime">0s</div>
-                <div class="stat-label">Time on Site</div>
+                <div class="stat-label" data-key="stats-time">Time on Site</div>
             </div>
         </div>
     </section>
 
     <!-- ===== ABOUT ===== -->
     <section class="about" id="about">
-        <h2 class="section-title">About Me</h2>
+        <h2 class="section-title" data-key="about-title">About Me</h2>
         <div class="about-container">
             <div class="about-text">
-                <p>I'm <strong>Taha</strong>, a young developer and creative thinker passionate about <strong>technology</strong>, <strong>programming</strong>, and building digital experiences.</p>
-                <p>My journey started with curiosity about computers and how technology works. Today, I'm learning <strong>web development</strong>, <strong>Python</strong>, <strong>artificial intelligence</strong>, and modern software technologies.</p>
-                <p>I believe programming is not only about writing code; it's about solving problems, creating ideas, and turning imagination into reality.</p>
-                <p>My goal is to grow as a developer, build useful products, and explore the future of technology.</p>
+                <p data-key="about-text-1">I'm <strong>Taha</strong>, a young developer and creative thinker passionate
+                    about <strong>technology</strong>, <strong>programming</strong>, and building digital experiences.
+                </p>
+                <p data-key="about-text-2">My journey started with curiosity about computers and how technology works.
+                    Today, I'm learning <strong>web development</strong>, <strong>Python</strong>, <strong>artificial
+                        intelligence</strong>, and modern software technologies.</p>
+                <p data-key="about-text-3">I believe programming is not only about writing code; it's about solving
+                    problems, creating ideas, and turning imagination into reality.</p>
+                <p data-key="about-text-4">My goal is to grow as a developer, build useful products, and explore the
+                    future of technology.</p>
             </div>
             <div class="about-stats">
                 <div class="stat-item">
                     <span class="stat-number">1+</span>
-                    <span class="stat-label">Projects</span>
+                    <span class="stat-label" data-key="about-projects">Projects</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">3+</span>
-                    <span class="stat-label">Technologies</span>
+                    <span class="stat-label" data-key="about-technologies">Technologies</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">∞</span>
-                    <span class="stat-label">Learning Every Day</span>
+                    <span class="stat-label" data-key="about-learning">Learning Every Day</span>
                 </div>
             </div>
         </div>
@@ -149,31 +167,31 @@
 
     <!-- ===== ACHIEVEMENTS ===== -->
     <section class="achievements" id="achievements">
-        <h2 class="section-title">🏆 Achievements</h2>
-        <p class="section-subtitle">My certificates and accomplishments.</p>
+        <h2 class="section-title" data-key="achievements-title">🏆 Achievements</h2>
+        <p class="section-subtitle" data-key="achievements-subtitle">My certificates and accomplishments.</p>
         <div class="achievements-container">
             <div class="achievement-card">
                 <div class="achievement-icon"><i class="fas fa-certificate"></i></div>
-                <h3>Web Development</h3>
-                <p>Completed HTML, CSS, JavaScript course</p>
+                <h3 data-key="achievement-web">Web Development</h3>
+                <p data-key="achievement-web-desc">Completed HTML, CSS, JavaScript course</p>
                 <span class="achievement-date">2025</span>
             </div>
             <div class="achievement-card">
                 <div class="achievement-icon"><i class="fas fa-robot"></i></div>
-                <h3>AI Fundamentals</h3>
-                <p>Introduction to Artificial Intelligence</p>
+                <h3 data-key="achievement-ai">AI Fundamentals</h3>
+                <p data-key="achievement-ai-desc">Introduction to Artificial Intelligence</p>
                 <span class="achievement-date">2026</span>
             </div>
             <div class="achievement-card">
                 <div class="achievement-icon"><i class="fas fa-code"></i></div>
-                <h3>Python Programming</h3>
-                <p>Python for Beginners Certificate</p>
+                <h3 data-key="achievement-python">Python Programming</h3>
+                <p data-key="achievement-python-desc">Python for Beginners Certificate</p>
                 <span class="achievement-date">2026</span>
             </div>
             <div class="achievement-card">
                 <div class="achievement-icon"><i class="fas fa-database"></i></div>
-                <h3>Database Fundamentals</h3>
-                <p>SQL and Database Design</p>
+                <h3 data-key="achievement-db">Database Fundamentals</h3>
+                <p data-key="achievement-db-desc">SQL and Database Design</p>
                 <span class="achievement-date">2026</span>
             </div>
         </div>
@@ -181,45 +199,45 @@
 
     <!-- ===== SERVICES ===== -->
     <section class="services" id="services">
-        <h2 class="section-title">My Services</h2>
-        <p class="section-subtitle">What I can do for you.</p>
+        <h2 class="section-title" data-key="services-title">My Services</h2>
+        <p class="section-subtitle" data-key="services-subtitle">What I can do for you.</p>
         <div class="services-container">
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-code"></i></div>
-                <h3>Web Development</h3>
-                <p>Building responsive and modern websites with clean code.</p>
-                <span class="service-tag">Popular</span>
+                <h3 data-key="service-web">Web Development</h3>
+                <p data-key="service-web-desc">Building responsive and modern websites with clean code.</p>
+                <span class="service-tag" data-key="service-tag-popular">Popular</span>
             </div>
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-palette"></i></div>
-                <h3>UI/UX Design</h3>
-                <p>Creating beautiful and user-friendly interfaces.</p>
-                <span class="service-tag">New</span>
+                <h3 data-key="service-ui">UI/UX Design</h3>
+                <p data-key="service-ui-desc">Creating beautiful and user-friendly interfaces.</p>
+                <span class="service-tag" data-key="service-tag-new">New</span>
             </div>
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-robot"></i></div>
-                <h3>AI Integration</h3>
-                <p>Adding AI features to your applications.</p>
-                <span class="service-tag">Trending</span>
+                <h3 data-key="service-ai">AI Integration</h3>
+                <p data-key="service-ai-desc">Adding AI features to your applications.</p>
+                <span class="service-tag" data-key="service-tag-trending">Trending</span>
             </div>
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-                <h3>Responsive Design</h3>
-                <p>Websites that work perfectly on all devices.</p>
-                <span class="service-tag">Essential</span>
+                <h3 data-key="service-responsive">Responsive Design</h3>
+                <p data-key="service-responsive-desc">Websites that work perfectly on all devices.</p>
+                <span class="service-tag" data-key="service-tag-essential">Essential</span>
             </div>
         </div>
     </section>
 
     <!-- ===== SKILLS ===== -->
     <section class="skills" id="skills">
-        <h2 class="section-title">My Skills</h2>
-        <p class="section-subtitle">Technologies and tools I'm learning.</p>
+        <h2 class="section-title" data-key="skills-title">My Skills</h2>
+        <p class="section-subtitle" data-key="skills-subtitle">Technologies and tools I'm learning.</p>
         <div class="skills-container">
             <div class="skill-card" id="skill-html">
                 <div class="skill-icon"><i class="fab fa-html5"></i></div>
-                <h3 class="skill-name">HTML</h3>
-                <p class="skill-desc">Building structured and semantic web pages.</p>
+                <h3 class="skill-name" data-key="skill-html">HTML</h3>
+                <p class="skill-desc" data-key="skill-html-desc">Building structured and semantic web pages.</p>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 95%;">
                         <span class="progress-text">95%</span>
@@ -228,8 +246,8 @@
             </div>
             <div class="skill-card" id="skill-css">
                 <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-                <h3 class="skill-name">CSS</h3>
-                <p class="skill-desc">Creating responsive and modern interfaces.</p>
+                <h3 class="skill-name" data-key="skill-css">CSS</h3>
+                <p class="skill-desc" data-key="skill-css-desc">Creating responsive and modern interfaces.</p>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 85%;">
                         <span class="progress-text">85%</span>
@@ -238,8 +256,8 @@
             </div>
             <div class="skill-card" id="skill-js">
                 <div class="skill-icon"><i class="fab fa-js-square"></i></div>
-                <h3 class="skill-name">JavaScript</h3>
-                <p class="skill-desc">Adding interactivity and dynamic features.</p>
+                <h3 class="skill-name" data-key="skill-js">JavaScript</h3>
+                <p class="skill-desc" data-key="skill-js-desc">Adding interactivity and dynamic features.</p>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 70%;">
                         <span class="progress-text">70%</span>
@@ -248,8 +266,8 @@
             </div>
             <div class="skill-card" id="skill-python">
                 <div class="skill-icon"><i class="fab fa-python"></i></div>
-                <h3 class="skill-name">Python</h3>
-                <p class="skill-desc">Learning programming and exploring AI.</p>
+                <h3 class="skill-name" data-key="skill-python">Python</h3>
+                <p class="skill-desc" data-key="skill-python-desc">Learning programming and exploring AI.</p>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 75%;">
                         <span class="progress-text">75%</span>
@@ -258,8 +276,8 @@
             </div>
             <div class="skill-card" id="skill-ai">
                 <div class="skill-icon"><i class="fas fa-robot"></i></div>
-                <h3 class="skill-name">AI</h3>
-                <p class="skill-desc">Exploring AI tools and intelligent experiences.</p>
+                <h3 class="skill-name" data-key="skill-ai">AI</h3>
+                <p class="skill-desc" data-key="skill-ai-desc">Exploring AI tools and intelligent experiences.</p>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 60%;">
                         <span class="progress-text">60%</span>
@@ -268,8 +286,8 @@
             </div>
             <div class="skill-card" id="skill-git">
                 <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
-                <h3 class="skill-name">Git & GitHub</h3>
-                <p class="skill-desc">Learning version control and managing projects.</p>
+                <h3 class="skill-name" data-key="skill-git">Git & GitHub</h3>
+                <p class="skill-desc" data-key="skill-git-desc">Learning version control and managing projects.</p>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 65%;">
                         <span class="progress-text">65%</span>
@@ -281,19 +299,20 @@
 
     <!-- ===== PROJECTS ===== -->
     <section class="projects" id="projects">
-        <h2 class="section-title">My Projects</h2>
-        <p class="section-subtitle">Here are some of the projects I've built.</p>
+        <h2 class="section-title" data-key="projects-title">My Projects</h2>
+        <p class="section-subtitle" data-key="projects-subtitle">Here are some of the projects I've built.</p>
         <div class="projects-container">
             <div class="project-card" data-rating="4.5">
                 <div class="project-image">
-                    <img src="images/project-portfolio.jpg" alt="Portfolio Website">
+                    <img src="./image/zenverix-logo-transparent.png" alt="Portfolio Website">
                     <div class="project-overlay">
                         <span class="project-tech">HTML · CSS · JS</span>
                     </div>
                 </div>
                 <div class="project-info">
-                    <h3>Portfolio Website</h3>
-                    <p>Modern personal portfolio built with HTML, CSS, and JavaScript.</p>
+                    <h3 data-key="project-portfolio">Portfolio Website</h3>
+                    <p data-key="project-portfolio-desc">Modern personal portfolio built with HTML, CSS, and JavaScript.
+                    </p>
                     <div class="project-tags">
                         <span class="tag">#HTML</span>
                         <span class="tag">#CSS</span>
@@ -309,21 +328,21 @@
                         </span>
                         <span class="rating-text">4.5</span>
                     </div>
-                    <a href="#" target="_blank" class="project-btn">
+                    <a href="#" target="_blank" class="project-btn" data-key="project-btn">
                         View Project <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
             <div class="project-card" data-rating="5">
                 <div class="project-image">
-                    <img src="images/project-zenverix.jpg" alt="Zenverix Website">
+                    <img src="./image/zenverix-logo-transparent.png" alt="Zenverix Website">
                     <div class="project-overlay">
                         <span class="project-tech">React · CSS · API</span>
                     </div>
                 </div>
                 <div class="project-info">
-                    <h3>Zenverix Website</h3>
-                    <p>Corporate website with modern design and smooth animations.</p>
+                    <h3 data-key="project-zenverix">Zenverix Website</h3>
+                    <p data-key="project-zenverix-desc">Corporate website with modern design and smooth animations.</p>
                     <div class="project-tags">
                         <span class="tag">#React</span>
                         <span class="tag">#API</span>
@@ -339,21 +358,22 @@
                         </span>
                         <span class="rating-text">5.0</span>
                     </div>
-                    <a href="#" target="_blank" class="project-btn">
+                    <a href="#" target="_blank" class="project-btn" data-key="project-btn">
                         View Project <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
             <div class="project-card" data-rating="4">
                 <div class="project-image">
-                    <img src="images/project-jsapps.jpg" alt="JavaScript Apps">
+                    <img src="./image/zenverix-logo-transparent.png" alt="JavaScript Apps">
                     <div class="project-overlay">
                         <span class="project-tech">JS · DOM · API</span>
                     </div>
                 </div>
                 <div class="project-info">
-                    <h3>JavaScript Apps</h3>
-                    <p>Collection of interactive web apps built with vanilla JavaScript.</p>
+                    <h3 data-key="project-jsapps">JavaScript Apps</h3>
+                    <p data-key="project-jsapps-desc">Collection of interactive web apps built with vanilla JavaScript.
+                    </p>
                     <div class="project-tags">
                         <span class="tag">#JavaScript</span>
                         <span class="tag">#DOM</span>
@@ -369,7 +389,7 @@
                         </span>
                         <span class="rating-text">4.0</span>
                     </div>
-                    <a href="#" target="_blank" class="project-btn">
+                    <a href="#" target="_blank" class="project-btn" data-key="project-btn">
                         View Project <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -379,18 +399,18 @@
 
     <!-- ===== IN-PROGRESS ===== -->
     <section class="inprogress" id="inprogress">
-        <h2 class="section-title">🚧 In-Progress Projects</h2>
-        <p class="section-subtitle">Projects I'm currently working on.</p>
+        <h2 class="section-title" data-key="inprogress-title">🚧 In-Progress Projects</h2>
+        <p class="section-subtitle" data-key="inprogress-subtitle">Projects I'm currently working on.</p>
         <div class="inprogress-container">
             <div class="inprogress-card">
                 <div class="inprogress-header">
-                    <h3>E-Commerce Website</h3>
+                    <h3 data-key="inprogress-ecommerce">E-Commerce Website</h3>
                     <span class="inprogress-status">75%</span>
                 </div>
                 <div class="inprogress-bar">
                     <div class="inprogress-fill" style="width: 75%;"></div>
                 </div>
-                <p>Building a full-featured online store.</p>
+                <p data-key="inprogress-ecommerce-desc">Building a full-featured online store.</p>
                 <div class="inprogress-tech">
                     <span>#React</span>
                     <span>#Node.js</span>
@@ -399,13 +419,13 @@
             </div>
             <div class="inprogress-card">
                 <div class="inprogress-header">
-                    <h3>AI Chatbot</h3>
+                    <h3 data-key="inprogress-chatbot">AI Chatbot</h3>
                     <span class="inprogress-status">40%</span>
                 </div>
                 <div class="inprogress-bar">
                     <div class="inprogress-fill" style="width: 40%;"></div>
                 </div>
-                <p>Intelligent chatbot using AI APIs.</p>
+                <p data-key="inprogress-chatbot-desc">Intelligent chatbot using AI APIs.</p>
                 <div class="inprogress-tech">
                     <span>#Python</span>
                     <span>#AI</span>
@@ -414,13 +434,13 @@
             </div>
             <div class="inprogress-card">
                 <div class="inprogress-header">
-                    <h3>Mobile App</h3>
+                    <h3 data-key="inprogress-mobile">Mobile App</h3>
                     <span class="inprogress-status">20%</span>
                 </div>
                 <div class="inprogress-bar">
                     <div class="inprogress-fill" style="width: 20%;"></div>
                 </div>
-                <p>Cross-platform mobile application.</p>
+                <p data-key="inprogress-mobile-desc">Cross-platform mobile application.</p>
                 <div class="inprogress-tech">
                     <span>#ReactNative</span>
                     <span>#Firebase</span>
@@ -428,13 +448,13 @@
             </div>
             <div class="inprogress-card">
                 <div class="inprogress-header">
-                    <h3>Portfolio Website</h3>
+                    <h3 data-key="inprogress-portfolio">Portfolio Website</h3>
                     <span class="inprogress-status">90%</span>
                 </div>
                 <div class="inprogress-bar">
                     <div class="inprogress-fill" style="width: 90%;"></div>
                 </div>
-                <p>My personal portfolio website.</p>
+                <p data-key="inprogress-portfolio-desc">My personal portfolio website.</p>
                 <div class="inprogress-tech">
                     <span>#HTML</span>
                     <span>#CSS</span>
@@ -446,42 +466,132 @@
 
     <!-- ===== TIMELINE ===== -->
     <section class="timeline" id="timeline">
-        <h2 class="section-title">My Journey</h2>
-        <p class="section-subtitle">The path I've traveled so far.</p>
+        <h2 class="section-title" data-key="timeline-title">My Journey</h2>
+        <p class="section-subtitle" data-key="timeline-subtitle">The path I've traveled so far.</p>
         <div class="timeline-container">
             <div class="timeline-item">
                 <div class="timeline-year">2025</div>
                 <div class="timeline-content">
-                    <h3>Started Programming</h3>
-                    <p>Began learning HTML, CSS, and JavaScript. Built my first websites.</p>
+                    <h3 data-key="timeline-2025">Started Programming</h3>
+                    <p data-key="timeline-2025-desc">Began learning HTML, CSS, and JavaScript. Built my first websites.
+                    </p>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-year">2026</div>
                 <div class="timeline-content">
-                    <h3>Building Projects</h3>
-                    <p>Created real-world projects and explored Python and AI technologies.</p>
+                    <h3 data-key="timeline-2026">Building Projects</h3>
+                    <p data-key="timeline-2026-desc">Created real-world projects and explored Python and AI
+                        technologies.</p>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-year">Future</div>
                 <div class="timeline-content">
-                    <h3>AI & Software Development</h3>
-                    <p>Expanding knowledge in AI, machine learning, and full-stack development.</p>
+                    <h3 data-key="timeline-future">AI & Software Development</h3>
+                    <p data-key="timeline-future-desc">Expanding knowledge in AI, machine learning, and full-stack
+                        development.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ===== PROJECT REQUEST ===== -->
+    <section class="project-request" id="request">
+        <h2 class="section-title" data-key="request-title">📨 Project Request</h2>
+        <p class="section-subtitle" data-key="request-subtitle">Fill the form to work together</p>
+        <div class="request-container">
+            <form class="request-form" id="requestForm">
+                <div class="form-group">
+                    <label>Project Type *</label>
+                    <select required>
+                        <option value="">Select...</option>
+                        <option>Personal Website</option>
+                        <option>Corporate Website</option>
+                        <option>E-Commerce</option>
+                        <option>Mobile App</option>
+                        <option>CMS</option>
+                        <option>AI/ML</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Budget ($)</label>
+                        <input type="number" placeholder="e.g. 500" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Timeline (days)</label>
+                        <input type="number" placeholder="e.g. 30" min="1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Project Details *</label>
+                    <textarea rows="4" placeholder="Describe your project..." required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name *</label>
+                        <input type="text" placeholder="Full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" placeholder="Your email" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Submit Request
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ===== INTERACTIVE SPACE ===== -->
+<section class="interactive-space" id="space">
+    <h2 class="section-title" data-key="space-title">🌌 Interactive Space</h2>
+    <p class="section-subtitle" data-key="space-subtitle">Explore the cosmos with realistic 3D planets</p>
+    
+    <div class="space-container" id="spaceContainer">
+        <canvas id="spaceCanvas"></canvas>
+        
+        <!-- Control Panel -->
+        <div class="space-controls">
+            <button class="space-btn active" id="toggleRotation" title="Toggle Rotation">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+            <button class="space-btn active" id="toggleStars" title="Toggle Stars">
+                <i class="fas fa-star"></i>
+            </button>
+            <button class="space-btn" id="resetView" title="Reset View">
+                <i class="fas fa-home"></i>
+            </button>
+            <div class="space-info">
+                <span id="planetCount">8</span> Planets
+            </div>
+        </div>
+        
+        <!-- Planet Tooltip -->
+        <div class="planet-tooltip" id="planetTooltip">
+            <div class="planet-tooltip-name" id="tooltipName">Earth</div>
+            <div class="planet-tooltip-desc" id="tooltipDesc">Our home planet</div>
+            <div class="planet-tooltip-detail" id="tooltipDetail">🌍 Diameter: 12,742 km</div>
+        </div>
+    </div>
+    <div class="space-info">
+    <span id="planetCount">8</span> Planets
+</div>
+</section>
+
     <!-- ===== COMMENTS ===== -->
     <section class="comments-section" id="comments">
-        <h2 class="section-title">💬 Comments</h2>
-        <p class="section-subtitle">Leave a comment or feedback!</p>
+        <h2 class="section-title" data-key="comments-title">💬 Comments</h2>
+        <p class="section-subtitle" data-key="comments-subtitle">Leave a comment or feedback!</p>
         <div class="comments-container">
             <form class="comment-form" id="commentForm">
-                <input type="text" id="commentName" placeholder="Your Name" required>
-                <textarea id="commentText" rows="3" placeholder="Your Comment..." required></textarea>
-                <button type="submit">
+                <input type="text" id="commentName" placeholder="Your Name" data-key="comments-name" required>
+                <textarea id="commentText" rows="3" placeholder="Your Comment..." data-key="comments-text"
+                    required></textarea>
+                <button type="submit" data-key="comments-btn">
                     <i class="fas fa-paper-plane"></i> Post Comment
                 </button>
             </form>
@@ -489,36 +599,39 @@
         </div>
     </section>
 
+
+    <!-- ===== CONTACT ===== -->
     <section class="contact" id="contact">
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle">Have a question or want to work together?</p>
+        <h2 class="section-title" data-key="contact-title">Get In Touch</h2>
+        <p class="section-subtitle" data-key="contact-subtitle">Have a question or want to work together?</p>
         <div class="contact-container">
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <span>taha@example.com</span>
+                    <span>taha.payandeh.1369@gmail.com</span>
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-github"></i>
-                    <span>github.com/taha</span>
+                    <span>https://github.com/tahapayandeh1369-arch</span>
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-telegram"></i>
-                    <span>@taha_dev</span>
+                    <span>@Zenverix</span>
                 </div>
                 <div class="social-links">
-                    <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="https://github.com/tahapayandeh1369-arch" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkdin.com/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter".com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/?hl=en" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://desktop.telegram.org/" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
                 </div>
+                
             </div>
             <form class="contact-form" id="contactForm">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit">
+                <input type="text" placeholder="Your Name" data-key="contact-name" required>
+                <input type="email" placeholder="Your Email" data-key="contact-email" required>
+                <textarea placeholder="Your Message" rows="5" data-key="contact-message" required></textarea>
+                <button type="submit" data-key="contact-btn">
                     Send Message <i class="fas fa-paper-plane"></i>
                 </button>
             </form>
@@ -526,98 +639,147 @@
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <<!-- ===== FOOTER ===== -->
-<footer>
-    <div class="footer-container">
-        
-        <!-- بخش اول: برند -->
-        <div class="footer-brand">
-            <div class="footer-logo">
-                <img src="./image/zenverix-logo-transparent.png" alt="Zenverix" class="footer-logo-img">
-                <span class="footer-logo-name">Zenverix</span>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="./image/zenverix-logo-transparent.png" alt="Zenverix" class="footer-logo-img">
+                    <span class="footer-logo-name">Zenverix</span>
+                </div>
+                <p class="footer-tagline" style="font-weight: bolder;" data-key="footer-tagline">Build Beyond Limits</p>
             </div>
-            <p class="footer-tagline" style="font-weight: bolder;">Build Beyond Limits</p>
-        </div>
-
-        <!-- بخش دوم: لینک‌های سریع -->
-        <div class="footer-links">
-            <div class="footer-links-column">
-                <h4>Pages</h4>
-                <a href="#home">Home</a>
-                <a href="about/about.html">About</a>
-                <a href="#services">Services</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
+            <div class="footer-links">
+                <div class="footer-links-column">
+                    <h4 data-key="footer-pages">Pages</h4>
+                    <a href="#home" data-key="nav-home">Home</a>
+                    <a href="about/about.html" data-key="nav-about">About</a>
+                    <a href="#services" data-key="nav-services">Services</a>
+                    <a href="#projects" data-key="nav-projects">Projects</a>
+                    <a href="#space" data-key="nav-space">Space</a>
+                    <a href="#contact" data-key="nav-contact">Contact</a>
+                </div>
+                <div class="footer-links-column">
+                    <h4 data-key="footer-services">Services</h4>
+                    <a href="#services" data-key="service-web">Web Development</a>
+                    <a href="#services" data-key="service-ui">UI/UX Design</a>
+                    <a href="#services" data-key="service-ai">AI Integration</a>
+                </div>
+                <div class="footer-links-column">
+                    <h4 data-key="footer-social">Social</h4>
+                    <a href="https://github.com/tahapayandeh1369-arch" target="_blank">GitHub</a>
+                    <a href="https://linkdin.com/" target="_blank">LinkedIn</a>
+                    <a href="https://desktop.telegram.org/" target="_blank">Telegram</a>
+                    <a href="https://www.instagram.com/?hl=en" target="_blank">Instagram</a>
+                </div>
             </div>
-            <div class="footer-links-column">
-                <h4>Services</h4>
-                <a href="#services">Web Development</a>
-                <a href="#services">UI/UX Design</a>
-                <a href="#services">AI Integration</a>
+            <div class="footer-version">
+                <div class="version-info">
+                    <span class="version-badge">
+                        <i class="fas fa-code-branch"></i>
+                        v2.1.0
+                    </span>
+                    <span class="version-status">
+                        <i class="fas fa-circle" style="color: #22c55e; font-size: 10px;"></i>
+                        <span data-key="footer-version">Stable</span>
+                    </span>
+                </div>
+                <div class="version-details">
+                    <span class="version-date">
+                        <i class="far fa-calendar-alt"></i>
+                        <span data-key="footer-updated">Updated</span>: <span id="updateDate">2026</span>
+                    </span>
+                    <span class="version-commit">
+                        <i class="fas fa-code"></i>
+                        <span data-key="footer-commit">Commit</span>: <span id="commitHash">a1b2c3d</span>
+                    </span>
+                </div>
+                <div class="version-tech">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                    <span>Font Awesome</span>
+                </div>
             </div>
-            <div class="footer-links-column">
-                <h4>Social</h4>
-                <a href="#" target="_blank">GitHub</a>
-                <a href="#" target="_blank">LinkedIn</a>
-                <a href="#" target="_blank">Telegram</a>
-                <a href="#" target="_blank">Instagram</a>
-            </div>
-        </div>
-
-        <!-- بخش سوم: نسخه سایت -->
-        <div class="footer-version">
-            <div class="version-info">
-                <span class="version-badge">
-                    <i class="fas fa-code-branch"></i>
-                    v2.1.0
-                </span>
-                <span class="version-status">
-                    <i class="fas fa-circle" style="color: #22c55e; font-size: 10px;"></i>
-                    Stable
-                </span>
-            </div>
-            <div class="version-details">
-                <span class="version-date">
-                    <i class="far fa-calendar-alt"></i>
-                    Updated: <span id="updateDate">2026</span>
-                </span>
-                <span class="version-commit">
-                    <i class="fas fa-code"></i>
-                    Commit: <span id="commitHash">a1b2c3d</span>
-                </span>
-            </div>
-            <div class="version-tech">
-                <span>HTML5</span>
-                <span>CSS3</span>
-                <span>JavaScript</span>
-                <span>Font Awesome</span>
-            </div>
-        </div>
-
-        <!-- بخش چهارم: کپی‌رایت و متن متحرک -->
-        <div class="footer-bottom">
-            <p class="footer-copyright">
-                &copy; <span id="currentYear"></span> Zenverix. All rights reserved.
-            </p>
-            <div class="footer-marquee">
-                <p>🚀 Always learning • 💻 Building cool stuff • 🤖 Exploring AI • 🌟 Passionate about code</p>
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    &copy; <span id="currentYear"></span> Zenverix. <span data-key="footer-copyright">All rights
+                        reserved.</span>
+                </p>
+                <div class="footer-marquee">
+                    <p data-key="footer-marquee">🚀 Always learning • 💻 Building cool stuff • 🤖 Exploring AI • 🌟
+                        Passionate about code</p>
+                </div>
             </div>
         </div>
+    </footer>
 
-    </div>
-</footer>
     <!-- ===== MUSIC PLAYER ===== -->
     <div class="music-player" id="musicPlayer">
-        <button id="musicToggle" class="music-btn" aria-label="Toggle Music">
-            <i class="fas fa-music"></i>
-        </button>
-        <audio id="bgMusic" loop>
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        <div class="music-player-container">
+            <div class="music-info">
+                <span id="currentSongName" class="music-song-name">🎵 Loading...</span>
+            </div>
+            <div class="music-progress-container">
+                <span class="music-time current-time" id="currentTime">00:00</span>
+                <div class="music-progress-bar" id="progressBar">
+                    <div class="music-progress-fill" id="progressFill" style="width: 0%;"></div>
+                </div>
+                <span class="music-time total-time" id="totalTime">00:00</span>
+            </div>
+            <div class="music-controls">
+                <button id="prevTrack" class="music-btn-control" aria-label="Previous" title="Previous">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button id="musicToggle" class="music-btn" aria-label="Toggle Music" title="Play/Pause">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button id="nextTrack" class="music-btn-control" aria-label="Next" title="Next">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+            </div>
+            <div class="music-counter">
+                <span id="currentTrackNum">1</span> / <span id="totalTracks">6</span>
+            </div>
+        </div>
+        <audio id="bgMusic">
+            <source src="https://dl.musicdownload.ir/Music/Reza%20Pishro/Reza%20Pishro%20-%20Ghabrestoon%20(320).mp3" type="audio/mpeg">
         </audio>
     </div>
 
+    <!-- ===== AI CHATBOT ===== -->
+    <div class="ai-chatbot" id="aiChatbot">
+        <div class="ai-chatbot-header" onclick="toggleChat()">
+            <div class="ai-avatar"><i class="fas fa-robot"></i></div>
+            <div class="ai-info">
+                <span class="ai-name">🤖 Zenverix AI</span>
+                <span class="ai-status">● Online</span>
+            </div>
+            <button class="ai-close" onclick="event.stopPropagation(); toggleChat()">
+                <i class="fas fa-chevron-down"></i>
+            </button>
+        </div>
+        <div class="ai-chatbot-body" id="chatBody">
+            <div class="ai-messages" id="aiMessages">
+                <div class="ai-message bot">
+                    <div class="ai-msg-icon"><i class="fas fa-robot"></i></div>
+                    <div class="ai-msg-content">
+                        <p>👋 Hi! I'm Zenverix AI. Ask me anything about Taha, projects, or skills!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ai-input-area">
+                <input type="text" id="aiInput" placeholder="Ask me anything..."
+                    onkeypress="if(event.key==='Enter') sendAIMessage()">
+                <button onclick="sendAIMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button class="ai-toggle-btn" onclick="toggleChat()" id="aiToggleBtn">
+            <i class="fas fa-robot"></i>
+        </button>
+    </div>
+
     <!-- ===== WHATSAPP FLOAT ===== -->
-    <a href="https://wa.me/989123456789" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <a href="https://wa.me/98352854355" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -635,4 +797,5 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="js/script.js"></script>
 </body>
+
 </html>
