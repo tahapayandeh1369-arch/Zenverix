@@ -3,1144 +3,636 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Zenverix — Taha Portfolio</title>
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Taha's portfolio - Developer & Creative Thinker specializing in web development and AI">
-    <meta name="keywords" content="Taha, portfolio, developer, web development, AI, programmer">
+    <!-- SEO -->
+    <meta name="description" content="Taha's portfolio - Developer & Creative Thinker">
+    <meta name="keywords" content="Taha, portfolio, developer, web development, AI">
     <meta name="author" content="Taha">
-    <meta name="robots" content="index, follow">
     <meta property="og:title" content="Taha - Developer Portfolio">
-    <meta property="og:description" content="Modern developer portfolio showcasing web development and AI projects">
-    <meta property="og:type" content="website">
+    <meta property="og:description" content="Modern developer portfolio">
     <meta name="theme-color" content="#2563eb">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="./Csses/style.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="Csses/style.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-          
-          <!-- PWA Meta Tags -->
-<link rel="manifest" href="./manifest.json">
-<link rel="apple-touch-icon" href="./image/icon-192x192.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icon-192x192.png">
+</head>
 <body>
 
-<!-- ============================================================ -->
-<!-- 1. HEADER -->
-<!-- ============================================================ -->
-
-<header>
-    <div class="logo">
-        <img
-            src="./image/zenverix-logo-transparent.png"
-            alt="Zenverix Logo"
-            class="logo-img"
-        >
-
-        <span class="logo-name">Zenverix</span>
+    <!-- ===== SPLASH SCREEN ===== -->
+    <div id="splashScreen">
+        <div class="splash-content">
+            <div class="splash-logo">
+                <img src="image/zenverix-logo-transparent.png" alt="Zenverix">
+            </div>
+            <div class="splash-loader">
+                <div class="splash-bar"></div>
+            </div>
+            <p>Loading...</p>
+        </div>
     </div>
 
-    <!-- جستجو -->
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search..." class="search-input">
-        <button id="searchBtn" class="search-btn">
-            <i class="fas fa-search"></i>
-        </button>
-    </div>
-
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="hamburger" id="hamburger">
-        <i class="fas fa-bars"></i>
-    </div>
-</header>
-
-
-<!-- ============================================================ -->
-<!-- 2. HERO SECTION -->
-<!-- ============================================================ -->
-
-<section class="hero" id="home">
-
-    <div class="hero-container">
-
-        <div class="hero-content">
-
-            <h1>
-                Hi, I'm Taha <br>
-                <span class="highlight typed-text">
-                    Developer & Creative Thinker
-                </span>
-            </h1>
-
-            <p class="hero-description">
-                I build modern websites and explore AI technology.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#projects" class="btn btn-primary">
-                    View Projects
-                </a>
-
-                <a href="#contact" class="btn btn-secondary">
-                    Contact Me
-                </a>
-
-            </div>
-
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="logo">
+            <img src="image/zenverix-logo-transparent.png" alt="Zenverix Logo" class="logo-img">
+            <span class="logo-name">Zenverix</span>
         </div>
 
-
-        <div class="hero-image">
-
-            <div class="image-frame">
-
-                <img
-                    src="./image/Image.png"
-                    alt="Taha - Developer"
-                >
-
-            </div>
-
-            <div class="floating-badge">
-
-                <i class="fas fa-code"></i>
-
-                <span>Developer</span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ============================================================ -->
-<!-- 3. STATS SECTION (آمار بازدید) -->
-<!-- ============================================================ -->
-
-<section class="stats-section" id="stats">
-
-    <h2 class="section-title">
-        Site Statistics
-    </h2>
-
-    <p class="section-subtitle">
-        Real-time statistics of this website.
-    </p>
-
-    <div class="stats-container">
-
-        <div class="stat-card">
-            <div class="stat-icon">
-                <i class="fas fa-eye"></i>
-            </div>
-            <div class="stat-number" id="visitCount">0</div>
-            <div class="stat-label">Total Visits</div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-icon">
-                <i class="fas fa-users"></i>
-            </div>
-            <div class="stat-number" id="onlineCount">0</div>
-            <div class="stat-label">Online Now</div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-icon">
-                <i class="fas fa-clock"></i>
-            </div>
-            <div class="stat-number" id="visitTime">0s</div>
-            <div class="stat-label">Time on Site</div>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ============================================================ -->
-<!-- 4. ABOUT SECTION -->
-<!-- ============================================================ -->
-
-<section class="about" id="about">
-
-    <h2 class="section-title">
-        About Me
-    </h2>
-
-    <div class="about-container">
-
-        <div class="about-text">
-
-            <p>
-                I'm <strong>Taha</strong>, a young developer and creative thinker
-                passionate about <strong>technology</strong>,
-                <strong>programming</strong>, and building digital experiences.
-            </p>
-
-            <p>
-                My journey started with curiosity about computers and how
-                technology works. Today, I'm learning
-                <strong>web development</strong>, <strong>Python</strong>,
-                <strong>artificial intelligence</strong>, and modern software
-                technologies.
-            </p>
-
-            <p>
-                I believe programming is not only about writing code;
-                it's about solving problems, creating ideas, and turning
-                imagination into reality.
-            </p>
-
-            <p>
-                My goal is to grow as a developer, build useful products,
-                and explore the future of technology.
-            </p>
-
-        </div>
-
-
-        <div class="about-stats">
-
-            <div class="stat-item">
-                <span class="stat-number">1+</span>
-                <span class="stat-label">Projects</span>
-            </div>
-
-            <div class="stat-item">
-                <span class="stat-number">3+</span>
-                <span class="stat-label">Technologies</span>
-            </div>
-
-            <div class="stat-item">
-                <span class="stat-number">∞</span>
-                <span class="stat-label">Learning Every Day</span>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ============================================================ -->
-<!-- 5. ACHIEVEMENTS SECTION (دستاوردها) -->
-<!-- ============================================================ -->
-
-<section class="achievements" id="achievements">
-
-    <h2 class="section-title">
-        🏆 Achievements
-    </h2>
-
-    <p class="section-subtitle">
-        My certificates and accomplishments.
-    </p>
-
-    <div class="achievements-container">
-
-        <div class="achievement-card">
-            <div class="achievement-icon">
-                <i class="fas fa-certificate"></i>
-            </div>
-            <h3>Web Development</h3>
-            <p>Completed HTML, CSS, JavaScript course</p>
-            <span class="achievement-date">2025</span>
-        </div>
-
-        <div class="achievement-card">
-            <div class="achievement-icon">
-                <i class="fas fa-robot"></i>
-            </div>
-            <h3>AI Fundamentals</h3>
-            <p>Introduction to Artificial Intelligence</p>
-            <span class="achievement-date">2026</span>
-        </div>
-
-        <div class="achievement-card">
-            <div class="achievement-icon">
-                <i class="fas fa-code"></i>
-            </div>
-            <h3>Python Programming</h3>
-            <p>Python for Beginners Certificate</p>
-            <span class="achievement-date">2026</span>
-        </div>
-
-        <div class="achievement-card">
-            <div class="achievement-icon">
-                <i class="fas fa-database"></i>
-            </div>
-            <h3>Database Fundamentals</h3>
-            <p>SQL and Database Design</p>
-            <span class="achievement-date">2026</span>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ============================================================ -->
-<!-- 6. SERVICES SECTION (خدمات) -->
-<!-- ============================================================ -->
-
-<section class="services" id="services">
-
-    <h2 class="section-title">
-        My Services
-    </h2>
-
-    <p class="section-subtitle">
-        What I can do for you.
-    </p>
-
-    <div class="services-container">
-
-        <div class="service-card">
-            <div class="service-icon">
-                <i class="fas fa-code"></i>
-            </div>
-            <h3>Web Development</h3>
-            <p>Building responsive and modern websites with clean code.</p>
-            <span class="service-tag">Popular</span>
-        </div>
-
-        <div class="service-card">
-            <div class="service-icon">
-                <i class="fas fa-palette"></i>
-            </div>
-            <h3>UI/UX Design</h3>
-            <p>Creating beautiful and user-friendly interfaces.</p>
-            <span class="service-tag">New</span>
-        </div>
-
-        <div class="service-card">
-            <div class="service-icon">
-                <i class="fas fa-robot"></i>
-            </div>
-            <h3>AI Integration</h3>
-            <p>Adding AI features to your applications.</p>
-            <span class="service-tag">Trending</span>
-        </div>
-
-        <div class="service-card">
-            <div class="service-icon">
-                <i class="fas fa-mobile-alt"></i>
-            </div>
-            <h3>Responsive Design</h3>
-            <p>Websites that work perfectly on all devices.</p>
-            <span class="service-tag">Essential</span>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ============================================================ -->
-<!-- 7. SKILLS SECTION -->
-<!-- ============================================================ -->
-
-<section class="skills" id="skills">
-
-    <h2 class="section-title">
-        My Skills
-    </h2>
-
-    <p class="section-subtitle">
-        Technologies and tools I'm learning and using to build digital experiences.
-    </p>
-
-
-    <div class="skills-container">
-
-        <!-- HTML -->
-
-        <div class="skill-card" id="skill-html">
-
-            <div class="skill-icon">
-                <i class="fab fa-html5"></i>
-            </div>
-
-            <h3 class="skill-name">
-                HTML
-            </h3>
-
-            <p class="skill-desc">
-                Building structured and semantic web pages.
-            </p>
-
-            <div class="progress-bar">
-
-                <div class="progress-fill" style="width: 95%;">
-
-                    <span class="progress-text">
-                        95%
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- CSS -->
-
-        <div class="skill-card" id="skill-css">
-
-            <div class="skill-icon">
-                <i class="fab fa-css3-alt"></i>
-            </div>
-
-            <h3 class="skill-name">
-                CSS
-            </h3>
-
-            <p class="skill-desc">
-                Creating responsive and modern interfaces.
-            </p>
-
-            <div class="progress-bar">
-
-                <div class="progress-fill" style="width: 85%;">
-
-                    <span class="progress-text">
-                        85%
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- JavaScript -->
-
-        <div class="skill-card" id="skill-js">
-
-            <div class="skill-icon">
-                <i class="fab fa-js"></i>
-            </div>
-
-            <h3 class="skill-name">
-                JavaScript
-            </h3>
-
-            <p class="skill-desc">
-                Adding interactivity and dynamic features.
-            </p>
-
-            <div class="progress-bar">
-
-                <div class="progress-fill" style="width: 70%;">
-
-                    <span class="progress-text">
-                        70%
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Python -->
-
-        <div class="skill-card" id="skill-python">
-
-            <div class="skill-icon">
-                <i class="fab fa-python"></i>
-            </div>
-
-            <h3 class="skill-name">
-                Python
-            </h3>
-
-            <p class="skill-desc">
-                Learning programming and exploring AI.
-            </p>
-
-            <div class="progress-bar">
-
-                <div class="progress-fill" style="width: 75%;">
-
-                    <span class="progress-text">
-                        75%
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- AI -->
-
-        <div class="skill-card" id="skill-ai">
-
-            <div class="skill-icon">
-                <i class="fas fa-robot"></i>
-            </div>
-
-            <h3 class="skill-name">
-                AI
-            </h3>
-
-            <p class="skill-desc">
-                Exploring AI tools and intelligent experiences.
-            </p>
-
-            <div class="progress-bar">
-
-                <div class="progress-fill" style="width: 60%;">
-
-                    <span class="progress-text">
-                        60%
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Git & GitHub -->
-
-        <div class="skill-card" id="skill-git">
-
-            <div class="skill-icon">
-                <i class="fab fa-git-alt"></i>
-            </div>
-
-            <h3 class="skill-name">
-                Git & GitHub
-            </h3>
-
-            <p class="skill-desc">
-                Learning version control and managing projects.
-            </p>
-
-            <div class="progress-bar">
-
-                <div class="progress-fill" style="width: 65%;">
-
-                    <span class="progress-text">
-                        65%
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ============================================================ -->
-<!-- 8. PROJECTS SECTION -->
-<!-- ============================================================ -->
-
-<section class="projects" id="projects">
-
-    <h2 class="section-title">
-        My Projects
-    </h2>
-
-    <p class="section-subtitle">
-        Here are some of the projects I've built or worked on.
-    </p>
-
-
-    <div class="projects-container">
-
-
-        <!-- PROJECT 1 -->
-
-        <div class="project-card" data-rating="4.5">
-
-            <div class="project-image">
-
-                <img
-                    src="./image/project-portfolio.jpg"
-                    alt="Portfolio Website"
-                >
-
-                <div class="project-overlay">
-
-                    <span class="project-tech">
-                        HTML · CSS · JS
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="project-info">
-
-                <h3>
-                    Portfolio Website
-                </h3>
-
-                <p>
-                    Modern personal portfolio built with HTML, CSS, and JavaScript.
-                </p>
-
-                <div class="project-tags">
-                    <span class="tag">#HTML</span>
-                    <span class="tag">#CSS</span>
-                    <span class="tag">#JS</span>
-                </div>
-
-                <div class="project-rating">
-                    <span class="stars" data-rating="4.5">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </span>
-                    <span class="rating-text">4.5</span>
-                </div>
-
-                <a href="https://github.com/yourusername/portfolio" target="_blank" class="project-btn">
-                    View Project
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- PROJECT 2 -->
-
-        <div class="project-card" data-rating="5">
-
-            <div class="project-image">
-
-                <img
-                    src="./image/project-zenverix.jpg"
-                    alt="Zenverix Website"
-                >
-
-                <div class="project-overlay">
-
-                    <span class="project-tech">
-                        React · CSS · API
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="project-info">
-
-                <h3>
-                    Zenverix Website
-                </h3>
-
-                <p>
-                    Corporate website with modern design and smooth animations.
-                </p>
-
-                <div class="project-tags">
-                    <span class="tag">#React</span>
-                    <span class="tag">#API</span>
-                    <span class="tag">#CSS</span>
-                </div>
-
-                <div class="project-rating">
-                    <span class="stars" data-rating="5">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </span>
-                    <span class="rating-text">5.0</span>
-                </div>
-
-                <a href="https://your-live-site.com" target="_blank" class="project-btn">
-                    View Project
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- PROJECT 3 -->
-
-        <div class="project-card" data-rating="4">
-
-            <div class="project-image">
-
-                <img
-                    src="./image/project-jsapps.jpg"
-                    alt="JavaScript Apps"
-                >
-
-                <div class="project-overlay">
-
-                    <span class="project-tech">
-                        JS · DOM · API
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="project-info">
-
-                <h3>
-                    JavaScript Apps
-                </h3>
-
-                <p>
-                    Collection of interactive web apps built with vanilla JavaScript.
-                </p>
-
-                <div class="project-tags">
-                    <span class="tag">#JavaScript</span>
-                    <span class="tag">#DOM</span>
-                    <span class="tag">#API</span>
-                </div>
-
-                <div class="project-rating">
-                    <span class="stars" data-rating="4">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </span>
-                    <span class="rating-text">4.0</span>
-                </div>
-
-                <a href="https://github.com/yourusername/js-apps" target="_blank" class="project-btn">
-                    View Project
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ============================================================ -->
-<!-- 9. IN-PROGRESS PROJECTS SECTION (پروژه‌های در حال انجام) -->
-<!-- ============================================================ -->
-
-<section class="inprogress" id="inprogress">
-
-    <h2 class="section-title">
-        🚧 In-Progress Projects
-    </h2>
-
-    <p class="section-subtitle">
-        Projects I'm currently working on.
-    </p>
-
-    <div class="inprogress-container">
-
-        <div class="inprogress-card">
-            <div class="inprogress-header">
-                <h3>E-Commerce Website</h3>
-                <span class="inprogress-status">75%</span>
-            </div>
-            <div class="inprogress-bar">
-                <div class="inprogress-fill" style="width: 75%;"></div>
-            </div>
-            <p>Building a full-featured online store.</p>
-            <div class="inprogress-tech">
-                <span>#React</span>
-                <span>#Node.js</span>
-                <span>#MongoDB</span>
-            </div>
-        </div>
-
-        <div class="inprogress-card">
-            <div class="inprogress-header">
-                <h3>AI Chatbot</h3>
-                <span class="inprogress-status">40%</span>
-            </div>
-            <div class="inprogress-bar">
-                <div class="inprogress-fill" style="width: 40%;"></div>
-            </div>
-            <p>Intelligent chatbot using AI APIs.</p>
-            <div class="inprogress-tech">
-                <span>#Python</span>
-                <span>#AI</span>
-                <span>#Flask</span>
-            </div>
-        </div>
-
-        <div class="inprogress-card">
-            <div class="inprogress-header">
-                <h3>Mobile App</h3>
-                <span class="inprogress-status">20%</span>
-            </div>
-            <div class="inprogress-bar">
-                <div class="inprogress-fill" style="width: 20%;"></div>
-            </div>
-            <p>Cross-platform mobile application.</p>
-            <div class="inprogress-tech">
-                <span>#ReactNative</span>
-                <span>#Firebase</span>
-            </div>
-        </div>
-
-        <div class="inprogress-card">
-            <div class="inprogress-header">
-                <h3>Portfolio Website</h3>
-                <span class="inprogress-status">90%</span>
-            </div>
-            <div class="inprogress-bar">
-                <div class="inprogress-fill" style="width: 90%;"></div>
-            </div>
-            <p>My personal portfolio website.</p>
-            <div class="inprogress-tech">
-                <span>#HTML</span>
-                <span>#CSS</span>
-                <span>#JS</span>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ============================================================ -->
-<!-- 10. TIMELINE SECTION -->
-<!-- ============================================================ -->
-
-<section class="timeline" id="timeline">
-
-    <h2 class="section-title">
-        My Journey
-    </h2>
-
-    <p class="section-subtitle">
-        The path I've traveled so far.
-    </p>
-
-
-    <div class="timeline-container">
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-year">
-                2025
-            </div>
-
-            <div class="timeline-content">
-
-                <h3>
-                    Started Programming
-                </h3>
-
-                <p>
-                    Began learning HTML, CSS, and JavaScript.
-                    Built my first websites.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-year">
-                2026
-            </div>
-
-            <div class="timeline-content">
-
-                <h3>
-                    Building Projects
-                </h3>
-
-                <p>
-                    Created real-world projects and explored Python
-                    and AI technologies.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-year">
-                Future
-            </div>
-
-            <div class="timeline-content">
-
-                <h3>
-                    AI & Software Development
-                </h3>
-
-                <p>
-                    Expanding knowledge in AI, machine learning,
-                    and full-stack development.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ============================================================ -->
-<!-- 12. COMMENTS SECTION (نظرات) -->
-<!-- ============================================================ -->
-
-<section class="comments-section" id="comments">
-
-    <h2 class="section-title">
-        💬 Comments
-    </h2>
-
-    <p class="section-subtitle">
-        Leave a comment or feedback!
-    </p>
-
-    <div class="comments-container">
-
-        <!-- فرم نظر -->
-        <form class="comment-form" id="commentForm">
-            <input type="text" id="commentName" placeholder="Your Name" required>
-            <textarea id="commentText" rows="3" placeholder="Your Comment..." required></textarea>
-            <button type="submit">
-                <i class="fas fa-paper-plane"></i>
-                Post Comment
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search..." class="search-input">
+            <button id="searchBtn" class="search-btn">
+                <i class="fas fa-search"></i>
             </button>
-        </form>
-
-        <!-- لیست نظرات -->
-        <div class="comments-list" id="commentsList">
-            <!-- نظرات با جاوااسکریپت اضافه میشن -->
         </div>
 
-    </div>
+   <nav>
+    <a href="#home">Home</a>
+    <a href="about/about.html">About</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
 
-</section>
-
-
-<!-- ============================================================ -->
-<!-- 13. CONTACT SECTION -->
-<!-- ============================================================ -->
-
-<section class="contact" id="contact">
-
-    <h2 class="section-title">
-        Get In Touch
-    </h2>
-
-    <p class="section-subtitle">
-        Have a question or want to work together?
-        Feel free to reach out!
-    </p>
-
-
-    <div class="contact-container">
-
-
-        <div class="contact-info">
-
-            <div class="contact-item">
-
-                <i class="fas fa-envelope"></i>
-
-                <span>
-                    taha@example.com
-                </span>
-
+        <div class="header-controls">
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">🌙</button>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
             </div>
+        </div>
+    </header>
 
-
-            <div class="contact-item">
-
-                <i class="fab fa-github"></i>
-
-                <span>
-                    github.com/taha
-                </span>
-
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>
+                    Hi, I'm Taha
+                    <span class="highlight typed-text">Developer & Creative Thinker</span>
+                </h1>
+                <p class="hero-description">I build modern websites and explore AI technology.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
             </div>
-
-
-            <div class="contact-item">
-
-                <i class="fab fa-telegram"></i>
-
-                <span>
-                    @taha_dev
-                </span>
-
+            <div class="hero-image">
+                <div class="image-frame">
+                    <img src="./image/zenverix-logo-transparent.png" alt="Taha - Developer">
+                </div>
+                <div class="floating-badge">
+                    <i class="fas fa-code"></i>
+                    <span>Developer</span>
+                </div>
             </div>
+        </div>
+    </section>
 
+    <!-- ===== STATS ===== -->
+    <section class="stats-section" id="stats">
+        <h2 class="section-title">Site Statistics</h2>
+        <p class="section-subtitle">Real-time statistics of this website.</p>
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-eye"></i></div>
+                <div class="stat-number" id="visitCount">0</div>
+                <div class="stat-label">Total Visits</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-number" id="onlineCount">0</div>
+                <div class="stat-label">Online Now</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                <div class="stat-number" id="visitTime">0s</div>
+                <div class="stat-label">Time on Site</div>
+            </div>
+        </div>
+    </section>
 
-            <div class="social-links">
+    <!-- ===== ABOUT ===== -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>I'm <strong>Taha</strong>, a young developer and creative thinker passionate about <strong>technology</strong>, <strong>programming</strong>, and building digital experiences.</p>
+                <p>My journey started with curiosity about computers and how technology works. Today, I'm learning <strong>web development</strong>, <strong>Python</strong>, <strong>artificial intelligence</strong>, and modern software technologies.</p>
+                <p>I believe programming is not only about writing code; it's about solving problems, creating ideas, and turning imagination into reality.</p>
+                <p>My goal is to grow as a developer, build useful products, and explore the future of technology.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-item">
+                    <span class="stat-number">1+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3+</span>
+                    <span class="stat-label">Technologies</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Learning Every Day</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">
+    <!-- ===== ACHIEVEMENTS ===== -->
+    <section class="achievements" id="achievements">
+        <h2 class="section-title">🏆 Achievements</h2>
+        <p class="section-subtitle">My certificates and accomplishments.</p>
+        <div class="achievements-container">
+            <div class="achievement-card">
+                <div class="achievement-icon"><i class="fas fa-certificate"></i></div>
+                <h3>Web Development</h3>
+                <p>Completed HTML, CSS, JavaScript course</p>
+                <span class="achievement-date">2025</span>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon"><i class="fas fa-robot"></i></div>
+                <h3>AI Fundamentals</h3>
+                <p>Introduction to Artificial Intelligence</p>
+                <span class="achievement-date">2026</span>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon"><i class="fas fa-code"></i></div>
+                <h3>Python Programming</h3>
+                <p>Python for Beginners Certificate</p>
+                <span class="achievement-date">2026</span>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon"><i class="fas fa-database"></i></div>
+                <h3>Database Fundamentals</h3>
+                <p>SQL and Database Design</p>
+                <span class="achievement-date">2026</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="services" id="services">
+        <h2 class="section-title">My Services</h2>
+        <p class="section-subtitle">What I can do for you.</p>
+        <div class="services-container">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-code"></i></div>
+                <h3>Web Development</h3>
+                <p>Building responsive and modern websites with clean code.</p>
+                <span class="service-tag">Popular</span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-palette"></i></div>
+                <h3>UI/UX Design</h3>
+                <p>Creating beautiful and user-friendly interfaces.</p>
+                <span class="service-tag">New</span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-robot"></i></div>
+                <h3>AI Integration</h3>
+                <p>Adding AI features to your applications.</p>
+                <span class="service-tag">Trending</span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>Responsive Design</h3>
+                <p>Websites that work perfectly on all devices.</p>
+                <span class="service-tag">Essential</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="skills" id="skills">
+        <h2 class="section-title">My Skills</h2>
+        <p class="section-subtitle">Technologies and tools I'm learning.</p>
+        <div class="skills-container">
+            <div class="skill-card" id="skill-html">
+                <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                <h3 class="skill-name">HTML</h3>
+                <p class="skill-desc">Building structured and semantic web pages.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 95%;">
+                        <span class="progress-text">95%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-card" id="skill-css">
+                <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                <h3 class="skill-name">CSS</h3>
+                <p class="skill-desc">Creating responsive and modern interfaces.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 85%;">
+                        <span class="progress-text">85%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-card" id="skill-js">
+                <div class="skill-icon"><i class="fab fa-js-square"></i></div>
+                <h3 class="skill-name">JavaScript</h3>
+                <p class="skill-desc">Adding interactivity and dynamic features.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 70%;">
+                        <span class="progress-text">70%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-card" id="skill-python">
+                <div class="skill-icon"><i class="fab fa-python"></i></div>
+                <h3 class="skill-name">Python</h3>
+                <p class="skill-desc">Learning programming and exploring AI.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%;">
+                        <span class="progress-text">75%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-card" id="skill-ai">
+                <div class="skill-icon"><i class="fas fa-robot"></i></div>
+                <h3 class="skill-name">AI</h3>
+                <p class="skill-desc">Exploring AI tools and intelligent experiences.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%;">
+                        <span class="progress-text">60%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-card" id="skill-git">
+                <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
+                <h3 class="skill-name">Git & GitHub</h3>
+                <p class="skill-desc">Learning version control and managing projects.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 65%;">
+                        <span class="progress-text">65%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="projects" id="projects">
+        <h2 class="section-title">My Projects</h2>
+        <p class="section-subtitle">Here are some of the projects I've built.</p>
+        <div class="projects-container">
+            <div class="project-card" data-rating="4.5">
+                <div class="project-image">
+                    <img src="images/project-portfolio.jpg" alt="Portfolio Website">
+                    <div class="project-overlay">
+                        <span class="project-tech">HTML · CSS · JS</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Portfolio Website</h3>
+                    <p>Modern personal portfolio built with HTML, CSS, and JavaScript.</p>
+                    <div class="project-tags">
+                        <span class="tag">#HTML</span>
+                        <span class="tag">#CSS</span>
+                        <span class="tag">#JS</span>
+                    </div>
+                    <div class="project-rating">
+                        <span class="stars" data-rating="4.5">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <span class="rating-text">4.5</span>
+                    </div>
+                    <a href="#" target="_blank" class="project-btn">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card" data-rating="5">
+                <div class="project-image">
+                    <img src="images/project-zenverix.jpg" alt="Zenverix Website">
+                    <div class="project-overlay">
+                        <span class="project-tech">React · CSS · API</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Zenverix Website</h3>
+                    <p>Corporate website with modern design and smooth animations.</p>
+                    <div class="project-tags">
+                        <span class="tag">#React</span>
+                        <span class="tag">#API</span>
+                        <span class="tag">#CSS</span>
+                    </div>
+                    <div class="project-rating">
+                        <span class="stars" data-rating="5">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                        <span class="rating-text">5.0</span>
+                    </div>
+                    <a href="#" target="_blank" class="project-btn">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="project-card" data-rating="4">
+                <div class="project-image">
+                    <img src="images/project-jsapps.jpg" alt="JavaScript Apps">
+                    <div class="project-overlay">
+                        <span class="project-tech">JS · DOM · API</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>JavaScript Apps</h3>
+                    <p>Collection of interactive web apps built with vanilla JavaScript.</p>
+                    <div class="project-tags">
+                        <span class="tag">#JavaScript</span>
+                        <span class="tag">#DOM</span>
+                        <span class="tag">#API</span>
+                    </div>
+                    <div class="project-rating">
+                        <span class="stars" data-rating="4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </span>
+                        <span class="rating-text">4.0</span>
+                    </div>
+                    <a href="#" target="_blank" class="project-btn">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== IN-PROGRESS ===== -->
+    <section class="inprogress" id="inprogress">
+        <h2 class="section-title">🚧 In-Progress Projects</h2>
+        <p class="section-subtitle">Projects I'm currently working on.</p>
+        <div class="inprogress-container">
+            <div class="inprogress-card">
+                <div class="inprogress-header">
+                    <h3>E-Commerce Website</h3>
+                    <span class="inprogress-status">75%</span>
+                </div>
+                <div class="inprogress-bar">
+                    <div class="inprogress-fill" style="width: 75%;"></div>
+                </div>
+                <p>Building a full-featured online store.</p>
+                <div class="inprogress-tech">
+                    <span>#React</span>
+                    <span>#Node.js</span>
+                    <span>#MongoDB</span>
+                </div>
+            </div>
+            <div class="inprogress-card">
+                <div class="inprogress-header">
+                    <h3>AI Chatbot</h3>
+                    <span class="inprogress-status">40%</span>
+                </div>
+                <div class="inprogress-bar">
+                    <div class="inprogress-fill" style="width: 40%;"></div>
+                </div>
+                <p>Intelligent chatbot using AI APIs.</p>
+                <div class="inprogress-tech">
+                    <span>#Python</span>
+                    <span>#AI</span>
+                    <span>#Flask</span>
+                </div>
+            </div>
+            <div class="inprogress-card">
+                <div class="inprogress-header">
+                    <h3>Mobile App</h3>
+                    <span class="inprogress-status">20%</span>
+                </div>
+                <div class="inprogress-bar">
+                    <div class="inprogress-fill" style="width: 20%;"></div>
+                </div>
+                <p>Cross-platform mobile application.</p>
+                <div class="inprogress-tech">
+                    <span>#ReactNative</span>
+                    <span>#Firebase</span>
+                </div>
+            </div>
+            <div class="inprogress-card">
+                <div class="inprogress-header">
+                    <h3>Portfolio Website</h3>
+                    <span class="inprogress-status">90%</span>
+                </div>
+                <div class="inprogress-bar">
+                    <div class="inprogress-fill" style="width: 90%;"></div>
+                </div>
+                <p>My personal portfolio website.</p>
+                <div class="inprogress-tech">
+                    <span>#HTML</span>
+                    <span>#CSS</span>
+                    <span>#JS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TIMELINE ===== -->
+    <section class="timeline" id="timeline">
+        <h2 class="section-title">My Journey</h2>
+        <p class="section-subtitle">The path I've traveled so far.</p>
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-content">
+                    <h3>Started Programming</h3>
+                    <p>Began learning HTML, CSS, and JavaScript. Built my first websites.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2026</div>
+                <div class="timeline-content">
+                    <h3>Building Projects</h3>
+                    <p>Created real-world projects and explored Python and AI technologies.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">Future</div>
+                <div class="timeline-content">
+                    <h3>AI & Software Development</h3>
+                    <p>Expanding knowledge in AI, machine learning, and full-stack development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COMMENTS ===== -->
+    <section class="comments-section" id="comments">
+        <h2 class="section-title">💬 Comments</h2>
+        <p class="section-subtitle">Leave a comment or feedback!</p>
+        <div class="comments-container">
+            <form class="comment-form" id="commentForm">
+                <input type="text" id="commentName" placeholder="Your Name" required>
+                <textarea id="commentText" rows="3" placeholder="Your Comment..." required></textarea>
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i> Post Comment
+                </button>
+            </form>
+            <div class="comments-list" id="commentsList"></div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Have a question or want to work together?</p>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>taha@example.com</span>
+                </div>
+                <div class="contact-item">
                     <i class="fab fa-github"></i>
-                </a>
-
-                <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-
-                <a href="https://twitter.com/yourusername" target="_blank" aria-label="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-
-                <a href="https://instagram.com/yourusername" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-
-                <a href="https://t.me/yourusername" target="_blank" aria-label="Telegram">
+                    <span>github.com/taha</span>
+                </div>
+                <div class="contact-item">
                     <i class="fab fa-telegram"></i>
-                </a>
-
+                    <span>@taha_dev</span>
+                </div>
+                <div class="social-links">
+                    <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                </div>
             </div>
+            <form class="contact-form" id="contactForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">
+                    Send Message <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </section>
 
+    <!-- ===== FOOTER ===== -->
+    <<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="footer-container">
+        
+        <!-- بخش اول: برند -->
+        <div class="footer-brand">
+            <div class="footer-logo">
+                <img src="./image/zenverix-logo-transparent.png" alt="Zenverix" class="footer-logo-img">
+                <span class="footer-logo-name">Zenverix</span>
+            </div>
+            <p class="footer-tagline" style="font-weight: bolder;">Build Beyond Limits</p>
         </div>
 
+        <!-- بخش دوم: لینک‌های سریع -->
+        <div class="footer-links">
+            <div class="footer-links-column">
+                <h4>Pages</h4>
+                <a href="#home">Home</a>
+                <a href="about/about.html">About</a>
+                <a href="#services">Services</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-links-column">
+                <h4>Services</h4>
+                <a href="#services">Web Development</a>
+                <a href="#services">UI/UX Design</a>
+                <a href="#services">AI Integration</a>
+            </div>
+            <div class="footer-links-column">
+                <h4>Social</h4>
+                <a href="#" target="_blank">GitHub</a>
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">Telegram</a>
+                <a href="#" target="_blank">Instagram</a>
+            </div>
+        </div>
 
-        <form class="contact-form" id="contactForm">
+        <!-- بخش سوم: نسخه سایت -->
+        <div class="footer-version">
+            <div class="version-info">
+                <span class="version-badge">
+                    <i class="fas fa-code-branch"></i>
+                    v2.1.0
+                </span>
+                <span class="version-status">
+                    <i class="fas fa-circle" style="color: #22c55e; font-size: 10px;"></i>
+                    Stable
+                </span>
+            </div>
+            <div class="version-details">
+                <span class="version-date">
+                    <i class="far fa-calendar-alt"></i>
+                    Updated: <span id="updateDate">2026</span>
+                </span>
+                <span class="version-commit">
+                    <i class="fas fa-code"></i>
+                    Commit: <span id="commitHash">a1b2c3d</span>
+                </span>
+            </div>
+            <div class="version-tech">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+                <span>Font Awesome</span>
+            </div>
+        </div>
 
-            <input
-                type="text"
-                placeholder="Your Name"
-                required
-            >
-
-            <input
-                type="email"
-                placeholder="Your Email"
-                required
-            >
-
-            <textarea
-                placeholder="Your Message"
-                rows="5"
-                required
-            ></textarea>
-
-            <button type="submit">
-                Send Message
-                <i class="fas fa-paper-plane"></i>
-            </button>
-
-        </form>
+        <!-- بخش چهارم: کپی‌رایت و متن متحرک -->
+        <div class="footer-bottom">
+            <p class="footer-copyright">
+                &copy; <span id="currentYear"></span> Zenverix. All rights reserved.
+            </p>
+            <div class="footer-marquee">
+                <p>🚀 Always learning • 💻 Building cool stuff • 🤖 Exploring AI • 🌟 Passionate about code</p>
+            </div>
+        </div>
 
     </div>
-
-</section>
-
-
-<!-- ============================================================ -->
-<!-- 14. FOOTER -->
-<!-- ============================================================ -->
-
-<footer>
-
-    <p>
-        &copy; <span id="currentYear"></span> Zenverix
-    </p>
-
-    <p class="footer-tagline">
-        Build Beyond Limits
-    </p>
-
-    <!-- متن متحرک فوتر -->
-    <div class="footer-marquee">
-        <p>🚀 Always learning • 💻 Building cool stuff • 🤖 Exploring AI • 🌟 Passionate about code</p>
-    </div>
-
 </footer>
+    <!-- ===== MUSIC PLAYER ===== -->
+    <div class="music-player" id="musicPlayer">
+        <button id="musicToggle" class="music-btn" aria-label="Toggle Music">
+            <i class="fas fa-music"></i>
+        </button>
+        <audio id="bgMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+    </div>
 
+    <!-- ===== WHATSAPP FLOAT ===== -->
+    <a href="https://wa.me/989123456789" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-<!-- ============================================================ -->
-<!-- MUSIC PLAYER (دکمه موسیقی) -->
-<!-- ============================================================ -->
+    <!-- ===== SCROLL PROGRESS ===== -->
+    <div class="scroll-progress" id="scrollProgress">
+        <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    </div>
 
-<div class="music-player" id="musicPlayer">
-    <button id="musicToggle" class="music-btn">
-        <i class="fas fa-music"></i>
+    <!-- ===== BACK TO TOP ===== -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-arrow-up"></i>
     </button>
-    <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    </audio>
-</div>
 
-
-<!-- ============================================================ -->
-<!-- WHATSAPP FLOATING BUTTON -->
-<!-- ============================================================ -->
-
-<a href="https://wa.me/989123456789" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
-
-<!-- ============================================================ -->
-<!-- SCROLL PROGRESS BAR (نوار پیشرفت اسکرول) -->
-<!-- ============================================================ -->
-
-<div class="scroll-progress" id="scrollProgress">
-    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
-</div>
-
-
-
-<script src="./script.js"></script>
-
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
