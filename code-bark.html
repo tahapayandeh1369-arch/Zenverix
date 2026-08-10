@@ -1,110 +1,112 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>کدپارک - ویرایشگر حرفه‌ای</title>
+    <title>CodeBark - Professional Code Editor</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./Csses/code-park-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./Csses/code-bark-style.css">
+    <link rel="icon" type="image/x-icon" href="./image/favicon.ico">
+
 </head>
 <body>
 
-    <!-- ===== لودینگ ===== -->
+    <!-- ===== LOADING SCREEN ===== -->
     <div id="loadingScreen">
         <div class="loader-wrapper">
             <div class="loader-logo">
                 <div class="ring1"></div><div class="ring2"></div><div class="ring3"></div>
                 <div class="logo-icon"><i class="fas fa-pencil-ruler"></i></div>
             </div>
-            <div class="loader-title">کد<span>پارک</span></div>
-            <div class="loader-sub">ویرایشگر حرفه‌ای</div>
+            <div class="loader-title">Code<span>Bark</span></div>
+            <div class="loader-sub">Professional Code Editor</div>
             <div class="loader-bar-wrap">
                 <div class="loader-bar"><div class="bar-fill" id="barFill"></div></div>
-                <div class="loader-percent" id="percentText">۰٪</div>
+                <div class="loader-percent" id="percentText">0%</div>
             </div>
             <div class="loader-dots"><span></span><span></span><span></span></div>
         </div>
     </div>
 
-    <!-- ===== نوار بالا ===== -->
+    <!-- ===== NAVBAR ===== -->
     <nav class="navbar">
         <div class="brand" onclick="navigateTo('home')">
             <div class="icon"><i class="fas fa-pencil-ruler"></i></div>
             <div>
-                <h1>کد<span>پارک</span></h1>
-                <small>ویرایشگر حرفه‌ای</small>
+                <h1>Code<span>Bark</span></h1>
+                <small>Professional Editor</small>
             </div>
         </div>
         <div class="nav-links">
-            <a href="#" class="active" onclick="navigateTo('home')"><i class="fas fa-home"></i> خانه</a>
-            <a href="#" onclick="navigateTo('editor')"><i class="fas fa-code"></i> ویرایشگر</a>
-            <a href="#" onclick="showNotif('🚀 در حال توسعه...')"><i class="fas fa-folder"></i> پروژه‌ها</a>
-            <a href="#" onclick="showNotif('📚 در حال توسعه...')"><i class="fas fa-graduation-cap"></i> آموزش</a>
+            <a href="#" class="active" onclick="navigateTo('home')"><i class="fas fa-home"></i> Home</a>
+            <a href="#" onclick="navigateTo('editor')"><i class="fas fa-code"></i> Editor</a>
+            <a href="#" onclick="showNotif('🚀 Coming soon...')"><i class="fas fa-folder"></i> Projects</a>
+            <a href="#" onclick="showNotif('📚 Coming soon...')"><i class="fas fa-graduation-cap"></i> Learn</a>
         </div>
         <div class="tools">
-            <button onclick="toggleTheme()"><i class="fas fa-moon"></i> <span id="themeLabel">شب</span></button>
-            <button onclick="showNotif('👤 پروفایل در حال ساخت...')"><i class="fas fa-user"></i></button>
-            <button class="primary" onclick="showNotif('💾 پروژه ذخیره شد!')"><i class="fas fa-save"></i> <span>ذخیره</span></button>
+            <button onclick="toggleTheme()"><i class="fas fa-moon"></i> <span id="themeLabel">Dark</span></button>
+            <button onclick="showNotif('👤 Profile coming soon...')"><i class="fas fa-user"></i></button>
+            <button class="primary" onclick="downloadProject()"><i class="fas fa-download"></i> <span>Export</span></button>
         </div>
     </nav>
 
-    <!-- ===== محتوای اصلی ===== -->
+    <!-- ===== MAIN CONTENT ===== -->
     <div id="mainContent">
         
-        <!-- ===== صفحه خانه ===== -->
+        <!-- ===== HOME PAGE ===== -->
         <div id="homePage" class="active">
             <div class="home-hero">
-                <span class="badge">🔥 نسخه جدید</span>
-                <h1>به <span>کدپارک</span> خوش آمدید</h1>
-                <p>ویرایشگر کد حرفه‌ای با امکانات پیشرفته برای توسعه‌دهندگان</p>
+                <span class="badge">🔥 New Version</span>
+                <h1>Welcome to <span>CodeBark</span></h1>
+                <p>Professional code editor with advanced features for developers</p>
                 <button class="tools primary" onclick="navigateTo('editor')" style="margin: 0 auto; padding: 12px 32px; font-size: 16px;">
-                    <i class="fas fa-play"></i> شروع کدنویسی
+                    <i class="fas fa-play"></i> Start Coding
                 </button>
             </div>
 
             <div class="home-stats">
-                <div class="stat-card"><div class="num">۱۰+</div><div class="label">پروژه فعال</div></div>
-                <div class="stat-card"><div class="num">۱,۲۴۰</div><div class="label">خط کد</div></div>
-                <div class="stat-card"><div class="num">۵</div><div class="label">تم طراحی</div></div>
-                <div class="stat-card"><div class="num">۱۰۰%</div><div class="label">رضایت کاربران</div></div>
+                <div class="stat-card"><div class="num">10+</div><div class="label">Active Projects</div></div>
+                <div class="stat-card"><div class="num">1,240</div><div class="label">Lines of Code</div></div>
+                <div class="stat-card"><div class="num">5</div><div class="label">Design Themes</div></div>
+                <div class="stat-card"><div class="num">100%</div><div class="label">User Satisfaction</div></div>
             </div>
 
             <div class="features-grid">
                 <div class="feature-card">
                     <span class="icon">⚡</span>
-                    <h3>اجرای زنده</h3>
-                    <p>کد را بنویسید و نتیجه را بلافاصله ببینید</p>
+                    <h3>Live Preview</h3>
+                    <p>Write code and see results instantly</p>
                 </div>
                 <div class="feature-card">
                     <span class="icon">🌙</span>
-                    <h3>تم شب و روز</h3>
-                    <p>کدنویسی در هر شرایط نوری</p>
+                    <h3>Dark/Light Mode</h3>
+                    <p>Code in any lighting condition</p>
                 </div>
                 <div class="feature-card">
                     <span class="icon">📱</span>
-                    <h3>پیش‌نمایش واکنش‌گرا</h3>
-                    <p>نمایش در دسکتاپ، تبلت و موبایل</p>
+                    <h3>Responsive Preview</h3>
+                    <p>View on desktop, tablet & mobile</p>
                 </div>
                 <div class="feature-card">
                     <span class="icon">💾</span>
-                    <h3>ذخیره خودکار</h3>
-                    <p>کدها به صورت خودکار ذخیره می‌شوند</p>
+                    <h3>Auto Save</h3>
+                    <p>Your code is saved automatically</p>
                 </div>
                 <div class="feature-card">
                     <span class="icon">🎨</span>
-                    <h3>فرمت‌دهی خودکار</h3>
-                    <p>مرتب‌سازی کد با یک کلیک</p>
+                    <h3>Auto Format</h3>
+                    <p>Format code with one click</p>
                 </div>
                 <div class="feature-card">
                     <span class="icon">📦</span>
-                    <h3>دانلود پروژه</h3>
-                    <p>خروجی کامل پروژه را دریافت کنید</p>
+                    <h3>Export Project</h3>
+                    <p>Download complete project output</p>
                 </div>
             </div>
         </div>
 
-        <!-- ===== صفحه ویرایشگر ===== -->
+        <!-- ===== EDITOR PAGE ===== -->
         <div id="editorPage">
             <div class="editor-container">
                 
@@ -112,15 +114,15 @@
                 <div class="editor-panel">
                     <div class="panel-header">
                         <span><i class="fab fa-html5" style="color:#e44d26;"></i> HTML <span class="dot html-dot"></span></span>
-                        <span><span id="htmlLines">۰</span> خط</span>
+                        <span><span id="htmlLines">0</span> lines</span>
                     </div>
                     <textarea id="htmlEditor" spellcheck="false">&lt;div class="hero"&gt;
-    &lt;div class="badge"&gt;🔥 جدید&lt;/div&gt;
-    &lt;h1&gt;به کدپارک خوش آمدید&lt;/h1&gt;
-    &lt;p&gt;کد خود را بنویسید و نتیجه را ببینید&lt;/p&gt;
+    &lt;div class="badge"&gt;🔥 New&lt;/div&gt;
+    &lt;h1&gt;Welcome to CodeBark&lt;/h1&gt;
+    &lt;p&gt;Write your code and see the result&lt;/p&gt;
     &lt;div class="btn-group"&gt;
-        &lt;button class="btn-primary" id="actionBtn"&gt;شروع کنید&lt;/button&gt;
-        &lt;button class="btn-secondary"&gt;بیشتر بدانید&lt;/button&gt;
+        &lt;button class="btn-primary" id="actionBtn"&gt;Get Started&lt;/button&gt;
+        &lt;button class="btn-secondary"&gt;Learn More&lt;/button&gt;
     &lt;/div&gt;
 &lt;/div&gt;</textarea>
                 </div>
@@ -129,7 +131,7 @@
                 <div class="editor-panel">
                     <div class="panel-header">
                         <span><i class="fab fa-css3-alt" style="color:#264de4;"></i> CSS <span class="dot css-dot"></span></span>
-                        <span><span id="cssLines">۰</span> خط</span>
+                        <span><span id="cssLines">0</span> lines</span>
                     </div>
                     <textarea id="cssEditor" spellcheck="false">.hero {
     text-align: center;
@@ -214,8 +216,8 @@
                 <!-- Preview -->
                 <div class="editor-panel preview-panel">
                     <div class="panel-header">
-                        <span><i class="fas fa-eye" style="color:#22c55e;"></i> پیش‌نمایش <span class="dot preview-dot"></span></span>
-                        <span><i class="fas fa-sync-alt"></i> <span id="previewTime">زنده</span></span>
+                        <span><i class="fas fa-eye" style="color:#22c55e;"></i> Preview <span class="dot preview-dot"></span></span>
+                        <span><i class="fas fa-sync-alt"></i> <span id="previewTime">Live</span></span>
                     </div>
                     <div class="tab-bar">
                         <button class="tab active-tab" onclick="setPreviewSize('desktop')"><i class="fas fa-desktop"></i></button>
@@ -229,37 +231,37 @@
             </div>
         </div>
 
-        <!-- ===== نوار پایین ===== -->
+        <!-- ===== FOOTER BAR ===== -->
         <div class="footer-bar">
-            <div class="info-item"><i class="fas fa-code"></i> <span id="lineCounter">خطوط: ۰</span></div>
-            <div class="info-item"><i class="fas fa-font"></i> <span id="charCounter">کاراکترها: ۰</span></div>
+            <div class="info-item"><i class="fas fa-code"></i> <span id="lineCounter">Lines: 0</span></div>
+            <div class="info-item"><i class="fas fa-font"></i> <span id="charCounter">Characters: 0</span></div>
             <div class="info-item"><i class="fas fa-clock"></i> <span id="timeDisplay"></span></div>
-            <div class="info-item"><span class="status-badge" id="statusBadge"><i class="fas fa-circle" style="font-size:8px;"></i> آماده</span></div>
+            <div class="info-item"><span class="status-badge" id="statusBadge"><i class="fas fa-circle" style="font-size:8px;"></i> Ready</span></div>
         </div>
 
     </div>
 
-    <!-- ===== نوتیف ===== -->
+    <!-- ===== NOTIFICATION ===== -->
     <div class="notification" id="notifBox">
         <i class="fas fa-check-circle"></i>
-        <span id="notifText">عملیات موفق!</span>
+        <span id="notifText">Success!</span>
     </div>
 
-    <!-- ===== مودال ===== -->
+    <!-- ===== MODAL ===== -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-box">
             <span class="modal-icon">🔄</span>
-            <h2>بازنشانی کد</h2>
-            <p>آیا مطمئن هستید که می‌خواهید کد را به حالت اولیه برگردانید؟</p>
+            <h2>Reset Code</h2>
+            <p>Are you sure you want to reset the code to default?</p>
             <div class="modal-actions">
-                <button class="btn-cancel" onclick="closeModal()">انصراف</button>
-                <button class="btn-confirm" onclick="confirmReset()">بله، بازنشانی</button>
+                <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+                <button class="btn-confirm" onclick="confirmReset()">Yes, Reset</button>
             </div>
         </div>
     </div>
 
     <script>
-        // ===== لودینگ =====
+        // ===== LOADING =====
         var loadingScreen = document.getElementById('loadingScreen');
         var barFill = document.getElementById('barFill');
         var percentText = document.getElementById('percentText');
@@ -274,7 +276,7 @@
                            progress < 90 ? 1 + Math.random() * 3 : 0.5 + Math.random();
             progress = Math.min(progress + increment, 100);
             var percent = Math.floor(progress);
-            percentText.textContent = percent + '٪';
+            percentText.textContent = percent + '%';
             barFill.style.width = progress + '%';
             
             if (progress < 100) {
@@ -292,14 +294,14 @@
                             runPreview();
                             updateCounters();
                             loadSavedCode();
-                            console.log('🚀 کدپارک آماده است!');
+                            console.log('🚀 CodeBark is ready!');
                         }, 300);
                     }, 800);
                 }, 500);
             }
         }
         
-        // ===== ناوبری =====
+        // ===== NAVIGATION =====
         function navigateTo(page) {
             var home = document.getElementById('homePage');
             var editor = document.getElementById('editorPage');
@@ -317,35 +319,35 @@
                 links[1].classList.add('active');
                 setTimeout(runPreview, 100);
             }
-            showNotif('📄 ' + (page === 'home' ? 'صفحه خانه' : 'ویرایشگر کد'));
+            showNotif('📄 ' + (page === 'home' ? 'Home Page' : 'Code Editor'));
         }
         
-        // ===== ذخیره خودکار =====
+        // ===== AUTO SAVE =====
         function autoSave() {
             var html = document.getElementById('htmlEditor').value;
             var css = document.getElementById('cssEditor').value;
             try {
-                localStorage.setItem('codepark_html', html);
-                localStorage.setItem('codepark_css', css);
-                localStorage.setItem('codepark_saved', Date.now().toString());
+                localStorage.setItem('codebark_html', html);
+                localStorage.setItem('codebark_css', css);
+                localStorage.setItem('codebark_saved', Date.now().toString());
             } catch(e) {}
         }
         
         function loadSavedCode() {
             try {
-                var html = localStorage.getItem('codepark_html');
-                var css = localStorage.getItem('codepark_css');
+                var html = localStorage.getItem('codebark_html');
+                var css = localStorage.getItem('codebark_css');
                 if (html) document.getElementById('htmlEditor').value = html;
                 if (css) document.getElementById('cssEditor').value = css;
                 if (html || css) {
-                    showNotif('💾 کدهای ذخیره شده بازیابی شد');
+                    showNotif('💾 Saved code restored');
                     runPreview();
                     updateCounters();
                 }
             } catch(e) {}
         }
         
-        // ===== المان‌ها =====
+        // ===== ELEMENTS =====
         var htmlArea = document.getElementById('htmlEditor');
         var cssArea = document.getElementById('cssEditor');
         var previewFrame = document.getElementById('previewWindow');
@@ -363,15 +365,15 @@
         var isDark = false;
         var autoSaveTimer = null;
         
-        // ===== ساعت =====
+        // ===== CLOCK =====
         function updateClock() {
             var now = new Date();
-            timeDisplay.textContent = now.toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            timeDisplay.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
         }
         updateClock();
         setInterval(updateClock, 1000);
         
-        // ===== نوتیف =====
+        // ===== NOTIFICATION =====
         function showNotif(msg, isError) {
             isError = isError || false;
             notifText.textContent = msg;
@@ -383,7 +385,7 @@
         }
         window.showNotif = showNotif;
         
-        // ===== آمار =====
+        // ===== COUNTERS =====
         function updateCounters() {
             var html = htmlArea.value;
             var css = cssArea.value;
@@ -391,39 +393,39 @@
             var lines = combined.split('\n').length;
             var chars = combined.length;
             
-            lineCount.textContent = 'خطوط: ' + lines;
-            charCount.textContent = 'کاراکترها: ' + chars;
+            lineCount.textContent = 'Lines: ' + lines;
+            charCount.textContent = 'Characters: ' + chars;
             htmlLines.textContent = html.split('\n').length;
             cssLines.textContent = css.split('\n').length;
         }
         
-        // ===== اجرا =====
+        // ===== RUN PREVIEW =====
         function runPreview() {
             var html = htmlArea.value;
             var css = cssArea.value;
             
             try {
-                var doc = '<!DOCTYPE html>\n<html>\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<style>' + css + '</style>\n</head>\n<body>\n' + html + '\n<script>\ndocument.getElementById("actionBtn")?.addEventListener("click", function() {\nalert("🎉 به کدپارک خوش آمدید!");\n});\n<\/script>\n</body>\n</html>';
+                var doc = '<!DOCTYPE html>\n<html>\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<style>' + css + '</style>\n</head>\n<body>\n' + html + '\n<script>\ndocument.getElementById("actionBtn")?.addEventListener("click", function() {\nalert("🎉 Welcome to CodeBark!");\n});\n<\/script>\n</body>\n</html>';
                 
                 var blob = new Blob([doc], { type: 'text/html' });
                 var url = URL.createObjectURL(blob);
                 previewFrame.src = url;
                 setTimeout(function() { URL.revokeObjectURL(url); }, 5000);
                 
-                previewTime.textContent = '✅ ' + new Date().toLocaleTimeString('fa-IR');
+                previewTime.textContent = '✅ ' + new Date().toLocaleTimeString('en-US');
                 statusBadge.className = 'status-badge';
-                statusBadge.innerHTML = '<i class="fas fa-circle" style="font-size:8px;"></i> اجرا شد';
-                showNotif('✅ کد با موفقیت اجرا شد');
+                statusBadge.innerHTML = '<i class="fas fa-circle" style="font-size:8px;"></i> Running';
+                showNotif('✅ Code executed successfully');
             } catch(e) {
                 statusBadge.className = 'status-badge error';
-                statusBadge.innerHTML = '<i class="fas fa-exclamation-circle" style="font-size:8px;"></i> خطا';
-                showNotif('❌ خطا در اجرای کد', true);
+                statusBadge.innerHTML = '<i class="fas fa-exclamation-circle" style="font-size:8px;"></i> Error';
+                showNotif('❌ Error executing code', true);
             }
             updateCounters();
             autoSave();
         }
         
-        // ===== فرمت =====
+        // ===== FORMAT =====
         function formatCode() {
             try {
                 var html = htmlArea.value;
@@ -439,13 +441,13 @@
                 cssArea.value = css;
                 
                 runPreview();
-                showNotif('✨ کد با موفقیت فرمت شد');
+                showNotif('✨ Code formatted successfully');
             } catch(e) {
-                showNotif('❌ خطا در فرمت‌دهی', true);
+                showNotif('❌ Error formatting code', true);
             }
         }
         
-        // ===== تم =====
+        // ===== THEME =====
         function toggleTheme() {
             isDark = !isDark;
             var body = document.body;
@@ -497,8 +499,8 @@
                     el.style.borderColor = '#334155';
                     el.style.color = '#e2e8f0';
                 });
-                label.textContent = 'روشن';
-                showNotif('🌙 تم شب');
+                label.textContent = 'Light';
+                showNotif('🌙 Dark mode');
             } else {
                 body.style.background = '#f8fafc';
                 body.style.color = '#1e293b';
@@ -542,12 +544,12 @@
                     el.style.borderColor = '#e2e8f0';
                     el.style.color = '#1e293b';
                 });
-                label.textContent = 'شب';
-                showNotif('☀️ تم روشن');
+                label.textContent = 'Dark';
+                showNotif('☀️ Light mode');
             }
         }
         
-        // ===== اندازه =====
+        // ===== PREVIEW SIZE =====
         function setPreviewSize(size) {
             var iframe = previewFrame;
             var tabs = document.querySelectorAll('.tab-bar .tab');
@@ -558,71 +560,71 @@
                 iframe.style.maxWidth = '100%';
                 iframe.style.margin = '0 auto';
                 tabs[0].classList.add('active-tab');
-                showNotif('💻 دسکتاپ');
+                showNotif('💻 Desktop');
             } else if (size === 'tablet') {
                 iframe.style.width = '768px';
                 iframe.style.maxWidth = '90%';
                 iframe.style.margin = '0 auto';
                 tabs[1].classList.add('active-tab');
-                showNotif('📱 تبلت');
+                showNotif('📱 Tablet');
             } else if (size === 'mobile') {
                 iframe.style.width = '375px';
                 iframe.style.maxWidth = '90%';
                 iframe.style.margin = '0 auto';
                 tabs[2].classList.add('active-tab');
-                showNotif('📱 موبایل');
+                showNotif('📱 Mobile');
             }
         }
         
-        // ===== تمام صفحه =====
+        // ===== FULLSCREEN =====
         function toggleFullscreen() {
             var iframe = previewFrame;
             if (iframe.requestFullscreen) {
                 iframe.requestFullscreen();
-                showNotif('⛶ حالت تمام صفحه');
+                showNotif('⛶ Fullscreen mode');
             } else {
-                showNotif('⚠️ مرورگر پشتیبانی نمی‌کند', true);
+                showNotif('⚠️ Browser does not support fullscreen', true);
             }
         }
         
-        // ===== مودال =====
+        // ===== MODAL =====
         function showModal() { modalOverlay.classList.add('active'); }
         function closeModal() { modalOverlay.classList.remove('active'); }
         
         function confirmReset() {
             closeModal();
-            htmlArea.value = '<div class="hero">\n    <div class="badge">🔥 جدید</div>\n    <h1>به کدپارک خوش آمدید</h1>\n    <p>کد خود را بنویسید و نتیجه را ببینید</p>\n    <div class="btn-group">\n        <button class="btn-primary" id="actionBtn">شروع کنید</button>\n        <button class="btn-secondary">بیشتر بدانید</button>\n    </div>\n</div>';
+            htmlArea.value = '<div class="hero">\n    <div class="badge">🔥 New</div>\n    <h1>Welcome to CodeBark</h1>\n    <p>Write your code and see the result</p>\n    <div class="btn-group">\n        <button class="btn-primary" id="actionBtn">Get Started</button>\n        <button class="btn-secondary">Learn More</button>\n    </div>\n</div>';
             cssArea.value = '.hero {\n    text-align: center;\n    padding: 60px 30px;\n    background: linear-gradient(135deg, #fef3c7, #fde68a);\n    border-radius: 32px;\n    max-width: 550px;\n    margin: 20px auto;\n    box-shadow: 0 20px 60px rgba(0,0,0,0.06);\n}\n\n.badge {\n    display: inline-block;\n    background: #ef4444;\n    color: white;\n    padding: 4px 18px;\n    border-radius: 20px;\n    font-size: 12px;\n    font-weight: 700;\n    margin-bottom: 16px;\n    letter-spacing: 1px;\n}\n\n.hero h1 {\n    font-size: 36px;\n    font-weight: 800;\n    color: #1e293b;\n    margin-bottom: 12px;\n}\n\n.hero p {\n    color: #475569;\n    font-size: 18px;\n    margin-bottom: 28px;\n    line-height: 1.6;\n}\n\n.btn-group {\n    display: flex;\n    gap: 12px;\n    justify-content: center;\n    flex-wrap: wrap;\n}\n\n.btn-primary {\n    background: linear-gradient(135deg, #f97316, #ef4444);\n    border: none;\n    padding: 14px 40px;\n    border-radius: 50px;\n    color: white;\n    font-size: 16px;\n    font-weight: 700;\n    cursor: pointer;\n    transition: 0.3s;\n    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);\n}\n\n.btn-primary:hover {\n    transform: translateY(-3px);\n    box-shadow: 0 8px 30px rgba(249, 115, 22, 0.4);\n}\n\n.btn-secondary {\n    background: transparent;\n    border: 2px solid #cbd5e1;\n    padding: 12px 36px;\n    border-radius: 50px;\n    color: #475569;\n    font-size: 16px;\n    font-weight: 600;\n    cursor: pointer;\n    transition: 0.3s;\n}\n\n.btn-secondary:hover {\n    border-color: #f97316;\n    color: #f97316;\n    background: #fff7ed;\n}';
             runPreview();
-            showNotif('🔄 کد بازنشانی شد');
+            showNotif('🔄 Code reset');
         }
         
-        // ===== دانلود =====
+        // ===== DOWNLOAD =====
         function downloadProject() {
             var html = htmlArea.value;
             var css = cssArea.value;
-            var full = '<!DOCTYPE html>\n<html>\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>پروژه کدپارک</title>\n<style>' + css + '</style>\n</head>\n<body>\n' + html + '\n<script>\ndocument.getElementById("actionBtn")?.addEventListener("click", function() {\nalert("🎉 به کدپارک خوش آمدید!");\n});\n<\/script>\n</body>\n</html>';
+            var full = '<!DOCTYPE html>\n<html>\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>CodeBark Project</title>\n<style>' + css + '</style>\n</head>\n<body>\n' + html + '\n<script>\ndocument.getElementById("actionBtn")?.addEventListener("click", function() {\nalert("🎉 Welcome to CodeBark!");\n});\n<\/script>\n</body>\n</html>';
             
             var blob = new Blob([full], { type: 'text/html' });
             var url = URL.createObjectURL(blob);
             var link = document.createElement('a');
             link.href = url;
-            link.download = 'codepark-project.html';
+            link.download = 'codebark-project.html';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
             URL.revokeObjectURL(url);
-            showNotif('📥 فایل دانلود شد');
+            showNotif('📥 File downloaded');
         }
         
-        // ===== تاخیر اجرا =====
+        // ===== AUTO RUN =====
         var autoTimer = null;
         function scheduleRun() {
             clearTimeout(autoTimer);
             autoTimer = setTimeout(runPreview, 500);
         }
         
-        // ===== رویدادها =====
+        // ===== EVENTS =====
         htmlArea.addEventListener('input', function() {
             updateCounters();
             scheduleRun();
@@ -648,14 +650,14 @@
             if ((e.ctrlKey || e.metaKey) && e.key === 's') {
                 e.preventDefault();
                 autoSave();
-                showNotif('💾 ذخیره شد!');
+                showNotif('💾 Saved!');
             }
             if (e.key === 'Escape') {
                 closeModal();
             }
         });
         
-        // ===== توابع سراسری =====
+        // ===== GLOBAL FUNCTIONS =====
         window.navigateTo = navigateTo;
         window.runPreview = runPreview;
         window.formatCode = formatCode;
@@ -667,7 +669,7 @@
         window.confirmReset = confirmReset;
         window.downloadProject = downloadProject;
         
-        // ===== شروع =====
+        // ===== START =====
         document.body.style.overflow = 'hidden';
         setTimeout(startLoading, 300);
     </script>

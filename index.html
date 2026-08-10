@@ -15,23 +15,43 @@
     <meta name="theme-color" content="#2563eb">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./image/favicon.ico">
 
-    <!-- CSS -->
+    <!-- ===== فونت بهینه ===== -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+
+    <!-- ===== Font Awesome بهینه ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </noscript>
+
+    <!-- ===== CSS اصلی ===== -->
     <link rel="stylesheet" href="Csses/style.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <!-- ===== CSS حیاتی (Critical CSS) ===== -->
+    <style>
+        /* فقط استایل‌های حیاتی برای نمایش سریع صفحه */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #ffffff; }
+        #splashScreen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #0f172a, #1e1b4b); display: flex; align-items: center; justify-content: center; z-index: 9999; }
+        .splash-content { text-align: center; color: white; }
+    </style>
 </head>
 
 <body>
+    <div class="scroll-progress">
+    <div class="scroll-progress-bar"></div>
+</div>
 
     <!-- ===== SPLASH SCREEN ===== -->
     <div id="splashScreen">
         <div class="splash-content">
             <div class="splash-logo">
-                <img src="image/zenverix-logo-transparent.png" alt="Zenverix">
+                <img src="./image/zenverix-logo-transparent.png.webp" alt="Zenverix">
             </div>
             <div class="splash-loader">
                 <div class="splash-bar"></div>
@@ -43,43 +63,40 @@
     <!-- ===== HEADER ===== -->
     <header>
         <div class="logo">
-            <img src="image/zenverix-logo-transparent.png" alt="Zenverix Logo" class="logo-img">
+            <img src="./image/zenverix-logo-transparent.png.webp" alt="Zenverix Logo" class="logo-img">
             <span class="logo-name">Zenverix</span>
         </div>
 
+        <!-- انتخاب تم -->
+        <select id="themeSelect" class="theme-select">
+            <option value="default">🌓 Default</option>
+            <option value="dark">🌙 Dark</option>
+            <option value="cyberpunk">💜 Cyberpunk</option>
+            <option value="space">🌌 Space</option>
+            <option value="minimal">⬜ Minimal</option>
+            <option value="luxury">✨ Luxury</option>
+        </select>
 
-            <!-- انتخاب تم -->
-            <select id="themeSelect" class="theme-select">
-                <option value="default">🌓 Default</option>
-                <option value="dark">🌙 Dark</option>
-                <option value="cyberpunk">💜 Cyberpunk</option>
-                <option value="space">🌌 Space</option>
-                <option value="minimal">⬜ Minimal</option>
-                <option value="luxury">✨ Luxury</option>
-            </select>
+        <nav>
+            <a href="#home" data-key="nav-home">Home</a>
+            <a href="about/about.html" data-key="nav-about">About</a>
+            <a href="./code-bark.html" data-key="nav-editor">Code-Bark</a>
+            <a href="#services" data-key="nav-services">Services</a>
+            <a href="#projects" data-key="nav-projects">Projects</a>
+            <a href="#space" data-key="nav-space">Space</a>
+            <a href="./ai-chat.html" data-key="nav-ai" style="color: #111; font-weight: 900;">AI</a>
+        </nav>
 
-
-
-            <nav>
-                <a href="#home" data-key="nav-home">Home</a>
-                <a href="about/about.html" data-key="nav-about">About</a>
-                <a href="./code-park.html" data-key="nav-editor">Code-Park</a>
-                <a href="#services" data-key="nav-services">Services</a>
-                <a href="#projects" data-key="nav-projects">Projects</a>
-                <a href="#space" data-key="nav-space">Space</a>
-                <a href="#contact" data-key="nav-contact">Contact</a>
-            </nav>
-
-            <div class="header-controls">
-                <button id="langToggle" class="lang-toggle" aria-label="Toggle Language">
-                    <i class="fas fa-globe"></i>
-                    <span id="langLabel">EN</span>
-                </button>
-                <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">🌙</button>
-                <div class="hamburger" id="hamburger">
-                    <i class="fas fa-bars"></i>
-                </div>
+        <div class="header-controls">
+            <button id="langToggle" class="lang-toggle" aria-label="Toggle Language">
+                <i class="fas fa-globe"></i>
+                <span id="langLabel">EN</span>
+            </button>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">🌙</button>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
             </div>
+        </div>
     </header>
 
     <!-- ===== HERO ===== -->
@@ -99,7 +116,7 @@
             </div>
             <div class="hero-image">
                 <div class="image-frame">
-                    <img src="./image/zenverix-logo-transparent.png" alt="Taha - Developer">
+                    <img src="./image/zenverix-logo-transparent.png.webp" alt="Taha - Developer">
                 </div>
                 <div class="floating-badge">
                     <i class="fas fa-code"></i>
@@ -304,7 +321,7 @@
         <div class="projects-container">
             <div class="project-card" data-rating="4.5">
                 <div class="project-image">
-                    <img src="./image/zenverix-logo-transparent.png" alt="Portfolio Website">
+                    <img src="./image/zenverix-logo-transparent.png.webp" alt="Portfolio Website">
                     <div class="project-overlay">
                         <span class="project-tech">HTML · CSS · JS</span>
                     </div>
@@ -335,7 +352,7 @@
             </div>
             <div class="project-card" data-rating="5">
                 <div class="project-image">
-                    <img src="./image/zenverix-logo-transparent.png" alt="Zenverix Website">
+                    <img src="./image/zenverix-logo-transparent.png.webp" alt="Zenverix Website">
                     <div class="project-overlay">
                         <span class="project-tech">React · CSS · API</span>
                     </div>
@@ -365,7 +382,7 @@
             </div>
             <div class="project-card" data-rating="4">
                 <div class="project-image">
-                    <img src="./image/zenverix-logo-transparent.png" alt="JavaScript Apps">
+                    <img src="./image/zenverix-logo-transparent.png.webp" alt="JavaScript Apps">
                     <div class="project-overlay">
                         <span class="project-tech">JS · DOM · API</span>
                     </div>
@@ -547,40 +564,37 @@
     </section>
 
     <!-- ===== INTERACTIVE SPACE ===== -->
-<section class="interactive-space" id="space">
-    <h2 class="section-title" data-key="space-title">🌌 Interactive Space</h2>
-    <p class="section-subtitle" data-key="space-subtitle">Explore the cosmos with realistic 3D planets</p>
-    
-    <div class="space-container" id="spaceContainer">
-        <canvas id="spaceCanvas"></canvas>
-        
-        <!-- Control Panel -->
-        <div class="space-controls">
-            <button class="space-btn active" id="toggleRotation" title="Toggle Rotation">
-                <i class="fas fa-sync-alt"></i>
-            </button>
-            <button class="space-btn active" id="toggleStars" title="Toggle Stars">
-                <i class="fas fa-star"></i>
-            </button>
-            <button class="space-btn" id="resetView" title="Reset View">
-                <i class="fas fa-home"></i>
-            </button>
-            <div class="space-info">
-                <span id="planetCount">8</span> Planets
+    <section class="interactive-space" id="space">
+        <h2 class="section-title" data-key="space-title">🌌 Interactive Space</h2>
+        <p class="section-subtitle" data-key="space-subtitle">Explore the cosmos with realistic 3D planets</p>
+
+        <div class="space-container" id="spaceContainer">
+            <canvas id="spaceCanvas"></canvas>
+
+            <!-- Control Panel -->
+            <div class="space-controls">
+                <button class="space-btn active" id="toggleRotation" title="Toggle Rotation">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+                <button class="space-btn active" id="toggleStars" title="Toggle Stars">
+                    <i class="fas fa-star"></i>
+                </button>
+                <button class="space-btn" id="resetView" title="Reset View">
+                    <i class="fas fa-home"></i>
+                </button>
+                <div class="space-info">
+                    <span id="planetCount">8</span> Planets
+                </div>
+            </div>
+
+            <!-- Planet Tooltip -->
+            <div class="planet-tooltip" id="planetTooltip">
+                <div class="planet-tooltip-name" id="tooltipName">Earth</div>
+                <div class="planet-tooltip-desc" id="tooltipDesc">Our home planet</div>
+                <div class="planet-tooltip-detail" id="tooltipDetail">🌍 Diameter: 12,742 km</div>
             </div>
         </div>
-        
-        <!-- Planet Tooltip -->
-        <div class="planet-tooltip" id="planetTooltip">
-            <div class="planet-tooltip-name" id="tooltipName">Earth</div>
-            <div class="planet-tooltip-desc" id="tooltipDesc">Our home planet</div>
-            <div class="planet-tooltip-detail" id="tooltipDetail">🌍 Diameter: 12,742 km</div>
-        </div>
-    </div>
-    <div class="space-info">
-    <span id="planetCount">8</span> Planets
-</div>
-</section>
+    </section>
 
     <!-- ===== COMMENTS ===== -->
     <section class="comments-section" id="comments">
@@ -598,7 +612,6 @@
             <div class="comments-list" id="commentsList"></div>
         </div>
     </section>
-
 
     <!-- ===== CONTACT ===== -->
     <section class="contact" id="contact">
@@ -619,13 +632,17 @@
                     <span>@Zenverix</span>
                 </div>
                 <div class="social-links">
-                    <a href="https://github.com/tahapayandeh1369-arch" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://linkdin.com/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://twitter".com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/?hl=en" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://desktop.telegram.org/" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="https://github.com/tahapayandeh1369-arch" target="_blank" aria-label="GitHub"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://linkdin.com/" target="_blank" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/?hl=en" target="_blank" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://desktop.telegram.org/" target="_blank" aria-label="Telegram"><i
+                            class="fab fa-telegram"></i></a>
                 </div>
-                
             </div>
             <form class="contact-form" id="contactForm">
                 <input type="text" placeholder="Your Name" data-key="contact-name" required>
@@ -638,12 +655,12 @@
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
+
     <footer>
         <div class="footer-container">
             <div class="footer-brand">
                 <div class="footer-logo">
-                    <img src="./image/zenverix-logo-transparent.png" alt="Zenverix" class="footer-logo-img">
+                    <img src="./image/zenverix-logo-transparent.png.webp" alt="Zenverix" class="footer-logo-img">
                     <span class="footer-logo-name">Zenverix</span>
                 </div>
                 <p class="footer-tagline" style="font-weight: bolder;" data-key="footer-tagline">Build Beyond Limits</p>
@@ -700,84 +717,9 @@
                     <span>Font Awesome</span>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p class="footer-copyright">
-                    &copy; <span id="currentYear"></span> Zenverix. <span data-key="footer-copyright">All rights
-                        reserved.</span>
-                </p>
-                <div class="footer-marquee">
-                    <p data-key="footer-marquee">🚀 Always learning • 💻 Building cool stuff • 🤖 Exploring AI • 🌟
-                        Passionate about code</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    
 
-    <!-- ===== MUSIC PLAYER ===== -->
-    <div class="music-player" id="musicPlayer">
-        <div class="music-player-container">
-            <div class="music-info">
-                <span id="currentSongName" class="music-song-name">🎵 Loading...</span>
-            </div>
-            <div class="music-progress-container">
-                <span class="music-time current-time" id="currentTime">00:00</span>
-                <div class="music-progress-bar" id="progressBar">
-                    <div class="music-progress-fill" id="progressFill" style="width: 0%;"></div>
-                </div>
-                <span class="music-time total-time" id="totalTime">00:00</span>
-            </div>
-            <div class="music-controls">
-                <button id="prevTrack" class="music-btn-control" aria-label="Previous" title="Previous">
-                    <i class="fas fa-step-backward"></i>
-                </button>
-                <button id="musicToggle" class="music-btn" aria-label="Toggle Music" title="Play/Pause">
-                    <i class="fas fa-play"></i>
-                </button>
-                <button id="nextTrack" class="music-btn-control" aria-label="Next" title="Next">
-                    <i class="fas fa-step-forward"></i>
-                </button>
-            </div>
-            <div class="music-counter">
-                <span id="currentTrackNum">1</span> / <span id="totalTracks">6</span>
-            </div>
-        </div>
-        <audio id="bgMusic">
-            <source src="https://dl.musicdownload.ir/Music/Reza%20Pishro/Reza%20Pishro%20-%20Ghabrestoon%20(320).mp3" type="audio/mpeg">
-        </audio>
-    </div>
-
-    <!-- ===== AI CHATBOT ===== -->
-    <div class="ai-chatbot" id="aiChatbot">
-        <div class="ai-chatbot-header" onclick="toggleChat()">
-            <div class="ai-avatar"><i class="fas fa-robot"></i></div>
-            <div class="ai-info">
-                <span class="ai-name">🤖 Zenverix AI</span>
-                <span class="ai-status">● Online</span>
-            </div>
-            <button class="ai-close" onclick="event.stopPropagation(); toggleChat()">
-                <i class="fas fa-chevron-down"></i>
-            </button>
-        </div>
-        <div class="ai-chatbot-body" id="chatBody">
-            <div class="ai-messages" id="aiMessages">
-                <div class="ai-message bot">
-                    <div class="ai-msg-icon"><i class="fas fa-robot"></i></div>
-                    <div class="ai-msg-content">
-                        <p>👋 Hi! I'm Zenverix AI. Ask me anything about Taha, projects, or skills!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="ai-input-area">
-                <input type="text" id="aiInput" placeholder="Ask me anything..."
-                    onkeypress="if(event.key==='Enter') sendAIMessage()">
-                <button onclick="sendAIMessage()"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
-        <button class="ai-toggle-btn" onclick="toggleChat()" id="aiToggleBtn">
-            <i class="fas fa-robot"></i>
-        </button>
-    </div>
-
+  
     <!-- ===== WHATSAPP FLOAT ===== -->
     <a href="https://wa.me/98352854355" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
@@ -794,8 +736,9 @@
     </button>
 
     <!-- ===== SCRIPTS ===== -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
+<script src="./js/script.js" defer></script>
+
 </body>
 
 </html>

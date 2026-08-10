@@ -10,6 +10,7 @@ const translations = {
         'nav-projects': 'Projects',
         'nav-contact': 'Contact',
         'nav-space': 'Space',
+        'nav-editor': 'Code Editor',
         'hero-title': "Hi, I'm Taha",
         'hero-subtitle': 'Developer & Creative Thinker',
         'hero-description': 'I build modern websites and explore AI technology.',
@@ -130,6 +131,7 @@ const translations = {
         'nav-projects': 'پروژه‌ها',
         'nav-contact': 'تماس',
         'nav-space': 'فضا',
+        'nav-editor': 'ویرایشگر کد',
         'hero-title': 'سلام، من طاها هستم',
         'hero-subtitle': 'توسعه‌دهنده و متفکر خلاق',
         'hero-description': 'من وب‌سایت‌های مدرن می‌سازم و فناوری هوش مصنوعی را explore می‌کنم.',
@@ -247,16 +249,19 @@ const translations = {
 
 let currentLanguage = localStorage.getItem('language') || 'en';
 
+/* ============================================================
+   🌐 APPLY LANGUAGE - (تعریف قبل از استفاده)
+============================================================ */
 function applyLanguage(lang) {
     currentLanguage = lang;
     localStorage.setItem('language', lang);
-    
+
     const langLabel = document.getElementById('langLabel');
     if (langLabel) {
         langLabel.textContent = lang === 'en' ? 'EN' : 'FA';
     }
-    
-    document.querySelectorAll('[data-key]').forEach(function(element) {
+
+    document.querySelectorAll('[data-key]').forEach(function (element) {
         const key = element.getAttribute('data-key');
         const translation = translations[lang]?.[key];
         if (translation !== undefined) {
@@ -269,7 +274,7 @@ function applyLanguage(lang) {
             }
         }
     });
-    
+
     if (window.typedInstance) {
         const heroSubtitle = document.querySelector('.typed-text');
         if (heroSubtitle) {
@@ -278,7 +283,7 @@ function applyLanguage(lang) {
             window.typedInstance.reset();
         }
     }
-    
+
     if (lang === 'fa') {
         document.documentElement.setAttribute('dir', 'rtl');
         document.documentElement.lang = 'fa';
@@ -389,258 +394,14 @@ const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        const msg = currentLanguage === 'en' 
-            ? 'Thank you for your message! I\'ll get back to you soon.' 
+        const msg = currentLanguage === 'en'
+            ? 'Thank you for your message! I\'ll get back to you soon.'
             : 'از پیام شما متشکرم! به زودی با شما تماس می‌گیرم.';
         alert(msg);
         this.reset();
     });
 }
 
-/* ============================================================
-   🎵 MUSIC PLAYER - با لینک‌های تست شده
-============================================================ */
-const musicToggle = document.getElementById('musicToggle');
-const bgMusic = document.getElementById('bgMusic');
-const prevTrackBtn = document.getElementById('prevTrack');
-const nextTrackBtn = document.getElementById('nextTrack');
-const currentSongName = document.getElementById('currentSongName');
-const currentTrackNum = document.getElementById('currentTrackNum');
-const totalTracks = document.getElementById('totalTracks');
-const progressBar = document.getElementById('progressBar');
-const progressFill = document.getElementById('progressFill');
-const currentTimeDisplay = document.getElementById('currentTime');
-const totalTimeDisplay = document.getElementById('totalTime');
-
-let isMusicPlaying = false;
-let currentTrackIndex = 0;
-let progressInterval = null;
-
-// ✅ لیست آهنگ‌ها - با لینک‌های تست شده و فعال
-const musicPlaylist = [
-    {
-        name: '🎵 آهنگ آرامش‌بخش ۱',
-        url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'
-    },
-    {
-        name: '🎵 آهنگ آرامش‌بخش ۲',
-        url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3'
-    },
-    {
-        name: '🎵 آهنگ آرامش‌بخش ۳',
-        url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3'
-    },
-    {
-        name: '🎵 آهنگ آرامش‌بخش ۴',
-        url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3'
-    },
-    {
-        name: '🎵 آهنگ آرامش‌بخش ۵',
-        url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3'
-    },
-    {
-        name: '🎵 آهنگ آرامش‌بخش ۶',
-        url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3'
-    }
-];
-
-// تنظیم تعداد کل آهنگ‌ها
-if (totalTracks) {
-    totalTracks.textContent = musicPlaylist.length;
-}
-
-// ===== توابع کمکی =====
-function formatTime(seconds) {
-    if (isNaN(seconds) || !isFinite(seconds)) return '00:00';
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
-}
-
-function updateProgress() {
-    if (bgMusic.duration && bgMusic.duration > 0) {
-        const progress = (bgMusic.currentTime / bgMusic.duration) * 100;
-        progressFill.style.width = progress + '%';
-        currentTimeDisplay.textContent = formatTime(bgMusic.currentTime);
-        totalTimeDisplay.textContent = formatTime(bgMusic.duration);
-    }
-}
-
-// ===== تابع بارگذاری آهنگ =====
-function loadTrack(index) {
-    const track = musicPlaylist[index];
-    if (!track) return;
-    
-    bgMusic.src = track.url;
-    if (currentSongName) {
-        currentSongName.textContent = track.name;
-    }
-    if (currentTrackNum) {
-        currentTrackNum.textContent = index + 1;
-    }
-    
-    clearInterval(progressInterval);
-    progressFill.style.width = '0%';
-    currentTimeDisplay.textContent = '00:00';
-    totalTimeDisplay.textContent = '00:00';
-    
-    if (isMusicPlaying) {
-        bgMusic.play().catch(function(err) {
-            console.log('Play failed, trying next track...');
-            playNextTrack();
-        });
-    }
-}
-
-// ===== تابع پخش آهنگ بعدی =====
-function playNextTrack() {
-    currentTrackIndex = (currentTrackIndex + 1) % musicPlaylist.length;
-    loadTrack(currentTrackIndex);
-}
-
-// ===== تابع پخش آهنگ قبلی =====
-function playPrevTrack() {
-    currentTrackIndex = (currentTrackIndex - 1 + musicPlaylist.length) % musicPlaylist.length;
-    loadTrack(currentTrackIndex);
-}
-
-// ===== بارگذاری آهنگ اولیه =====
-loadTrack(0);
-
-// ===== رویدادهای audio =====
-bgMusic.addEventListener('loadedmetadata', function() {
-    totalTimeDisplay.textContent = formatTime(bgMusic.duration);
-});
-
-bgMusic.addEventListener('timeupdate', function() {
-    updateProgress();
-});
-
-bgMusic.addEventListener('play', function() {
-    clearInterval(progressInterval);
-    progressInterval = setInterval(updateProgress, 500);
-});
-
-bgMusic.addEventListener('pause', function() {
-    clearInterval(progressInterval);
-});
-
-bgMusic.addEventListener('ended', function() {
-    playNextTrack();
-});
-
-// ✅ رویداد خطا - بی‌صدا و پخش آهنگ بعدی
-bgMusic.addEventListener('error', function() {
-    console.log('⚠️ Skipping to next track...');
-    playNextTrack();
-});
-
-// ===== کلیک روی نوار پیشرفت =====
-if (progressBar) {
-    progressBar.addEventListener('click', function(e) {
-        const rect = this.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const width = rect.width;
-        const percent = x / width;
-        if (bgMusic.duration) {
-            bgMusic.currentTime = percent * bgMusic.duration;
-        }
-    });
-}
-
-// ===== بازیابی وضعیت پخش =====
-const musicState = localStorage.getItem('musicState');
-if (musicState === 'playing') {
-    isMusicPlaying = true;
-    bgMusic.play().catch(function(err) {
-        console.log('Play failed:', err);
-    });
-    if (musicToggle) {
-        musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
-        musicToggle.classList.add('playing');
-    }
-}
-
-// ===== دکمه پخش/توقف =====
-if (musicToggle) {
-    musicToggle.addEventListener('click', function () {
-        if (isMusicPlaying) {
-            bgMusic.pause();
-            this.innerHTML = '<i class="fas fa-play"></i>';
-            this.classList.remove('playing');
-            isMusicPlaying = false;
-            localStorage.setItem('musicState', 'paused');
-            clearInterval(progressInterval);
-        } else {
-            bgMusic.play().catch(function(err) {
-                console.log('Play failed:', err);
-                playNextTrack();
-            });
-            this.innerHTML = '<i class="fas fa-pause"></i>';
-            this.classList.add('playing');
-            isMusicPlaying = true;
-            localStorage.setItem('musicState', 'playing');
-            progressInterval = setInterval(updateProgress, 500);
-        }
-    });
-}
-
-// ===== دکمه آهنگ بعدی =====
-if (nextTrackBtn) {
-    nextTrackBtn.addEventListener('click', function () {
-        playNextTrack();
-        if (!isMusicPlaying) {
-            bgMusic.play().catch(function(err) {
-                console.log('Play failed:', err);
-            });
-            if (musicToggle) {
-                musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
-                musicToggle.classList.add('playing');
-            }
-            isMusicPlaying = true;
-            localStorage.setItem('musicState', 'playing');
-            progressInterval = setInterval(updateProgress, 500);
-        }
-    });
-}
-
-// ===== دکمه آهنگ قبلی =====
-if (prevTrackBtn) {
-    prevTrackBtn.addEventListener('click', function () {
-        playPrevTrack();
-        if (!isMusicPlaying) {
-            bgMusic.play().catch(function(err) {
-                console.log('Play failed:', err);
-            });
-            if (musicToggle) {
-                musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
-                musicToggle.classList.add('playing');
-            }
-            isMusicPlaying = true;
-            localStorage.setItem('musicState', 'playing');
-            progressInterval = setInterval(updateProgress, 500);
-        }
-    });
-}
-
-// ===== کیبورد شورت‌کات =====
-document.addEventListener('keydown', function(e) {
-    if (e.key === ' ' || e.key === 'Space') {
-        e.preventDefault();
-        if (musicToggle) {
-            musicToggle.click();
-        }
-    }
-    if (e.key === 'ArrowRight' && nextTrackBtn) {
-        nextTrackBtn.click();
-    }
-    if (e.key === 'ArrowLeft' && prevTrackBtn) {
-        prevTrackBtn.click();
-    }
-});
-
-console.log('🎵 Music Player loaded with ' + musicPlaylist.length + ' tracks');
-console.log('⌨️ Space: Play/Pause | ➡️ Next | ⬅️ Previous');
 /* ============================================================
    📊 STATS COUNTER
 ============================================================ */
@@ -676,7 +437,7 @@ localStorage.setItem('visitCount', visitCount);
 
 if (visitCountEl) {
     visitCountEl.textContent = '0';
-    setTimeout(function() {
+    setTimeout(function () {
         animateCounter(visitCountEl, visitCount, 2000);
     }, 300);
 }
@@ -684,7 +445,7 @@ if (visitCountEl) {
 if (onlineCountEl) {
     const onlineTarget = Math.floor(Math.random() * 50) + 10;
     onlineCountEl.textContent = '0';
-    setTimeout(function() {
+    setTimeout(function () {
         animateCounter(onlineCountEl, onlineTarget, 1800);
     }, 600);
 }
@@ -709,8 +470,8 @@ function renderComments() {
     if (!commentsList) return;
 
     if (comments.length === 0) {
-        const emptyText = currentLanguage === 'en' 
-            ? 'No comments yet. Be the first to comment!' 
+        const emptyText = currentLanguage === 'en'
+            ? 'No comments yet. Be the first to comment!'
             : 'هنوز نظری ثبت نشده است. اولین نفر باشید!';
         commentsList.innerHTML = `
             <div class="comment-empty">
@@ -782,8 +543,8 @@ window.likeComment = function (index) {
 };
 
 window.deleteComment = function (index) {
-    const confirmText = currentLanguage === 'en' 
-        ? 'Are you sure you want to delete this comment?' 
+    const confirmText = currentLanguage === 'en'
+        ? 'Are you sure you want to delete this comment?'
         : 'آیا مطمئن هستید که می‌خواهید این نظر را حذف کنید؟';
     if (confirm(confirmText)) {
         comments.splice(index, 1);
@@ -814,13 +575,13 @@ if (searchBtn && searchInput) {
 
 function performSearch() {
     const query = searchInput.value.toLowerCase().trim();
-    const alertText = currentLanguage === 'en' 
-        ? 'Please enter a search term!' 
+    const alertText = currentLanguage === 'en'
+        ? 'Please enter a search term!'
         : 'لطفاً عبارت جستجو را وارد کنید!';
-    const notFoundText = currentLanguage === 'en' 
-        ? 'No results found for:' 
+    const notFoundText = currentLanguage === 'en'
+        ? 'No results found for:'
         : 'نتیجه‌ای برای عبارت یافت نشد:';
-    
+
     if (!query) {
         alert(alertText);
         return;
@@ -929,151 +690,57 @@ document.addEventListener('DOMContentLoaded', function () {
    🎯 TYPING EFFECT
 ============================================================ */
 document.addEventListener('DOMContentLoaded', function () {
-    if (typeof Typed !== 'undefined') {
-        const heroSubtitle = document.querySelector('.typed-text');
-        if (heroSubtitle) {
-            const texts = currentLanguage === 'en' 
-                ? ['Developer & Creative Thinker', 'Web Developer', 'AI Enthusiast', 'Problem Solver']
-                : ['توسعه‌دهنده و متفکر خلاق', 'توسعه‌دهنده وب', 'علاقه‌مند به هوش مصنوعی', 'حل‌کننده مسئله'];
-            
-            window.typedInstance = new Typed('.typed-text', {
-                strings: texts,
-                typeSpeed: 60,
-                backSpeed: 40,
-                backDelay: 1500,
-                loop: true,
-                cursorChar: '|'
-            });
+
+    // صبر کن تا Typed.js لود بشه
+    function startTyping() {
+        if (typeof Typed === 'undefined') {
+            setTimeout(startTyping, 200);
+            return;
         }
-    }
-});
 
-/* ============================================================
-   🎯 CARDS ANIMATION
-============================================================ */
-document.addEventListener('DOMContentLoaded', function () {
-    const cards = document.querySelectorAll('.service-card, .achievement-card, .inprogress-card');
+        const element = document.querySelector('.typed-text');
+        if (!element) return;
 
-    if (cards.length && 'IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry, index) {
-                if (entry.isIntersecting) {
-                    setTimeout(function () {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 150);
-                }
-            });
-        }, { threshold: 0.2 });
+        // متن‌ها برای تایپ
+        const texts = currentLanguage === 'en'
+            ? ['Developer & Creative Thinker', 'Web Developer', 'AI Enthusiast', 'Problem Solver']
+            : ['توسعه‌دهنده و متفکر خلاق', 'توسعه‌دهنده وب', 'علاقه‌مند به هوش مصنوعی', 'حل‌کننده مسئله'];
 
-        cards.forEach(function (card) {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
+        // اگر نمونه قبلی هست، حذفش کن
+        if (window.typedInstance) {
+            window.typedInstance.destroy();
+        }
+
+        // پاک کردن متن قبلی
+        element.textContent = '';
+
+        // اجرای تایپینگ
+        window.typedInstance = new Typed('.typed-text', {
+            strings: texts,
+            typeSpeed: 100,
+            backSpeed: 20,
+            backDelay: 3000,
+            startDelay: 500,
+            loop: true,
+            cursorChar: '|',
+            smartBackspace: true,
+            showCursor: true
         });
     }
+
+    startTyping();
 });
 
-/* ============================================================
-   LANGUAGE TOGGLE - INIT
-============================================================ */
-document.addEventListener('DOMContentLoaded', function() {
-    const langToggle = document.getElementById('langToggle');
-    if (langToggle) {
-        applyLanguage(currentLanguage);
-        
-        langToggle.addEventListener('click', function() {
-            const newLang = currentLanguage === 'en' ? 'fa' : 'en';
-            applyLanguage(newLang);
-        });
-    }
-});
-
-/* ============================================================
-   🤖 ZENVERIX AI CHATBOT
-============================================================ */
-let isChatOpen = false;
-
-function toggleChat() {
-    const chatbot = document.getElementById('aiChatbot');
-    isChatOpen = !isChatOpen;
-    if (isChatOpen) {
-        chatbot.classList.remove('collapsed');
-        chatbot.classList.add('active');
-        document.getElementById('aiToggleBtn').style.display = 'none';
-    } else {
-        chatbot.classList.add('collapsed');
-        chatbot.classList.remove('active');
-        document.getElementById('aiToggleBtn').style.display = 'flex';
-    }
-}
-
-const aiKnowledge = {
-    'who': "I'm Taha, a young developer and creative thinker passionate about technology and programming.",
-    'skills': 'My skills include HTML, CSS, JavaScript, Python, and I\'m currently learning AI and machine learning.',
-    'projects': 'My projects include a personal portfolio website, Zenverix corporate site, and several JavaScript apps.',
-    'experience': 'I started programming in 2025 and have built several real-world projects since then.',
-    'services': 'My services include web development, UI/UX design, AI integration, and responsive design.',
-    'contact': 'You can reach me at taha@example.com or through social media links in the contact section.',
-};
-
-function sendAIMessage() {
-    const input = document.getElementById('aiInput');
-    const msg = input.value.trim();
-    if (!msg) return;
-    
-    const messages = document.getElementById('aiMessages');
-    const userMsg = document.createElement('div');
-    userMsg.className = 'ai-message user';
-    userMsg.innerHTML = `<div class="ai-msg-content"><p>${msg}</p></div>`;
-    messages.appendChild(userMsg);
-    input.value = '';
-    messages.scrollTop = messages.scrollHeight;
-    
-    setTimeout(() => {
-        let response = "Sorry, I don't have an answer for that. Ask me something else!";
-        const lowerMsg = msg.toLowerCase();
-        
-        for (const [key, value] of Object.entries(aiKnowledge)) {
-            if (lowerMsg.includes(key)) {
-                response = value;
-                break;
-            }
-        }
-        
-        if (lowerMsg.includes('hello') || lowerMsg.includes('hi')) response = '👋 Hello! How can I help you?';
-        if (lowerMsg.includes('how are you')) response = 'I\'m doing great! How about you? 😊';
-        if (lowerMsg.includes('thanks') || lowerMsg.includes('thank you')) response = 'You\'re welcome! I\'m always here to help. 🤖';
-        if (lowerMsg.includes('bye') || lowerMsg.includes('goodbye')) response = 'Goodbye! Come back anytime! 👋';
-        
-        const botMsg = document.createElement('div');
-        botMsg.className = 'ai-message bot';
-        botMsg.innerHTML = `
-            <div class="ai-msg-icon"><i class="fas fa-robot"></i></div>
-            <div class="ai-msg-content"><p>${response}</p></div>
-        `;
-        messages.appendChild(botMsg);
-        messages.scrollTop = messages.scrollHeight;
-    }, 500);
-}
-
-setTimeout(() => {
-    if (!localStorage.getItem('aiSeen')) {
-        toggleChat();
-        localStorage.setItem('aiSeen', 'true');
-    }
-}, 3000);
 
 /* ============================================================
    📨 PROJECT REQUEST FORM
 ============================================================ */
 const requestForm = document.getElementById('requestForm');
 if (requestForm) {
-    requestForm.addEventListener('submit', function(e) {
+    requestForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        const msg = currentLanguage === 'en' 
-            ? '✅ Your project request has been sent! I\'ll get back to you within 24 hours.' 
+        const msg = currentLanguage === 'en'
+            ? '✅ Your project request has been sent! I\'ll get back to you within 24 hours.'
             : '✅ درخواست پروژه شما ارسال شد! ظرف ۲۴ ساعت با شما تماس می‌گیرم.';
         alert(msg);
         this.reset();
@@ -1081,12 +748,12 @@ if (requestForm) {
 }
 
 /* ============================================================
-   🌌 INTERACTIVE SPACE - با بررسی وجود عناصر
+   🌌 INTERACTIVE SPACE - REALISTIC 3D PLANETS
 ============================================================ */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const canvas = document.getElementById('spaceCanvas');
     if (!canvas) return;
-    
+
     const ctx = canvas.getContext('2d');
     let stars = [];
     let planets = [];
@@ -1101,7 +768,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let tooltipDetail = document.getElementById('tooltipDetail');
     let planetData = [];
     let rotationAngle = 0;
-    
+
     function resizeCanvas() {
         if (!container) return;
         const rect = container.getBoundingClientRect();
@@ -1110,7 +777,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initPlanets();
         initStars();
     }
-    
+
     function initStars() {
         stars = [];
         for (let i = 0; i < 250; i++) {
@@ -1124,74 +791,33 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-    
+
     function initPlanets() {
         const planetDataReal = [
-            { 
-                name: '☿ عطارد', 
-                desc: 'نزدیک‌ترین سیاره به خورشید',
-                detail: '📏 قطر: ۴٬۸۷۹ کیلومتر • 🌡️ دما: ۴۲۷°C تا -۱۷۳°C'
-            },
-            { 
-                name: '♀ زهره', 
-                desc: 'داغ‌ترین سیاره، دوقلوی زمین',
-                detail: '📏 قطر: ۱۲٬۱۰۴ کیلومتر • 🌡️ دما: ۴۶۲°C'
-            },
-            { 
-                name: '🌍 زمین', 
-                desc: 'سیاره خانه ما',
-                detail: '📏 قطر: ۱۲٬۷۴۲ کیلومتر • 🌊 آب: ۷۱٪ سطح'
-            },
-            { 
-                name: '♂ مریخ', 
-                desc: 'سیاره سرخ',
-                detail: '📏 قطر: ۶٬۷۷۹ کیلومتر • 🏔️ بلندترین کوه: ۲۱٫۹ کیلومتر'
-            },
-            { 
-                name: '♃ مشتری', 
-                desc: 'بزرگ‌ترین سیاره منظومه',
-                detail: '📏 قطر: ۱۳۹٬۸۲۰ کیلومتر • 🌪️ طوفان: نقطه قرمز'
-            },
-            { 
-                name: '♄ زحل', 
-                desc: 'معروف به حلقه‌های زیبا',
-                detail: '📏 قطر: ۱۱۶٬۴۶۰ کیلومتر • 💍 حلقه‌های یخی'
-            },
-            { 
-                name: '♅ اورانوس', 
-                desc: 'غول یخی با محور کج',
-                detail: '📏 قطر: ۵۰٬۷۲۴ کیلومتر • ❄️ دما: -۲۲۴°C'
-            },
-            { 
-                name: '♆ نپتون', 
-                desc: 'دورترین سیاره از خورشید',
-                detail: '📏 قطر: ۴۹٬۲۴۴ کیلومتر • 🌪️ بادهای ۲۱۰۰ کیلومتر/ساعت'
-            }
+            { name: '☿ عطارد', desc: 'نزدیک‌ترین سیاره به خورشید', detail: '📏 قطر: ۴٬۸۷۹ کیلومتر • 🌡️ دما: ۴۲۷°C تا -۱۷۳°C' },
+            { name: '♀ زهره', desc: 'داغ‌ترین سیاره، دوقلوی زمین', detail: '📏 قطر: ۱۲٬۱۰۴ کیلومتر • 🌡️ دما: ۴۶۲°C' },
+            { name: '🌍 زمین', desc: 'سیاره خانه ما', detail: '📏 قطر: ۱۲٬۷۴۲ کیلومتر • 🌊 آب: ۷۱٪ سطح' },
+            { name: '♂ مریخ', desc: 'سیاره سرخ', detail: '📏 قطر: ۶٬۷۷۹ کیلومتر • 🏔️ بلندترین کوه: ۲۱٫۹ کیلومتر' },
+            { name: '♃ مشتری', desc: 'بزرگ‌ترین سیاره منظومه', detail: '📏 قطر: ۱۳۹٬۸۲۰ کیلومتر • 🌪️ طوفان: نقطه قرمز' },
+            { name: '♄ زحل', desc: 'معروف به حلقه‌های زیبا', detail: '📏 قطر: ۱۱۶٬۴۶۰ کیلومتر • 💍 حلقه‌های یخی' },
+            { name: '♅ اورانوس', desc: 'غول یخی با محور کج', detail: '📏 قطر: ۵۰٬۷۲۴ کیلومتر • ❄️ دما: -۲۲۴°C' },
+            { name: '♆ نپتون', desc: 'دورترین سیاره از خورشید', detail: '📏 قطر: ۴۹٬۲۴۴ کیلومتر • 🌪️ بادهای ۲۱۰۰ کیلومتر/ساعت' }
         ];
-        
-        const colors = [
-            '#b0b0b0', // عطارد
-            '#e8cda0', // زهره
-            '#4d8bc8', // زمین
-            '#c1440e', // مریخ
-            '#d4a06a', // مشتری
-            '#e0c080', // زحل
-            '#7ec8e3', // اورانوس
-            '#3b5ba5'  // نپتون
-        ];
-        
+
+        const colors = ['#b0b0b0', '#e8cda0', '#4d8bc8', '#c1440e', '#d4a06a', '#e0c080', '#7ec8e3', '#3b5ba5'];
+
         planets = [];
         planetData = [];
         const count = 8;
         const radius = Math.min(canvas.width, canvas.height) * 0.32;
         const cx = canvas.width / 2;
         const cy = canvas.height / 2;
-        
+
         for (let i = 0; i < count; i++) {
             const angle = (i / count) * Math.PI * 2;
             const dist = radius * (0.35 + (i / count) * 0.7);
             const size = 10 + (i / count) * 22;
-            
+
             planets.push({
                 x: cx + Math.cos(angle) * dist,
                 y: cy + Math.sin(angle) * dist,
@@ -1207,7 +833,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 desc: planetDataReal[i].desc,
                 detail: planetDataReal[i].detail
             });
-            
+
             planetData.push({
                 name: planetDataReal[i].name,
                 desc: planetDataReal[i].desc,
@@ -1215,35 +841,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 index: i
             });
         }
-        
-        // ✅ به‌روزرسانی تعداد سیارات (با بررسی وجود عنصر)
+
         const planetCountEl = document.getElementById('planetCount');
         if (planetCountEl) {
             planetCountEl.textContent = planets.length;
         }
     }
-    
-    // اجرای اولیه
+
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
-    
-    // Mouse tracking
+
     if (canvas) {
-        canvas.addEventListener('mousemove', function(e) {
+        canvas.addEventListener('mousemove', function (e) {
             const rect = canvas.getBoundingClientRect();
             mouseX = (e.clientX - rect.left) / rect.width;
             mouseY = (e.clientY - rect.top) / rect.height;
-            
+
             const px = e.clientX - rect.left;
             const py = e.clientY - rect.top;
             let found = false;
-            
+
             if (tooltip) {
                 planets.forEach((planet, index) => {
                     const dx = px - planet.x;
                     const dy = py - planet.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-                    
+
                     if (dist < planet.radius + 15) {
                         const rect2 = container ? container.getBoundingClientRect() : { width: 800, height: 400 };
                         tooltip.style.left = Math.min(px + 20, rect2.width - 220) + 'px';
@@ -1256,13 +879,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
             }
-            
+
             if (!found && tooltip) {
                 tooltip.classList.remove('show');
             }
         });
-        
-        canvas.addEventListener('mouseleave', function() {
+
+        canvas.addEventListener('mouseleave', function () {
             mouseX = 0.5;
             mouseY = 0.5;
             if (tooltip) {
@@ -1270,40 +893,37 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
-    // Control buttons - با بررسی وجود
+
     const toggleRotationBtn = document.getElementById('toggleRotation');
     if (toggleRotationBtn) {
-        toggleRotationBtn.addEventListener('click', function() {
+        toggleRotationBtn.addEventListener('click', function () {
             isRotating = !isRotating;
             this.classList.toggle('active');
         });
     }
-    
+
     const toggleStarsBtn = document.getElementById('toggleStars');
     if (toggleStarsBtn) {
-        toggleStarsBtn.addEventListener('click', function() {
+        toggleStarsBtn.addEventListener('click', function () {
             showStars = !showStars;
             this.classList.toggle('active');
         });
     }
-    
+
     const resetViewBtn = document.getElementById('resetView');
     if (resetViewBtn) {
-        resetViewBtn.addEventListener('click', function() {
+        resetViewBtn.addEventListener('click', function () {
             mouseX = 0.5;
             mouseY = 0.5;
             rotationAngle = 0;
             initPlanets();
         });
     }
-    
-    // Animation
+
     function animate() {
         if (!ctx || !canvas) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Background gradient
+
         const gradient = ctx.createRadialGradient(
             canvas.width * mouseX, canvas.height * mouseY, 50,
             canvas.width * 0.5, canvas.height * 0.5, canvas.width * 0.9
@@ -1314,8 +934,7 @@ document.addEventListener('DOMContentLoaded', function() {
         gradient.addColorStop(1, '#030310');
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        // Nebula effects
+
         const nebula1 = ctx.createRadialGradient(
             canvas.width * 0.2, canvas.height * 0.15, 0,
             canvas.width * 0.2, canvas.height * 0.15, canvas.width * 0.5
@@ -1324,7 +943,7 @@ document.addEventListener('DOMContentLoaded', function() {
         nebula1.addColorStop(1, 'transparent');
         ctx.fillStyle = nebula1;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
+
         const nebula2 = ctx.createRadialGradient(
             canvas.width * 0.8, canvas.height * 0.8, 0,
             canvas.width * 0.8, canvas.height * 0.8, canvas.width * 0.4
@@ -1333,18 +952,15 @@ document.addEventListener('DOMContentLoaded', function() {
         nebula2.addColorStop(1, 'transparent');
         ctx.fillStyle = nebula2;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        // Draw stars
+
         if (showStars) {
             stars.forEach(star => {
                 star.twinkle += 0.02;
                 const opacity = star.opacity * (0.6 + 0.4 * Math.sin(star.twinkle));
-                
                 ctx.beginPath();
                 ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
                 ctx.fill();
-                
                 if (star.size > 1.5) {
                     ctx.beginPath();
                     ctx.arc(star.x, star.y, star.size * 2.5, 0, Math.PI * 2);
@@ -1353,27 +969,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }
-        
-        // Update and draw planets
+
         if (isRotating) {
             rotationAngle += 0.003;
         }
-        
+
         const cx = canvas.width / 2 + (mouseX - 0.5) * 40;
         const cy = canvas.height / 2 + (mouseY - 0.5) * 40;
-        
+
         planets.forEach((planet, index) => {
             if (isRotating) {
                 planet.angle += planet.orbitSpeed;
             }
             planet.pulse += 0.03;
-            
+
             const px = cx + Math.cos(planet.angle + rotationAngle) * planet.dist;
             const py = cy + Math.sin(planet.angle + rotationAngle) * planet.dist;
             planet.x = px;
             planet.y = py;
-            
-            // Orbit trail
+
             ctx.beginPath();
             ctx.arc(cx, cy, planet.dist, 0, Math.PI * 2);
             ctx.strokeStyle = 'rgba(255,255,255,0.03)';
@@ -1381,13 +995,9 @@ document.addEventListener('DOMContentLoaded', function() {
             ctx.setLineDash([4, 8]);
             ctx.stroke();
             ctx.setLineDash([]);
-            
-            // Planet glow
+
             const glowSize = planet.radius * 2.5 + Math.sin(planet.pulse) * 4;
-            const glow = ctx.createRadialGradient(
-                px, py, 0,
-                px, py, glowSize
-            );
+            const glow = ctx.createRadialGradient(px, py, 0, px, py, glowSize);
             glow.addColorStop(0, planet.color + '80');
             glow.addColorStop(0.3, planet.color + '40');
             glow.addColorStop(1, 'transparent');
@@ -1395,66 +1005,56 @@ document.addEventListener('DOMContentLoaded', function() {
             ctx.beginPath();
             ctx.arc(px, py, glowSize, 0, Math.PI * 2);
             ctx.fill();
-            
-            // Planet body with 3D effect
-            const grad = ctx.createRadialGradient(
-                px - planet.radius * 0.3, py - planet.radius * 0.3, 0,
-                px, py, planet.radius
-            );
+
+            const grad = ctx.createRadialGradient(px - planet.radius * 0.3, py - planet.radius * 0.3, 0, px, py, planet.radius);
             grad.addColorStop(0, '#ffffff');
             grad.addColorStop(0.15, planet.color);
             grad.addColorStop(0.8, planet.color);
             grad.addColorStop(1, '#000000');
-            
             ctx.beginPath();
             ctx.arc(px, py, planet.radius, 0, Math.PI * 2);
             ctx.fillStyle = grad;
             ctx.fill();
-            
-            // Planet highlight
+
             ctx.beginPath();
             ctx.arc(px - planet.radius * 0.25, py - planet.radius * 0.25, planet.radius * 0.2, 0, Math.PI * 2);
             ctx.fillStyle = 'rgba(255,255,255,0.3)';
             ctx.fill();
-            
-            // Saturn ring
+
             if (planet.hasRing) {
                 ctx.beginPath();
                 ctx.ellipse(px, py, planet.radius * 1.8, planet.radius * 0.25, 0.4, 0, Math.PI * 2);
                 ctx.strokeStyle = 'rgba(200, 180, 150, 0.4)';
                 ctx.lineWidth = 4;
                 ctx.stroke();
-                
                 ctx.beginPath();
                 ctx.ellipse(px, py, planet.radius * 1.6, planet.radius * 0.2, 0.4, 0, Math.PI * 2);
                 ctx.strokeStyle = 'rgba(200, 180, 150, 0.25)';
                 ctx.lineWidth = 2;
                 ctx.stroke();
             }
-            
-            // Planet name
+
             ctx.fillStyle = 'rgba(255,255,255,0.5)';
             ctx.font = '10px sans-serif';
             ctx.textAlign = 'center';
             ctx.fillText(planetData[index]?.name || '', px, py + planet.radius + 18);
         });
-        
-        // Title on canvas
+
         ctx.fillStyle = 'rgba(255,255,255,0.05)';
         ctx.font = '12px sans-serif';
         ctx.textAlign = 'center';
         ctx.fillText('🪐 Move your mouse to explore', canvas.width / 2, canvas.height - 30);
-        
+
         requestAnimationFrame(animate);
     }
-    
+
     animate();
 });
+
 /* ============================================================
    🎯 THEME SYSTEM - با گزینه Default
 ============================================================ */
 
-// تعریف تم‌ها
 const themeStyles = {
     default: {
         '--bg-white': '#ffffff',
@@ -1566,30 +1166,25 @@ const themeStyles = {
     }
 };
 
-// تم فعلی
 let currentTheme = localStorage.getItem('theme') || 'default';
 
 function applyTheme(themeName) {
     const theme = themeStyles[themeName];
     if (!theme) return;
-    
+
     const root = document.documentElement;
     for (const [key, value] of Object.entries(theme)) {
         root.style.setProperty(key, value);
     }
-    
+
     currentTheme = themeName;
     localStorage.setItem('theme', themeName);
-    
-    // حذف کلاس‌های تم قبلی
     document.body.classList.remove('dark-theme', 'cyberpunk-theme', 'space-theme', 'minimal-theme', 'luxury-theme');
-    
-    // اگر تم default نبود، کلاس مربوطه رو اضافه کن
+
     if (themeName !== 'default') {
         document.body.classList.add(themeName + '-theme');
     }
-    
-    // به‌روزرسانی دکمه تم
+
     const themeToggle = document.getElementById('themeToggle');
     if (themeToggle) {
         if (themeName === 'dark' || themeName === 'cyberpunk' || themeName === 'space' || themeName === 'luxury') {
@@ -1598,54 +1193,66 @@ function applyTheme(themeName) {
             themeToggle.innerHTML = '🌙';
         }
     }
-    
-    // به‌روزرسانی select
+
     const themeSelect = document.getElementById('themeSelect');
     if (themeSelect) {
         themeSelect.value = themeName;
     }
 }
 
-// ===== راه‌اندازی =====
-document.addEventListener('DOMContentLoaded', function() {
-    // انتخاب تم
+document.addEventListener('DOMContentLoaded', function () {
     const themeSelect = document.getElementById('themeSelect');
     if (themeSelect) {
-        // تنظیم مقدار فعلی
         themeSelect.value = currentTheme;
-        
-        themeSelect.addEventListener('change', function() {
+        themeSelect.addEventListener('change', function () {
             applyTheme(this.value);
         });
     }
-    
-    // دکمه toggle (تغییر بین default و dark)
+
     const themeToggle = document.getElementById('themeToggle');
     if (themeToggle) {
-        // تنظیم آیکون اولیه
         if (currentTheme === 'dark' || currentTheme === 'cyberpunk' || currentTheme === 'space' || currentTheme === 'luxury') {
             themeToggle.innerHTML = '☀️';
         } else {
             themeToggle.innerHTML = '🌙';
         }
-        
-        themeToggle.addEventListener('click', function() {
-            // اگر تم فعلی dark باشه، برو به default، وگرنه برو به dark
+
+        themeToggle.addEventListener('click', function () {
             const newTheme = currentTheme === 'dark' ? 'default' : 'dark';
             applyTheme(newTheme);
-            
-            // به‌روزرسانی select
             const themeSelect = document.getElementById('themeSelect');
             if (themeSelect) {
                 themeSelect.value = newTheme;
             }
         });
     }
-    
-    // اعمال تم ذخیره شده
+
     applyTheme(currentTheme);
 });
 
-console.log('🎨 Theme System loaded with ' + Object.keys(themeStyles).length + ' themes');
-console.log('🌓 Current theme: ' + currentTheme);
-console.log('💡 Select a theme from the dropdown or click the moon/sun icon');
+/* ============================================================
+   LANGUAGE TOGGLE - INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded', function () {
+    const langToggle = document.getElementById('langToggle');
+    if (langToggle) {
+        applyLanguage(currentLanguage);
+
+        langToggle.addEventListener('click', function () {
+            const newLang = currentLanguage === 'en' ? 'fa' : 'en';
+            applyLanguage(newLang);
+        });
+    }
+});
+
+/* ============================================================
+   SCROLL PROGRESS (Duplicate removed - merged with above)
+============================================================ */
+// تابع updateScrollProgress قبلاً در بخش SCROLL PROGRESS BAR تعریف شده
+
+console.log('🚀 Zenverix v2.1 Loaded Successfully!');
+console.log('🌙 Dark Mode: Click the moon/sun icon to toggle');
+console.log('🌐 Language: Click the globe icon to switch between English and Persian');
+console.log('🤖 AI Chatbot: Click the robot icon');
+console.log('🌌 Interactive Space: Move your mouse in the space section');
+console.log('🪐 8 Realistic Planets with tooltips!');

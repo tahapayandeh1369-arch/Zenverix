@@ -1,0 +1,2108 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زنوریکس ایآی - دستیار هوشمند</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           ROOT VARIABLES
+        ============================================================ */
+        :root {
+            --bg-primary: #f0f4f8;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --bg-input: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.08);
+            --gradient-primary: linear-gradient(135deg, #7c3aed, #2563eb);
+            --gradient-secondary: linear-gradient(135deg, #a78bfa, #60a5fa);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --glow-color: rgba(167, 139, 250, 0.15);
+        }
+
+        body.dark-theme {
+            --bg-primary: #0f0f1a;
+            --bg-secondary: #1a1a2e;
+            --bg-card: #1e293b;
+            --bg-input: #0f172a;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: #334155;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.4);
+            --header-bg: rgba(26, 26, 46, 0.95);
+            --glow-color: rgba(167, 139, 250, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ============================================================
+           BACKGROUND ANIMATION
+        ============================================================ */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: float-particle linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.15;
+            }
+            90% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .particle:nth-child(1) {
+            left: 5%;
+            animation-duration: 22s;
+            animation-delay: 0s;
+            width: 6px;
+            height: 6px;
+        }
+        .particle:nth-child(2) {
+            left: 15%;
+            animation-duration: 28s;
+            animation-delay: 2s;
+            width: 3px;
+            height: 3px;
+        }
+        .particle:nth-child(3) {
+            left: 25%;
+            animation-duration: 18s;
+            animation-delay: 4s;
+            width: 5px;
+            height: 5px;
+        }
+        .particle:nth-child(4) {
+            left: 35%;
+            animation-duration: 32s;
+            animation-delay: 1s;
+            width: 4px;
+            height: 4px;
+        }
+        .particle:nth-child(5) {
+            left: 45%;
+            animation-duration: 25s;
+            animation-delay: 3s;
+            width: 7px;
+            height: 7px;
+        }
+        .particle:nth-child(6) {
+            left: 55%;
+            animation-duration: 20s;
+            animation-delay: 5s;
+            width: 3px;
+            height: 3px;
+        }
+        .particle:nth-child(7) {
+            left: 65%;
+            animation-duration: 30s;
+            animation-delay: 2s;
+            width: 5px;
+            height: 5px;
+        }
+        .particle:nth-child(8) {
+            left: 75%;
+            animation-duration: 24s;
+            animation-delay: 4s;
+            width: 4px;
+            height: 4px;
+        }
+        .particle:nth-child(9) {
+            left: 85%;
+            animation-duration: 26s;
+            animation-delay: 1s;
+            width: 6px;
+            height: 6px;
+        }
+        .particle:nth-child(10) {
+            left: 95%;
+            animation-duration: 35s;
+            animation-delay: 3s;
+            width: 3px;
+            height: 3px;
+        }
+        .particle:nth-child(11) {
+            left: 10%;
+            animation-duration: 40s;
+            animation-delay: 6s;
+            width: 8px;
+            height: 8px;
+        }
+        .particle:nth-child(12) {
+            left: 50%;
+            animation-duration: 15s;
+            animation-delay: 0s;
+            width: 2px;
+            height: 2px;
+        }
+
+        /* ============================================================
+           SCROLLBAR
+        ============================================================ */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+        /* ============================================================
+           HEADER
+        ============================================================ */
+        .header {
+            background: var(--header-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 14px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: var(--transition);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 20px;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .header .logo i {
+            color: #a78bfa;
+            font-size: 26px;
+        }
+
+        .header .logo span {
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .header .back-btn {
+            padding: 8px 18px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 13px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .header .back-btn:hover {
+            border-color: #a78bfa;
+            color: #a78bfa;
+            transform: translateX(-4px);
+        }
+
+        .header .theme-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header .theme-btn:hover {
+            border-color: #a78bfa;
+            color: #a78bfa;
+            transform: rotate(30deg);
+        }
+
+        /* ============================================================
+           CHAT CONTAINER
+        ============================================================ */
+        .chat-container {
+            flex: 1;
+            max-width: 960px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 80px);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============================================================
+           CHAT HEADER
+        ============================================================ */
+        .chat-header {
+            text-align: center;
+            padding: 16px 0 24px;
+            position: relative;
+        }
+
+        .chat-header .ai-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            margin: 0 auto 14px;
+            box-shadow: 0 0 60px rgba(167, 139, 250, 0.25);
+            transition: var(--transition);
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .chat-header .ai-icon::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            padding: 2px;
+            background: var(--gradient-secondary);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .chat-header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .chat-header .subtitle {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .chat-header .subtitle span {
+            color: #a78bfa;
+            font-weight: 600;
+        }
+
+        /* ============================================================
+           MESSAGES AREA
+        ============================================================ */
+        .messages-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px 4px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            scroll-behavior: smooth;
+        }
+
+        /* ============================================================
+           MESSAGE
+        ============================================================ */
+        .message {
+            display: flex;
+            gap: 12px;
+            max-width: 88%;
+            animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .message.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .message .avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .message.bot .avatar {
+            background: var(--gradient-secondary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(167, 139, 250, 0.25);
+        }
+
+        .message.user .avatar {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .message .bubble {
+            padding: 12px 20px;
+            border-radius: 18px;
+            font-size: 14.5px;
+            line-height: 1.8;
+            word-wrap: break-word;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .message.bot .bubble {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 18px 18px 18px 4px;
+            box-shadow: var(--shadow);
+        }
+
+        .message.user .bubble {
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 18px 18px 4px 18px;
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.2);
+        }
+
+        .message .bubble ul {
+            margin: 6px 0 0 18px;
+            color: var(--text-secondary);
+        }
+
+        .message.user .bubble ul {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .message .bubble code {
+            background: rgba(0, 0, 0, 0.06);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .message.user .bubble code {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        .message .bubble pre {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 12px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 13px;
+            font-family: 'Courier New', monospace;
+            margin: 6px 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .message.user .bubble pre {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .message .message-time {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            opacity: 0.7;
+            text-align: right;
+        }
+
+        .message.user .message-time {
+            text-align: left;
+        }
+
+        /* ============================================================
+           TYPING INDICATOR
+        ============================================================ */
+        .typing-indicator {
+            display: flex;
+            gap: 12px;
+            align-self: flex-start;
+            padding: 4px 0;
+            animation: slideUp 0.3s ease;
+        }
+
+        .typing-indicator .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--gradient-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 15px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(167, 139, 250, 0.25);
+        }
+
+        .typing-indicator .dots {
+            background: var(--bg-card);
+            padding: 12px 20px;
+            border-radius: 16px;
+            display: flex;
+            gap: 5px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        .typing-indicator .dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            animation: typingBounce 1.4s infinite;
+        }
+
+        .typing-indicator .dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .typing-indicator .dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingBounce {
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.3;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        /* ============================================================
+           QUICK QUESTIONS - پیشرفته
+        ============================================================ */
+        .quick-questions-wrapper {
+            position: relative;
+            margin: 8px 0 4px;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .quick-questions-wrapper:hover {
+            border-color: #a78bfa;
+        }
+
+        .quick-questions-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 16px;
+            cursor: pointer;
+            user-select: none;
+            transition: var(--transition);
+            background: var(--bg-secondary);
+        }
+
+        .quick-questions-header:hover {
+            background: rgba(167, 139, 250, 0.04);
+        }
+
+        .quick-questions-header .title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quick-questions-header .title i {
+            color: #a78bfa;
+            font-size: 16px;
+        }
+
+        .quick-questions-header .title .badge {
+            background: var(--gradient-secondary);
+            color: white;
+            font-size: 9px;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
+        .quick-questions-header .toggle-icon {
+            font-size: 14px;
+            color: var(--text-muted);
+            transition: var(--transition);
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .quick-questions-header .toggle-icon:hover {
+            background: rgba(167, 139, 250, 0.08);
+        }
+
+        .quick-questions-header .toggle-icon.open {
+            transform: rotate(180deg);
+        }
+
+        .quick-questions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 8px 12px 12px;
+            justify-content: center;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .quick-questions.open {
+            max-height: 600px;
+            opacity: 1;
+            overflow-y: auto;
+        }
+
+        .quick-questions::-webkit-scrollbar {
+            width: 3px;
+        }
+        .quick-questions::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        .quick-questions .category-label {
+            width: 100%;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 4px 2px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 4px;
+        }
+
+        .quick-questions button {
+            padding: 5px 14px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 50px;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 11.5px;
+            transition: var(--transition);
+            font-family: 'Vazirmatn', 'Inter', sans-serif;
+            font-weight: 500;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .quick-questions button .emoji {
+            font-size: 13px;
+        }
+
+        .quick-questions button:hover {
+            border-color: #a78bfa;
+            color: #a78bfa;
+            background: rgba(167, 139, 250, 0.06);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 4px 16px rgba(167, 139, 250, 0.12);
+        }
+
+        .quick-questions button:active {
+            transform: scale(0.95);
+        }
+
+        /* ============================================================
+           INPUT AREA
+        ============================================================ */
+        .input-area {
+            display: flex;
+            gap: 12px;
+            padding: 14px 0 6px;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-primary);
+            position: sticky;
+            bottom: 0;
+            transition: var(--transition);
+        }
+
+        .input-area .input-wrapper {
+            flex: 1;
+            position: relative;
+        }
+
+        .input-area textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 14px;
+            background: var(--bg-input);
+            color: var(--text-primary);
+            font-size: 14.5px;
+            font-family: 'Vazirmatn', 'Inter', sans-serif;
+            resize: none;
+            outline: none;
+            transition: var(--transition);
+            min-height: 52px;
+            max-height: 150px;
+            line-height: 1.6;
+            padding-left: 48px;
+        }
+
+        .input-area textarea:focus {
+            border-color: #a78bfa;
+            box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.08);
+        }
+
+        .input-area textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .input-area .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 16px;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .input-area textarea:focus~.input-icon {
+            color: #a78bfa;
+        }
+
+        .input-area button {
+            padding: 0 28px;
+            border: none;
+            border-radius: 14px;
+            background: var(--gradient-primary);
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            min-height: 52px;
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .input-area button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .input-area button:hover:not(:disabled)::before {
+            opacity: 1;
+        }
+
+        .input-area button:hover:not(:disabled) {
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        .input-area button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .input-area button .shortcut {
+            font-size: 11px;
+            opacity: 0.6;
+            font-weight: 400;
+        }
+
+        /* ============================================================
+           STATUS BAR
+        ============================================================ */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 4px 2px;
+            font-size: 12px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            margin-top: 4px;
+            transition: var(--transition);
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .status-bar .status-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-bar .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            margin-right: 6px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        .status-bar .status-dot.error {
+            background: #ef4444;
+        }
+        .status-bar .status-dot.thinking {
+            background: #f59e0b;
+        }
+
+        .status-bar .token-count {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .status-bar .token-count i {
+            font-size: 14px;
+        }
+
+        /* ============================================================
+           TOAST
+        ============================================================ */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 14px 24px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-size: 14px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 90%;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast i {
+            color: #22c55e;
+            font-size: 20px;
+        }
+        .toast.error i {
+            color: #ef4444;
+        }
+
+        /* ============================================================
+           FOOTER
+        ============================================================ */
+        footer {
+            margin-top: 20px;
+            padding: 20px 0 14px;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        body.dark-theme footer {
+            background: #0f172a;
+            border-color: #1e293b;
+        }
+
+        .footer-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-version {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .version-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 16px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.2);
+        }
+
+        body.dark-theme .version-badge {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+        }
+
+        .version-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #22c55e;
+            padding: 4px 12px;
+            background: #dcfce7;
+            border-radius: 20px;
+        }
+
+        body.dark-theme .version-status {
+            color: #34d399;
+            background: #1a3a2e;
+        }
+
+        .version-details {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .version-details i {
+            color: var(--primary);
+        }
+
+        body.dark-theme .version-details i {
+            color: #60a5fa;
+        }
+
+        .version-tech {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .version-tech span {
+            padding: 2px 12px;
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-gray);
+            transition: var(--transition);
+        }
+
+        body.dark-theme .version-tech span {
+            background: #1e293b;
+            border-color: #334155;
+            color: #94a3b8;
+        }
+
+        .version-tech span:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        body.dark-theme .version-tech span:hover {
+            border-color: #60a5fa;
+            color: #60a5fa;
+        }
+
+        .footer-copyright {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: center;
+            padding-top: 6px;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media (max-width: 992px) {
+            .chat-container {
+                padding: 16px 20px;
+            }
+            .message {
+                max-width: 92%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 12px 16px;
+            }
+            .header .logo {
+                font-size: 18px;
+            }
+            .header .logo i {
+                font-size: 22px;
+            }
+            .header .back-btn {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+            .header .theme-btn {
+                width: 38px;
+                height: 38px;
+                font-size: 16px;
+            }
+
+            .chat-container {
+                padding: 12px 16px;
+                height: calc(100vh - 72px);
+            }
+            .chat-header {
+                padding: 12px 0 18px;
+            }
+            .chat-header .ai-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 26px;
+            }
+            .chat-header h1 {
+                font-size: 22px;
+            }
+            .message {
+                max-width: 95%;
+            }
+            .message .bubble {
+                font-size: 14px;
+                padding: 10px 14px;
+            }
+            .message .avatar {
+                width: 32px;
+                height: 32px;
+                font-size: 13px;
+            }
+
+            .input-area textarea {
+                font-size: 14px;
+                min-height: 46px;
+                padding: 12px 14px;
+                padding-left: 42px;
+            }
+            .input-area button {
+                padding: 0 20px;
+                font-size: 16px;
+                min-height: 46px;
+            }
+            .input-area .input-icon {
+                font-size: 14px;
+                left: 12px;
+            }
+
+            .quick-questions button {
+                font-size: 10.5px;
+                padding: 4px 12px;
+            }
+            .quick-questions.open {
+                max-height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 10px 12px;
+                gap: 8px;
+            }
+            .header .logo {
+                font-size: 15px;
+                gap: 6px;
+            }
+            .header .logo i {
+                font-size: 16px;
+            }
+            .header .back-btn {
+                font-size: 11px;
+                padding: 4px 12px;
+            }
+            .header .back-btn span {
+                display: none;
+            }
+            .header .theme-btn {
+                width: 34px;
+                height: 34px;
+                font-size: 14px;
+            }
+
+            .chat-container {
+                padding: 8px 10px;
+                height: calc(100vh - 64px);
+            }
+            .chat-header .ai-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+                margin-bottom: 10px;
+            }
+            .chat-header h1 {
+                font-size: 19px;
+            }
+            .message {
+                max-width: 98%;
+                gap: 8px;
+            }
+            .message .bubble {
+                font-size: 13px;
+                padding: 8px 12px;
+            }
+            .message .avatar {
+                width: 28px;
+                height: 28px;
+                font-size: 11px;
+            }
+            .messages-area {
+                padding: 10px 2px 12px;
+                gap: 10px;
+            }
+
+            .input-area {
+                gap: 8px;
+                padding: 10px 0 4px;
+            }
+            .input-area textarea {
+                font-size: 13px;
+                min-height: 40px;
+                padding: 10px 12px;
+                max-height: 100px;
+                padding-left: 36px;
+            }
+            .input-area button {
+                padding: 0 16px;
+                font-size: 14px;
+                min-height: 40px;
+            }
+            .input-area button .shortcut {
+                display: none;
+            }
+            .input-area .input-icon {
+                font-size: 12px;
+                left: 10px;
+            }
+
+            .quick-questions-header .title {
+                font-size: 12px;
+            }
+            .quick-questions-header .title .badge {
+                font-size: 8px;
+                padding: 1px 8px;
+            }
+            .quick-questions button {
+                font-size: 10px;
+                padding: 3px 10px;
+            }
+            .quick-questions.open {
+                max-height: 250px;
+            }
+
+            .status-bar {
+                font-size: 10px;
+                padding: 6px 2px;
+            }
+            .toast {
+                bottom: 16px;
+                right: 16px;
+                left: 16px;
+                padding: 12px 16px;
+                font-size: 13px;
+            }
+
+            .footer-version {
+                gap: 8px;
+            }
+            .version-badge {
+                font-size: 11px;
+                padding: 3px 12px;
+            }
+            .version-status {
+                font-size: 10px;
+                padding: 3px 10px;
+            }
+            .version-details {
+                font-size: 10px;
+                gap: 10px;
+            }
+            .version-tech span {
+                font-size: 9px;
+                padding: 2px 10px;
+            }
+            .footer-copyright {
+                font-size: 10px;
+            }
+        }
+
+        /* ============================================================
+           DARK THEME TRANSITIONS
+        ============================================================ */
+        body.dark-theme .header,
+        body.dark-theme .input-area,
+        body.dark-theme .chat-header .ai-icon,
+        body.dark-theme .message .bubble,
+        body.dark-theme .typing-indicator .dots,
+        body.dark-theme .quick-questions-wrapper,
+        body.dark-theme .quick-questions-header,
+        body.dark-theme .quick-questions button,
+        body.dark-theme .toast,
+        body.dark-theme footer {
+            transition: var(--transition);
+        }
+
+        /* ============================================================
+           UTILITY - GLOW TEXT
+        ============================================================ */
+        .glow-text {
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ============================================================
+           RESPONSIVE - EXTRA
+        ============================================================ */
+        @media (max-width: 360px) {
+            .chat-header h1 {
+                font-size: 17px;
+            }
+            .message .bubble {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+            .input-area textarea {
+                font-size: 12px;
+                min-height: 36px;
+                padding: 8px 10px;
+            }
+            .input-area button {
+                padding: 0 12px;
+                font-size: 13px;
+                min-height: 36px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== BACKGROUND PARTICLES ===== -->
+    <div class="bg-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <i class="fas fa-robot"></i>
+            <span>Zenverix AI</span>
+        </a>
+        <div class="header-controls">
+            <button class="theme-btn" id="themeToggle" aria-label="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-right"></i> <span>بازگشت</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ===== CHAT CONTAINER ===== -->
+    <div class="chat-container">
+
+        <!-- Chat Header -->
+        <div class="chat-header">
+            <div class="ai-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <h1>دستیار هوشمند زنوریکس</h1>
+            <p class="subtitle">
+                پرسش‌های خود را مطرح کنید · <span>هوش مصنوعی پیشرفته</span>
+            </p>
+        </div>
+
+        <!-- Messages -->
+        <div class="messages-area" id="messagesArea">
+            <div class="message bot">
+                <div class="avatar"><i class="fas fa-robot"></i></div>
+                <div class="bubble">
+                    <p>👋 سلام! من <strong>زنوریکس ایآی</strong> هستم. در خدمت شما:</p>
+                    <ul>
+                        <li>پاسخ به سوالات عمومی و تخصصی</li>
+                        <li>راهنمایی در برنامه‌نویسی و فناوری</li>
+                        <li>ایده‌پردازی و نوشتن خلاقانه</li>
+                        <li>یادگیری و آموزش مهارت‌های جدید</li>
+                    </ul>
+                    <p style="margin-top: 8px; color: var(--text-muted); font-size: 13px;">
+                        🇮🇷 سوال خود را به فارسی مطرح کنید
+                    </p>
+                    <div class="message-time">همین الان</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== Quick Questions ===== -->
+        <div class="quick-questions-wrapper">
+            <div class="quick-questions-header" onclick="toggleQuickQuestions()">
+                <span class="title">
+                    <i class="fas fa-bolt"></i>
+                    سوالات پرتکرار
+                    <span class="badge">۶۰+</span>
+                    <span style="font-size: 11px; color: var(--text-muted); font-weight: 400;">(کلیک کنید)</span>
+                </span>
+                <span class="toggle-icon" id="toggleIcon">
+                    <i class="fas fa-chevron-down"></i>
+                </span>
+            </div>
+
+            <div class="quick-questions" id="quickQuestions">
+
+                <!-- ===== دسته: عمومی ===== -->
+                <div class="category-label">📌 عمومی</div>
+                <button onclick="askQuick('سلام چطوری؟')"><span class="emoji">👋</span> سلام</button>
+                <button onclick="askQuick('هوش مصنوعی چیست؟')"><span class="emoji">🤖</span> هوش مصنوعی</button>
+                <button onclick="askQuick('جوک بگو')"><span class="emoji">😄</span> جوک</button>
+                <button onclick="askQuick('چطور برنامه‌نویسی یاد بگیرم؟')"><span class="emoji">📚</span> یادگیری برنامه‌نویسی</button>
+                <button onclick="askQuick('طاها کیست؟')"><span class="emoji">👨‍💻</span> طاها</button>
+                <button onclick="askQuick('زنوریکس چیست؟')"><span class="emoji">🚀</span> زنوریکس</button>
+                <button onclick="askQuick('معنای زندگی چیست؟')"><span class="emoji">🌍</span> معنای زندگی</button>
+                <button onclick="askQuick('متشکرم')"><span class="emoji">🙏</span> تشکر</button>
+                <button onclick="askQuick('خداحافظ')"><span class="emoji">👋</span> خداحافظ</button>
+
+                <!-- ===== دسته: برنامه‌نویسی ===== -->
+                <div class="category-label">💻 برنامه‌نویسی</div>
+                <button onclick="askQuick('HTML چیست؟')"><span class="emoji">📄</span> HTML</button>
+                <button onclick="askQuick('CSS چیست؟')"><span class="emoji">🎨</span> CSS</button>
+                <button onclick="askQuick('جاوااسکریپت چیست؟')"><span class="emoji">⚡</span> جاوااسکریپت</button>
+                <button onclick="askQuick('پایتون چیست؟')"><span class="emoji">🐍</span> پایتون</button>
+                <button onclick="askQuick('ریکت چیست؟')"><span class="emoji">⚛️</span> ریکت</button>
+                <button onclick="askQuick('نود جی اس چیست؟')"><span class="emoji">🟢</span> نود جی اس</button>
+                <button onclick="askQuick('گیت چیست؟')"><span class="emoji">🔀</span> گیت</button>
+                <button onclick="askQuick('داکر چیست؟')"><span class="emoji">🐳</span> داکر</button>
+                <button onclick="askQuick('SQL چیست؟')"><span class="emoji">🗄️</span> SQL</button>
+                <button onclick="askQuick('مانگو دی بی چیست؟')"><span class="emoji">🍃</span> مانگو دی بی</button>
+
+                <!-- ===== دسته: هوش مصنوعی ===== -->
+                <div class="category-label">🧠 هوش مصنوعی</div>
+                <button onclick="askQuick('یادگیری ماشین چیست؟')"><span class="emoji">🧠</span> یادگیری ماشین</button>
+                <button onclick="askQuick('یادگیری عمیق چیست؟')"><span class="emoji">🧬</span> یادگیری عمیق</button>
+                <button onclick="askQuick('پردازش زبان طبیعی چیست؟')"><span class="emoji">💬</span> پردازش زبان طبیعی</button>
+                <button onclick="askQuick('بینایی کامپیوتر چیست؟')"><span class="emoji">👁️</span> بینایی کامپیوتر</button>
+                <button onclick="askQuick('چت جی پی تی چیست؟')"><span class="emoji">💬</span> چت جی پی تی</button>
+                <button onclick="askQuick('اوپن ای آی چیست؟')"><span class="emoji">🔓</span> اوپن ای آی</button>
+                <button onclick="askQuick('تنسورفلو چیست؟')"><span class="emoji">🔢</span> تنسورفلو</button>
+                <button onclick="askQuick('پایتورچ چیست؟')"><span class="emoji">🔥</span> پایتورچ</button>
+
+                <!-- ===== دسته: وب ===== -->
+                <div class="category-label">🌐 توسعه وب</div>
+                <button onclick="askQuick('توسعه وب چیست؟')"><span class="emoji">🌐</span> توسعه وب</button>
+                <button onclick="askQuick('فرانت‌اند چیست؟')"><span class="emoji">🎨</span> فرانت‌اند</button>
+                <button onclick="askQuick('بک‌اند چیست؟')"><span class="emoji">⚙️</span> بک‌اند</button>
+                <button onclick="askQuick('API چیست؟')"><span class="emoji">🔌</span> API</button>
+                <button onclick="askQuick('رست API چیست؟')"><span class="emoji">🌍</span> رست API</button>
+                <button onclick="askQuick('گراف کیو ال چیست؟')"><span class="emoji">📊</span> گراف کیو ال</button>
+                <button onclick="askQuick('وردپرس چیست؟')"><span class="emoji">📝</span> وردپرس</button>
+                <button onclick="askQuick('لاراول چیست؟')"><span class="emoji">📦</span> لاراول</button>
+                <button onclick="askQuick('جنگو چیست؟')"><span class="emoji">🎯</span> جنگو</button>
+                <button onclick="askQuick('فلاسک چیست؟')"><span class="emoji">🧪</span> فلاسک</button>
+
+                <!-- ===== دسته: زبان‌ها ===== -->
+                <div class="category-label">☕ زبان‌های برنامه‌نویسی</div>
+                <button onclick="askQuick('جاوا چیست؟')"><span class="emoji">☕</span> جاوا</button>
+                <button onclick="askQuick('سی پلاس پلاس چیست؟')"><span class="emoji">⚡</span> سی پلاس پلاس</button>
+                <button onclick="askQuick('سی شارپ چیست؟')"><span class="emoji">🎮</span> سی شارپ</button>
+                <button onclick="askQuick('پی اچ پی چیست؟')"><span class="emoji">🐘</span> پی اچ پی</button>
+                <button onclick="askQuick('روبی چیست؟')"><span class="emoji">💎</span> روبی</button>
+                <button onclick="askQuick('گو چیست؟')"><span class="emoji">🔵</span> گو</button>
+                <button onclick="askQuick('راست چیست؟')"><span class="emoji">🦀</span> راست</button>
+                <button onclick="askQuick('تایپ‌اسکریپت چیست؟')"><span class="emoji">📘</span> تایپ‌اسکریپت</button>
+                <button onclick="askQuick('سوییفت چیست؟')"><span class="emoji">🍎</span> سوییفت</button>
+                <button onclick="askQuick('کاتلین چیست؟')"><span class="emoji">📱</span> کاتلین</button>
+
+                <!-- ===== دسته: فریم‌ورک ===== -->
+                <div class="category-label">⚙️ فریم‌ورک‌ها</div>
+                <button onclick="askQuick('ویو جی اس چیست؟')"><span class="emoji">💚</span> ویو جی اس</button>
+                <button onclick="askQuick('انگولار چیست؟')"><span class="emoji">🔴</span> انگولار</button>
+                <button onclick="askQuick('نکست جی اس چیست؟')"><span class="emoji">⏭️</span> نکست جی اس</button>
+                <button onclick="askQuick('بوت‌استرپ چیست؟')"><span class="emoji">📐</span> بوت‌استرپ</button>
+                <button onclick="askQuick('تیل‌ویند چیست؟')"><span class="emoji">🌊</span> تیل‌ویند</button>
+                <button onclick="askQuick('سس چیست؟')"><span class="emoji">🎨</span> سس</button>
+
+                <!-- ===== دسته: دیتابیس ===== -->
+                <div class="category-label">🗄️ دیتابیس</div>
+                <button onclick="askQuick('مای‌اسکیوال چیست؟')"><span class="emoji">🐬</span> مای‌اسکیوال</button>
+                <button onclick="askQuick('پستگرس چیست؟')"><span class="emoji">🐘</span> پستگرس</button>
+                <button onclick="askQuick('ردیس چیست؟')"><span class="emoji">🔴</span> ردیس</button>
+                <button onclick="askQuick('فایربیس چیست؟')"><span class="emoji">🔥</span> فایربیس</button>
+
+                <!-- ===== دسته: ابزارها ===== -->
+                <div class="category-label">🔧 ابزارها</div>
+                <button onclick="askQuick('گیت‌هاب چیست؟')"><span class="emoji">🐙</span> گیت‌هاب</button>
+                <button onclick="askQuick('گیت‌لب چیست؟')"><span class="emoji">🦊</span> گیت‌لب</button>
+                <button onclick="askQuick('فیگما چیست؟')"><span class="emoji">🎨</span> فیگما</button>
+                <button onclick="askQuick('وی‌اس کد چیست؟')"><span class="emoji">📝</span> وی‌اس کد</button>
+
+                <!-- ===== دسته: سیستم‌عامل ===== -->
+                <div class="category-label">💿 سیستم‌عامل</div>
+                <button onclick="askQuick('لینوکس چیست؟')"><span class="emoji">🐧</span> لینوکس</button>
+                <button onclick="askQuick('ویندوز چیست؟')"><span class="emoji">🪟</span> ویندوز</button>
+                <button onclick="askQuick('مک او اس چیست؟')"><span class="emoji">🍎</span> مک او اس</button>
+                <button onclick="askQuick('اندروید چیست؟')"><span class="emoji">📱</span> اندروید</button>
+                <button onclick="askQuick('آی او اس چیست؟')"><span class="emoji">📱</span> آی او اس</button>
+
+                <!-- ===== دسته: امنیت و شبکه ===== -->
+                <div class="category-label">🔒 امنیت و شبکه</div>
+                <button onclick="askQuick('امنیت سایبری چیست؟')"><span class="emoji">🔒</span> امنیت سایبری</button>
+                <button onclick="askQuick('رمزنگاری چیست؟')"><span class="emoji">🔐</span> رمزنگاری</button>
+                <button onclick="askQuick('وی پی ان چیست؟')"><span class="emoji">🛡️</span> وی پی ان</button>
+                <button onclick="askQuick('HTTP چیست؟')"><span class="emoji">🌐</span> HTTP</button>
+                <button onclick="askQuick('HTTPS چیست؟')"><span class="emoji">🔒</span> HTTPS</button>
+                <button onclick="askQuick('DNS چیست؟')"><span class="emoji">📡</span> DNS</button>
+
+                <!-- ===== دسته: کلود و کریپتو ===== -->
+                <div class="category-label">☁️ کلود و کریپتو</div>
+                <button onclick="askQuick('کلاود چیست؟')"><span class="emoji">☁️</span> کلاود</button>
+                <button onclick="askQuick('ای دبلیو اس چیست؟')"><span class="emoji">☁️</span> ای دبلیو اس</button>
+                <button onclick="askQuick('بلاکچین چیست؟')"><span class="emoji">⛓️</span> بلاکچین</button>
+                <button onclick="askQuick('بیت‌کوین چیست؟')"><span class="emoji">🪙</span> بیت‌کوین</button>
+                <button onclick="askQuick('اتریوم چیست؟')"><span class="emoji">💎</span> اتریوم</button>
+                <button onclick="askQuick('NFT چیست؟')"><span class="emoji">🖼️</span> NFT</button>
+                <button onclick="askQuick('وب ۳ چیست؟')"><span class="emoji">🌐</span> وب ۳</button>
+
+                <!-- ===== دسته: علوم ===== -->
+                <div class="category-label">🔬 علوم</div>
+                <button onclick="askQuick('فیزیک چیست؟')"><span class="emoji">⚛️</span> فیزیک</button>
+                <button onclick="askQuick('شیمی چیست؟')"><span class="emoji">🧪</span> شیمی</button>
+                <button onclick="askQuick('زیست‌شناسی چیست؟')"><span class="emoji">🧬</span> زیست‌شناسی</button>
+                <button onclick="askQuick('ستاره‌شناسی چیست؟')"><span class="emoji">🔭</span> ستاره‌شناسی</button>
+                <button onclick="askQuick('ریاضیات چیست؟')"><span class="emoji">📐</span> ریاضیات</button>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+            <div class="input-wrapper">
+                <textarea id="userInput" placeholder="پیام خود را بنویسید..." rows="1"></textarea>
+                <span class="input-icon"><i class="fas fa-pen"></i></span>
+            </div>
+            <button id="sendBtn" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+                <span class="shortcut">⌘Enter</span>
+            </button>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-group">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="statusText">آنلاین</span>
+            </div>
+            <div class="status-group">
+                <span class="token-count">
+                    <i class="fas fa-bolt"></i>
+                    <span id="tokenCount">۰</span>
+                </span>
+                <span style="opacity:0.3;">|</span>
+                <span id="messageCount">۰ پیام</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== TOAST ===== -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">آماده!</span>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-version">
+                <span class="version-badge">
+                    <i class="fas fa-code-branch"></i>
+                    نسخه ۲.۵.۰
+                </span>
+                <span class="version-status">
+                    <i class="fas fa-circle" style="color: #22c55e; font-size: 10px;"></i>
+                    پایدار
+                </span>
+                <div class="version-details">
+                    <span>
+                        <i class="far fa-calendar-alt"></i>
+                        بروزرسانی: <span id="updateDate">۲۰۲۶</span>
+                    </span>
+                    <span>
+                        <i class="fas fa-code"></i>
+                        کامیت: <span id="commitHash">a1b2c3d</span>
+                    </span>
+                </div>
+                <div class="version-tech">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                    <span>DeepSeek AI</span>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                &copy; <span id="currentYear"></span> Zenverix. تمامی حقوق محفوظ است.
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        // ============================================================
+        // 🔑 API CONFIGURATION - DeepSeek
+        // ============================================================
+
+        const AI_CONFIG = {
+            provider: 'deepseek',
+            apiKey: 'sk-48204ea7a7174ce1a84b2d680e165349',
+            model: 'deepseek-chat',
+            temperature: 0.7,
+            maxTokens: 800
+        };
+
+        // ============================================================
+        // 🌙 THEME TOGGLE
+        // ============================================================
+
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('aiTheme');
+
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                this.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('aiTheme', 'dark');
+            } else {
+                this.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('aiTheme', 'light');
+            }
+        });
+
+        // ============================================================
+        // 🧠 CHAT ENGINE
+        // ============================================================
+
+        const messagesArea = document.getElementById('messagesArea');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const statusDot = document.getElementById('statusDot');
+        const statusText = document.getElementById('statusText');
+        const tokenCount = document.getElementById('tokenCount');
+        const messageCount = document.getElementById('messageCount');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+
+        let isProcessing = false;
+        let messageHistory = [];
+        let totalTokens = 0;
+        let totalMessages = 1;
+        let toastTimer = null;
+        let isQuickOpen = false;
+
+        // ============================================================
+        // 📂 QUICK QUESTIONS TOGGLE
+        // ============================================================
+
+        function toggleQuickQuestions() {
+            const quickQuestions = document.getElementById('quickQuestions');
+            const toggleIcon = document.getElementById('toggleIcon');
+            isQuickOpen = !isQuickOpen;
+
+            if (isQuickOpen) {
+                quickQuestions.classList.add('open');
+                toggleIcon.classList.add('open');
+                toggleIcon.innerHTML = '<i class="fas fa-chevron-up"></i>';
+            } else {
+                quickQuestions.classList.remove('open');
+                toggleIcon.classList.remove('open');
+                toggleIcon.innerHTML = '<i class="fas fa-chevron-down"></i>';
+            }
+        }
+
+        // باز کردن خودکار بعد از ۵۰۰ms
+        setTimeout(function() {
+            toggleQuickQuestions();
+        }, 500);
+
+        // ============================================================
+        // 💬 TOAST
+        // ============================================================
+
+        function showToast(msg, isError) {
+            toastMessage.textContent = msg;
+            toast.className = 'toast';
+            if (isError) toast.classList.add('error');
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // ============================================================
+        // 📝 AUTO-RESIZE TEXTAREA
+        // ============================================================
+
+        userInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 150) + 'px';
+        });
+
+        // ============================================================
+        // ⌨️ HANDLE ENTER KEY
+        // ============================================================
+
+        userInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // ============================================================
+        // ⚡ QUICK QUESTIONS
+        // ============================================================
+
+        function askQuick(question) {
+            userInput.value = question;
+            if (isQuickOpen) {
+                toggleQuickQuestions();
+            }
+            sendMessage();
+        }
+
+        // ============================================================
+        // 📊 SET STATUS
+        // ============================================================
+
+        function setStatus(text, type) {
+            statusText.textContent = text;
+            statusDot.className = 'status-dot';
+            if (type === 'error') statusDot.classList.add('error');
+            else if (type === 'thinking') statusDot.classList.add('thinking');
+        }
+
+        // ============================================================
+        // 💬 ADD MESSAGE
+        // ============================================================
+
+        function addMessage(content, type) {
+            const div = document.createElement('div');
+            div.className = `message ${type}`;
+
+            const avatar = document.createElement('div');
+            avatar.className = 'avatar';
+            avatar.innerHTML = type === 'user' ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
+
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+
+            let formatted = content;
+            formatted = formatted.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
+                return `<pre><code>${code.trim()}</code></pre>`;
+            });
+            formatted = formatted.replace(/`([^`]+)`/g, '<code>$1</code>');
+            formatted = formatted.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+            formatted = formatted.replace(/\n/g, '<br>');
+
+            const time = new Date();
+            const timeStr = time.getHours().toString().padStart(2, '0') + ':' + time.getMinutes().toString().padStart(2,
+            '0');
+
+            bubble.innerHTML = formatted +
+                `<div class="message-time">${timeStr}</div>`;
+
+            div.appendChild(avatar);
+            div.appendChild(bubble);
+            messagesArea.appendChild(div);
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+
+            totalMessages++;
+            messageCount.textContent = totalMessages + ' پیام';
+
+            return div;
+        }
+
+        // ============================================================
+        // ⌨️ TYPING INDICATOR
+        // ============================================================
+
+        function showTyping() {
+            const div = document.createElement('div');
+            div.className = 'typing-indicator';
+            div.id = 'typingIndicator';
+            div.innerHTML = `
+                <div class="avatar"><i class="fas fa-robot"></i></div>
+                <div class="dots">
+                    <span></span><span></span><span></span>
+                </div>
+            `;
+            messagesArea.appendChild(div);
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+        }
+
+        function removeTyping() {
+            const el = document.getElementById('typingIndicator');
+            if (el) el.remove();
+        }
+
+        // ============================================================
+        // 📤 SEND MESSAGE
+        // ============================================================
+
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message || isProcessing) return;
+
+            userInput.value = '';
+            userInput.style.height = 'auto';
+
+            addMessage(message, 'user');
+            messageHistory.push({ role: 'user', content: message });
+
+            isProcessing = true;
+            sendBtn.disabled = true;
+            setStatus('در حال فکر کردن...', 'thinking');
+            showTyping();
+
+            try {
+                const response = await callAI(message);
+                removeTyping();
+                addMessage(response, 'bot');
+                messageHistory.push({ role: 'assistant', content: response });
+                setStatus('آنلاین');
+                updateTokenCount(response);
+                showToast('✅ پاسخ دریافت شد!');
+
+            } catch (error) {
+                removeTyping();
+                console.error('AI Error:', error);
+                addMessage('⚠️ متاسفم، خطایی رخ داد. لطفاً دوباره تلاش کن.', 'bot');
+                setStatus('خطا', 'error');
+                showToast('❌ خطا در ارتباط با هوش مصنوعی', true);
+            }
+
+            isProcessing = false;
+            sendBtn.disabled = false;
+            userInput.focus();
+        }
+
+        // ============================================================
+        // 🤖 CALL AI API (DeepSeek)
+        // ============================================================
+
+        async function callAI(message) {
+            const apiKey = AI_CONFIG.apiKey;
+
+            if (!apiKey || apiKey === 'sk-48204ea7a7174ce1a84b2d680e165349' || apiKey.length < 20) {
+                showToast('⚠️ کلید API تنظیم نشده است', true);
+                return getFallbackResponse(message);
+            }
+
+            try {
+                const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + apiKey
+                    },
+                    body: JSON.stringify({
+                        model: AI_CONFIG.model,
+                        messages: [{
+                                role: 'system',
+                                content: `تو زنوریکس ایآی هستی، یک دستیار مفید و دوستانه.
+                                ⚠️ مهم: همیشه به فارسی پاسخ بده.
+                                پاسخ‌ها باید مفید، مختصر و دوستانه باشند.
+                                درباره تکنولوژی، برنامه‌نویسی، هوش مصنوعی و دانش عمومی اطلاعات داری.
+                                اگر درباره طاها پرسید، بگو او توسعه‌دهنده‌ای است که تو را ساخته.`
+                            },
+                            ...messageHistory.slice(-10)
+                        ],
+                        temperature: AI_CONFIG.temperature,
+                        max_tokens: AI_CONFIG.maxTokens
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    console.error('API Error:', data.error);
+                    showToast('⚠️ خطای API: ' + (data.error.message || 'خطای ناشناخته'), true);
+                    return getFallbackResponse(message);
+                }
+
+                return data.choices?.[0]?.message?.content || getFallbackResponse(message);
+
+            } catch (error) {
+                console.error('Network Error:', error);
+                showToast('🌐 خطای شبکه، استفاده از پاسخ‌های آفلاین', true);
+                return getFallbackResponse(message);
+            }
+        }
+
+        // ============================================================
+        // 📦 FALLBACK RESPONSES
+        // ============================================================
+
+        function getFallbackResponse(message) {
+            const lowerMsg = message.toLowerCase();
+
+            const faResponses = {
+                'html چیست': 'HTML (زبان نشانه‌گذاری ابرمتن) زبان استاندارد برای ایجاد صفحات وب است.',
+                'css چیست': 'CSS (برگه‌های سبک آبشاری) زبانی برای زیبا سازی صفحات وب است.',
+                'جاوااسکریپت چیست': 'جاوااسکریپت یک زبان برنامه‌نویسی است که صفحات وب را تعاملی می‌کند.',
+                'پایتون چیست': 'پایتون یک زبان برنامه‌نویسی سطح بالا، ساده و قدرتمند است.',
+                'هوش مصنوعی چیست': 'هوش مصنوعی شبیه‌سازی هوش انسانی در ماشین‌هاست.',
+                'یادگیری ماشین چیست': 'یادگیری ماشین شاخه‌ای از هوش مصنوعی است.',
+                'سلام': '👋 سلام! چطور می‌تونم کمک کنم؟',
+                'چطوری': 'خوبم ممنون! تو چطوری؟ 😊',
+                'متشکرم': 'خواهش می‌کنم! خوشحالم که کمک کردم. 🤖',
+                'خداحافظ': 'خداحافظ! هر وقت خواستی برگرد! 👋',
+                'طاها کیست': 'طاها یک توسعه‌دهنده و متفکر خلاق است که زنوریکس ایآی رو ساخته.',
+                'زنوریکس چیست': 'زنوریکس یک برند و پلتفرم تکنولوژی است که روی هوش مصنوعی و توسعه وب تمرکز داره.',
+                'جوک بگو': 'چرا برنامه‌نویسان تم تاریک رو دوست دارن؟ چون باگ‌ها نور رو جذب می‌کنن! 😄',
+                'چطور برنامه‌نویسی یاد بگیرم': '۱. با HTML و CSS شروع کن ۲. JavaScript رو یاد بگیر ۳. یک زبان بک‌اند انتخاب کن ۴. پروژه بساز ۵. در انجمن‌ها شرکت کن!'
+            };
+
+            for (const [key, value] of Object.entries(faResponses)) {
+                if (lowerMsg.includes(key)) {
+                    return value;
+                }
+            }
+
+            return '🤔 سوال خوبی پرسیدی! متاسفم ولی الان پاسخی براش ندارم. ولی می‌تونی درباره تکنولوژی، برنامه‌نویسی، وب، هوش مصنوعی و مهارت‌های طاها از من بپرسی.';
+        }
+
+        // ============================================================
+        // 📊 UPDATE TOKEN COUNT
+        // ============================================================
+
+        function updateTokenCount(response) {
+            const tokens = Math.ceil(response.length / 4);
+            totalTokens += tokens;
+            tokenCount.textContent = totalTokens;
+        }
+
+        // ============================================================
+        // 📅 FOOTER - DATE & COMMIT
+        // ============================================================
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const updateDate = document.getElementById('updateDate');
+            if (updateDate) {
+                const now = new Date();
+                const months = ['دی', 'بهمن', 'اسفند', 'فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان',
+                    'آذر'
+                ];
+                updateDate.textContent = now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
+            }
+
+            const commitHash = document.getElementById('commitHash');
+            if (commitHash) {
+                const chars = '0123456789abcdef';
+                let hash = '';
+                for (let i = 0; i < 7; i++) {
+                    hash += chars[Math.floor(Math.random() * 16)];
+                }
+                commitHash.textContent = hash;
+            }
+
+            const currentYear = document.getElementById('currentYear');
+            if (currentYear) {
+                currentYear.textContent = new Date().getFullYear();
+            }
+        });
+
+        // ============================================================
+        // 🚀 FOCUS INPUT ON LOAD
+        // ============================================================
+
+        window.addEventListener('load', function() {
+            userInput.focus();
+        });
+
+        // ============================================================
+        // 📋 CONSOLE INFO
+        // ============================================================
+
+        console.log('🤖 زنوریکس ایآی بارگذاری شد!');
+        console.log('🔑 کلید API:', AI_CONFIG.apiKey ? '✅ تنظیم شده' : '❌ تنظیم نشده');
+        console.log('📦 مدل:', AI_CONFIG.model);
+        console.log('💡 سوال خود را تایپ کنید و Enter بزنید!');
+        console.log('📂 منوی سوالات با کلیک روی "سوالات پرتکرار" باز و بسته میشود');
+        function getFallbackResponse(message) {
+    const lowerMsg = message.toLowerCase();
+
+    // ===== پاسخ‌های کامل فارسی =====
+    const responses = {
+        // عمومی
+        'سلام': '👋 سلام! چطور می‌تونم کمک کنم؟',
+        'چطوری': 'خوبم ممنون! تو چطوری؟ 😊',
+        'متشکرم': 'خواهش می‌کنم! خوشحالم که کمک کردم. 🤖',
+        'خداحافظ': 'خداحافظ! هر وقت خواستی برگرد! 👋',
+        'طاها کیست': 'طاها یک توسعه‌دهنده و متفکر خلاق است که زنوریکس ایآی رو ساخته. او به تکنولوژی و برنامه‌نویسی علاقه داره.',
+        'زنوریکس چیست': 'زنوریکس یک برند و پلتفرم تکنولوژی است که روی هوش مصنوعی و توسعه وب تمرکز داره.',
+        'جوک بگو': 'چرا برنامه‌نویسان تم تاریک رو دوست دارن؟ چون باگ‌ها نور رو جذب می‌کنن! 😄',
+        'چطور برنامه‌نویسی یاد بگیرم': '۱. با HTML و CSS شروع کن ۲. JavaScript رو یاد بگیر ۳. یک زبان بک‌اند مثل Python انتخاب کن ۴. پروژه‌های عملی بساز ۵. در انجمن‌ها شرکت کن ۶. همیشه تمرین کن!',
+        'معنای زندگی چیست': 'معنای زندگی از دید برنامه‌نویسی: پیدا کردن راه‌حل برای مسائل و ساختن چیزهای مفید! 😊',
+        
+        // برنامه‌نویسی
+        'html چیست': 'HTML (زبان نشانه‌گذاری ابرمتن) زبان استاندارد برای ایجاد صفحات وب است. با استفاده از تگ‌ها ساختار صفحه رو مشخص میکنه.',
+        'css چیست': 'CSS (برگه‌های سبک آبشاری) زبانی برای زیبا سازی صفحات وب است. رنگ‌ها، فونت‌ها، چیدمان و طراحی واکنش‌گرا رو کنترل میکنه.',
+        'جاوااسکریپت چیست': 'جاوااسکریپت یک زبان برنامه‌نویسی است که صفحات وب را تعاملی می‌کند. برای انیمیشن‌ها، اعتبارسنجی فرم‌ها و برنامه‌های وب استفاده میشه.',
+        'پایتون چیست': 'پایتون یک زبان برنامه‌نویسی سطح بالا، ساده و قدرتمند است. برای هوش مصنوعی، علم داده، وب و اتوماسیون استفاده میشه.',
+        'ریکت چیست': 'React یک کتابخانه جاوااسکریپت برای ساخت رابط‌های کاربری است. توسط فیسبوک ساخته شده و کامپوننت‌محور است.',
+        'نود جی اس چیست': 'Node.js یک محیط اجرای جاوااسکریپت در سمت سرور است. برای ساخت APIها و برنامه‌های وب واقع‌زمان استفاده میشه.',
+        'گیت چیست': 'Git یک سیستم کنترل نسخه برای مدیریت کد است. به تیم‌ها اجازه میده روی کد همکاری کنن و تغییرات رو track کنن.',
+        'داکر چیست': 'Docker یک ابزار برای کانتینری‌سازی برنامه‌هاست. برنامه‌ها رو در محیط‌های ایزوله اجرا میکنه.',
+        'اسکیوال چیست': 'SQL زبانی برای کار با پایگاه‌های داده رابطه‌ای است. برای ذخیره، ویرایش و بازیابی داده‌ها استفاده میشه.',
+        'مانگو دی بی چیست': 'MongoDB یک پایگاه داده NoSQL است. داده‌ها رو به صورت سند (JSON-like) ذخیره میکنه.',
+        
+        // هوش مصنوعی
+        'هوش مصنوعی چیست': 'هوش مصنوعی شبیه‌سازی هوش انسانی در ماشین‌هاست. شامل یادگیری ماشین، پردازش زبان طبیعی و بینایی کامپیوتر میشه.',
+        'یادگیری ماشین چیست': 'یادگیری ماشین شاخه‌ای از هوش مصنوعی است که به ماشین‌ها یاد میده از داده‌ها الگو شناسایی کنن و پیش‌بینی انجام بدن.',
+        'یادگیری عمیق چیست': 'یادگیری عمیق زیرشاخه‌ای از یادگیری ماشین است که از شبکه‌های عصبی چندلایه استفاده میکنه.',
+        'پردازش زبان طبیعی چیست': 'NLP شاخه‌ای از هوش مصنوعی است که به ماشین‌ها یاد میده زبان انسان رو بفهمن و تولید کنن.',
+        'بینایی کامپیوتر چیست': 'بینایی کامپیوتر به ماشین‌ها اجازه میده تصاویر و ویدیوها رو درک کنن و تحلیل کنن.',
+        'چت جی پی تی چیست': 'ChatGPT یک مدل زبانی از OpenAI است که می‌تونه مکالمه‌های طبیعی داشته باشه و به سوالات پاسخ بده.',
+        'اوپن ای آی چیست': 'OpenAI یک شرکت تحقیقاتی است که مدل‌های پیشرفته هوش مصنوعی مثل ChatGPT و DALL-E رو ساخته.',
+        'تنسورفلو چیست': 'TensorFlow یک کتابخانه متن‌باز از گوگل برای یادگیری ماشین و شبکه‌های عصبی است.',
+        'پایتورچ چیست': 'PyTorch یک کتابخانه متن‌باز از فیسبوک برای یادگیری ماشین و شبکه‌های عصبی است.',
+        
+        // وب
+        'توسعه وب چیست': 'توسعه وب فرآیند ساخت وب‌سایت‌ها و برنامه‌های تحت وب است. شامل فرانت‌اند و بک‌اند میشه.',
+        'فرانت‌اند چیست': 'فرانت‌اند بخش ظاهری وب‌سایت است که کاربر می‌بینه. با HTML، CSS و JavaScript ساخته میشه.',
+        'بک‌اند چیست': 'بک‌اند بخش پشت‌صحنه وب‌سایت است که داده‌ها رو مدیریت میکنه. با Node.js، Python، PHP و غیره ساخته میشه.',
+        'ای پی آی چیست': 'API مجموعه‌ای از قوانین برای ارتباط بین نرم‌افزارهاست. به برنامه‌ها اجازه میده با هم حرف بزنن.',
+        'رست ای پی آی چیست': 'REST API یک معماری برای ساخت APIهاست که از HTTP استفاده میکنه و داده‌ها رو با JSON تبادل میکنه.',
+        'گراف کیو ال چیست': 'GraphQL یک زبان پرس و جو برای APIهاست که به کلاینت اجازه میده دقیقاً داده‌ای که نیاز داره رو درخواست کنه.',
+        'وردپرس چیست': 'WordPress یک سیستم مدیریت محتوا (CMS) است که بیش از ۴۰٪ وب‌سایت‌ها ازش استفاده میکنن.',
+        'لاراول چیست': 'Laravel یک فریم‌ورک PHP برای توسعه وب است که ابزارهای قدرتمندی برای ساخت برنامه‌های مدرن داره.',
+        'جنگو چیست': 'Django یک فریم‌ورک پایتون برای توسعه وب است که امنیت و سرعت رو بالا می‌بره.',
+        'فلاسک چیست': 'Flask یک فریم‌ورک سبک پایتون برای توسعه وب است که انعطاف‌پذیری بالایی داره.',
+        
+        // زبان‌ها
+        'جاوا چیست': 'جاوا یک زبان برنامه‌نویسی شی‌گرا و محبوب است که روی JVM اجرا میشه. برای اندروید و برنامه‌های سازمانی استفاده میشه.',
+        'سی پلاس پلاس چیست': 'C++ یک زبان برنامه‌نویسی قدرتمند است که برای بازی‌ها، سیستم‌عامل‌ها و برنامه‌های با کارایی بالا استفاده میشه.',
+        'سی شارپ چیست': 'سی شارپ یک زبان مدرن از مایکروسافت است که برای توسعه ویندوز، بازی‌ها و وب استفاده میشه.',
+        'پی اچ پی چیست': 'PHP یک زبان برنامه‌نویسی برای توسعه وب است که بیش از ۷۰٪ وب‌سایت‌ها ازش استفاده میکنن.',
+        'روبی چیست': 'روبی یک زبان برنامه‌نویسی ساده و کاربردی است که برای توسعه وب (با Rails) استفاده میشه.',
+        'گو چیست': 'Go یک زبان از گوگل است که برای سیستم‌های بزرگ و مقیاس‌پذیر طراحی شده.',
+        'راست چیست': 'Rust یک زبان برنامه‌نویسی امن و سریع است که برای سیستم‌های حساس به کارایی استفاده میشه.',
+        'تایپ‌اسکریپت چیست': 'TypeScript یک نسخه قدرتمندتر از JavaScript است که تایپ‌های ایستا رو اضافه میکنه.',
+        'سوییفت چیست': 'Swift یک زبان از اپل برای توسعه برنامه‌های iOS و macOS است.',
+        'کاتلین چیست': 'Kotlin یک زبان مدرن برای توسعه اندروید است که با Java سازگاره.',
+        
+        // فریم‌ورک‌ها
+        'ویو جی اس چیست': 'Vue.js یک فریم‌ورک جاوااسکریپت پیشرو برای ساخت رابط‌های کاربری است.',
+        'انگولار چیست': 'Angular یک فریم‌ورک قدرتمند جاوااسکریپت از گوگل برای ساخت برنامه‌های تک‌صفحه‌ای (SPA) است.',
+        'نکست جی اس چیست': 'Next.js یک فریم‌ورک React است که رندر سمت سرور (SSR) و بهینه‌سازی SEO رو ارائه میده.',
+        'بوت‌استرپ چیست': 'Bootstrap یک فریم‌ورک CSS محبوب برای طراحی وب‌سایت‌های واکنش‌گرا است.',
+        'تیل‌ویند چیست': 'Tailwind CSS یک فریم‌ورک کاربردی است که کلاس‌های آماده برای طراحی سریع فراهم میکنه.',
+        'سس چیست': 'SASS یک پیش‌پردازنده CSS است که به کد CSS قابلیت‌های پیشرفته مثل متغیر و nesting رو اضافه میکنه.',
+        
+        // دیتابیس
+        'مای‌اسکیوال چیست': 'MySQL یک پایگاه داده رابطه‌ای متن‌باز و محبوب است که در بسیاری از وب‌سایت‌ها استفاده میشه.',
+        'پستگرس چیست': 'PostgreSQL یک پایگاه داده رابطه‌ای پیشرفته و متن‌باز است که از JSON هم پشتیبانی میکنه.',
+        'ردیس چیست': 'Redis یک پایگاه داده in-memory است که برای کشینگ و ذخیره موقت داده‌ها استفاده میشه.',
+        'فایربیس چیست': 'Firebase یک پلتفرم از گوگل برای توسعه برنامه‌های موبایل و وب با ابزارهای ready-to-use است.',
+        
+        // ابزارها
+        'گیت‌هاب چیست': 'GitHub یک پلتفرم برای میزبانی و همکاری روی کد با استفاده از Git است.',
+        'گیت‌لب چیست': 'GitLab یک پلتفرم مشابه GitHub است که امکانات CI/CD یکپارچه داره.',
+        'فیگما چیست': 'Figma یک ابزار طراحی رابط کاربری است که در مرورگر اجرا میشه و تیمی کار میکنه.',
+        'وی‌اس کد چیست': 'VS Code یک ویرایشگر کد متن‌باز و محبوب از مایکروسافت است.'
+    };
+
+    // جستجو در پاسخ‌ها
+    for (const [key, value] of Object.entries(responses)) {
+        if (lowerMsg.includes(key)) {
+            return value;
+        }
+    }
+
+    return '🤔 سوال خوبی پرسیدی! متاسفم ولی الان پاسخی براش ندارم. ولی می‌تونی درباره تکنولوژی، برنامه‌نویسی، وب، هوش مصنوعی و مهارت‌های طاها از من بپرسی.';
+}
+    </script>
+
+</body>
+</html>
