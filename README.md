@@ -90,11 +90,11 @@ Zenverix is a practical project for exploring modern frontend development and cr
 
 ### 🖥️ Desktop
 
-![Zenverix Desktop](desktop.png)
+![Zenverix Desktop](screenshots/desktop.png)
 
 ### 📱 Mobile
 
-![Zenverix Mobile](mobile.PNG)
+![Zenverix Mobile](screenshots/mobile.PNG)
 
 ---
 
