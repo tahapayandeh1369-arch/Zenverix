@@ -1,0 +1,3750 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- ========== متا تگ‌های سئو ========== -->
+  <meta name="description" content="TahaAcademy | Zenverix Space - آموزش حرفه‌ای تکنولوژی، کاوش فضایی، ناسا و برنامه‌نویسی با بهترین دوره‌های آنلاین">
+  <meta name="keywords" content="TahaAcademy, Zenverix Space, آموزش تکنولوژی, ناسا, فضا, برنامه‌نویسی, هوش مصنوعی, دوره آموزشی, کدنویسی">
+  <meta name="author" content="طاها - TahaAcademy">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#2563eb">
+  
+  <!-- ========== Open Graph ========== -->
+  <meta property="og:title" content="TahaAcademy | Zenverix Space - آموزش تکنولوژی و فضا">
+  <meta property="og:description" content="آموزش تخصصی تکنولوژی، فضا، برنامه‌نویسی و هوش مصنوعی">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tahaacademy.ir">
+  <meta property="og:image" content="https://tahaacademy.ir/img/og-image.jpg">
+  
+  <!-- ========== Twitter Card ========== -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TahaAcademy | Zenverix Space">
+  <meta name="twitter:description" content="آموزش تکنولوژی، فضا و برنامه‌نویسی">
+  
+  <!-- ========== Canonical ========== -->
+  <link rel="canonical" href="https://tahaacademy.ir/index.html">
+  
+  <!-- ========== Preconnect ========== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  
+  <title>TahaAcademy | Zenverix Space - آموزش تکنولوژی و فضا</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="./img/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  
+  <!-- ========== AOS Library ========== -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <style>
+    /* ============================================================
+    ROOT VARIABLES
+    ============================================================ */
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #3b82f6;
+      --secondary: #7c3aed;
+      --secondary-light: #8b5cf6;
+      --accent: #06b6d4;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --bg-white: #ffffff;
+      --bg-light: #f8fafc;
+      --bg-dark: #0f172a;
+      --text-dark: #0f172a;
+      --text-gray: #475569;
+      --text-light: #94a3b8;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12);
+      --shadow-xl: 0 30px 60px rgba(0, 0, 0, 0.15);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --radius-full: 50px;
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --gradient-primary: linear-gradient(135deg, var(--primary), var(--secondary));
+      --gradient-soft: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-accent: linear-gradient(135deg, var(--accent), var(--primary));
+      --font-family: 'Vazirmatn', 'Poppins', Tahoma, sans-serif;
+    }
+
+    /* ============================================================
+    DARK THEME
+    ============================================================ */
+    body.dark-theme {
+      --bg-white: #0f172a;
+      --bg-light: #1e293b;
+      --text-dark: #e2e8f0;
+      --text-gray: #94a3b8;
+      --text-light: #64748b;
+      --border-color: #334155;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.5);
+      --shadow-xl: 0 30px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    /* ============================================================
+    RESET & BASE
+    ============================================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) var(--bg-light);
+    }
+
+    body {
+      font-family: var(--font-family);
+      background: var(--bg-dark);
+      color: var(--text-dark);
+      line-height: 1.6;
+      transition: var(--transition);
+      min-height: 100vh;
+      padding: 0 50px;
+    }
+
+    body.dark-theme {
+      scrollbar-color: #60a5fa #0b1120;
+    }
+
+    body:not(.dark-theme) {
+      background: var(--bg-white);
+    }
+
+    /* ---------- Custom Scrollbar ---------- */
+    ::-webkit-scrollbar { width: 9px; }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+      border-left: 1px solid var(--border-color);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--gradient-primary);
+      border-radius: 20px;
+      border: 2px solid var(--bg-dark);
+      box-shadow: 0 0 8px rgba(37, 99, 235, 0.25);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, var(--primary-light), var(--secondary-light));
+      box-shadow: 0 0 14px rgba(37, 99, 235, 0.45);
+    }
+
+    body:not(.dark-theme)::-webkit-scrollbar-track {
+      background: var(--bg-light);
+      border-left-color: var(--border-color);
+    }
+    body:not(.dark-theme)::-webkit-scrollbar-thumb {
+      border-color: var(--bg-light);
+    }
+
+    body.dark-theme::-webkit-scrollbar-track {
+      background: #0b1120;
+      border-left-color: #1e293b;
+    }
+    body.dark-theme::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #60a5fa, #a78bfa);
+      border-color: #0b1120;
+      box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+    }
+    body.dark-theme::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #93c5fd, #c4b5fd);
+      box-shadow: 0 0 16px rgba(96, 165, 250, 0.5);
+    }
+
+    /* ============================================================
+    TOAST NOTIFICATION
+    ============================================================ */
+    .toast-container {
+      position: fixed;
+      top: 100px;
+      right: 30px;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .toast {
+      padding: 16px 20px;
+      background: var(--bg-white);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transform: translateX(120%);
+      animation: slideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .toast {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    .toast.hide {
+      transform: translateX(120%);
+      animation: slideOut 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    @keyframes slideIn {
+      0% { transform: translateX(120%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideOut {
+      0% { transform: translateX(0); opacity: 1; }
+      100% { transform: translateX(120%); opacity: 0; }
+    }
+
+    .toast-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .toast-content {
+      flex: 1;
+    }
+
+    .toast-title {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+
+    body.dark-theme .toast-title {
+      color: #e2e8f0;
+    }
+
+    .toast-message {
+      font-size: 13px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    body.dark-theme .toast-message {
+      color: #94a3b8;
+    }
+
+    .toast-close {
+      background: none;
+      border: none;
+      color: var(--text-light);
+      cursor: pointer;
+      font-size: 16px;
+      padding: 4px;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+
+    .toast-close:hover {
+      color: var(--danger);
+      transform: rotate(90deg);
+    }
+
+    .toast.success .toast-icon { color: var(--success); }
+    .toast.warning .toast-icon { color: var(--warning); }
+    .toast.error .toast-icon { color: var(--danger); }
+    .toast.info .toast-icon { color: var(--primary); }
+
+    /* ============================================================
+    COURSE MODAL
+    ============================================================ */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 99998;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      animation: modalFadeIn 0.3s ease forwards;
+    }
+
+    @keyframes modalFadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .modal-box {
+      background: var(--bg-white);
+      border-radius: var(--radius);
+      max-width: 500px;
+      width: 100%;
+      padding: 40px;
+      border: 2px solid var(--border-color);
+      box-shadow: var(--shadow-xl);
+      transform: scale(0.9);
+      animation: modalScaleIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      position: relative;
+    }
+
+    body.dark-theme .modal-box {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    @keyframes modalScaleIn {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      color: var(--danger);
+      transform: rotate(90deg);
+    }
+
+    .modal-icon {
+      font-size: 56px;
+      text-align: center;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .modal-box h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-dark);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    body.dark-theme .modal-box h3 {
+      color: #e2e8f0;
+    }
+
+    .modal-box .modal-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      text-align: center;
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    body.dark-theme .modal-box .modal-desc {
+      color: #94a3b8;
+    }
+
+    .modal-box .modal-level {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .modal-box .modal-level span {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-light);
+      background: var(--bg-light);
+      padding: 4px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    body.dark-theme .modal-box .modal-level span {
+      background: #0f172a;
+      border-color: #334155;
+      color: #94a3b8;
+    }
+
+    .modal-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: var(--font-family);
+    }
+
+    .modal-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ============================================================
+    SCROLL PROGRESS
+    ============================================================ */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      z-index: 10000;
+      background: rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .scroll-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: var(--gradient-primary);
+      border-radius: 0 6px 6px 0;
+      box-shadow: 0 0 8px rgba(37, 99, 235, 0.45), 0 0 16px rgba(124, 58, 237, 0.25);
+      transition: width 0.1s linear;
+    }
+    body.dark-theme .scroll-progress { background: rgba(255, 255, 255, 0.05); }
+    body.dark-theme .scroll-progress-bar {
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      box-shadow: 0 0 10px rgba(96, 165, 250, 0.5), 0 0 20px rgba(167, 139, 250, 0.3);
+    }
+
+    /* ============================================================
+    HEADER
+    ============================================================ */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      margin-top: 20px;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 20px;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: var(--transition);
+    }
+    body.dark-theme header { 
+      background: rgba(15, 23, 42, 0.9); 
+      border-color: #1e293b;
+      box-shadow: var(--shadow-md);
+    }
+    body:not(.dark-theme) header {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: var(--border-color);
+    }
+
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-img { height: 40px; width: auto; display: block; }
+    .logo-name {
+      font-size: 24px;
+      font-weight: 700;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: var(--transition);
+    }
+    body.dark-theme .logo-name {
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-controls { display: flex; align-items: center; gap: 12px; }
+
+    /* ============================================================
+    THEME TOGGLE
+    ============================================================ */
+    .theme-toggle {
+      background: var(--bg-light);
+      border: 2px solid var(--border-color);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dark);
+    }
+    body.dark-theme .theme-toggle { background: #1e293b; border-color: #334155; color: #e2e8f0; }
+    .theme-toggle:hover { transform: rotate(30deg); border-color: var(--primary); }
+    body.dark-theme .theme-toggle:hover { border-color: #60a5fa; }
+
+    /* ============================================================
+    NOTIFICATION BELL
+    ============================================================ */
+    .notification-btn {
+      position: relative;
+      background: var(--bg-light);
+      border: 2px solid var(--border-color);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dark);
+    }
+    body.dark-theme .notification-btn {
+      background: #1e293b;
+      border-color: #334155;
+      color: #e2e8f0;
+    }
+    .notification-btn:hover {
+      border-color: var(--primary);
+      transform: scale(1.05);
+    }
+    .notification-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: var(--danger);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse 2s infinite;
+    }
+    .notification-badge.hidden {
+      display: none;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    /* ============================================================
+    NAVIGATION
+    ============================================================ */
+    nav { display: flex; gap: 30px; align-items: center; }
+    nav a {
+      text-decoration: none;
+      color: var(--text-gray);
+      font-weight: 500;
+      font-size: 15px;
+      transition: var(--transition);
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+      transition: var(--transition);
+    }
+    body.dark-theme nav a::after { background: linear-gradient(135deg, #60a5fa, #a78bfa); }
+    nav a:hover,
+    nav a.active { color: var(--primary); }
+    body.dark-theme nav a:hover,
+    body.dark-theme nav a.active { color: #60a5fa; }
+    nav a:hover::after,
+    nav a.active::after { width: 100%; }
+
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: var(--transition);
+      background: none;
+      border: none;
+      padding: 8px;
+    }
+    body.dark-theme .hamburger { color: #e2e8f0; }
+    .hamburger:hover { color: var(--primary); }
+    body.dark-theme .hamburger:hover { color: #60a5fa; }
+
+    /* ============================================================
+    SEARCH BAR - جدید
+    ============================================================ */
+    .search-container {
+      max-width: 800px;
+      margin: 40px auto 20px;
+      position: relative;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: var(--bg-white);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-full);
+      padding: 6px 20px 6px 6px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    body.dark-theme .search-bar {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    .search-bar:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    }
+
+    .search-bar input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 14px 16px;
+      font-size: 16px;
+      font-family: var(--font-family);
+      color: var(--text-dark);
+    }
+
+    body.dark-theme .search-bar input {
+      color: #e2e8f0;
+    }
+
+    .search-bar input::placeholder {
+      color: var(--text-light);
+    }
+
+    .search-bar .search-btn {
+      background: var(--gradient-primary);
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      border-radius: var(--radius-full);
+      font-size: 16px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: var(--font-family);
+      font-weight: 600;
+    }
+
+    .search-bar .search-btn:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-md);
+    }
+
+    .search-filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .search-filters .filter-btn {
+      padding: 6px 18px;
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-full);
+      background: var(--bg-white);
+      color: var(--text-gray);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: var(--font-family);
+    }
+
+    body.dark-theme .search-filters .filter-btn {
+      background: #1e293b;
+      border-color: #334155;
+      color: #94a3b8;
+    }
+
+    .search-filters .filter-btn:hover,
+    .search-filters .filter-btn.active {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(37, 99, 235, 0.05);
+    }
+
+    body.dark-theme .search-filters .filter-btn:hover,
+    body.dark-theme .search-filters .filter-btn.active {
+      border-color: #60a5fa;
+      color: #60a5fa;
+      background: rgba(96, 165, 250, 0.05);
+    }
+
+    /* ============================================================
+    COUNTDOWN TIMER - جدید
+    ============================================================ */
+    .countdown-section {
+      background: var(--gradient-primary);
+      border-radius: var(--radius);
+      padding: 40px 30px;
+      margin: 20px 0 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .countdown-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.05), transparent 60%);
+      animation: shimmerRotate 10s linear infinite;
+    }
+
+    @keyframes shimmerRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .countdown-section h3 {
+      color: white;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .countdown-section p {
+      color: rgba(255,255,255,0.8);
+      font-size: 16px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .countdown-timer {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .countdown-item {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 16px 24px;
+      border-radius: var(--radius-sm);
+      min-width: 80px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .countdown-item .num {
+      font-size: 36px;
+      font-weight: 800;
+      color: white;
+      display: block;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .countdown-item .label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* ============================================================
+    RECOMMENDED COURSES - جدید
+    ============================================================ */
+    .recommended-section {
+      padding: 40px 0;
+    }
+
+    .recommended-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .recommended-card {
+      background: var(--bg-white);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    body.dark-theme .recommended-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    .recommended-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .recommended-card .rec-badge {
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      background: var(--warning);
+      color: white;
+      padding: 2px 14px;
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .recommended-card .rec-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .recommended-card h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    body.dark-theme .recommended-card h4 {
+      color: #e2e8f0;
+    }
+
+    .recommended-card p {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    body.dark-theme .recommended-card p {
+      color: #94a3b8;
+    }
+
+    .recommended-card .rec-meta {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    .recommended-card .rec-btn {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 8px 20px;
+      background: var(--gradient-primary);
+      color: white;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .recommended-card .rec-btn:hover {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ============================================================
+    SKELETON LOADER - جدید
+    ============================================================ */
+    .skeleton {
+      background: var(--bg-light);
+      border-radius: var(--radius-sm);
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.dark-theme .skeleton {
+      background: #1e293b;
+    }
+
+    .skeleton::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+      animation: shimmerSkeleton 1.5s infinite;
+    }
+
+    @keyframes shimmerSkeleton {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .skeleton-text {
+      height: 12px;
+      margin: 8px 0;
+      border-radius: 6px;
+      background: var(--border-color);
+    }
+
+    body.dark-theme .skeleton-text {
+      background: #334155;
+    }
+
+    .skeleton-text.w70 { width: 70%; }
+    .skeleton-text.w50 { width: 50%; }
+    .skeleton-text.w30 { width: 30%; }
+
+    .skeleton-card {
+      padding: 24px;
+      background: var(--bg-white);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+    }
+
+    body.dark-theme .skeleton-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    .skeleton-card .skeleton-img {
+      height: 120px;
+      border-radius: var(--radius-sm);
+      background: var(--border-color);
+      margin-bottom: 16px;
+    }
+
+    body.dark-theme .skeleton-card .skeleton-img {
+      background: #334155;
+    }
+
+    /* ============================================================
+    FAVORITE BUTTON - جدید
+    ============================================================ */
+    .fav-btn {
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--text-light);
+      padding: 4px;
+    }
+
+    .fav-btn:hover {
+      transform: scale(1.2);
+    }
+
+    .fav-btn.active {
+      color: var(--danger);
+    }
+
+    /* ============================================================
+    ADMIN PANEL - جدید
+    ============================================================ */
+    .admin-panel {
+      background: var(--bg-white);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 30px;
+      margin: 30px 0;
+      display: none;
+    }
+
+    body.dark-theme .admin-panel {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    .admin-panel.visible {
+      display: block;
+    }
+
+    .admin-panel h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .admin-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .admin-stat {
+      text-align: center;
+      padding: 16px;
+      background: var(--bg-light);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+    }
+
+    body.dark-theme .admin-stat {
+      background: #0f172a;
+      border-color: #334155;
+    }
+
+    .admin-stat .num {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .admin-stat .label {
+      font-size: 13px;
+      color: var(--text-gray);
+    }
+
+    .admin-toggle {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      z-index: 999;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+
+    .admin-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    /* ============================================================
+    RATING SYSTEM - جدید
+    ============================================================ */
+    .rating-stars {
+      display: flex;
+      gap: 4px;
+      margin: 8px 0;
+    }
+
+    .rating-stars .star {
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--text-light);
+      transition: var(--transition);
+    }
+
+    .rating-stars .star:hover,
+    .rating-stars .star.active {
+      color: var(--warning);
+    }
+
+    .rating-stars .star.hover {
+      color: var(--warning);
+    }
+
+    .rating-average {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-gray);
+      font-size: 14px;
+    }
+
+    .rating-average .stars-display {
+      color: var(--warning);
+    }
+
+    /* ============================================================
+    PROGRESS BAR (Learning) - جدید
+    ============================================================ */
+    .learning-progress {
+      background: var(--bg-white);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+
+    body.dark-theme .learning-progress {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    .learning-progress .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .learning-progress .progress-header h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    body.dark-theme .learning-progress .progress-header h4 {
+      color: #e2e8f0;
+    }
+
+    .learning-progress .progress-header span {
+      font-size: 14px;
+      color: var(--text-gray);
+      font-weight: 600;
+    }
+
+    .learning-progress .progress-track {
+      height: 8px;
+      background: var(--bg-light);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    body.dark-theme .learning-progress .progress-track {
+      background: #0f172a;
+    }
+
+    .learning-progress .progress-track .fill {
+      height: 100%;
+      background: var(--gradient-primary);
+      border-radius: 10px;
+      transition: width 1s ease;
+    }
+
+    /* ============================================================
+    POLL / SURVEY - جدید
+    ============================================================ */
+    .poll-section {
+      background: var(--bg-white);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 30px;
+      margin: 30px 0;
+    }
+
+    body.dark-theme .poll-section {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    .poll-section h4 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .poll-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      margin: 8px 0;
+      background: var(--bg-light);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+
+    body.dark-theme .poll-option {
+      background: #0f172a;
+    }
+
+    .poll-option:hover {
+      border-color: var(--primary);
+    }
+
+    .poll-option .poll-radio {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    body.dark-theme .poll-option .poll-radio {
+      border-color: #334155;
+    }
+
+    .poll-option.selected .poll-radio {
+      border-color: var(--primary);
+      background: var(--primary);
+    }
+
+    .poll-option.selected .poll-radio::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .poll-option .poll-label {
+      flex: 1;
+      font-size: 15px;
+      color: var(--text-dark);
+    }
+
+    body.dark-theme .poll-option .poll-label {
+      color: #e2e8f0;
+    }
+
+    .poll-option .poll-votes {
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    .poll-option .poll-bar {
+      height: 4px;
+      background: var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      flex: 1;
+      max-width: 100px;
+    }
+
+    .poll-option .poll-bar .fill {
+      height: 100%;
+      background: var(--gradient-primary);
+      border-radius: 10px;
+      transition: width 0.6s ease;
+    }
+
+    .poll-submit {
+      margin-top: 16px;
+      padding: 10px 30px;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-full);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: var(--font-family);
+    }
+
+    .poll-submit:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .poll-results {
+      margin-top: 16px;
+      display: none;
+    }
+
+    .poll-results.visible {
+      display: block;
+    }
+
+    /* ============================================================
+    ZENVERIX SPACE - MAIN
+    ============================================================ */
+    .zen-space {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ============================================================
+    SPACE HERO
+    ============================================================ */
+    .space-hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 50% 0%, #1a1a3e 0%, #0a0a1a 70%);
+      border-radius: var(--radius);
+      margin-top: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    body:not(.dark-theme) .space-hero {
+      background: radial-gradient(ellipse at 50% 0%, #e8f0fe 0%, #f0f4ff 70%);
+    }
+
+    .space-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      top: -100px;
+      right: -100px;
+      background: radial-gradient(circle, #7c3aed, #2563eb);
+      animation: orbFloat 8s ease-in-out infinite alternate;
+    }
+    .orb-2 {
+      width: 300px;
+      height: 300px;
+      bottom: -80px;
+      left: -80px;
+      background: radial-gradient(circle, #2563eb, #7c3aed);
+      animation: orbFloat 10s ease-in-out infinite alternate-reverse;
+    }
+    .orb-3 {
+      width: 200px;
+      height: 200px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, #06b6d4, #2563eb);
+      animation: orbFloat 12s ease-in-out infinite alternate;
+      opacity: 0.15;
+    }
+
+    body:not(.dark-theme) .orb-1 {
+      background: radial-gradient(circle, #7c3aed33, #2563eb33);
+    }
+    body:not(.dark-theme) .orb-2 {
+      background: radial-gradient(circle, #2563eb33, #7c3aed33);
+    }
+    body:not(.dark-theme) .orb-3 {
+      background: radial-gradient(circle, #06b6d433, #2563eb33);
+    }
+
+    @keyframes orbFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 30px) scale(1.1); }
+    }
+
+    .space-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .space-badge {
+      display: inline-block;
+      padding: 8px 24px;
+      background: rgba(37, 99, 235, 0.15);
+      border: 1px solid rgba(37, 99, 235, 0.3);
+      border-radius: 50px;
+      color: #60a5fa;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    body:not(.dark-theme) .space-badge {
+      color: var(--primary);
+      background: rgba(37, 99, 235, 0.08);
+      border-color: rgba(37, 99, 235, 0.15);
+    }
+
+    .space-hero-content h1 {
+      font-size: clamp(48px, 10vw, 80px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    body:not(.dark-theme) .space-hero-content h1 {
+      color: var(--text-dark);
+    }
+
+    .space-hero-content h1 span {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .space-hero-content p {
+      font-size: clamp(18px, 2vw, 24px);
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 600px;
+      margin: 0 auto 32px;
+      line-height: 1.8;
+    }
+
+    body:not(.dark-theme) .space-hero-content p {
+      color: var(--text-gray);
+    }
+
+    .space-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .space-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+
+    .space-btn.primary {
+      background: var(--gradient-primary);
+      color: #fff;
+      box-shadow: 0 4px 24px rgba(37, 99, 235, 0.35);
+    }
+    .space-btn.primary:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 8px 40px rgba(37, 99, 235, 0.5);
+    }
+
+    .space-btn.secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    .space-btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-4px);
+    }
+
+    body:not(.dark-theme) .space-btn.secondary {
+      background: var(--bg-light);
+      color: var(--text-dark);
+      border: 2px solid var(--border-color);
+    }
+    body:not(.dark-theme) .space-btn.secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    body:not(.dark-theme) .scroll-indicator {
+      color: var(--text-light);
+    }
+
+    .scroll-indicator span {
+      display: block;
+      width: 2px;
+      height: 40px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.4), transparent);
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+
+    body:not(.dark-theme) .scroll-indicator span {
+      background: linear-gradient(180deg, var(--text-light), transparent);
+    }
+
+    @keyframes scrollBounce {
+      0%, 100% { transform: scaleY(0.3); opacity: 0.3; }
+      50% { transform: scaleY(1); opacity: 1; }
+    }
+
+    /* ============================================================
+    SECTION HEADING
+    ============================================================ */
+    .section-heading {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-heading span {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    body.dark-theme .section-heading span {
+      color: #60a5fa;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      color: var(--text-dark);
+      transition: var(--transition);
+    }
+
+    body.dark-theme .section-heading h2 {
+      color: #e2e8f0;
+    }
+
+    .section-heading h2 strong {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-heading p {
+      font-size: 18px;
+      color: var(--text-gray);
+      max-width: 600px;
+      margin: 12px auto 0;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .section-heading p {
+      color: #94a3b8;
+    }
+
+    /* ============================================================
+    SPACE INTRO - با شمارنده متحرک
+    ============================================================ */
+    .space-intro {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .space-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .space-stat-card {
+      text-align: center;
+      padding: 30px 20px;
+      background: var(--bg-white);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      transition: var(--transition);
+      cursor: default;
+    }
+
+    body.dark-theme .space-stat-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    .space-stat-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .space-stat-card span {
+      font-size: 36px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .space-stat-card .stat-number {
+      display: block;
+      font-size: 32px;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .space-stat-card small {
+      font-size: 14px;
+      color: var(--text-gray);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .space-stat-card small {
+      color: #94a3b8;
+    }
+
+    /* ============================================================
+    SPACE EXPLORE - با قفل و قابلیت‌های Zenverix
+    ============================================================ */
+    .space-explore {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .space-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .space-card {
+      position: relative;
+      padding: 36px 30px;
+      background: var(--bg-white);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: var(--transition);
+      overflow: hidden;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      min-height: 200px;
+    }
+
+    body.dark-theme .space-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    .space-card:hover:not(.locked) {
+      transform: translateY(-8px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .space-card.locked {
+      opacity: 0.7;
+      cursor: not-allowed;
+      filter: grayscale(0.5);
+      position: relative;
+    }
+
+    .space-card.locked::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: var(--radius);
+      z-index: 2;
+    }
+
+    body:not(.dark-theme) .space-card.locked::before {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .space-card.locked .lock-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 48px;
+      color: var(--primary);
+      z-index: 3;
+      opacity: 0.8;
+      animation: lockPulse 2s ease-in-out infinite;
+    }
+
+    body.dark-theme .space-card.locked .lock-icon {
+      color: #60a5fa;
+    }
+
+    @keyframes lockPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .space-card.locked .card-content {
+      opacity: 0.5;
+    }
+
+    .space-card.locked .card-link {
+      color: var(--text-light) !important;
+    }
+
+    .space-card.locked .card-tag {
+      background: var(--danger) !important;
+      color: white !important;
+    }
+
+    body.dark-theme .space-card.locked .card-tag {
+      background: #dc2626 !important;
+    }
+
+    .space-card.large {
+      grid-column: span 2;
+    }
+
+    .space-card.full {
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 768px) {
+      .space-card.large,
+      .space-card.full {
+        grid-column: span 1;
+      }
+    }
+
+    .card-glow {
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.05), transparent 70%);
+      opacity: 0;
+      transition: var(--transition);
+      pointer-events: none;
+    }
+
+    .space-card:hover:not(.locked) .card-glow {
+      opacity: 1;
+    }
+
+    .card-icon {
+      font-size: 40px;
+      flex-shrink: 0;
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(37, 99, 235, 0.08);
+      border-radius: 14px;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .card-icon {
+      background: rgba(96, 165, 250, 0.08);
+    }
+
+    .space-card:hover:not(.locked) .card-icon {
+      background: var(--gradient-primary);
+      transform: scale(1.05) rotate(-5deg);
+    }
+
+    .card-content {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-number {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-light);
+      letter-spacing: 2px;
+      display: block;
+      margin-bottom: 4px;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .card-number {
+      color: #64748b;
+    }
+
+    .card-content h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .card-content h3 {
+      color: #e2e8f0;
+    }
+
+    .card-content p {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      margin-bottom: 14px;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .card-content p {
+      color: #94a3b8;
+    }
+
+    .card-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    body.dark-theme .card-link {
+      color: #60a5fa;
+    }
+
+    .space-card:hover:not(.locked) .card-link {
+      transform: translateX(4px);
+    }
+
+    .card-tag {
+      display: inline-block;
+      padding: 2px 14px;
+      background: rgba(37, 99, 235, 0.1);
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-top: 6px;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .card-tag {
+      background: rgba(96, 165, 250, 0.1);
+      color: #60a5fa;
+    }
+
+    .space-card:hover:not(.locked) .card-tag {
+      background: var(--gradient-primary);
+      color: white;
+    }
+
+    .zen-features {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .zen-feature {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-light);
+      background: var(--bg-light);
+      padding: 2px 10px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    body.dark-theme .zen-feature {
+      background: #0f172a;
+      border-color: #334155;
+      color: #94a3b8;
+    }
+
+    .space-card:hover:not(.locked) .zen-feature {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    body.dark-theme .space-card:hover:not(.locked) .zen-feature {
+      border-color: #60a5fa;
+      color: #60a5fa;
+    }
+
+    /* ============================================================
+    SPACE ACADEMY
+    ============================================================ */
+    .space-academy {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .academy-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--bg-white);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 60px 40px;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .academy-content {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    .academy-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    body.dark-theme .academy-label {
+      color: #60a5fa;
+    }
+
+    .academy-content h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    body.dark-theme .academy-content h2 {
+      color: #e2e8f0;
+    }
+
+    .academy-content h2 span {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .academy-content > p {
+      font-size: 18px;
+      color: var(--text-gray);
+      max-width: 500px;
+      margin: 0 auto 32px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .academy-content > p {
+      color: #94a3b8;
+    }
+
+    .academy-path {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .academy-path .course-card {
+      padding: 20px 16px;
+      background: var(--bg-light);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.dark-theme .academy-path .course-card {
+      background: #0f172a;
+      border-color: #334155;
+    }
+
+    .academy-path .course-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .academy-path .course-card .course-icon {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .academy-path .course-card span {
+      display: block;
+      font-size: 11px;
+      color: var(--text-light);
+      font-weight: 600;
+      margin-bottom: 2px;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .academy-path .course-card span {
+      color: #64748b;
+    }
+
+    .academy-path .course-card strong {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+      transition: var(--transition);
+    }
+
+    body.dark-theme .academy-path .course-card strong {
+      color: #e2e8f0;
+    }
+
+    .academy-path .course-card .course-progress {
+      margin-top: 10px;
+      height: 4px;
+      background: var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .academy-path .course-card .course-progress .progress-bar {
+      height: 100%;
+      background: var(--gradient-primary);
+      border-radius: 10px;
+      transition: width 1s ease;
+    }
+
+    /* ============================================================
+    TESTIMONIALS
+    ============================================================ */
+    .space-testimonials {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      padding: 30px;
+      background: var(--bg-white);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+
+    body.dark-theme .testimonial-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonial-card .stars {
+      color: var(--warning);
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .testimonial-card blockquote {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      font-style: italic;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .testimonial-card blockquote {
+      color: #94a3b8;
+    }
+
+    .testimonial-card .author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-card .author .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .testimonial-card .author .info strong {
+      display: block;
+      font-size: 15px;
+      color: var(--text-dark);
+      transition: var(--transition);
+    }
+
+    body.dark-theme .testimonial-card .author .info strong {
+      color: #e2e8f0;
+    }
+
+    .testimonial-card .author .info small {
+      font-size: 12px;
+      color: var(--text-light);
+    }
+
+    /* ============================================================
+    SPACE TIME
+    ============================================================ */
+    .space-time {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .time-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .time-buttons a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: var(--bg-white);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text-dark);
+      transition: var(--transition);
+    }
+
+    body.dark-theme .time-buttons a {
+      background: #1e293b;
+      border-color: #334155;
+      color: #e2e8f0;
+    }
+
+    .time-buttons a:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ============================================================
+    BLOG / ARTICLES
+    ============================================================ */
+    .space-blog {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .blog-card {
+      background: var(--bg-white);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: var(--transition);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    body.dark-theme .blog-card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+
+    .blog-card .blog-image {
+      height: 180px;
+      background: var(--gradient-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+
+    .blog-card .blog-content {
+      padding: 24px;
+    }
+
+    .blog-card .blog-content .blog-meta {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+
+    .blog-card .blog-content h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .blog-card .blog-content h3 {
+      color: #e2e8f0;
+    }
+
+    .blog-card .blog-content p {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.6;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .blog-card .blog-content p {
+      color: #94a3b8;
+    }
+
+    /* ============================================================
+    SPACE CTA
+    ============================================================ */
+    .space-cta {
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .space-cta span {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 6px;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    body.dark-theme .space-cta span {
+      color: #60a5fa;
+    }
+
+    .space-cta h2 {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .space-cta h2 {
+      color: #e2e8f0;
+    }
+
+    .space-cta h2 strong {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .space-cta p {
+      font-size: 18px;
+      color: var(--text-gray);
+      margin-bottom: 32px;
+      transition: var(--transition);
+    }
+
+    body.dark-theme .space-cta p {
+      color: #94a3b8;
+    }
+
+    /* ============================================================
+    FOOTER
+    ============================================================ */
+    footer {
+      margin-top: 40px;
+      padding: 40px 0 20px;
+      border-top: 1px solid var(--border-color);
+      background: var(--bg-white);
+      transition: var(--transition);
+      border-radius: var(--radius);
+      margin-bottom: 100px;
+    }
+    body.dark-theme footer {
+      background: #0f172a;
+      border-color: #1e293b;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 2fr 3fr 2fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .footer-brand { text-align: left; }
+    .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .footer-logo-img { height: 36px; width: auto; display: block; }
+    .footer-logo-name {
+      font-size: 22px;
+      font-weight: 700;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: var(--transition);
+    }
+    .footer-tagline {
+      font-size: 14px;
+      color: var(--text-gray);
+      margin: 0 0 12px 0;
+      transition: var(--transition);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      color: var(--text-gray);
+      font-size: 16px;
+      transition: var(--transition);
+      border: 1px solid var(--border-color);
+      text-decoration: none;
+    }
+    .footer-social a:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    .footer-links-column h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      transition: var(--transition);
+    }
+    .footer-links-column a {
+      display: block;
+      font-size: 13px;
+      color: var(--text-gray);
+      text-decoration: none;
+      padding: 4px 0;
+      transition: var(--transition);
+    }
+    .footer-links-column a:hover { color: var(--primary); transform: translateX(4px); }
+
+    .footer-version { text-align: right; }
+    .version-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 16px;
+      background: var(--gradient-primary);
+      color: white;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: var(--transition);
+    }
+    .version-details {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--text-light);
+    }
+
+    .footer-bottom {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+      margin-top: 10px;
+      transition: var(--transition);
+    }
+    .footer-copyright {
+      font-size: 14px;
+      color: var(--text-gray);
+      transition: var(--transition);
+    }
+
+    /* ============================================================
+    WHATSAPP FLOAT
+    ============================================================ */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      z-index: 1000;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #25D366;
+      color: white;
+      font-size: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+      color: white;
+    }
+    .whatsapp-float::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #25D366;
+      animation: whatsappPulse 2s ease-in-out infinite;
+      z-index: -1;
+    }
+    @keyframes whatsappPulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.3); opacity: 0; }
+    }
+
+    /* ============================================================
+    BACK TO TOP
+    ============================================================ */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+      transition: var(--transition);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .back-to-top:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 8px 30px rgba(37, 99, 235, 0.6); }
+    .back-to-top.show { display: flex; }
+
+    /* ============================================================
+    RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1200px) {
+      body { padding: 0 30px; }
+      .space-intro, .space-explore, .space-academy, .space-time, .space-cta,
+      .space-testimonials, .space-blog {
+        padding: 60px 20px;
+      }
+      .space-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      body { padding: 0 20px; }
+      header { padding: 12px 30px; margin: 16px 0; }
+      .space-hero { min-height: 70vh; }
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 30px; }
+      .footer-brand { text-align: center; }
+      .footer-logo { justify-content: center; }
+      .footer-social { justify-content: center; }
+      .footer-version { text-align: center; }
+      .space-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 0 16px; }
+      header { padding: 12px 16px; margin: 12px 0; }
+      
+      .hamburger { display: block; }
+      nav {
+        display: none;
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px;
+        background: var(--bg-white);
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border-color);
+        box-shadow: var(--shadow-md);
+        position: absolute;
+        top: 70px;
+        left: 16px;
+        right: 16px;
+        z-index: 999;
+        width: auto;
+      }
+      body.dark-theme nav { background: #1e293b; border-color: #334155; }
+      nav.active { display: flex; }
+      nav a { font-size: 16px; }
+
+      .space-hero { min-height: 60vh; padding: 60px 20px; border-radius: var(--radius-sm); }
+      .space-orb { display: none; }
+      .space-hero-content h1 { font-size: 32px; }
+      
+      .space-intro, .space-explore, .space-academy, .space-time, .space-cta,
+      .space-testimonials, .space-blog {
+        padding: 40px 0;
+      }
+      
+      .space-stats { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .space-grid { 
+        grid-template-columns: 1fr; 
+        gap: 20px;
+      }
+      .space-card { 
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center; 
+        padding: 28px 20px;
+        min-height: auto;
+      }
+      .card-icon { width: 56px; height: 56px; font-size: 32px; }
+      .card-content h3 { font-size: 20px; }
+      
+      .academy-content { padding: 40px 20px; }
+      .academy-path { grid-template-columns: repeat(2, 1fr); }
+      
+      .time-buttons a { width: 100%; justify-content: center; }
+      
+      .footer-container { 
+        grid-template-columns: 1fr; 
+        gap: 30px; 
+        text-align: center;
+        padding: 0 20px;
+      }
+      .footer-links { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .footer-brand { text-align: center; }
+      .footer-logo { justify-content: center; }
+      .footer-social { justify-content: center; }
+      .footer-version { text-align: center; }
+      
+      .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; font-size: 18px; }
+      .whatsapp-float { width: 50px; height: 50px; font-size: 26px; bottom: 20px; left: 20px; }
+      
+      .space-card.locked .lock-icon {
+        font-size: 32px;
+      }
+      
+      .testimonials-grid,
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .toast-container {
+        right: 16px;
+        left: 16px;
+        max-width: none;
+        top: 80px;
+      }
+      
+      .modal-box {
+        padding: 28px 20px;
+        margin: 0 10px;
+      }
+
+      .countdown-timer {
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .countdown-item {
+        min-width: 60px;
+        padding: 12px 16px;
+      }
+
+      .countdown-item .num {
+        font-size: 24px;
+      }
+
+      .search-bar {
+        flex-direction: column;
+        padding: 12px;
+        border-radius: var(--radius-sm);
+      }
+
+      .search-bar input {
+        width: 100%;
+        padding: 10px 12px;
+      }
+
+      .search-bar .search-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 10px;
+      }
+
+      .recommended-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-panel {
+        padding: 20px;
+      }
+
+      .admin-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .admin-toggle {
+        bottom: 90px;
+        right: 16px;
+        width: 44px;
+        height: 44px;
+        font-size: 17px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 0 12px; }
+      .space-hero-content h1 { font-size: 26px; }
+      .space-actions { flex-direction: column; align-items: center; }
+      .space-btn { width: 100%; justify-content: center; }
+      .space-stats { grid-template-columns: 1fr; }
+      .academy-path { grid-template-columns: 1fr; }
+      .footer-links { grid-template-columns: 1fr; gap: 20px; }
+      .footer-links-column { text-align: center; }
+      .footer-links-column a { display: inline-block; padding: 4px 12px; }
+      .footer-links-column a:hover { transform: translateX(0); }
+      .whatsapp-float { width: 44px; height: 44px; font-size: 22px; bottom: 16px; left: 16px; }
+      .back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 16px; }
+      .space-card { padding: 20px 16px; }
+      .card-icon { width: 48px; height: 48px; font-size: 28px; }
+      .card-content h3 { font-size: 18px; }
+      .space-card.locked .lock-icon {
+        font-size: 24px;
+      }
+
+      .countdown-item {
+        min-width: 50px;
+        padding: 8px 12px;
+      }
+
+      .countdown-item .num {
+        font-size: 20px;
+      }
+
+      .countdown-item .label {
+        font-size: 10px;
+      }
+
+      .admin-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ============================================================
+  TOAST CONTAINER
+  ============================================================ -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ============================================================
+  COURSE MODAL
+  ============================================================ -->
+  <div class="modal-overlay" id="courseModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <span class="modal-icon" id="modalIcon">🌐</span>
+      <h3 id="modalTitle">HTML</h3>
+      <p class="modal-desc" id="modalDesc">دوره جامع HTML از مقدماتی تا پیشرفته. یادگیری ساختار وب‌سایت‌ها با جدیدترین استانداردها.</p>
+      <div class="modal-level">
+        <span id="modalLevel">📊 سطح: مبتدی تا پیشرفته</span>
+        <span id="modalDuration">⏱️ مدت: ۱۲ ساعت</span>
+      </div>
+      <div class="rating-stars" id="modalRating">
+        <span class="star" data-value="1">⭐</span>
+        <span class="star" data-value="2">⭐</span>
+        <span class="star" data-value="3">⭐</span>
+        <span class="star" data-value="4">⭐</span>
+        <span class="star" data-value="5">⭐</span>
+      </div>
+      <button class="modal-btn" onclick="closeModal()">🚀 شروع دوره</button>
+      <button class="fav-btn" onclick="toggleFavorite(event)" style="margin-top:12px; display:block; width:100%; text-align:center; padding:8px; background:var(--bg-light); border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+        ❤️ افزودن به علاقه‌مندی‌ها
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+  SCROLL PROGRESS
+  ============================================================ -->
+  <div class="scroll-progress">
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+  </div>
+
+  <!-- ============================================================
+  HEADER
+  ============================================================ -->
+  <header>
+    <div class="logo">
+      <span class="logo-name">TahaAcademy</span>
+    </div>
+
+    <nav id="mainNav">
+      <a href="#hero" class="active">خانه</a>
+      <a href="#intro">درباره</a>
+      <a href="#explore">فضا</a>
+      <a href="#academy">آکادمی</a>
+      <a href="#testimonials">نظرات</a>
+      <a href="#blog">مقالات</a>
+      <a href="#time">زمان</a>
+      <a href="./contact/contact_us.html">تماس</a>
+      <a href="./project/servic.html" target="_blank">درخواست پروژه</a>
+      <a href="./login/templates/index.html" id="loginLink">ثبت نام</a>
+    </nav>
+
+    <div class="header-controls">
+      <button class="notification-btn" onclick="showNotification()" aria-label="اعلان‌ها">
+        <i class="fas fa-bell"></i>
+        <span class="notification-badge" id="notifBadge">3</span>
+      </button>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="تغییر تم">
+        <i class="fas fa-moon" id="themeIcon"></i>
+      </button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="منو" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================================================
+  ZENVERIX SPACE MAIN
+  ============================================================ -->
+   <main class="zen-space">
+
+    <!-- ========== SPACE HERO ========== -->
+    <section class="space-hero" id="hero" data-aos="fade-up" data-aos-duration="1000">
+      <div class="space-orb orb-1"></div>
+      <div class="space-orb orb-2"></div>
+      <div class="space-orb orb-3"></div>
+
+      <div class="space-hero-content">
+        <span class="space-badge" data-aos="fade-down" data-aos-delay="200">✨ ZENVERIX SPACE</span>
+        <h1 data-aos="fade-up" data-aos-delay="300">کاوش در <span>بی‌نهایت</span></h1>
+        <p data-aos="fade-up" data-aos-delay="400">
+          جایی برای کشف فضا، علم، تکنولوژی، برنامه‌نویسی و مسیرهای یادگیری مدرن.
+          <br>
+          <strong style="color: var(--primary);">TahaAcademy</strong> × <strong style="color: var(--secondary);">Zenverix Space</strong>
+        </p>
+        <div class="space-actions" data-aos="fade-up" data-aos-delay="500">
+          <a href="#academy" class="space-btn primary">شروع یادگیری</a>
+          <a href="#explore" class="space-btn secondary">کاوش Space</a>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span></span>
+        اسکرول برای کاوش
+      </div>
+    </section>
+
+    <!-- ========== SEARCH BAR - جدید ========== -->
+    <div class="search-container" data-aos="fade-up">
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="جستجوی دوره‌ها، مقالات، بخش‌های Space..." />
+        <button class="search-btn" onclick="performSearch()">
+          <i class="fas fa-search"></i> جستجو
+        </button>
+      </div>
+      <div class="search-filters">
+        <button class="filter-btn active" data-filter="all">همه</button>
+        <button class="filter-btn" data-filter="space">🌌 فضا</button>
+        <button class="filter-btn" data-filter="tech">💻 تکنولوژی</button>
+        <button class="filter-btn" data-filter="ai">🤖 هوش مصنوعی</button>
+        <button class="filter-btn" data-filter="programming">📚 برنامه‌نویسی</button>
+      </div>
+    </div>
+
+    <!-- ========== COUNTDOWN TIMER - جدید ========== -->
+    <div class="countdown-section" data-aos="fade-up">
+      <h3>🔥 تخفیف ویژه ثبت‌نام</h3>
+      <p>تا پایان تخفیف ویژه ۵۰٪ باقی مونده:</p>
+      <div class="countdown-timer" id="countdownTimer">
+        <div class="countdown-item">
+          <span class="num" id="countDays">00</span>
+          <span class="label">روز</span>
+        </div>
+        <div class="countdown-item">
+          <span class="num" id="countHours">00</span>
+          <span class="label">ساعت</span>
+        </div>
+        <div class="countdown-item">
+          <span class="num" id="countMinutes">00</span>
+          <span class="label">دقیقه</span>
+        </div>
+        <div class="countdown-item">
+          <span class="num" id="countSeconds">00</span>
+          <span class="label">ثانیه</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== LEARNING PROGRESS - جدید ========== -->
+    <div class="learning-progress" data-aos="fade-up">
+      <div class="progress-header">
+        <h4>📊 مسیر یادگیری شما</h4>
+        <span id="progressPercentage">۴۲٪</span>
+      </div>
+      <div class="progress-track">
+        <div class="fill" id="learningProgressFill" style="width: 42%;"></div>
+      </div>
+      <div style="display:flex; gap:16px; margin-top:12px; flex-wrap:wrap; font-size:14px; color:var(--text-gray);">
+        <span>✅ HTML - تکمیل شده</span>
+        <span>🔄 CSS - ۸۵٪</span>
+        <span>⏳ JavaScript - ۶۰٪</span>
+        <span>⏳ Python - ۴۰٪</span>
+        <span>⏳ AI - ۱۵٪</span>
+      </div>
+    </div>
+
+    <!-- ========== INTRO / STATS ========== -->
+    <section class="space-intro" id="intro">
+      <div class="section-heading" data-aos="fade-up">
+        <span>01 / DISCOVER</span>
+        <h2>به <strong>Zenverix Space</strong> خوش آمدید</h2>
+        <p>یک فضای دیجیتال برای یادگیری، کشف و تجربه؛ از اعماق کیهان تا دنیای کدنویسی و هوش مصنوعی.</p>
+      </div>
+
+      <div class="space-stats">
+        <div class="space-stat-card" data-aos="fade-up" data-aos-delay="100">
+          <span>🌌</span>
+          <span class="stat-number" data-target="12">0</span>
+          <small>بخش تخصصی Space</small>
+        </div>
+        <div class="space-stat-card" data-aos="fade-up" data-aos-delay="200">
+          <span>💻</span>
+          <span class="stat-number" data-target="6">0</span>
+          <small>مسیر برنامه‌نویسی</small>
+        </div>
+        <div class="space-stat-card" data-aos="fade-up" data-aos-delay="300">
+          <span>👨‍🎓</span>
+          <span class="stat-number" data-target="150">0</span>
+          <small>دانشجوی فعال</small>
+        </div>
+        <div class="space-stat-card" data-aos="fade-up" data-aos-delay="400">
+          <span>🧠</span>
+          <span class="stat-number" data-target="∞">∞</span>
+          <small>ایده و دانش</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== RECOMMENDED COURSES - جدید ========== -->
+    <section class="recommended-section">
+      <div class="section-heading" data-aos="fade-up">
+        <span>🔥 RECOMMENDED</span>
+        <h2>دوره‌های <strong>پیشنهادی</strong></h2>
+        <p>بر اساس علاقه‌مندی‌های شما</p>
+      </div>
+
+      <div class="recommended-grid" id="recommendedGrid">
+        <!-- کارت‌ها توسط JS ساخته می‌شن -->
+      </div>
+    </section>
+
+    <!-- ========== EXPLORE / SPACE GRID ========== -->
+    <section class="space-explore" id="explore">
+      <div class="section-heading" data-aos="fade-up">
+        <span>02 / EXPLORE</span>
+        <h2>دنیای <strong>Zenverix</strong></h2>
+        <p>۱۲ بخش ویژه برای کاوش در دنیای علم، فضا و تکنولوژی</p>
+      </div>
+
+      <div class="space-grid" id="spaceGrid">
+        <!-- بخش‌ها توسط JS ساخته می‌شن -->
+      </div>
+    </section>
+
+    <!-- ========== ACADEMY ========== -->
+    <section class="space-academy" id="academy">
+      <div class="academy-content" data-aos="fade-up">
+        <span class="academy-label">TAHAACADEMY × ZENVERIX</span>
+        <h2>Learn. <span>Build.</span> Grow.</h2>
+        <p>مسیر یادگیری خودت را بساز و قدم‌به‌قدم مهارت‌های واقعی دنیای تکنولوژی را یاد بگیر.</p>
+        
+        <div class="academy-path" id="academyPath">
+          <!-- کارت‌ها توسط JS ساخته می‌شن -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== POLL / SURVEY - جدید ========== -->
+    <div class="poll-section" data-aos="fade-up">
+      <h4>📊 نظر سنجی: کدام بخش بیشتر دوست داری؟</h4>
+      <div id="pollContainer">
+        <div class="poll-option" data-value="space" onclick="selectPollOption(this)">
+          <div class="poll-radio"></div>
+          <span class="poll-label">🌌 فضا و کیهان</span>
+          <span class="poll-votes">۴۲ رای</span>
+          <div class="poll-bar"><div class="fill" style="width: 42%;"></div></div>
+        </div>
+        <div class="poll-option" data-value="tech" onclick="selectPollOption(this)">
+          <div class="poll-radio"></div>
+          <span class="poll-label">💻 تکنولوژی و برنامه‌نویسی</span>
+          <span class="poll-votes">۳۵ رای</span>
+          <div class="poll-bar"><div class="fill" style="width: 35%;"></div></div>
+        </div>
+        <div class="poll-option" data-value="ai" onclick="selectPollOption(this)">
+          <div class="poll-radio"></div>
+          <span class="poll-label">🤖 هوش مصنوعی</span>
+          <span class="poll-votes">۲۳ رای</span>
+          <div class="poll-bar"><div class="fill" style="width: 23%;"></div></div>
+        </div>
+      </div>
+      <button class="poll-submit" onclick="submitPoll()">ثبت نظر</button>
+      <div class="poll-results" id="pollResults">
+        <p style="color: var(--text-gray);">✅ نظر شما ثبت شد! متشکریم.</p>
+      </div>
+    </div>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="space-testimonials" id="testimonials">
+      <div class="section-heading" data-aos="fade-up">
+        <span>03 / TESTIMONIALS</span>
+        <h2>نظرات <strong>دانشجویان</strong></h2>
+        <p>آنچه دانشجویان درباره تجربه یادگیری خود می‌گویند</p>
+      </div>
+
+      <div class="testimonials-grid" id="testimonialsGrid">
+        <!-- نظرات توسط JS ساخته می‌شن -->
+      </div>
+    </section>
+
+    <!-- ========== BLOG ========== -->
+    <section class="space-blog" id="blog">
+      <div class="section-heading" data-aos="fade-up">
+        <span>04 / BLOG</span>
+        <h2>جدیدترین <strong>مقالات</strong></h2>
+        <p>مطالب آموزشی و علمی به‌روز</p>
+      </div>
+
+      <div class="blog-grid" id="blogGrid">
+        <!-- مقالات توسط JS ساخته می‌شن -->
+      </div>
+    </section>
+
+    <!-- ========== TIME ========== -->
+    <section class="space-time" id="time">
+      <div class="section-heading" data-aos="fade-up">
+        <span>05 / TIME</span>
+        <h2>World <strong>Time</strong></h2>
+        <p>زمان جهان را در یک نگاه بررسی کن.</p>
+      </div>
+
+      <div class="time-buttons">
+        <a href="./important/index.html" data-aos="fade-up" data-aos-delay="100">🌍 ساعت جهانی</a>
+        <a href="./time/index.html" data-aos="fade-up" data-aos-delay="200">⏰ زمان دقیق کشورها</a>
+        <a href="#" data-aos="fade-up" data-aos-delay="300">📚 مقالات زمان</a>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="space-cta" data-aos="fade-up">
+      <div class="cta-glow"></div>
+      <span>ZENVERIX</span>
+      <h2>Your journey <strong>starts here.</strong></h2>
+      <p>یاد بگیر، بساز و فراتر از محدودیت‌ها حرکت کن.</p>
+      <a href="#academy" class="space-btn primary">ورود به آکادمی 🚀</a>
+    </section>
+
+    <!-- ========== ADMIN PANEL - جدید ========== -->
+    <div class="admin-panel" id="adminPanel">
+      <h3>👑 پنل مدیریت</h3>
+      <div class="admin-stats">
+        <div class="admin-stat">
+          <div class="num">۱۵۶</div>
+          <div class="label">دانشجوی کل</div>
+        </div>
+        <div class="admin-stat">
+          <div class="num">۱۲</div>
+          <div class="label">دوره فعال</div>
+        </div>
+        <div class="admin-stat">
+          <div class="num">۴.۸</div>
+          <div class="label">میانگین امتیاز</div>
+        </div>
+        <div class="admin-stat">
+          <div class="num">۸۹٪</div>
+          <div class="label">رضایت کاربران</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <button class="space-btn primary" style="padding:8px 20px; font-size:13px;">➕ افزودن دوره</button>
+        <button class="space-btn secondary" style="padding:8px 20px; font-size:13px;">📊 گزارشات</button>
+        <button class="space-btn secondary" style="padding:8px 20px; font-size:13px;">👥 مدیریت کاربران</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ============================================================
+  FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand" data-aos="fade-up">
+        <div class="footer-logo">
+          <span class="footer-logo-name">TahaAcademy</span>
+        </div>
+        <p class="footer-tagline">آموزش تکنولوژی، فضا و برنامه‌نویسی</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/tahaacademy" target="_blank" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+          <a href="https://github.com/tahaacademy" target="_blank" aria-label="گیت‌هاب"><i class="fab fa-github"></i></a>
+          <a href="https://youtube.com/@tahaacademy" target="_blank" aria-label="یوتیوب"><i class="fab fa-youtube"></i></a>
+          <a href="https://t.me/tahaacademy" target="_blank" aria-label="تلگرام"><i class="fab fa-telegram-plane"></i></a>
+          <a href="https://wa.me/989123456789" target="_blank" aria-label="واتساپ"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
+        <div class="footer-links-column">
+          <h4>دسترسی سریع</h4>
+          <a href="#hero">خانه</a>
+          <a href="#intro">درباره</a>
+          <a href="#explore">فضا</a>
+          <a href="#academy">آکادمی</a>
+          <a href="#testimonials">نظرات</a>
+        </div>
+        <div class="footer-links-column">
+          <h4>دوره‌ها</h4>
+          <a href="./html/nasa.html">ناسا</a>
+          <a href="./Space/space_new.html">فضا و زمان</a>
+          <a href="./html/tech.html">تکنولوژی</a>
+          <a href="#">AI Lab</a>
+        </div>
+        <div class="footer-links-column">
+          <h4>ارتباط</h4>
+          <a href="./contact/contact_us.html">تماس با ما</a>
+          <a href="./project/servic.html">درخواست پروژه</a>
+          <a href="./login/templates/index.html">ثبت نام</a>
+        </div>
+      </div>
+
+      <div class="footer-version" data-aos="fade-up" data-aos-delay="200">
+        <div class="version-badge">
+          <i class="fas fa-code"></i>
+          v3.0
+        </div>
+        <div class="version-details">
+          <i class="fas fa-calendar-alt"></i> ۲۰۲۵
+          <br>
+          <i class="fas fa-heart" style="color: var(--primary);"></i> TahaAcademy
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          © ۲۰۲۵ TahaAcademy — ساخته‌شده با ❤️، کد و خلاقیت | تمامی حقوق محفوظ است
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+  ADMIN TOGGLE - جدید
+  ============================================================ -->
+  <button class="admin-toggle" onclick="toggleAdminPanel()" aria-label="پنل مدیریت">
+    <i class="fas fa-crown"></i>
+  </button>
+
+  <!-- ============================================================
+  WHATSAPP FLOAT
+  ============================================================ -->
+  <a href="https://wa.me/989123456789" class="whatsapp-float" target="_blank" aria-label="واتساپ">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- ============================================================
+  BACK TO TOP
+  ============================================================ -->
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="بازگشت به بالا">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- ============================================================
+  SCRIPTS
+  ============================================================ -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // ============================================================
+    // DATA
+    // ============================================================
+    const spaceData = [
+      { id: 1, title: 'Space & Universe', icon: '🌌', desc: 'سفر به دنیای فضا، زمان، سیارات، کهکشان‌ها و رازهای کیهان.', tags: ['ویژه', 'اکتشاف', '۴K'], link: './Space/space_new.html', category: 'space' },
+      { id: 2, title: 'NASA', icon: '🚀', desc: 'مأموریت‌ها، اکتشافات و تازه‌ترین دستاوردهای فضایی.', tags: ['علمی', 'اخبار'], link: './html/nasa.html', category: 'space' },
+      { id: 3, title: 'Technology', icon: '💻', desc: 'دنیای برنامه‌نویسی، تکنولوژی، توسعه وب و آینده دیجیتال.', tags: ['کدنویسی', 'یادگیری'], link: './html/tech.html', category: 'tech' },
+      { id: 4, title: 'AI Lab', icon: '🤖', desc: 'هوش مصنوعی، یادگیری ماشین و فناوری‌های آینده.', tags: ['AI', 'رباتیک'], link: '#', category: 'ai', locked: true },
+      { id: 5, title: 'Science', icon: '🔬', desc: 'مقالات علمی و مفاهیم جذاب فیزیک و تکنولوژی.', tags: ['آزمایشگاه', 'مقالات'], link: '#', category: 'space', locked: true },
+      { id: 6, title: 'World Time', icon: '🌍', desc: 'مشاهده ساعت و زمان کشورهای مختلف جهان.', tags: ['زمان', 'جهانی'], link: './important/index.html', category: 'tech' },
+      { id: 7, title: 'Cybersecurity', icon: '🔒', desc: 'امنیت سایبری، حریم خصوصی و حفاظت از داده‌ها.', tags: ['امنیت', 'حریم'], link: '#', category: 'tech', locked: true },
+      { id: 8, title: 'Robotics', icon: '⚙️', desc: 'رباتیک، اتوماسیون و فناوری‌های مکاترونیک.', tags: ['اتوماسیون', 'مکاترونیک'], link: '#', category: 'tech', locked: true },
+      { id: 9, title: 'Quantum Computing', icon: '⚛️', desc: 'رایانش کوانتومی و آینده محاسبات.', tags: ['کوانتوم', 'محاسبات'], link: '#', category: 'ai', locked: true },
+      { id: 10, title: 'Data Science', icon: '📊', desc: 'تحلیل داده، بیگ دیتا و علم داده.', tags: ['تحلیل', 'Big Data'], link: '#', category: 'tech', locked: true },
+      { id: 11, title: 'Space Technology', icon: '🛸', desc: 'تکنولوژی فضایی، ماهواره‌ها و اکتشافات.', tags: ['ماهواره', 'اکتشاف'], link: '#', category: 'space', locked: true },
+      { id: 12, title: 'Future & Innovation', icon: '🌟', desc: 'نوآوری، آینده‌پژوهی و تکنولوژی‌های فردا.', tags: ['نوآوری', 'آینده', 'خلاقیت'], link: '#', category: 'ai', locked: true }
+    ];
+
+    const coursesData = [
+      { id: 1, title: 'HTML', icon: '🌐', desc: 'دوره جامع HTML از مقدماتی تا پیشرفته.', level: 'مبتدی تا پیشرفته', duration: '۱۲ ساعت', progress: 100 },
+      { id: 2, title: 'CSS', icon: '🎨', desc: 'دوره جامع CSS شامل Flexbox، Grid و انیمیشن‌ها.', level: 'متوسط', duration: '۱۵ ساعت', progress: 85 },
+      { id: 3, title: 'JavaScript', icon: '⚡', desc: 'دوره کامل JavaScript شامل ES6، DOM و Fetch API.', level: 'متوسط تا پیشرفته', duration: '۲۰ ساعت', progress: 60 },
+      { id: 4, title: 'Python', icon: '🐍', desc: 'آموزش Python از صفر تا صد شامل متغیرها، توابع و کلاس‌ها.', level: 'مبتدی تا پیشرفته', duration: '۲۵ ساعت', progress: 40 },
+      { id: 5, title: 'Git & GitHub', icon: '🔧', desc: 'کار با Git و GitHub، مدیریت نسخه و همکاری تیمی.', level: 'مبتدی تا متوسط', duration: '۸ ساعت', progress: 30 },
+      { id: 6, title: 'AI', icon: '🧠', desc: 'مبانی هوش مصنوعی و یادگیری ماشین شامل شبکه‌های عصبی.', level: 'پیشرفته', duration: '۳۰ ساعت', progress: 15 }
+    ];
+
+    const testimonialsData = [
+      { name: 'محمد رضایی', avatar: 'م', role: 'توسعه‌دهنده وب', text: 'بهترین آکادمی برای یادگیری برنامه‌نویسی! دوره‌ها فوق‌العاده کاربردی و مدرس‌ها بسیار حرفه‌ای هستند.', stars: 5 },
+      { name: 'سارا کریمی', avatar: 'س', role: 'دانشجوی فیزیک', text: 'بخش Space و NASA تاحالا جایی ندیدم! واقعاً محتوای منحصربه‌فرد و جذابی دارن.', stars: 5 },
+      { name: 'علی محمدی', avatar: 'ع', role: 'برنامه‌نویس فول‌استک', text: 'از HTML تا AI، همه چیز رو قدم‌به‌قدم یاد گرفتم. TahaAcademy واقعاً تغییردهنده بود.', stars: 5 }
+    ];
+
+    const blogData = [
+      { id: 1, emoji: '🚀', title: 'آینده اکتشافات فضایی با هوش مصنوعی', desc: 'چگونه هوش مصنوعی در حال تغییر روش کاوش ما در فضا است؟', date: '۲۵ تیر ۱۴۰۴', readTime: '۵ دقیقه' },
+      { id: 2, emoji: '💻', title: '۱۰ تکنیک پیشرفته جاوااسکریپت', desc: 'مهارت‌هایی که هر توسعه‌دهنده وب باید بداند.', date: '۲۰ تیر ۱۴۰۴', readTime: '۷ دقیقه' },
+      { id: 3, emoji: '🧠', title: 'مبانی یادگیری ماشین برای مبتدیان', desc: 'شروع یادگیری ماشین از صفر تا صد.', date: '۱۵ تیر ۱۴۰۴', readTime: '۴ دقیقه' }
+    ];
+
+    const recommendedData = [
+      { id: 1, title: 'آموزش جامع React', icon: '⚛️', desc: 'از پایه تا پیشرفته با پروژه‌های عملی', badge: '🔥 محبوب', category: 'programming' },
+      { id: 2, title: 'مبانی هوش مصنوعی', icon: '🧠', desc: 'شروع یادگیری ماشین و شبکه‌های عصبی', badge: '✨ جدید', category: 'ai' },
+      { id: 3, title: 'برنامه‌نویسی موبایل', icon: '📱', desc: 'توسعه اپلیکیشن با React Native و Flutter', badge: '💡 پیشنهادی', category: 'programming' },
+      { id: 4, title: 'علوم فضایی', icon: '🌌', desc: 'کاوش در کهکشان‌ها و سیارات', badge: '🌟 ویژه', category: 'space' }
+    ];
+
+    // ============================================================
+    // RENDER FUNCTIONS
+    // ============================================================
+    function renderSpaceGrid(filter = 'all') {
+      const grid = document.getElementById('spaceGrid');
+      const filtered = filter === 'all' ? spaceData : spaceData.filter(item => item.category === filter);
+      
+      grid.innerHTML = filtered.map((item, index) => {
+        const lockedClass = item.locked ? 'locked' : '';
+        const sizeClass = item.id === 1 ? 'large' : (item.id === 12 ? 'full' : '');
+        const onClick = item.locked ? `onclick="showLockedAlert()"` : '';
+        const href = item.locked ? '#' : item.link;
+        
+        return `
+          <a href="${href}" class="space-card ${lockedClass} ${sizeClass}" ${onClick} data-aos="fade-up" data-aos-delay="${(index % 6) * 100 + 100}" data-category="${item.category}">
+            <div class="card-glow"></div>
+            ${item.locked ? '<div class="lock-icon"><i class="fas fa-lock"></i></div>' : ''}
+            <div class="card-icon">${item.icon}</div>
+            <div class="card-content">
+              <span class="card-number">${String(item.id).padStart(2, '0')}</span>
+              <h3>${item.title}</h3>
+              <p>${item.desc}</p>
+              <div class="zen-features">
+                ${item.tags.map(tag => `<span class="zen-feature"><i class="fas fa-circle" style="font-size:6px;"></i> ${tag}</span>`).join('')}
+              </div>
+              <span class="card-link">Explore →</span>
+              ${item.locked ? '<span class="card-tag">🔒 به زودی</span>' : '<span class="card-tag">✨ باز</span>'}
+            </div>
+          </a>
+        `;
+      }).join('');
+    }
+
+    function renderCourses() {
+      const container = document.getElementById('academyPath');
+      container.innerHTML = coursesData.map((course, index) => `
+        <div class="course-card" data-aos="fade-up" data-aos-delay="${(index % 6) * 100 + 100}" onclick="openCourseModal('${course.title}', '${course.icon}', '${course.desc}', '${course.level}', '${course.duration}')">
+          <span class="course-icon">${course.icon}</span>
+          <span>${String(index + 1).padStart(2, '0')}</span>
+          <strong>${course.title}</strong>
+          <div class="course-progress">
+            <div class="progress-bar" style="width: ${course.progress}%"></div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderTestimonials() {
+      const container = document.getElementById('testimonialsGrid');
+      container.innerHTML = testimonialsData.map((t, index) => `
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="${(index % 3) * 100 + 100}">
+          <div class="stars">${'★'.repeat(t.stars)}</div>
+          <blockquote>"${t.text}"</blockquote>
+          <div class="author">
+            <div class="avatar">${t.avatar}</div>
+            <div class="info">
+              <strong>${t.name}</strong>
+              <small>${t.role}</small>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderBlog() {
+      const container = document.getElementById('blogGrid');
+      container.innerHTML = blogData.map((b, index) => `
+        <a href="#" class="blog-card" data-aos="fade-up" data-aos-delay="${(index % 3) * 100 + 100}">
+          <div class="blog-image">${b.emoji}</div>
+          <div class="blog-content">
+            <div class="blog-meta">${b.date} • ${b.readTime} مطالعه</div>
+            <h3>${b.title}</h3>
+            <p>${b.desc}</p>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    function renderRecommended() {
+      const container = document.getElementById('recommendedGrid');
+      container.innerHTML = recommendedData.map((r, index) => `
+        <div class="recommended-card" data-aos="fade-up" data-aos-delay="${(index % 4) * 100 + 100}" data-category="${r.category}">
+          <span class="rec-badge">${r.badge}</span>
+          <div class="rec-icon">${r.icon}</div>
+          <h4>${r.title}</h4>
+          <p>${r.desc}</p>
+          <div class="rec-meta">
+            <span><i class="fas fa-users"></i> ۱۲۰+ دانشجو</span>
+            <span><i class="fas fa-star" style="color:var(--warning);"></i> ۴.۸</span>
+          </div>
+          <button class="rec-btn" onclick="showToast('🎯 دوره پیشنهادی', '${r.title} - شروع یادگیری!', 'success')">شروع یادگیری</button>
+        </div>
+      `).join('');
+    }
+
+    // ============================================================
+    // SEARCH
+    // ============================================================
+    function performSearch() {
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      if (!query) {
+        showToast('🔍 جستجو', 'لطفاً عبارت جستجو را وارد کنید.', 'warning');
+        return;
+      }
+
+      const allCards = document.querySelectorAll('.space-card, .recommended-card, .course-card, .blog-card');
+      let found = 0;
+      
+      allCards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(query)) {
+          card.style.display = '';
+          card.style.animation = 'none';
+          card.offsetHeight;
+          card.style.animation = 'modalScaleIn 0.3s ease forwards';
+          found++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (found === 0) {
+        showToast('😕 نتیجه‌ای یافت نشد', `برای "${query}" موردی پیدا نشد.`, 'warning');
+      } else {
+        showToast('✅ نتیجه جستجو', `${found} مورد برای "${query}" پیدا شد.`, 'success');
+      }
+    }
+
+    // Search on Enter
+    document.getElementById('searchInput').addEventListener('keyup', function(e) {
+      if (e.key === 'Enter') performSearch();
+    });
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.dataset.filter;
+        renderSpaceGrid(filter);
+        
+        // Show recommended based on filter
+        const recCards = document.querySelectorAll('.recommended-card');
+        recCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // ============================================================
+    // COUNTDOWN TIMER
+    // ============================================================
+    function startCountdown() {
+      // Set target date: 30 days from now
+      const target = new Date();
+      target.setDate(target.getDate() + 30);
+      
+      function update() {
+        const now = new Date();
+        const diff = target - now;
+        
+        if (diff <= 0) {
+          document.getElementById('countDays').textContent = '00';
+          document.getElementById('countHours').textContent = '00';
+          document.getElementById('countMinutes').textContent = '00';
+          document.getElementById('countSeconds').textContent = '00';
+          return;
+        }
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('countDays').textContent = String(days).padStart(2, '0');
+        document.getElementById('countHours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('countMinutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('countSeconds').textContent = String(seconds).padStart(2, '0');
+      }
+      
+      update();
+      setInterval(update, 1000);
+    }
+
+    // ============================================================
+    // POLL / SURVEY
+    // ============================================================
+    let selectedPoll = null;
+
+    function selectPollOption(el) {
+      document.querySelectorAll('.poll-option').forEach(opt => opt.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedPoll = el.dataset.value;
+    }
+
+    function submitPoll() {
+      if (!selectedPoll) {
+        showToast('⚠️ انتخاب کنید', 'لطفاً یکی از گزینه‌ها را انتخاب کنید.', 'warning');
+        return;
+      }
+      document.getElementById('pollResults').classList.add('visible');
+      showToast('✅ نظر ثبت شد', 'متشکریم از مشارکت شما!', 'success');
+    }
+
+    // ============================================================
+    // ADMIN PANEL
+    // ============================================================
+    function toggleAdminPanel() {
+      const panel = document.getElementById('adminPanel');
+      panel.classList.toggle('visible');
+      if (panel.classList.contains('visible')) {
+        showToast('👑 پنل مدیریت', 'شما وارد پنل مدیریت شدید.', 'info');
+      }
+    }
+
+    // ============================================================
+    // FAVORITE
+    // ============================================================
+    function toggleFavorite(e) {
+      e.stopPropagation();
+      const btn = e.currentTarget;
+      btn.classList.toggle('active');
+      if (btn.classList.contains('active')) {
+        btn.innerHTML = '❤️ حذف از علاقه‌مندی‌ها';
+        showToast('❤️ افزودن به علاقه‌مندی‌ها', 'دوره با موفقیت ذخیره شد.', 'success');
+      } else {
+        btn.innerHTML = '❤️ افزودن به علاقه‌مندی‌ها';
+        showToast('🗑️ حذف شد', 'دوره از علاقه‌مندی‌ها حذف شد.', 'info');
+      }
+    }
+
+    // ============================================================
+    // RATING SYSTEM
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', function() {
+      const stars = document.querySelectorAll('.rating-stars .star');
+      let currentRating = 0;
+      
+      stars.forEach(star => {
+        star.addEventListener('mouseenter', function() {
+          const val = parseInt(this.dataset.value);
+          stars.forEach(s => {
+            if (parseInt(s.dataset.value) <= val) {
+              s.classList.add('hover');
+            } else {
+              s.classList.remove('hover');
+            }
+          });
+        });
+        
+        star.addEventListener('mouseleave', function() {
+          stars.forEach(s => s.classList.remove('hover'));
+        });
+        
+        star.addEventListener('click', function() {
+          currentRating = parseInt(this.dataset.value);
+          stars.forEach(s => {
+            if (parseInt(s.dataset.value) <= currentRating) {
+              s.classList.add('active');
+            } else {
+              s.classList.remove('active');
+            }
+          });
+          showToast('⭐ امتیاز ثبت شد', `شما به این دوره ${currentRating} ستاره دادید.`, 'success');
+        });
+      });
+    });
+
+    // ============================================================
+    // TOAST SYSTEM
+    // ============================================================
+    function showToast(title, message, type = 'info', duration = 4000) {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      
+      const icons = {
+        success: '✅',
+        warning: '⚠️',
+        error: '❌',
+        info: 'ℹ️'
+      };
+      
+      toast.innerHTML = `
+        <span class="toast-icon">${icons[type] || icons.info}</span>
+        <div class="toast-content">
+          <div class="toast-title">${title}</div>
+          <div class="toast-message">${message}</div>
+        </div>
+        <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
+      `;
+      
+      container.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.classList.add('hide');
+        setTimeout(() => toast.remove(), 500);
+      }, duration);
+    }
+
+    // ============================================================
+    // LOCKED ALERT
+    // ============================================================
+    function showLockedAlert() {
+      showToast(
+        '🔒 بخش قفل شده',
+        'این بخش به زودی فعال می‌شود! در حال توسعه و آماده‌سازی محتوای جدید هستیم.',
+        'warning',
+        5000
+      );
+    }
+
+    // ============================================================
+    // NOTIFICATION
+    // ============================================================
+    function showNotification() {
+      showToast(
+        '📬 اعلان‌های جدید',
+        '1️⃣ دوره جدید AI Lab به‌زودی\n2️⃣ مقاله جدید درباره فضا منتشر شد\n3️⃣ تخفیف ویژه برای ثبت‌نام',
+        'info',
+        6000
+      );
+      
+      const badge = document.getElementById('notifBadge');
+      badge.textContent = '0';
+      badge.classList.add('hidden');
+    }
+
+    // ============================================================
+    // COURSE MODAL
+    // ============================================================
+    function openCourseModal(title, icon, desc, level, duration) {
+      document.getElementById('modalIcon').textContent = icon;
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDesc').textContent = desc;
+      document.getElementById('modalLevel').textContent = `📊 سطح: ${level}`;
+      document.getElementById('modalDuration').textContent = `⏱️ مدت: ${duration}`;
+      document.getElementById('courseModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('courseModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('courseModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // ============================================================
+    // THEME
+    // ============================================================
+    function toggleTheme() {
+      document.body.classList.toggle('dark-theme');
+      const icon = document.getElementById('themeIcon');
+      if (document.body.classList.contains('dark-theme')) {
+        icon.className = 'fas fa-sun';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        icon.className = 'fas fa-moon';
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-theme');
+      document.getElementById('themeIcon').className = 'fas fa-sun';
+    }
+
+    // ============================================================
+    // MENU
+    // ============================================================
+    function toggleMenu() {
+      const nav = document.getElementById('mainNav');
+      const hamburger = document.querySelector('.hamburger');
+      nav.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded', nav.classList.contains('active'));
+    }
+
+    document.querySelectorAll('#mainNav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mainNav').classList.remove('active');
+        document.querySelector('.hamburger').setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // ============================================================
+    // ACTIVE NAV
+    // ============================================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#mainNav a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // ============================================================
+    // COUNTER ANIMATION
+    // ============================================================
+    function animateCounters() {
+      const counters = document.querySelectorAll('.stat-number');
+      counters.forEach(counter => {
+        const target = counter.getAttribute('data-target');
+        if (target === '∞') {
+          counter.textContent = '∞';
+          return;
+        }
+        const targetNum = parseInt(target);
+        let current = 0;
+        const duration = 1500;
+        const startTime = performance.now();
+        
+        function updateCounter(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          current = Math.floor(progress * targetNum);
+          counter.textContent = current;
+          
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = targetNum;
+          }
+        }
+        requestAnimationFrame(updateCounter);
+      });
+    }
+
+    let countersAnimated = false;
+    const introSection = document.getElementById('intro');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !countersAnimated) {
+          countersAnimated = true;
+          animateCounters();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    if (introSection) {
+      observer.observe(introSection);
+    }
+
+    // ============================================================
+    // PROGRESS BAR
+    // ============================================================
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scrollProgressBar').style.width = scrolled + '%';
+    });
+
+    // ============================================================
+    // BACK TO TOP
+    // ============================================================
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('backToTop');
+      if (window.scrollY > 300) {
+        btn.classList.add('show');
+      } else {
+        btn.classList.remove('show');
+      }
+    });
+
+    // ============================================================
+    // INIT
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 50
+      });
+
+      renderSpaceGrid('all');
+      renderCourses();
+      renderTestimonials();
+      renderBlog();
+      renderRecommended();
+      startCountdown();
+
+      // Login check
+      const isLoggedIn = localStorage.getItem('loggedIn');
+      const loginLink = document.getElementById('loginLink');
+
+      if (isLoggedIn === 'true') {
+        const username = localStorage.getItem('username') || 'کاربر';
+        loginLink.textContent = 'پنل کاربری';
+        loginLink.href = '#';
+        loginLink.onclick = function(e) {
+          e.preventDefault();
+          if (confirm('کاربر: ' + username + '\n\nآیا میخواهید خارج شوید؟')) {
+            localStorage.removeItem('loggedIn');
+            localStorage.removeItem('username');
+            showToast('👋 خداحافظ', 'شما با موفقیت خارج شدید.', 'success');
+            setTimeout(() => location.reload(), 1000);
+          }
+        };
+        
+        setTimeout(() => {
+          showToast('👋 خوش آمدید', `خوش برگشتی ${username}!`, 'success', 3000);
+        }, 500);
+      }
+
+      // Show welcome toast
+      setTimeout(() => {
+        showToast('🚀 Zenverix Space', 'به دنیای کاوش و یادگیری خوش آمدید!', 'info', 3000);
+      }, 1000);
+
+      console.log('🚀 TahaAcademy | Zenverix Space v3.0 loaded successfully!');
+      console.log('💡 New features: Search, Countdown, Recommended, Admin Panel, Poll, Ratings, Favorites');
+    });
+  </script>
+
+</body>
+
+</html>

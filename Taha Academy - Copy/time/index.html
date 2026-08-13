@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Clock</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- <div class="container">
+        <h1 class="title">Select a Country</h1>
+        <ul class="list">
+            <li><a href="clock.html?country=America/New_York"><span class="country-label">USA</span> <span class="badge">New York</span></a></li>
+            <li><a href="clock.html?country=Europe/London"><span class="country-label">UK</span> <span class="badge">London</span></a></li>
+            <li><a href="clock.html?country=Asia/Tehran"><span class="country-label">Iran</span> <span class="badge">Tehran</span></a></li>
+            <li><a href="clock.html?country=Asia/Tokyo"><span class="country-label">Japan</span> <span class="badge">Tokyo</span></a></li>
+            <li><a href="clock.html?country=Europe/Berlin"><span class="country-label">Germany</span> <span class="badge">Berlin</span></a></li>
+<li><a href="clock.html?country=Europe/Moscow"><span class="country-label">Russia</span> <span class="badge">Moscow</span></a></li>
+<li><a href="clock.html?country=Europe/Istanbul"><span class="country-label">Turkey</span> <span class="badge">Istanbul</span></a></li>
+<li><a href="clock.html?country=Europe/Paris"><span class="country-label">France</span> <span class="badge">Paris</span></a></li>
+
+
+        </ul>
+    </div> -->
+    <div class="container">
+    <h1>انتخاب قاره</h1>
+
+    <div class="filter-buttons">
+        <a href="asia.html" class="continent-btn">آسیا</a>
+        <a href="europe.html" class="continent-btn">اروپا</a>
+        <a href="#" class="continent-btn">آمریکا</a>
+        <a href="#" class="continent-btn">آفریقا</a>
+        <a href="#" class="continent-btn">اقیانوسیه</a>
+    </div>
+
+    <!-- اگر لیست کشورها داری، اینجا زیرش قرار می‌گیرد -->
+    <!-- <ul class="list"> ... </ul> -->
+</div>
+
+
+
+  
+
+    <script>
+function filterList(continent) {
+    const items = document.querySelectorAll('.item');
+    items.forEach(item => {
+        if (continent === 'all' || item.classList.contains(continent)) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+</script>
+
+</body>
+</html>

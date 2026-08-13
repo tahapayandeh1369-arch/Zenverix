@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>اسیا</title>
+    <meta charset="UTF-8">
+<link rel="stylesheet" href="./asia.css">
+</head>
+<body>
+   
+    
+<h1>کشورهای آسیا</h1>
+<ul class="list">
+  <li><a href="clock.html?country=Asia/Tehran">ایران (تهران)</a></li>
+  <li><a href="clock.html?country=Asia/Dubai">امارات (دبی)</a></li>
+  <li><a href="clock.html?country=Asia/Tokyo">ژاپن (توکیو)</a></li>
+</ul>
+
+<!-- فرم افزودن کشور جدید به این قاره -->
+<form onsubmit="addCountry(event, 'asia-list')">
+  <input type="text" id="new-country" placeholder="نام کشور" required>
+  <input type="text" id="new-timezone" placeholder="Timezone (مثلا Asia/Seoul)" required>
+  <button type="submit">افزودن</button>
+</form>
+
+
+   
+</body>
+</html>

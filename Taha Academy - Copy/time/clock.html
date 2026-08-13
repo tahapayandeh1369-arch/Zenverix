@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top-row">
+            <h1 id="countryName" class="title">Loading...</h1>
+            <a class="back" href="index.html">Back</a>
+        </div>
+
+        <div class="clock-card">
+            <h2 id="timeDisplay" class="time">00:00:00</h2>
+            <div class="hint">Local time in selected timezone</div>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const timeZone = params.get('country');
+        document.getElementById('countryName').innerText = timeZone ? timeZone.split('/')[1] : "Select a Country";
+
+        function updateTime() {
+            if (!timeZone) return;
+            const now = new Date();
+            const options = { timeZone: timeZone, hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            const timeString = new Intl.DateTimeFormat('en-GB', options).format(now);
+            document.getElementById('timeDisplay').innerText = timeString;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+:root {
+    --bg: #F0F2F5;
+    --panel: #FFFFFF;
+    --panel2: #F8F9FA;
+    --border: #E9ECEF;
+    --text: #212529;
+    --text-light: #6C757D;
+    --accent: #4A90E2;
+    --accent-light: #6EA8FE;
+    --primary: #1976d2;
+    --primary-dark: #0d47a1;
+    --shadow: 0 18px 35px rgba(0, 0, 0, 0.1);
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+    direction: rtl;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F0F2F5 100%);
+    color: var(--text);
+    padding: 16px;
+}
+
+/* باکس اصلی */
+.container {
+    width: 100%;
+    max-width: 600px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 30px 20px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* responsive container */
+@media (min-width: 768px) {
+    body {
+        padding: 24px;
+    }
+    .container {
+        padding: 40px 30px;
+    }
+}
+
+h1 {
+    color: var(--primary);
+    margin-bottom: 25px;
+    font-size: clamp(22px, 6vw, 28px);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* دکمه‌های قاره */
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.continent-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #4A90E2, #1976d2);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: clamp(14px, 4vw, 16px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+    min-width: 110px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+}
+
+.continent-btn:hover {
+    background: linear-gradient(135deg, #1976d2, #0d47a1);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(25, 118, 210, 0.35);
+}
+
+.continent-btn:active {
+    transform: translateY(0);
+}
+
+/* ========== جدول کشورها ========== */
+.country-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    max-height: 400px;
+    overflow-y: auto;
+    border-radius: 16px;
+}
+
+.country-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    margin: 8px 0;
+    background: var(--panel2);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.country-item:hover {
+    transform: translateX(-5px);
+    background: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: var(--accent);
+}
+
+.country-name {
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.country-time {
+    font-family: 'Vazirmatn', monospace;
+    font-weight: 700;
+    color: var(--primary);
+    background: rgba(74, 144, 226, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* اسکرول بار سفارشی */
+.country-list::-webkit-scrollbar {
+    width: 6px;
+}
+.country-list::-webkit-scrollbar-track {
+    background: var(--border);
+    border-radius: 10px;
+}
+.country-list::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+/* پیام خالی یا خطا */
+.empty-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-light);
+    font-size: 16px;
+}
+
+/* ========== ریسپانسیو کامل ========== */
+
+/* تبلت */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+        padding: 25px 18px;
+    }
+    
+    .filter-buttons {
+        gap: 10px;
+    }
+    
+    .continent-btn {
+        padding: 10px 16px;
+        min-width: 100px;
+        font-size: 13px;
+    }
+    
+    .country-item {
+        padding: 12px 14px;
+        font-size: 14px;
+    }
+    
+    .country-time {
+        font-size: 12px;
+        padding: 3px 10px;
+    }
+}
+
+/* موبایل */
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+    
+    .container {
+        max-width: 100%;
+        padding: 20px 14px;
+        border-radius: 16px;
+    }
+    
+    h1 {
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+    
+    .filter-buttons {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+    
+    .continent-btn {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 14px;
+        border-radius: 12px;
+    }
+    
+    .country-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+        padding: 12px;
+    }
+    
+    .country-name {
+        justify-content: center;
+    }
+    
+    .country-time {
+        display: inline-block;
+    }
+}
+
+/* موبایل خیلی کوچک (زیر 360px) */
+@media (max-width: 360px) {
+    .container {
+        padding: 16px 12px;
+    }
+    
+    h1 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .continent-btn {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+    
+    .country-item {
+        padding: 10px;
+    }
+    
+    .country-name {
+        font-size: 13px;
+    }
+    
+    .country-time {
+        font-size: 11px;
+    }
+}
+
+/* نمایشگرهای بزرگ (دسکتاپ) */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 650px;
+        padding: 45px 35px;
+    }
+    
+    h1 {
+        font-size: 30px;
+        margin-bottom: 35px;
+    }
+    
+    .filter-buttons {
+        gap: 18px;
+    }
+    
+    .continent-btn {
+        padding: 14px 28px;
+        min-width: 130px;
+        font-size: 16px;
+        border-radius: 15px;
+    }
+    
+    .country-list {
+        max-height: 450px;
+    }
+    
+    .country-item {
+        padding: 16px 20px;
+        font-size: 17px;
+    }
+    
+    .country-time {
+        font-size: 15px;
+        padding: 5px 14px;
+    }
+}
+
+/* حالت چاپ */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    .container {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    .continent-btn {
+        display: none;
+    }
+}

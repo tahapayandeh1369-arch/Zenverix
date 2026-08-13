@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ارتباط با تیم TahaAcademy - فرم تماس، اطلاعات ارتباطی، شبکه‌های اجتماعی">
+  <meta name="keywords" content="تماس با ما, ارتباط, TahaAcademy, فرم تماس, ایمیل">
+  <meta name="author" content="TahaAcademy">
+  <title>تماس با ما | TahaAcademy</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: #FFFFFF;
+      color: #212529;
+      line-height: 1.8;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ========== هدر ========== */
+    .contact-header {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      border-bottom: 1px solid #E9ECEF;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-size: clamp(1.2rem, 5vw, 1.6rem);
+      color: #4A90E2;
+      cursor: pointer;
+      transition: transform 0.3s;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #4A90E2;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      font-size: clamp(0.85rem, 3.5vw, 1rem);
+    }
+
+    .back-link:hover {
+      background: #3A7BC8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+    }
+
+    /* ========== کانتینر اصلی ========== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 20px 60px;
+    }
+
+    /* ========== هدر صفحه ========== */
+    .page-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .page-header h1 {
+      color: #4A90E2;
+      font-size: clamp(1.8rem, 7vw, 2.5rem);
+      margin-bottom: 15px;
+      font-weight: 800;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .page-header h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 50%;
+      transform: translateX(50%);
+      width: 80px;
+      height: 3px;
+      background: #4A90E2;
+      border-radius: 3px;
+    }
+
+    .page-header p {
+      color: #6C757D;
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ========== گرید دو ستونه ========== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    /* ========== باکس اطلاعات تماس ========== */
+    .info-card {
+      background: #F8F9FA;
+      border-radius: 24px;
+      padding: 35px;
+      border: 1px solid #E9ECEF;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-card h2 {
+      color: #4A90E2;
+      font-size: 1.5rem;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-right: 4px solid #4A90E2;
+      padding-right: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 0;
+      border-bottom: 1px solid #E9ECEF;
+    }
+
+    .contact-item:last-child {
+      border-bottom: none;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(74, 144, 226, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: #4A90E2;
+    }
+
+    .contact-detail h4 {
+      font-size: 0.9rem;
+      color: #6C757D;
+      margin-bottom: 5px;
+    }
+
+    .contact-detail p,
+    .contact-detail a {
+      font-size: 1rem;
+      color: #212529;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-detail a:hover {
+      color: #4A90E2;
+    }
+
+    /* ========== فرم تماس ========== */
+    .form-card {
+      background: #F8F9FA;
+      border-radius: 24px;
+      padding: 35px;
+      border: 1px solid #E9ECEF;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .form-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-card h2 {
+      color: #4A90E2;
+      font-size: 1.5rem;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-right: 4px solid #4A90E2;
+      padding-right: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #212529;
+    }
+
+    .form-group label i {
+      color: #4A90E2;
+      margin-left: 8px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #E9ECEF;
+      border-radius: 12px;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s;
+      background: white;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #4A90E2;
+      box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    }
+
+    .form-group input.error,
+    .form-group select.error,
+    .form-group textarea.error {
+      border-color: #dc2626;
+    }
+
+    .error-message {
+      color: #dc2626;
+      font-size: 0.8rem;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(90deg, #4A90E2, #3A7BC8);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: 'Vazirmatn', sans-serif;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* ========== شبکه‌های اجتماعی ========== */
+    .social-section {
+      background: #F8F9FA;
+      border-radius: 24px;
+      padding: 35px;
+      text-align: center;
+      border: 1px solid #E9ECEF;
+      margin-top: 40px;
+    }
+
+    .social-section h2 {
+      color: #4A90E2;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .social-grid {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: white;
+      color: #212529;
+      text-decoration: none;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      border: 1px solid #E9ECEF;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .social-btn span {
+      display: none;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      color: white;
+      box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+    }
+
+    .social-btn.instagram:hover { background: radial-gradient(circle at 30% 110%, #feda77, #d62976, #962fbf, #4f5bd5); border-color: transparent; }
+    .social-btn.github:hover { background: #333; border-color: transparent; }
+    .social-btn.facebook:hover { background: #1877f2; border-color: transparent; }
+    .social-btn.twitter:hover { background: #1da1f2; border-color: transparent; }
+    .social-btn.linkedin:hover { background: #0077b5; border-color: transparent; }
+    .social-btn.youtube:hover { background: #ff0000; border-color: transparent; }
+    .social-btn.telegram:hover { background: #26a5e4; border-color: transparent; }
+    .social-btn.whatsapp:hover { background: #25d366; border-color: transparent; }
+
+    /* ========== پیام موفقیت ========== */
+    .success-message {
+      display: none;
+      background: #10b981;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      text-align: center;
+      animation: slideDown 0.5s ease;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ========== فوتر ========== */
+    .contact-footer {
+      background: #F8F9FA;
+      margin-top: 3rem;
+      text-align: center;
+      padding: 20px 16px;
+      font-size: 0.8rem;
+      color: #6C757D;
+      border-top: 1px solid #E9ECEF;
+    }
+
+    /* ========== اسکرول بار ========== */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F8F9FA;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4A90E2;
+      border-radius: 5px;
+    }
+
+    /* ========== ریسپانسیو ========== */
+    @media (max-width: 768px) {
+      .container {
+        padding: 90px 16px 40px;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+      .info-card, .form-card {
+        padding: 25px;
+      }
+      .contact-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+      }
+      .social-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .info-card, .form-card, .social-section {
+        padding: 20px;
+      }
+      .contact-item {
+        flex-direction: column;
+        text-align: center;
+      }
+      .contact-detail h4 {
+        font-size: 0.85rem;
+      }
+      .contact-detail p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="contact-header">
+    <a href="../TahaAcademy.html" class="logo">TahaAcademy</a>
+    <a href="../TahaAcademy.html" class="back-link">
+      <i class="fas fa-arrow-right"></i>
+      بازگشت به صفحه اصلی
+    </a>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <h1>تماس با ما 📬</h1>
+      <p>خوشحال می‌شویم نظرات، پیشنهادها و سوالات شما را بشنویم</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- اطلاعات تماس -->
+      <div class="info-card">
+        <h2><i class="fas fa-address-card"></i> اطلاعات تماس</h2>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-detail">
+            <h4>ایمیل</h4>
+            <p>taha.payandeh@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div class="contact-detail">
+            <h4>تلفن</h4>
+            <p>+98 21 1234 5678</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <div class="contact-detail">
+            <h4>واتساپ</h4>
+            <a href="https://wa.me/989123456789">989123456789+</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-detail">
+            <h4>آدرس</h4>
+            <p>تهران، ایران - شعبه مجازی TahaAcademy</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="contact-detail">
+            <h4>ساعات پاسخگویی</h4>
+            <p>شنبه تا چهارشنبه: ۹ صبح تا ۱۷ عصر</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- فرم تماس -->
+      <div class="form-card">
+        <h2><i class="fas fa-paper-plane"></i> ارسال پیام</h2>
+        
+        <div id="successMessage" class="success-message">
+          <i class="fas fa-check-circle"></i> پیام شما با موفقیت ارسال شد! به زودی با شما تماس می‌گیریم.
+        </div>
+
+        <form id="contactForm">
+          <div class="form-group">
+            <label><i class="fas fa-user"></i> نام و نام خانوادگی</label>
+            <input type="text" id="fullname" placeholder="مثال: طاها پاینده">
+            <div class="error-message" id="nameError">لطفاً نام خود را وارد کنید</div>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-envelope"></i> آدرس ایمیل</label>
+            <input type="email" id="email" placeholder="example@domain.com">
+            <div class="error-message" id="emailError">لطفاً ایمیل معتبر وارد کنید</div>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-phone"></i> شماره تماس (اختیاری)</label>
+            <input type="tel" id="phone" placeholder="۰۹۱۲۳۴۵۶۷۸۹">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-tag"></i> موضوع پیام</label>
+            <select id="subject">
+              <option value="">انتخاب کنید...</option>
+              <option value="question">سوال درسی و آموزشی</option>
+              <option value="suggestion">پیشنهاد همکاری</option>
+              <option value="support">پشتیبانی فنی</option>
+              <option value="critic">انتقاد و پیشنهاد</option>
+              <option value="other">سایر موارد</option>
+            </select>
+            <div class="error-message" id="subjectError">لطفاً موضوع پیام را انتخاب کنید</div>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-comment"></i> متن پیام</label>
+            <textarea id="message" rows="5" placeholder="پیام خود را اینجا بنویسید..."></textarea>
+            <div class="error-message" id="messageError">لطفاً متن پیام را وارد کنید</div>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i>
+            ارسال پیام
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- شبکه‌های اجتماعی -->
+    <div class="social-section">
+      <h2><i class="fas fa-share-alt"></i> ما را در شبکه‌های اجتماعی دنبال کنید</h2>
+      <div class="social-grid">
+        <a href="https://instagram.com/tahaacademy" class="social-btn instagram" target="_blank" aria-label="اینستاگرام">
+          <i class="fab fa-instagram"></i>
+          <span>اینستاگرام</span>
+        </a>
+        <a href="https://github.com/tahaacademy" class="social-btn github" target="_blank" aria-label="گیت‌هاب">
+          <i class="fab fa-github"></i>
+          <span>گیت‌هاب</span>
+        </a>
+        <a href="https://facebook.com/tahaacademy" class="social-btn facebook" target="_blank" aria-label="فیسبوک">
+          <i class="fab fa-facebook-f"></i>
+          <span>فیسبوک</span>
+        </a>
+        <a href="https://twitter.com/tahaacademy" class="social-btn twitter" target="_blank" aria-label="توییتر">
+          <i class="fab fa-twitter"></i>
+          <span>توییتر</span>
+        </a>
+        <a href="https://linkedin.com/in/tahaacademy" class="social-btn linkedin" target="_blank" aria-label="لینکدین">
+          <i class="fab fa-linkedin-in"></i>
+          <span>لینکدین</span>
+        </a>
+        <a href="https://youtube.com/@tahaacademy" class="social-btn youtube" target="_blank" aria-label="یوتیوب">
+          <i class="fab fa-youtube"></i>
+          <span>یوتیوب</span>
+        </a>
+        <a href="https://t.me/tahaacademy" class="social-btn telegram" target="_blank" aria-label="تلگرام">
+          <i class="fab fa-telegram-plane"></i>
+          <span>تلگرام</span>
+        </a>
+        <a href="https://wa.me/989123456789" class="social-btn whatsapp" target="_blank" aria-label="واتساپ">
+          <i class="fab fa-whatsapp"></i>
+          <span>واتساپ</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- نقشه گوگل (ساده) -->
+    <div class="info-card" style="margin-top: 40px;">
+      <h2><i class="fas fa-map"></i> موقعیت ما</h2>
+      <div style="background: #E9ECEF; border-radius: 16px; height: 250px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px;">
+        <i class="fas fa-globe-asia" style="font-size: 3rem; color: #4A90E2;"></i>
+        <p style="color: #6C757D;">تهران، ایران - ارائه خدمات آنلاین به سراسر کشور</p>
+        <a href="https://www.google.com/maps/search/تهران" target="_blank" style="color: #4A90E2; text-decoration: none;">مشاهده در نقشه <i class="fas fa-external-link-alt"></i></a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="contact-footer">
+    <div class="footer-copyright">
+      © ۲۰۲۵ TahaAcademy — ساخته‌شده با ❤️، کد و خلاقیت | تمامی حقوق محفوظ است
+    </div>
+  </footer>
+
+  <script>
+    // ========== اعتبارسنجی فرم با جاوااسکریپت ==========
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+    
+    // عناصر فرم
+    const fullname = document.getElementById('fullname');
+    const email = document.getElementById('email');
+    const subject = document.getElementById('subject');
+    const message = document.getElementById('message');
+    
+    // عناصر خطا
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    const subjectError = document.getElementById('subjectError');
+    const messageError = document.getElementById('messageError');
+
+    // تابع اعتبارسنجی ایمیل
+    function isValidEmail(emailValue) {
+      const emailRegex = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+      return emailRegex.test(emailValue);
+    }
+
+    // تابع پاک کردن خطاها
+    function clearErrors() {
+      nameError.classList.remove('show');
+      emailError.classList.remove('show');
+      subjectError.classList.remove('show');
+      messageError.classList.remove('show');
+      
+      fullname.classList.remove('error');
+      email.classList.remove('error');
+      subject.classList.remove('error');
+      message.classList.remove('error');
+    }
+
+    // تابع نشان دادن خطا
+    function showError(inputElement, errorElement) {
+      inputElement.classList.add('error');
+      errorElement.classList.add('show');
+    }
+
+    // تابع ذخیره پیام در localStorage (شبیه‌سازی ارسال به سرور)
+    function saveMessageToLocalStorage(formData) {
+      const messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+      const newMessage = {
+        id: Date.now(),
+        ...formData,
+        date: new Date().toLocaleString('fa-IR')
+      };
+      messages.push(newMessage);
+      localStorage.setItem('contactMessages', JSON.stringify(messages));
+    }
+
+    // تابع نمایش پیام موفقیت
+    function showSuccess() {
+      successMessage.classList.add('show');
+      form.reset();
+      setTimeout(() => {
+        successMessage.classList.remove('show');
+      }, 5000);
+    }
+
+    // رویداد ارسال فرم
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      clearErrors();
+      
+      let isValid = true;
+      
+      // اعتبارسنجی نام
+      if (!fullname.value.trim()) {
+        showError(fullname, nameError);
+        isValid = false;
+      }
+      
+      // اعتبارسنجی ایمیل
+      if (!email.value.trim() || !isValidEmail(email.value.trim())) {
+        showError(email, emailError);
+        isValid = false;
+      }
+      
+      // اعتبارسنجی موضوع
+      if (!subject.value) {
+        showError(subject, subjectError);
+        isValid = false;
+      }
+      
+      // اعتبارسنجی پیام
+      if (!message.value.trim()) {
+        showError(message, messageError);
+        isValid = false;
+      }
+      
+      // اگر همه چیز درست بود
+      if (isValid) {
+        const formData = {
+          fullname: fullname.value.trim(),
+          email: email.value.trim(),
+          phone: document.getElementById('phone').value.trim(),
+          subject: subject.options[subject.selectedIndex].text,
+          subjectValue: subject.value,
+          message: message.value.trim()
+        };
+        
+        // ذخیره در localStorage
+        saveMessageToLocalStorage(formData);
+        
+        // نمایش پیام موفقیت
+        showSuccess();
+        
+        // در کنسول لاگ بزن (برای دیباگ)
+        console.log('پیام جدید:', formData);
+      }
+    });
+
+    // حذف خطا هنگام تایپ
+    fullname.addEventListener('input', function() {
+      if (this.value.trim()) {
+        this.classList.remove('error');
+        nameError.classList.remove('show');
+      }
+    });
+    
+    email.addEventListener('input', function() {
+      if (this.value.trim() && isValidEmail(this.value.trim())) {
+        this.classList.remove('error');
+        emailError.classList.remove('show');
+      }
+    });
+    
+    subject.addEventListener('change', function() {
+      if (this.value) {
+        this.classList.remove('error');
+        subjectError.classList.remove('show');
+      }
+    });
+    
+    message.addEventListener('input', function() {
+      if (this.value.trim()) {
+        this.classList.remove('error');
+        messageError.classList.remove('show');
+      }
+    });
+  </script>
+</body>
+</html>

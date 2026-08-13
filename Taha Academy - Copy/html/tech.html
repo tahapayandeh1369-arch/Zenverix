@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="تکنولوژی چیست؟ آشنایی با فناوری، هوش مصنوعی، رباتیک، اینترنت اشیا، بلاکچین و دنیای مدرن - TahaAcademy">
+  <meta name="keywords" content="تکنولوژی, فناوری, هوش مصنوعی, رباتیک, برنامه نویسی, اینترنت اشیا, بلاکچین, واقعیت مجازی, TahaAcademy">
+  <meta name="author" content="TahaAcademy">
+  <title>تکنولوژی | TahaAcademy</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="./tech.css">
+  <style>
+    /* استایل‌های اضافی برای صفحه تکنولوژی */
+    .tech-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 35px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #E9ECEF;
+    }
+    
+    .tech-nav-btn {
+      background: transparent;
+      border: 2px solid #4A90E2;
+      color: #4A90E2;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .tech-nav-btn:hover,
+    .tech-nav-btn.active {
+      background: #4A90E2;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+    }
+    
+    .topic-section {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .topic-section.active-topic {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .topic-title {
+      color: #4A90E2;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    
+    .topic-title i {
+      font-size: 2rem;
+    }
+    
+    .subtopic {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 25px;
+      border: 1px solid #E9ECEF;
+      transition: all 0.3s;
+    }
+    
+    .subtopic:hover {
+      transform: translateX(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+    
+    .subtopic h3 {
+      color: #4A90E2;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .subtopic h3 i {
+      font-size: 1.2rem;
+    }
+    
+    .info-box {
+      background: #E8F4FD;
+      border-right: 4px solid #4A90E2;
+      padding: 15px 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    
+    .info-box i {
+      color: #4A90E2;
+      margin-left: 8px;
+    }
+    
+    .topic-list {
+      list-style: none;
+      padding-right: 0;
+    }
+    
+    .topic-list li {
+      padding: 10px 0;
+      border-bottom: 1px dashed #E9ECEF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .topic-list li i {
+      color: #4A90E2;
+      width: 25px;
+    }
+    
+    .badge {
+      display: inline-block;
+      background: #4A90E2;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      margin-right: 10px;
+    }
+    
+    @media (max-width: 768px) {
+      .tech-nav-btn {
+        padding: 7px 14px;
+        font-size: 0.8rem;
+      }
+      .topic-title {
+        font-size: 1.4rem;
+      }
+      .subtopic h3 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- هدر مشابه صفحه اصلی TahaAcademy -->
+  <header class="tech-header">
+    <a href="../TahaAcademy.html" class="logo">TahaAcademy</a>
+    <a href="../TahaAcademy.html" class="back-link">
+      <i class="fas fa-arrow-right"></i>
+      بازگشت به صفحه اصلی
+    </a>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>تکنولوژی <i class="fas fa-microchip"></i></h1>
+      
+      <!-- دکمه‌های ناوبری بین موضوعات -->
+      <div class="tech-nav">
+        <button class="tech-nav-btn active" data-topic="basics">📖 مفاهیم پایه</button>
+        <button class="tech-nav-btn" data-topic="ai">🧠 هوش مصنوعی</button>
+        <button class="tech-nav-btn" data-topic="robotics">🤖 رباتیک</button>
+        <button class="tech-nav-btn" data-topic="iot">🌐 اینترنت اشیا</button>
+        <button class="tech-nav-btn" data-topic="blockchain">🔗 بلاکچین</button>
+        <button class="tech-nav-btn" data-topic="vr">🥽 واقعیت مجازی</button>
+        <button class="tech-nav-btn" data-topic="future">🚀 آینده فناوری</button>
+      </div>
+
+      <!-- ==================== بخش 1: مفاهیم پایه ==================== -->
+      <div id="basics" class="topic-section active-topic">
+        <div class="topic-title">
+          <i class="fas fa-book-open"></i>
+          <span>مفاهیم پایه تکنولوژی</span>
+        </div>
+        
+        <p>تکنولوژی به زبان ساده یعنی استفاده از <b>دانش و خلاقیت برای ساخت ابزار، دستگاه یا روش‌هایی</b> که زندگی انسان را آسان‌تر کنند. از زمان اختراع چرخ تا ظهور هوش مصنوعی، تکنولوژی همیشه بخش مهمی از پیشرفت بشر بوده است.</p>
+        
+        <div class="info-box">
+          <i class="fas fa-lightbulb"></i>
+          <strong>هدف اصلی فناوری:</strong> حل مشکلات و افزایش کارایی در زندگی روزمره، صنعت، پزشکی و آموزش
+        </div>
+        
+        <div class="subtopic">
+          <h3><i class="fas fa-history"></i> تاریخچه تکنولوژی</h3>
+          <p>در دوران باستان، ابزارهای سنگی و فلزی اولین نشانه‌های فناوری بودند. با گذشت زمان، <b>انقلاب صنعتی</b> باعث شد ماشین‌ها جای نیروی دست انسان را بگیرند. سپس با ظهور <b>رایانه‌ها و اینترنت</b>، بشر وارد <b>عصر دیجیتال</b> شد.</p>
+        </div>
+        
+        <div class="subtopic">
+          <h3><i class="fas fa-chart-line"></i> انواع فناوری</h3>
+          <ul class="topic-list">
+            <li><i class="fas fa-laptop-code"></i> فناوری اطلاعات و ارتباطات (ICT)</li>
+            <li><i class="fas fa-flask"></i> فناوری زیستی (Biotechnology)</li>
+            <li><i class="fas fa-industry"></i> فناوری صنعتی و تولید</li>
+            <li><i class="fas fa-leaf"></i> فناوری سبز و انرژی پاک</li>
+            <li><i class="fas fa-microscope"></i> فناوری نانو (Nanotechnology)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ==================== بخش 2: هوش مصنوعی ==================== -->
+      <div id="ai" class="topic-section">
+        <div class="topic-title">
+          <i class="fas fa-brain"></i>
+          <span>هوش مصنوعی (Artificial Intelligence)</span>
+        </div>
+        
+        <p><b>هوش مصنوعی</b> شاخه‌ای از علوم کامپیوتر است که به ساخت ماشین‌های هوشمند می‌پردازد. این ماشین‌ها قادر به یادگیری، استدلال و حل مسئله هستند.</p>
+        
+        <div class="subtopic">
+          <h3><i class="fas fa-robot"></i> انواع هوش مصنوعی</h3>
+          <ul class="topic-list">
+            <li><i class="fas fa-level-up-alt"></i> <b>AI ضعیف (Narrow AI)</b> - تخصصی در یک حوزه (مثل دستیار صوتی)</li>
+            <li><i class="fas fa-chart-line"></i> <b>AI عمومی (General AI)</b> - مانند انسان در هر کاری عمل کند</li>
+            <li><i class="fas fa-star"></i> <b>AI فوق‌هوشمند (Super AI)</b> - فراتر از توانایی‌های انسان</li>
+          </ul>
+        </div>
+        
+        <div class="subtopic">
+          <h3><i class="fas fa-graduation-cap"></i> شاخه‌های اصلی هوش مصنوعی</h3>
+          <ul class="topic-list">
+            <li><i class="fas fa-chart-line"></i> یادگیری ماشین (Machine Learning)</li>
+            <li><i class="fas fa-network-wired"></i> یادگیری عمیق (Deep Learning)</li>
+            <li><i class="fas fa-eye"></i> بینایی کامپیوتر (Computer Vision)</li>
+            <li><i class="fas fa-comment-dots"></i> پردازش زبان طبیعی (NLP)</li>
+            <li><i class="fas fa-chess"></i> سیستم‌های خبره (Expert Systems)</li>
+          </ul>
+        </div>
+        
+        <div class="info-box">
+          <i class="fas fa-star-of-life"></i>
+          <strong>کاربردهای هوش مصنوعی:</strong> خودروهای خودران، تشخیص پزشکی، ترجمه ماشینی، چت‌بات‌ها (مثل ChatGPT)، سیستم‌های توصیه‌گر (مثل الگوریتم اینستاگرام و یوتیوب)
+        </div>
+      </div>
+
+      <!-- ==================== بخش 3: رباتیک ==================== -->
+      <div id="robotics" class="topic-section">
+        <div class="topic-title">
+          <i class="fas fa-robot"></i>
+          <span>رباتیک (Robotics)</span>
+        </div>
+        
+        <p><b>رباتیک</b> علم طراحی، ساخت و استفاده از ربات‌هاست. ربات‌ها ماشین‌های برنامه‌پذیری هستند که می‌توانند کارهای خطرناک، تکراری یا دقیق را انجام دهند.</p>
+        
+        <div class="subtopic">
+          <h3><i class="fas fa-microchip"></i> انواع ربات‌ها</h3>
+          <ul class="topic-list">
+            <li><i class="fas fa-industry"></i> ربات‌های صنعتی (خطوط تولید خودرو)</li>
+            <li><i class="fas fa-heartbeat"></i> ربات‌های پزشکی (جراحی رباتیک)</li>
+            <li><i class="fas fa-home"></i> ربات‌های خدماتی (جاروبرقی Roomba)</li>
+            <li><i class="fas fa-dog"></i> ربات‌های انسان‌نما (سوفیا، اطلس)</li>
+            <li><i class="fas fa-space-shuttle"></i> ربات‌های فضایی (مریخ‌نوردها)</li>
+          </ul>
+        </div>
+        
+        <div class="info-box">
+          <i class="fas fa-graduation-cap"></i>
+          <strong>آینده رباتیک:</strong> ربات‌های خودمختار، ربات‌های نرم (Soft Robotics)، ربات‌های زیستی و همکاری انسان و ربات (Cobots)
+        </div>
+      </div>
+
+      <!-- ==================== بخش 4: اینترنت اشیا ==================== -->
+      <div id="iot" class="topic-section">
+        <div class="topic-title">
+          <i class="fas fa-wifi"></i>
+          <span>اینترنت اشیا (IoT)</span>
+        </div>
+        
+        <p><b>اینترنت اشیا</b> به اتصال اشیای فیزیکی روزمره به اینترنت گفته می‌شود. از یخچال و لامپ گرفته تا خودرو و ساختمان‌ها، همه می‌توانند هوشمند شوند!</p>
+        
+        <div class="subtopic">
+          <h3><i class="fas fa-home"></i> کاربردهای اینترنت اشیا</h3>
+          <ul class="topic-list">
+            <li><i class="fas fa-house-user"></i> <b>خانه هوشمند:</b> ترموستات، چراغ‌ها، قفل‌های هوشمند</li>
+            <li><i class="fas fa-heartbeat"></i> <b>سلامت هوشمند:</b> ساعت‌های هوشمند، پایش از راه دور بیمار</li>
+            <li><i class="fas fa-city"></i> <b>شهر هوشمند:</b> مدیریت ترافیک، روشنایی خیابان‌ها</li>
+            <li><i class="fas fa-tractor"></i> <b>کشاورزی دقیق:</b> سنسورهای رطوبت و دما در مزارع</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ==================== بخش 5: بلاکچین ==================== -->
+      <div id="blockchain" class="topic-section">
+        <div class="topic-title">
+          <i class="fas fa-link"></i>
+          <span>بلاکچین (Blockchain)</span>
+        </div>
+        
+        <p><b>بلاکچین</b> یا زنجیره‌بلوکی، یک دفترکل توزیع‌شده و غیرمتمرکز است که اطلاعات در آن به صورت رمزنگاری‌شده ذخیره می‌شود. معروف‌ترین کاربرد آن ارزهای دیجیتال مثل بیت‌کوین است.</p>
+        
+        <div class="subtopic">
+          <h3><i class="fas fa-chart-line"></i> ویژگی‌های بلاکچین</h3>
+          <ul class="topic-list">
+            <li><i class="fas fa-check-circle"></i> شفافیت و عدم امکان تغییر اطلاعات</li>
+            <li><i class="fas fa-shield-alt"></i> امنیت بالا با رمزنگاری</li>
+            <li><i class="fas fa-users"></i> غیرمتمرکز (بدون نیاز به واسطه)</li>
+            <li><i class="fas fa-file-signature"></i> قراردادهای هوشمند (Smart Contracts)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ==================== بخش 6: واقعیت مجازی ==================== -->
+      <div id="vr" class="topic-section">
+        <div class="topic-title">
+          <i class="fas fa-vr-cardboard"></i>
+          <span>واقعیت مجازی و افزوده (VR/AR)</span>
+        </div>
+        
+        <p><b>واقعیت مجازی (VR)</b> دنیایی کاملاً شبیه‌سازی‌شده را به کاربر نشان می‌دهد. <b>واقعیت افزوده (AR)</b> اشیای مجازی را به دنیای واقعی اضافه می‌کند (مثل بازی Pokémon GO).</p>
+        
+        <div class="subtopic">
+          <h3><i class="fas fa-graduation-cap"></i> کاربردها</h3>
+          <ul class="topic-list">
+            <li><i class="fas fa-gamepad"></i> بازی‌های ویدیویی و سرگرمی</li>
+            <li><i class="fas fa-stethoscope"></i> آموزش پزشکی و شبیه‌سازی جراحی</li>
+            <li><i class="fas fa-chalkboard-teacher"></i> آموزش مجازی و کلاس‌های تعاملی</li>
+            <li><i class="fas fa-building"></i> معماری و طراحی داخلی</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ==================== بخش 7: آینده فناوری ==================== -->
+      <div id="future" class="topic-section">
+        <div class="topic-title">
+          <i class="fas fa-rocket"></i>
+          <span>آینده فناوری</span>
+        </div>
+        
+        <p>تکنولوژی با سرعت باورنکردنی در حال پیشرفت است. در آینده نزدیک شاهد تحولات شگفت‌انگیزی خواهیم بود.</p>
+        
+        <div class="subtopic">
+          <h3><i class="fas fa-chart-bar"></i> روندهای آینده</h3>
+          <ul class="topic-list">
+            <li><i class="fas fa-brain"></i> تکامل هوش مصنوعی عمومی (AGI)</li>
+            <li><i class="fas fa-quantum"></i> رایانش کوانتومی (کامپیوترهای فوق‌قدرتمند)</li>
+            <li><i class="fas fa-dna"></i> ویرایش ژن با CRISPR</li>
+            <li><i class="fas fa-car"></i> خودروهای کاملاً خودران</li>
+            <li><i class="fas fa-globe"></i> اینترنت 6G و فراتر از آن</li>
+            <li><i class="fas fa-meteor"></i> مستعمره‌سازی مریخ و سفرهای فضایی تجاری</li>
+          </ul>
+        </div>
+        
+        <div class="info-box">
+          <i class="fas fa-exclamation-triangle"></i>
+          <strong>چالش‌های پیش رو:</strong> امنیت سایبری، حریم خصوصی، بیکاری تکنولوژیک، شکاف دیجیتال بین کشورها
+        </div>
+        
+        <div class="subtopic">
+          <h3><i class="fas fa-gem"></i> فناوری‌های امیدوارکننده</h3>
+          <ul class="topic-list">
+            <li><i class="fas fa-battery-full"></i> باتری‌های نسل جدید و انرژی پایدار</li>
+            <li><i class="fas fa-microscope"></i> نانوتکنولوژی در پزشکی (نانوربات‌ها)</li>
+            <li><i class="fas fa-tachometer-alt"></i> کامپیوترهای عصبی (Brain-Computer Interface)</li>
+          </ul>
+          <p style="margin-top: 15px;">در <span class="highlight">TahaAcademy</span> یاد می‌گیریم چطور تکنولوژی را درک کنیم، از آن استفاده کنیم و حتی خودمان خالق آینده باشیم ⚙️</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- فوتر مشابه صفحه اصلی -->
+  <footer class="tech-footer">
+    <div class="social-links">
+      <a href="https://instagram.com/tahaacademy" class="instagram" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/tahaacademy" class="github" target="_blank" rel="noopener noreferrer" aria-label="گیت‌هاب"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/tahaacademy" class="linkedin" target="_blank" rel="noopener noreferrer" aria-label="لینکدین"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://youtube.com/@tahaacademy" class="youtube" target="_blank" rel="noopener noreferrer" aria-label="یوتیوب"><i class="fab fa-youtube"></i></a>
+      <a href="https://t.me/tahaacademy" class="telegram" target="_blank" rel="noopener noreferrer" aria-label="تلگرام"><i class="fab fa-telegram-plane"></i></a>
+    </div>
+    <div class="footer-copyright">
+      © ۲۰۲۵ TahaAcademy — ساخته‌شده با ❤️، کد و خلاقیت | تمامی حقوق محفوظ است
+    </div>
+  </footer>
+
+  <script>
+    // ایجاد ستاره‌های متحرک در پس‌زمینه
+    const starCount = 40;
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      document.body.appendChild(star);
+    }
+
+    // سیستم تب برای جابجایی بین موضوعات
+    const buttons = document.querySelectorAll('.tech-nav-btn');
+    const sections = document.querySelectorAll('.topic-section');
+
+    function switchTopic(topicId) {
+      // مخفی کردن همه بخش‌ها
+      sections.forEach(section => {
+        section.classList.remove('active-topic');
+      });
+      
+      // نمایش بخش انتخاب شده
+      const activeSection = document.getElementById(topicId);
+      if (activeSection) {
+        activeSection.classList.add('active-topic');
+      }
+      
+      // بروزرسانی وضعیت فعال دکمه‌ها
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-topic') === topicId) {
+          btn.classList.add('active');
+        }
+      });
+      
+      // ذخیره در localStorage برای یادآوری آخرین انتخاب کاربر
+      localStorage.setItem('lastTechTopic', topicId);
+    }
+
+    // افزودن رویداد کلیک به دکمه‌ها
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const topicId = btn.getAttribute('data-topic');
+        switchTopic(topicId);
+      });
+    });
+
+    // بارگیری آخرین موضوع انتخاب شده توسط کاربر
+    const lastTopic = localStorage.getItem('lastTechTopic');
+    if (lastTopic && document.getElementById(lastTopic)) {
+      switchTopic(lastTopic);
+    }
+  </script>
+
+</body>
+</html>

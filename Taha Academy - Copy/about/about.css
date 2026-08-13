@@ -1,0 +1,531 @@
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: #FFFFFF;
+      color: #1A1A2E;
+      line-height: 1.8;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ========== هدر ========== */
+    .about-header {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      border-bottom: 1px solid #E9ECEF;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-size: clamp(1.2rem, 5vw, 1.6rem);
+      color: #4A90E2;
+      cursor: pointer;
+      transition: transform 0.3s;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #4A90E2;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      font-size: clamp(0.85rem, 3.5vw, 1rem);
+    }
+
+    .back-link:hover {
+      background: #3A7BC8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+    }
+
+    /* ========== کانتینر اصلی ========== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 20px 60px;
+    }
+
+    /* ========== عنوان صفحه ========== */
+    .page-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    h1 {
+      color: #1A1A2E;
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      font-weight: 800;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+      letter-spacing: -1px;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 50%;
+      transform: translateX(50%);
+      width: 70px;
+      height: 4px;
+      background: linear-gradient(90deg, #4A90E2, #667eea);
+      border-radius: 2px;
+    }
+
+    /* ========== متن اصلی ========== */
+    .about-text {
+      background: #F8F9FA;
+      border-radius: 28px;
+      padding: 45px;
+      margin-bottom: 50px;
+      border: 1px solid #E9ECEF;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    .about-text:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.08);
+      border-color: rgba(74, 144, 226, 0.3);
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 2;
+      color: #2D2D3A;
+      text-align: justify;
+    }
+
+    .about-text p:first-child {
+      margin-bottom: 20px;
+    }
+
+    .about-text i {
+      color: #4A90E2;
+      margin-left: 10px;
+      font-size: 1.1rem;
+    }
+
+    /* ========== کارت‌های اصلی ========== */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .card {
+      background: #FFFFFF;
+      border-radius: 24px;
+      padding: 40px 30px;
+      text-align: center;
+      border: 1px solid #E9ECEF;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(74, 144, 226, 0.02), rgba(102, 126, 234, 0.02));
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+      border-color: #4A90E2;
+    }
+
+    .card-icon {
+      width: 70px;
+      height: 70px;
+      background: rgba(74, 144, 226, 0.1);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      transition: all 0.3s;
+    }
+
+    .card:hover .card-icon {
+      background: #4A90E2;
+      transform: scale(1.05);
+    }
+
+    .card-icon i {
+      font-size: 2rem;
+      color: #4A90E2;
+      transition: all 0.3s;
+    }
+
+    .card:hover .card-icon i {
+      color: white;
+    }
+
+    .card h3 {
+      color: #1A1A2E;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .card p {
+      color: #6C757D;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    /* ========== بخش آمار ========== */
+    .stats-section {
+      background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+      border-radius: 28px;
+      padding: 55px 40px;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .stats-section h2 {
+      color: white;
+      font-size: 1.8rem;
+      margin-bottom: 35px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+    }
+
+    .stat-item {
+      color: white;
+      position: relative;
+    }
+
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .stat-item:last-child::after {
+      display: none;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg, #4A90E2, #667eea);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      font-weight: 500;
+    }
+
+    /* ========== ارزش‌های ما ========== */
+    .values-section {
+      background: #F8F9FA;
+      border-radius: 28px;
+      padding: 45px;
+      margin-bottom: 50px;
+      border: 1px solid #E9ECEF;
+    }
+
+    .values-section h2 {
+      color: #1A1A2E;
+      font-size: 1.8rem;
+      margin-bottom: 35px;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+    }
+
+    .value-item {
+      text-align: center;
+      padding: 30px 25px;
+      background: white;
+      border-radius: 20px;
+      transition: all 0.3s;
+      border: 1px solid #E9ECEF;
+    }
+
+    .value-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+      border-color: #4A90E2;
+    }
+
+    .value-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(74, 144, 226, 0.1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+    }
+
+    .value-icon i {
+      font-size: 1.6rem;
+      color: #4A90E2;
+    }
+
+    .value-item h4 {
+      color: #1A1A2E;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .value-item p {
+      color: #6C757D;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* ========== تیم ما ========== */
+    .team-section {
+      background: white;
+      border-radius: 28px;
+      padding: 45px;
+      border: 1px solid #E9ECEF;
+      margin-bottom: 50px;
+    }
+
+    .team-section h2 {
+      color: #1A1A2E;
+      font-size: 1.8rem;
+      margin-bottom: 35px;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .team-member {
+      text-align: center;
+      padding: 30px 20px;
+      background: #F8F9FA;
+      border-radius: 20px;
+      transition: all 0.3s;
+      border: 1px solid #E9ECEF;
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .member-avatar {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #4A90E2, #667eea);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+    }
+
+    .member-avatar i {
+      font-size: 2.5rem;
+      color: white;
+    }
+
+    .team-member h4 {
+      color: #1A1A2E;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .team-member p {
+      color: #6C757D;
+      font-size: 0.85rem;
+    }
+
+    /* ========== فوتر ========== */
+    .about-footer {
+      background: #F8F9FA;
+      margin-top: 2rem;
+      text-align: center;
+      padding: 40px 20px 30px;
+      color: #6C757D;
+      border-top: 1px solid #E9ECEF;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      color: #2D2D3A;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      border: 1px solid #E9ECEF;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .social-links a:hover {
+      transform: translateY(-4px);
+      background: #4A90E2;
+      color: white;
+      box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+      border-color: #4A90E2;
+    }
+
+    .footer-copyright {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      letter-spacing: 0.3px;
+    }
+
+    /* ========== اسکرول بار ========== */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F8F9FA;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4A90E2;
+      border-radius: 4px;
+    }
+
+    /* ========== ریسپانسیو ========== */
+    @media (max-width: 768px) {
+      .container {
+        padding: 90px 16px 40px;
+      }
+      .about-text {
+        padding: 30px 25px;
+      }
+      .cards {
+        gap: 20px;
+      }
+      .card {
+        padding: 30px 20px;
+      }
+      .stats-section {
+        padding: 35px 25px;
+      }
+      .stats-grid {
+        gap: 25px;
+      }
+      .stat-number {
+        font-size: 2.2rem;
+      }
+      .stat-item:not(:last-child)::after {
+        display: none;
+      }
+      .values-section {
+        padding: 30px 25px;
+      }
+      .team-section {
+        padding: 30px 25px;
+      }
+      .social-links a {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .about-text {
+        padding: 25px 20px;
+      }
+      .about-text p {
+        font-size: 0.95rem;
+        line-height: 1.9;
+      }
+      .card h3 {
+        font-size: 1.3rem;
+      }
+      .stat-number {
+        font-size: 1.8rem;
+      }
+      .stat-label {
+        font-size: 0.85rem;
+      }
+      .value-item {
+        padding: 20px;
+      }
+      .team-member {
+        padding: 25px 15px;
+      }
+    }

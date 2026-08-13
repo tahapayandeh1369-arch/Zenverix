@@ -1,0 +1,519 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --bg: #FFFFFF;
+    --card: #F8F9FA;
+    --text: #212529;
+    --text-light: #6C757D;
+    --text-muted: #ADB5BD;
+    --accent: #4A90E2;
+    --accent-dark: #3A7BC8;
+    --purple: #8b5cf6;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    min-height: 100vh;
+    line-height: 1.8;
+}
+
+/* ========== هدر مشابه صفحه اصلی ========== */
+.space-header {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid #E9ECEF;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+    color: var(--accent);
+    cursor: pointer;
+    transition: transform 0.3s;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
+}
+
+.back-link:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+}
+
+/* ========== هدر ناوبری داخلی ========== */
+.space-nav {
+    background: white;
+    position: fixed;
+    top: 60px;
+    width: 100%;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 12px 20px;
+    border-bottom: 1px solid #E9ECEF;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+}
+
+.nav-btn {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+}
+
+/* ========== Hero Section ========== */
+.hero {
+    min-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 100px 20px 60px;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 50%, #E9ECEF 100%);
+    border-bottom: 3px solid var(--accent);
+}
+
+.hero-content {
+    animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 999px;
+    background: rgba(74, 144, 226, 0.1);
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+h1 {
+    font-size: clamp(2rem, 7vw, 3.5rem);
+    margin: 20px 0;
+    line-height: 1.2;
+    color: var(--accent-dark);
+    font-weight: 800;
+}
+
+h1 span {
+    background: linear-gradient(90deg, var(--accent), var(--purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    color: var(--text-light);
+    line-height: 1.9;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 35px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+    transition: 0.35s;
+    box-shadow: 0 10px 25px rgba(74, 144, 226, 0.25);
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(74, 144, 226, 0.4);
+}
+
+/* ========== کانتینر اصلی ========== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* ========== بخش‌های محتوا ========== */
+.topic-section {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.topic-section.active-topic {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-card {
+    background: var(--card);
+    border-radius: 24px;
+    padding: 35px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E9ECEF;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    color: var(--accent);
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-weight: 700;
+}
+
+.section-title i {
+    font-size: 1.8rem;
+}
+
+.section-title::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+/* ========== کارت‌های آمار ========== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    border: 1px solid #E9ECEF;
+    transition: all 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* ========== لیست مطالب ========== */
+.info-list {
+    list-style: none;
+    padding: 0;
+}
+
+.info-list li {
+    padding: 12px 0;
+    border-bottom: 1px dashed #E9ECEF;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.info-list li i {
+    color: var(--accent);
+    width: 28px;
+    font-size: 1.1rem;
+}
+
+.info-list li strong {
+    color: var(--accent);
+}
+
+/* ========== باکس اطلاعات ========== */
+.info-box {
+    background: rgba(74, 144, 226, 0.08);
+    border-right: 4px solid var(--accent);
+    padding: 20px;
+    border-radius: 16px;
+    margin: 20px 0;
+}
+
+.info-box i {
+    color: var(--accent);
+    margin-left: 8px;
+}
+
+/* ========== گرید سیارات ========== */
+.planets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.planet-card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid #E9ECEF;
+    transition: all 0.3s;
+}
+
+.planet-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.planet-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.planet-card h4 {
+    color: var(--accent);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.planet-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+/* ========== فوتر ========== */
+.space-footer {
+    background: #F8F9FA;
+    margin-top: 3rem;
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-light);
+    border-top: 1px solid #E9ECEF;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border: 1px solid #E9ECEF;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.social-links a:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+    border-color: var(--accent);
+}
+
+.footer-copyright {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ========== اسکرول بار ========== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #F8F9FA;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-dark);
+}
+
+/* ========== ریسپانسیو ========== */
+@media (max-width: 768px) {
+    .space-nav {
+        top: 55px;
+        padding: 10px 15px;
+        gap: 6px;
+    }
+    .nav-btn {
+        padding: 6px 14px;
+        font-size: 0.75rem;
+    }
+    .hero {
+        padding: 90px 16px 50px;
+    }
+    .section-card {
+        padding: 25px 20px;
+    }
+    .section-title {
+        font-size: 1.4rem;
+    }
+    .stats-grid {
+        gap: 15px;
+    }
+    .stat-card {
+        padding: 20px 15px;
+    }
+    .stat-number {
+        font-size: 2rem;
+    }
+    .social-links a {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .space-nav {
+        top: 52px;
+    }
+    .nav-btn {
+        padding: 5px 12px;
+        font-size: 0.7rem;
+    }
+    .hero {
+        padding: 85px 14px 40px;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    .section-card {
+        padding: 20px 16px;
+        border-radius: 18px;
+    }
+    .section-title {
+        font-size: 1.3rem;
+    }
+    .section-title i {
+        font-size: 1.4rem;
+    }
+    .planets-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1400px;
+        padding: 60px 40px;
+    }
+    .section-card {
+        padding: 45px;
+    }
+    .stat-number {
+        font-size: 3rem;
+    }
+    .social-links a {
+        width: 52px;
+        height: 52px;
+        font-size: 1.5rem;
+    }
+}

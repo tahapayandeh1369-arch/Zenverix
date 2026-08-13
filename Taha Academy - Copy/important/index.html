@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> ساعت جهانی</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css">
+  
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>ساعت جهانی</h1>
+    <div class="utc-badge">🕒 <span id="utcTime">00:00:00</span> UTC</div>
+  </div>
+
+  <div class="clocks-grid" id="clocksContainer">
+    <!-- شهرها با JS پر می‌شوند -->
+  </div>
+
+  <div class="footer">⏱️⏰ به‌روزرسانی لحظه‌ای · هر ثانیه</div>
+</div>
+
+<script>
+  const cities = [
+    { name: 'تهران', flag: '🇮🇷', tz: 'Asia/Tehran', offset: '+3:30' },
+    { name: 'لندن', flag: '🇬🇧', tz: 'Europe/London', offset: '+0/+1' },
+    { name: 'نیویورک', flag: '🇺🇸', tz: 'America/New_York', offset: '−5/−4' },
+    { name: 'دبی', flag: '🇦🇪', tz: 'Asia/Dubai', offset: '+4' },
+    { name: 'توکیو', flag: '🇯🇵', tz: 'Asia/Tokyo', offset: '+9' },
+    { name: 'پاریس', flag: '🇫🇷', tz: 'Europe/Paris', offset: '+1/+2' },
+    { name: 'سیدنی', flag: '🇦🇺', tz: 'Australia/Sydney', offset: '+10/+11' },
+    { name: 'مسکو', flag: '🇷🇺', tz: 'Europe/Moscow', offset: '+3' },
+    { name: 'استانبول', flag: '🇹🇷', tz: 'Europe/Istanbul', offset: '+3' },
+    { name: 'دهلی', flag: '🇮🇳', tz: 'Asia/Kolkata', offset: '+5:30' },
+    { name: 'پکن', flag: '🇨🇳', tz: 'Asia/Shanghai', offset: '+8' },
+    { name: 'لس‌آنجلس', flag: '🇺🇸', tz: 'America/Los_Angeles', offset: '−8/−7' },
+    { name: 'برلین', flag: '🇩🇪', tz: 'Europe/Berlin', offset: '+1/+2' },
+    { name: 'سنگاپور', flag: '🇸🇬', tz: 'Asia/Singapore', offset: '+8' },
+  ];
+
+  const container = document.getElementById('clocksContainer');
+
+  function buildCard(city) {
+    const isTehran = city.name === 'تهران';
+    return `
+      <div class="clock-card${isTehran ? ' highlight' : ''}">
+        <span class="city-flag">${city.flag}</span>
+        <div class="city-name">${city.name}</div>
+        <div class="time" data-tz="${city.tz}">--:--:--</div>
+        <div class="date" data-tz="${city.tz}"></div>
+        <div class="offset">UTC ${city.offset}</div>
+      </div>
+     `;
+  }
+
+  container.innerHTML = cities.map(buildCard).join('');
+
+  function padTwo(n) {
+    return String(n).padStart(2, '0');
+  }
+
+  function updateClocks() {
+    const now = new Date();
+
+    // به‌روزرسانی ساعت UTC در هدر
+    document.getElementById('utcTime').textContent =
+      now.toISOString().slice(11, 19);
+
+    const timeElements = document.querySelectorAll('.time[data-tz]');
+    const dateElements = document.querySelectorAll('.date[data-tz]');
+
+    const formatterTime = new Intl.DateTimeFormat('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+    });
+
+    const formatterDate = new Intl.DateTimeFormat('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    });
+
+    timeElements.forEach((el) => {
+      const tz = el.dataset.tz;
+      const timeStr = formatterTime.format(new Date(),
+        { timeZone: tz });
+      el.textContent = timeStr;
+    });
+
+    dateElements.forEach((el) => {
+      const tz = el.dataset.tz;
+      const dateStr = formatterDate.format(new Date(),
+        { timeZone: tz });
+      el.textContent = dateStr;
+    });
+  }
+
+  updateClocks();
+  setInterval(updateClocks, 1000);
+</script>
+
+</body>
+</html>

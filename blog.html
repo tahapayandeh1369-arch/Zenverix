@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Zenverix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="Csses/style.css">
+    <style>
+        /* ===== BLOG PAGE ===== */
+        .blog-page {
+            padding-top: 80px;
+            min-height: 100vh;
+            background: var(--bg-light);
+        }
+
+        .blog-hero {
+            background: var(--gradient-primary);
+            padding: 80px 20px 60px;
+            text-align: center;
+            color: white;
+        }
+
+        .blog-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .blog-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .blog-container {
+            max-width: 1200px;
+            margin: -30px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== Filters ===== */
+        .blog-filters {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 20px 25px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .blog-filters .search-box {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            padding: 0 15px;
+        }
+
+        .blog-filters .search-box input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 12px 0;
+            color: var(--text-dark);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .blog-filters .search-box i {
+            color: var(--text-light);
+        }
+
+        .blog-filters .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .blog-filters .filter-btn {
+            padding: 8px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            background: transparent;
+            color: var(--text-gray);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .blog-filters .filter-btn:hover,
+        .blog-filters .filter-btn.active {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(37, 99, 235, 0.08);
+        }
+
+        .blog-filters .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* ===== Blog Grid ===== */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .blog-card .card-image {
+            height: 200px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(255,255,255,0.3);
+            position: relative;
+        }
+
+        .blog-card .card-image .category-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .blog-card .card-body {
+            padding: 25px;
+        }
+
+        .blog-card .card-body h3 {
+            color: var(--text-dark);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            transition: color 0.3s;
+        }
+
+        .blog-card:hover .card-body h3 {
+            color: var(--primary);
+        }
+
+        .blog-card .card-body .excerpt {
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 18px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .blog-card .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            border-top: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .blog-card .card-footer .tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .blog-card .card-footer .tags span {
+            background: var(--bg-light);
+            padding: 2px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            color: var(--text-gray);
+        }
+
+        .blog-card .card-footer .meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        .blog-card .card-footer .meta i {
+            margin-right: 4px;
+        }
+
+        /* ===== Empty State ===== */
+        .empty-blog {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-light);
+        }
+
+        .empty-blog i {
+            font-size: 64px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .empty-blog h3 {
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        /* ===== Admin Panel ===== */
+        .admin-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .admin-panel {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--primary);
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .admin-panel h3 {
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-panel .form-group {
+            margin-bottom: 15px;
+        }
+
+        .admin-panel label {
+            display: block;
+            color: var(--text-gray);
+            font-weight: 500;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .admin-panel input,
+        .admin-panel textarea,
+        .admin-panel select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .admin-panel input:focus,
+        .admin-panel textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .admin-panel textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .admin-panel .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .admin-panel .btn-publish {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            width: 100%;
+        }
+
+        .admin-panel .btn-publish:hover {
+            opacity: 0.8;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+            .blog-filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            .admin-panel .form-row {
+                grid-template-columns: 1fr;
+            }
+            .admin-toggle {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 18px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="logo">
+            <img src="./image/zenverix-logo-transparent.png.webp" alt="Zenverix Logo" class="logo-img">
+            <span class="logo-name">Zenverix</span>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="blog.html" style="color: var(--primary); font-weight: 700;">Blog</a>
+            <a href="about/about.html">About</a>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+        <div class="header-controls">
+            <button id="langToggle" class="lang-toggle"><i class="fas fa-globe"></i><span id="langLabel">EN</span></button>
+            <button id="themeToggle" class="theme-toggle">🌙</button>
+        </div>
+    </header>
+
+    <!-- ===== BLOG HERO ===== -->
+    <section class="blog-hero">
+        <h1>📝 Blog</h1>
+        <p>Stories, ideas, and lessons from my journey as a developer</p>
+    </section>
+
+    <!-- ===== BLOG CONTENT ===== -->
+    <div class="blog-container">
+
+        <!-- Filters -->
+        <div class="blog-filters">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search posts...">
+                <button id="clearSearch" style="background:none;border:none;color:var(--text-light);cursor:pointer;display:none;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="filter-group" id="filterGroup">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="Web Development">Web</button>
+                <button class="filter-btn" data-filter="AI">AI</button>
+                <button class="filter-btn" data-filter="Programming">Programming</button>
+                <button class="filter-btn" data-filter="Design">Design</button>
+            </div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div class="admin-panel" id="adminPanel">
+            <h3><i class="fas fa-pen-fancy" style="color: var(--primary);"></i> Write New Post</h3>
+            <div class="form-group">
+                <label>Title *</label>
+                <input type="text" id="postTitle" placeholder="Enter post title...">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Category</label>
+                    <input type="text" id="postCategory" placeholder="e.g. Web Development">
+                </div>
+                <div class="form-group">
+                    <label>Read Time (minutes)</label>
+                    <input type="number" id="postReadTime" placeholder="5" value="5">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Tags (comma separated)</label>
+                <input type="text" id="postTags" placeholder="react, javascript, css">
+            </div>
+            <div class="form-group">
+                <label>Content *</label>
+                <textarea id="postContent" placeholder="Write your post content here..."></textarea>
+            </div>
+            <button class="btn-publish" id="publishPost">
+                <i class="fas fa-paper-plane"></i> Publish Post
+            </button>
+        </div>
+
+        <!-- Blog Grid -->
+        <div class="blog-grid" id="blogGrid"></div>
+    </div>
+
+    <!-- ===== ADMIN TOGGLE ===== -->
+    <button class="admin-toggle" id="adminToggle">
+        <i class="fas fa-user-cog"></i> Manage Blog
+    </button>
+
+    <!-- ===== FOOTER ===== -->
+    <footer style="margin-top: 60px;">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="./image/zenverix-logo-transparent.png.webp" alt="Zenverix" class="footer-logo-img">
+                    <span class="footer-logo-name">Zenverix</span>
+                </div>
+                <p class="footer-tagline">Build Beyond Limits</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-column">
+                    <h4>Pages</h4>
+                    <a href="index.html">Home</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="about/about.html">About</a>
+                </div>
+                <div class="footer-links-column">
+                    <h4>Social</h4>
+                    <a href="https://github.com/tahapayandeh1369-arch" target="_blank">GitHub</a>
+                    <a href="https://desktop.telegram.org/" target="_blank">Telegram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="js/config.js"></script>
+    <script src="js/blog.js"></script>
+</body>
+</html>

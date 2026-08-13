@@ -1,0 +1,403 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #ffffff 0%, #f1f1f1 45%, #d9d9d9 100%);
+    color: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(14px);
+    border-radius: 28px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, rgba(0,0,0,0.03), transparent 35%),
+        radial-gradient(circle at top left, rgba(0,0,0,0.06), transparent 30%);
+    pointer-events: none;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #111;
+    color: #fff;
+    font-size: clamp(12px, 3.5vw, 14px);
+    margin-bottom: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+h1 {
+    font-size: clamp(28px, 6vw, 54px);
+    margin-bottom: 18px;
+    color: #111;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+    animation: float 3s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+}
+
+p {
+    font-size: clamp(15px, 4vw, 18px);
+    line-height: 1.8;
+    color: #333;
+    max-width: 800px;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 30px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    padding: 22px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #111;
+    font-size: clamp(18px, 4.5vw, 20px);
+}
+
+.card p {
+    margin: 0;
+    font-size: clamp(13px, 3.5vw, 15px);
+    line-height: 1.7;
+    color: #444;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 1px solid #111;
+    font-size: clamp(13px, 3.5vw, 16px);
+}
+
+.primary {
+    background: #111;
+    color: #fff;
+}
+
+.primary:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+
+.primary:active {
+    transform: translateY(0);
+}
+
+.secondary {
+    background: transparent;
+    color: #111;
+}
+
+.secondary:hover {
+    background: #111;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.secondary:active {
+    transform: translateY(0);
+}
+
+.note {
+    margin-top: 24px;
+    padding: 14px 16px;
+    border-right: 4px solid #111;
+    background: rgba(0,0,0,0.04);
+    border-radius: 12px;
+    color: #222;
+    position: relative;
+    z-index: 1;
+    font-size: clamp(13px, 3.5vw, 15px);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+/* ========== ریسپانسیو کامل ========== */
+
+/* تبلت (768px - 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 95%;
+        padding: 32px;
+        border-radius: 24px;
+    }
+    
+    .features {
+        gap: 14px;
+    }
+    
+    .card {
+        padding: 18px;
+    }
+}
+
+/* تبلت کوچک و موبایل بزرگ (600px - 768px) */
+@media (max-width: 768px) {
+    body {
+        padding: 16px;
+    }
+    
+    .container {
+        padding: 24px 20px;
+        border-radius: 20px;
+    }
+    
+    .badge {
+        padding: 6px 14px;
+        margin-bottom: 14px;
+    }
+    
+    h1 {
+        margin-bottom: 14px;
+    }
+    
+    p {
+        line-height: 1.7;
+        margin-bottom: 20px;
+    }
+    
+    .features {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+        margin: 20px 0;
+    }
+    
+    .card {
+        padding: 16px;
+        border-radius: 16px;
+    }
+    
+    .buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+    }
+    
+    a {
+        padding: 10px 20px;
+        text-align: center;
+        flex: 1;
+        min-width: 120px;
+    }
+    
+    .note {
+        padding: 12px 14px;
+        margin-top: 20px;
+    }
+}
+
+/* موبایل (480px - 600px) */
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+    
+    .container {
+        padding: 20px 16px;
+        border-radius: 18px;
+    }
+    
+    .badge {
+        padding: 5px 12px;
+        font-size: 11px;
+        margin-bottom: 12px;
+    }
+    
+    h1 {
+        margin-bottom: 12px;
+    }
+    
+    p {
+        line-height: 1.65;
+        margin-bottom: 16px;
+    }
+    
+    .features {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 16px 0;
+    }
+    
+    .card {
+        padding: 14px;
+        border-radius: 14px;
+    }
+    
+    .card h3 {
+        margin-bottom: 6px;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    a {
+        padding: 10px 16px;
+        width: 100%;
+        min-width: unset;
+    }
+    
+    .note {
+        padding: 10px 12px;
+        margin-top: 16px;
+    }
+}
+
+/* موبایل خیلی کوچک (زیر 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+    
+    .container {
+        padding: 16px 14px;
+        border-radius: 16px;
+    }
+    
+    .badge {
+        padding: 4px 10px;
+        font-size: 10px;
+    }
+    
+    .card {
+        padding: 12px;
+    }
+    
+    a {
+        padding: 8px 14px;
+        border-radius: 12px;
+    }
+}
+
+/* دسکتاپ بزرگ (بالای 1400px) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1200px;
+        padding: 50px;
+        border-radius: 32px;
+    }
+    
+    .features {
+        gap: 20px;
+    }
+    
+    .card {
+        padding: 26px;
+    }
+    
+    .card h3 {
+        font-size: 22px;
+    }
+    
+    .card p {
+        font-size: 16px;
+    }
+    
+    a {
+        padding: 14px 28px;
+        font-size: 16px;
+    }
+}
+
+/* حالت افقی در موبایل */
+@media (max-width: 900px) and (orientation: landscape) {
+    body {
+        padding: 12px;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    .features {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 10px;
+    }
+    
+    .card {
+        padding: 12px;
+    }
+    
+    .card h3 {
+        font-size: 16px;
+    }
+    
+    .card p {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+    
+    .buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    a {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+}

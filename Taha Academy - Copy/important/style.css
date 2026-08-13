@@ -1,0 +1,408 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: linear-gradient(145deg, #F0F2F5 0%, #FFFFFF 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 40px;
+    padding: 40px 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.header h1 {
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #E68A2E, #D4A017);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.utc-badge {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 6px 16px;
+    border-radius: 50px;
+    color: #666;
+    font-size: clamp(0.75rem, 3vw, 0.9rem);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.utc-badge span {
+    color: #E68A2E;
+    font-weight: 700;
+}
+
+.clocks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.clock-card {
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 24px;
+    padding: 22px 14px 18px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    cursor: default;
+}
+
+.clock-card:hover {
+    transform: translateY(-4px);
+    background: rgba(0, 0, 0, 0.04);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.clock-card .city-name {
+    font-size: clamp(0.9rem, 3.5vw, 1.05rem);
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.clock-card .city-flag {
+    font-size: clamp(1.3rem, 5vw, 1.6rem);
+    display: block;
+    margin-bottom: 6px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.clock-card .time {
+    font-size: clamp(1.2rem, 5vw, 1.7rem);
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #1a1a2e;
+    font-family: 'Courier New', monospace;
+    direction: ltr;
+}
+
+.clock-card .date {
+    font-size: clamp(0.6rem, 2.5vw, 0.7rem);
+    color: #888;
+    margin-top: 6px;
+    direction: ltr;
+}
+
+.clock-card .offset {
+    font-size: clamp(0.6rem, 2.5vw, 0.7rem);
+    color: #E68A2E;
+    margin-top: 4px;
+}
+
+.highlight {
+    background: linear-gradient(145deg, rgba(230, 138, 46, 0.08), rgba(212, 160, 23, 0.05));
+    border-color: rgba(230, 138, 46, 0.2);
+}
+
+.highlight .city-name {
+    color: #E68A2E;
+}
+
+.footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: clamp(0.7rem, 3vw, 0.8rem);
+    color: #999;
+}
+
+/* ========== ریسپانسیو کامل ========== */
+
+/* لپ‌تاپ و تبلت بزرگ (768px - 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 95%;
+        padding: 35px 25px;
+        border-radius: 35px;
+    }
+    
+    .clocks-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 14px;
+    }
+    
+    .clock-card {
+        padding: 18px 12px 14px;
+        border-radius: 20px;
+    }
+}
+
+/* تبلت (600px - 768px) */
+@media (max-width: 768px) {
+    body {
+        padding: 12px;
+    }
+    
+    .container {
+        padding: 25px 20px;
+        border-radius: 28px;
+    }
+    
+    .header {
+        margin-bottom: 25px;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .utc-badge {
+        padding: 5px 14px;
+        font-size: 0.8rem;
+    }
+    
+    .clocks-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+    }
+    
+    .clock-card {
+        padding: 16px 10px 12px;
+        border-radius: 18px;
+    }
+    
+    .clock-card .city-name {
+        font-size: 0.95rem;
+    }
+    
+    .clock-card .city-flag {
+        font-size: 1.4rem;
+    }
+    
+    .clock-card .time {
+        font-size: 1.3rem;
+    }
+    
+    .footer {
+        margin-top: 25px;
+    }
+}
+
+/* موبایل (480px - 600px) */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 20px 14px;
+        border-radius: 24px;
+    }
+    
+    .header {
+        margin-bottom: 20px;
+        gap: 10px;
+    }
+    
+    .header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .utc-badge {
+        padding: 4px 12px;
+        font-size: 0.7rem;
+    }
+    
+    .clocks-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 10px;
+    }
+    
+    .clock-card {
+        padding: 14px 8px 10px;
+        border-radius: 16px;
+    }
+    
+    .clock-card .city-name {
+        font-size: 0.85rem;
+    }
+    
+    .clock-card .city-flag {
+        font-size: 1.3rem;
+    }
+    
+    .clock-card .time {
+        font-size: 1.2rem;
+    }
+    
+    .clock-card .date {
+        font-size: 0.55rem;
+    }
+    
+    .clock-card .offset {
+        font-size: 0.55rem;
+    }
+    
+    .footer {
+        margin-top: 20px;
+        font-size: 0.7rem;
+    }
+}
+
+/* موبایل خیلی کوچک (زیر 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+    
+    .container {
+        padding: 16px 12px;
+        border-radius: 20px;
+    }
+    
+    .header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .utc-badge {
+        padding: 3px 10px;
+        font-size: 0.65rem;
+    }
+    
+    .clocks-grid {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 8px;
+    }
+    
+    .clock-card {
+        padding: 12px 6px 8px;
+        border-radius: 14px;
+    }
+    
+    .clock-card .city-name {
+        font-size: 0.75rem;
+        margin-bottom: 4px;
+    }
+    
+    .clock-card .city-flag {
+        font-size: 1.2rem;
+        margin-bottom: 4px;
+    }
+    
+    .clock-card .time {
+        font-size: 1rem;
+    }
+    
+    .clock-card .date {
+        font-size: 0.5rem;
+        margin-top: 4px;
+    }
+    
+    .clock-card .offset {
+        font-size: 0.5rem;
+        margin-top: 3px;
+    }
+    
+    .footer {
+        margin-top: 16px;
+        font-size: 0.65rem;
+    }
+}
+
+/* دسکتاپ بزرگ (بالای 1400px) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1300px;
+        padding: 50px 40px;
+        border-radius: 48px;
+    }
+    
+    .clocks-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 20px;
+    }
+    
+    .clock-card {
+        padding: 26px 18px 22px;
+        border-radius: 28px;
+    }
+    
+    .clock-card .city-name {
+        font-size: 1.2rem;
+    }
+    
+    .clock-card .city-flag {
+        font-size: 1.8rem;
+    }
+    
+    .clock-card .time {
+        font-size: 1.9rem;
+    }
+    
+    .clock-card .date {
+        font-size: 0.8rem;
+    }
+    
+    .footer {
+        margin-top: 40px;
+        font-size: 0.9rem;
+    }
+}
+
+/* حالت افقی در موبایل */
+@media (max-width: 800px) and (orientation: landscape) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 18px 16px;
+        border-radius: 20px;
+    }
+    
+    .header {
+        margin-bottom: 15px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .clocks-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+    }
+    
+    .clock-card {
+        padding: 10px 8px 8px;
+    }
+    
+    .clock-card .time {
+        font-size: 1.1rem;
+    }
+    
+    .footer {
+        margin-top: 15px;
+    }
+}

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="کاوش در فضا، کهکشان‌ها، سیاهچاله‌ها، منظومه شمسی و آخرین اکتشافات ناسا - TahaAcademy">
+  <meta name="keywords" content="فضا, کهکشان, سیاهچاله, ناسا, منظومه شمسی, ستاره شناسی, TahaAcademy">
+  <meta name="author" content="TahaAcademy">
+  <title>کاوش فضا | TahaAcademy</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="./space_new.css">
+</head>
+<body>
+
+  <!-- هدر اصلی -->
+  <header class="space-header">
+    <a href="../TahaAcademy.html" class="logo">TahaAcademy</a>
+    <a href="../TahaAcademy.html" class="back-link">
+      <i class="fas fa-arrow-right"></i>
+      بازگشت به صفحه اصلی
+    </a>
+  </header>
+
+  <!-- ناوبری داخلی موضوعات -->
+  <nav class="space-nav">
+    <button class="nav-btn active" data-topic="overview">🌌 نمای کلی</button>
+    <button class="nav-btn" data-topic="solarsystem">🪐 منظومه شمسی</button>
+    <button class="nav-btn" data-topic="blackholes">⚫ سیاهچاله‌ها</button>
+    <button class="nav-btn" data-topic="galaxies">🌠 کهکشان‌ها</button>
+    <button class="nav-btn" data-topic="nasa">🚀 ماموریت‌های ناسا</button>
+    <button class="nav-btn" data-topic="future">👨‍🚀 آینده بشر در فضا</button>
+  </nav>
+
+  <!-- بخش Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="badge">🚀 SPACE EXPLORATION</span>
+      <h1>کشف اسرار <span>کیهان</span></h1>
+      <p>سفری به اعماق فضا، کهکشان‌ها، سیاهچاله‌ها و آینده بشر.</p>
+      <a href="#" class="btn" id="exploreBtn">شروع سفر <i class="fas fa-rocket"></i></a>
+    </div>
+  </section>
+
+  <!-- کانتینر اصلی محتوا -->
+  <div class="container">
+    
+    <!-- ==================== بخش 1: نمای کلی ==================== -->
+    <div id="overview" class="topic-section active-topic">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">13.8B</div>
+          <div class="stat-label">سال عمر جهان</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2T+</div>
+          <div class="stat-label">کهکشان</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100B+</div>
+          <div class="stat-label">ستاره در کهکشان راه شیری</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">5,000+</div>
+          <div class="stat-label">سیاره فراخورشیدی کشف شده</div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title">
+          <i class="fas fa-globe-asia"></i>
+          <span>جهان هستی</span>
+        </div>
+        <p>جهان هستی با <b>مهبانگ (Big Bang)</b> حدود ۱۳.۸ میلیارد سال پیش آغاز شد. از آن زمان تا کنون، جهان در حال انبساط است و کهکشان‌ها مدام از هم دور می‌شوند. آنچه ما می‌بینیم فقط <b>۵٪</b> از کل جهان است! بقیه از ماده تاریک (۲۷٪) و انرژی تاریک (۶۸٪) تشکیل شده که هنوز ماهیت دقیق آنها ناشناخته است.</p>
+        <div class="info-box">
+          <i class="fas fa-lightbulb"></i>
+          <strong>نکته جالب:</strong> نور ستارگانی که می‌بینیم، سال‌ها طول کشیده تا به ما برسد. برخی از ستارگانی که در آسمان شب می‌بینیم، ممکن است دیگر وجود نداشته باشند!
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title">
+          <i class="fas fa-star"></i>
+          <span>مراحل تکامل جهان</span>
+        </div>
+        <ul class="info-list">
+          <li><i class="fas fa-bolt"></i> <strong>مهبانگ (۱۳.۸ میلیارد سال پیش)</strong> - آغاز زمان و فضا</li>
+          <li><i class="fas fa-dot-circle"></i> <strong>تشکیل اولین ستاره‌ها (۱۳ میلیارد سال پیش)</strong> - روشنایی جهان</li>
+          <li><i class="fas fa-chart-line"></i> <strong>تشکیل کهکشان‌ها (۱۲ میلیارد سال پیش)</strong> - خوشه‌های ستاره‌ای</li>
+          <li><i class="fas fa-sun"></i> <strong>تشکیل منظومه شمسی (۴.۶ میلیارد سال پیش)</strong> - تولد خورشید و سیارات</li>
+          <li><i class="fas fa-seedling"></i> <strong>ظهور حیات روی زمین (۳.۸ میلیارد سال پیش)</strong> - اولین میکروب‌ها</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ==================== بخش 2: منظومه شمسی ==================== -->
+    <div id="solarsystem" class="topic-section">
+      <div class="section-card">
+        <div class="section-title">
+          <i class="fas fa-sun"></i>
+          <span>منظومه شمسی</span>
+        </div>
+        <p>منظومه شمسی شامل <b>خورشید</b> (ستاره مرکزی)، <b>۸ سیاره</b>، ۵ سیاره کوتوله، بیش از ۲۰۰ قمر و میلیون‌ها سیارک و دنباله‌دار است. خورشید ۹۹.۸۶٪ از جرم کل منظومه شمسی را تشکیل می‌دهد!</p>
+      </div>
+
+      <div class="planets-grid">
+        <div class="planet-card">
+          <div class="planet-icon">☀️</div>
+          <h4>خورشید</h4>
+          <p>قطر: ۱.۳۹ میلیون کیلومتر | دما: ۵۵۰۰ درجه سطح، ۱۵ میلیون درجه هسته</p>
+        </div>
+        <div class="planet-card">
+          <div class="planet-icon">🪨</div>
+          <h4>عطارد</h4>
+          <p>نزدیک‌ترین سیاره به خورشید، دمای روز: ۴۳۰°C، شب: -۱۸۰°C</p>
+        </div>
+        <div class="planet-card">
+          <div class="planet-icon">🌋</div>
+          <h4>زهره</h4>
+          <p>داغ‌ترین سیاره (۴۷۰°C)، جو غلیظ دی‌اکسید کربن</p>
+        </div>
+        <div class="planet-card">
+          <div class="planet-icon">🌍</div>
+          <h4>زمین</h4>
+          <p>تنها سیاره شناخته شده با حیات، ۷۱٪ آب، ۲۹٪ خشکی</p>
+        </div>
+        <div class="planet-card">
+          <div class="planet-icon">🔴</div>
+          <h4>مریخ</h4>
+          <p>سیاره سرخ، بلندترین کوه منظومه (المپوس ۲۲ کیلومتر)</p>
+        </div>
+        <div class="planet-card">
+          <div class="planet-icon">🪐</div>
+          <h4>زحل</h4>
+          <p>حلقه‌های دیدنی، کم‌چگالی‌ترین سیاره (سبک‌تر از آب!)</p>
+        </div>
+        <div class="planet-card">
+          <div class="planet-icon">🌀</div>
+          <h4>مشتری</h4>
+          <p>بزرگترین سیاره، لکه سرخ بزرگ (طوفان ۴۰۰ ساله)</p>
+        </div>
+        <div class="planet-card">
+          <div class="planet-icon">❄️</div>
+          <h4>اورانوس و نپتون</h4>
+          <p>غول‌های یخی، دورترین سیارات منظومه شمسی</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <i class="fas fa-moon"></i>
+        <strong>قمرهای معروف:</strong> قمر زمین (ماه)، اروپا (مشتری - اقیانوس زیر یخی)، تیتان (زحل - جو غلیظ)، انسلادوس (زحل - فواره‌های آب)
+      </div>
+    </div>
+
+    <!-- ==================== بخش 3: سیاهچاله‌ها ==================== -->
+    <div id="blackholes" class="topic-section">
+      <div class="section-card">
+        <div class="section-title">
+          <i class="fas fa-circle"></i>
+          <span>سیاهچاله‌ها (Black Holes)</span>
+        </div>
+        <p><b>سیاهچاله</b> منطقه‌ای از فضا-زمان است که گرانش آنقدر قوی است که هیچ‌چیز، حتی نور، نمی‌تواند از آن فرار کند. سیاهچاله‌ها زمانی تشکیل می‌شوند که ستارگان بسیار بزرگ در پایان عمر خود منفجر می‌شوند (ابرنواختر) و هسته آنها فرو می‌پاشد.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">~40</div>
+          <div class="stat-label">سیاهچاله شناخته شده در کهکشان ما</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4M☉</div>
+          <div class="stat-label">جرم سیاهچاله مرکز کهکشان راه شیری</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">20B☉</div>
+          <div class="stat-label">جرم بزرگترین سیاهچاله کشف شده</div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title">
+          <i class="fas fa-chart-line"></i>
+          <span>انواع سیاهچاله‌ها</span>
+        </div>
+        <ul class="info-list">
+          <li><i class="fas fa-microphone"></i> <strong>سیاهچاله‌های ستاره‌وار</strong> - جرم ۳ تا ۱۰۰ برابر خورشید</li>
+          <li><i class="fas fa-chart-line"></i> <strong>سیاهچاله‌های متوسط</strong> - جرم ۱۰۰ تا ۱۰۰,۰۰۰ برابر خورشید</li>
+          <li><i class="fas fa-star"></i> <strong>سیاهچاله‌های ابرپرجرم</strong> - میلیون‌ها تا میلیاردها برابر خورشید (مرکز کهکشان‌ها)</li>
+        </ul>
+        <div class="info-box">
+          <i class="fas fa-video"></i>
+          <strong>اولین عکس از سیاهچاله:</strong> در سال ۲۰۱۹، تلسکوپ افق رویداد (EHT) اولین تصویر از سیاهچاله مرکز کهکشان M87 را منتشر کرد.
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== بخش 4: کهکشان‌ها ==================== -->
+    <div id="galaxies" class="topic-section">
+      <div class="section-card">
+        <div class="section-title">
+          <i class="fas fa-chalkboard"></i>
+          <span>کهکشان‌ها (Galaxies)</span>
+        </div>
+        <p>کهکشان‌ها مجموعه‌های عظیمی از ستارگان، گاز، غبار و ماده تاریک هستند که توسط گرانش به هم متصل شده‌اند. تخمین زده می‌شود در جهان قابل مشاهده بیش از <b>۲ تریلیون کهکشان</b> وجود داشته باشد!</p>
+      </div>
+
+      <div class="planets-grid">
+        <div class="planet-card">
+          <div class="planet-icon">🌌</div>
+          <h4>راه شیری (Milky Way)</h4>
+          <p>کهکشان ما، حدود ۱۰۰ میلیارد ستاره، قطر ۱۰۵,۰۰۰ سال نوری</p>
+        </div>
+        <div class="planet-card">
+          <div class="planet-icon">🌀</div>
+          <h4>آندرومدا (Andromeda)</h4>
+          <p>نزدیک‌ترین کهکشان بزرگ، در حال برخورد با راه شیری (تا ۴ میلیارد سال دیگر)</p>
+        </div>
+        <div class="planet-card">
+          <div class="planet-icon">⚪</div>
+          <h4>کهکشان‌های بیضوی</h4>
+          <p>کهکشان‌های پیر با ستارگان قدیمی، بدون ساختار مارپیچی</p>
+        </div>
+        <div class="planet-card">
+          <div class="planet-icon">🔄</div>
+          <h4>کهکشان‌های نامنظم</h4>
+          <p>کهکشان‌های بدون شکل مشخص، معمولاً کوچک و غنی از گاز</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== بخش 5: ماموریت‌های ناسا ==================== -->
+    <div id="nasa" class="topic-section">
+      <div class="section-card">
+        <div class="section-title">
+          <i class="fas fa-space-shuttle"></i>
+          <span>ماموریت‌های مهم ناسا</span>
+        </div>
+        <ul class="info-list">
+          <li><i class="fas fa-moon"></i> <strong>آپولو ۱۱ (۱۹۶۹)</strong> - اولین فرود انسان بر ماه (نیل آرمسترانگ)</li>
+          <li><i class="fas fa-satellite"></i> <strong>تلسکوپ فضایی هابل (۱۹۹۰)</strong> - تصاویر بی‌نظیر از اعماق فضا</li>
+          <li><i class="fas fa-car"></i> <strong>مریخ‌نورد کنجکاوی (۲۰۱۲)</strong> - کشف آب روی مریخ</li>
+          <li><i class="fas fa-sun"></i> <strong>کاوشگر خورشیدی پارکر (۲۰۱۸)</strong> - نزدیک‌ترین فاصله به خورشید</li>
+          <li><i class="fas fa-telescope"></i> <strong>تلسکوپ فضایی جیمز وب (۲۰۲۱)</strong> - قدرتمندترین تلسکوپ تاریخ</li>
+          <li><i class="fas fa-helmet-battle"></i> <strong>آرتمیس (۲۰۲۵)</strong> - بازگشت انسان به ماه</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title">
+          <i class="fas fa-microscope"></i>
+          <span>دستاوردهای جیمز وب</span>
+        </div>
+        <p>تلسکوپ جیمز وب توانسته کهکشان‌هایی را ببیند که فقط <b>۳۰۰ میلیون سال</b> بعد از مهبانگ شکل گرفته‌اند! همچنین جو سیارات فراخورشیدی را بررسی کرده و مولکول‌های آلی (ماده اولیه حیات) را در آنها شناسایی کرده است.</p>
+      </div>
+    </div>
+
+    <!-- ==================== بخش 6: آینده بشر در فضا ==================== -->
+    <div id="future" class="topic-section">
+      <div class="section-card">
+        <div class="section-title">
+          <i class="fas fa-user-astronaut"></i>
+          <span>آینده بشر در فضا</span>
+        </div>
+        <p>بشر رویاهای بزرگی برای فضا دارد. از سفر به مریخ تا مستعمره‌سازی روی ماه و حتی سفر به کهکشان‌های دیگر!</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">۲۰۳۰</div>
+          <div class="stat-label">برنامه ناسا برای فرود روی مریخ</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">۲۰۲۷</div>
+          <div class="stat-label">ایستگاه فضایی گیت وی (مدار ماه)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">استارشیپ</div>
+          <div class="stat-label">فضاپیمای عظیم اسپیس‌ایکس</div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title">
+          <i class="fas fa-question-circle"></i>
+          <span>چالش‌های پیش رو</span>
+        </div>
+        <ul class="info-list">
+          <li><i class="fas fa-clock"></i> زمان طولانی سفر (مریخ: ۷-۹ ماه)</li>
+          <li><i class="fas fa-radiation"></i> تشعشعات کیهانی خطرناک</li>
+          <li><i class="fas fa-weight-hanging"></i> جاذبه صفر و اثرات آن بر بدن انسان</li>
+          <li><i class="fas fa-wind"></i> جو و دمای نامناسب سیارات دیگر</li>
+        </ul>
+        <div class="info-box">
+          <i class="fas fa-robot"></i>
+          <strong>راهکارها:</strong> استفاده از هوش مصنوعی، پرینتر سه‌بعدی برای ساخت قطعات، کشاورزی فضایی، و سپرهای مغناطیسی در برابر تشعشعات
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- فوتر -->
+  <footer class="space-footer">
+    <div class="social-links">
+      <a href="https://instagram.com/tahaacademy" class="instagram" target="_blank" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/tahaacademy" class="github" target="_blank" aria-label="گیت‌هاب"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/tahaacademy" class="linkedin" target="_blank" aria-label="لینکدین"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://youtube.com/@tahaacademy" class="youtube" target="_blank" aria-label="یوتیوب"><i class="fab fa-youtube"></i></a>
+      <a href="https://t.me/tahaacademy" class="telegram" target="_blank" aria-label="تلگرام"><i class="fab fa-telegram-plane"></i></a>
+    </div>
+    <div class="footer-copyright">
+      © ۲۰۲۵ TahaAcademy — ساخته‌شده با ❤️، کد و خلاقیت | تمامی حقوق محفوظ است
+    </div>
+  </footer>
+
+  <script>
+    // سیستم جابجایی بین موضوعات
+    const buttons = document.querySelectorAll('.nav-btn');
+    const sections = document.querySelectorAll('.topic-section');
+
+    function switchTopic(topicId) {
+      sections.forEach(section => {
+        section.classList.remove('active-topic');
+      });
+      
+      const activeSection = document.getElementById(topicId);
+      if (activeSection) {
+        activeSection.classList.add('active-topic');
+      }
+      
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-topic') === topicId) {
+          btn.classList.add('active');
+        }
+      });
+      
+      localStorage.setItem('lastSpaceTopic', topicId);
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const topicId = btn.getAttribute('data-topic');
+        switchTopic(topicId);
+      });
+    });
+
+    const lastTopic = localStorage.getItem('lastSpaceTopic');
+    if (lastTopic && document.getElementById(lastTopic)) {
+      switchTopic(lastTopic);
+    }
+
+    // اسکرول به کانتینر با کلیک دکمه شروع سفر
+    document.getElementById('exploreBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

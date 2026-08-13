@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <title> اروپا</title>  
+  <link rel="stylesheet" href="./europe.css">
+</head>
+
+
+    <!-- <script>
+        document.getElementById('add-country-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('country-name').value;
+            const tz = document.getElementById('timezone').value;
+            
+            const list = document.getElementById('europe-list');
+            const newItem = document.createElement('li');
+            newItem.innerHTML = `<a href="clock.html?country=${tz}">${name}</a>`;
+            
+            list.appendChild(newItem);
+            
+            // خالی کردن فرم
+            this.reset();
+        });
+    </script> -->
+    <body>
+    <div class="container">
+        <a href="index.html" class="btn-back">بازگشت به خانه</a>
+        <h1>کشورهای اروپا</h1>
+
+        <ul class="list" id="europe-list">
+            <li><a href="clock.html?country=Europe/London">انگلیس (لندن)</a></li>
+            <li><a href="clock.html?country=Europe/Paris">فرانسه (پاریس)</a></li>
+            <li><a href="clock.html?country=Europe/Berlin">آلمان (برلین)</a></li>
+            <li><a href="clock.html?country=Europe/Rome">ایتالیا (رم)</a></li>
+            <li><a href="clock.html?country=Europe/Madrid">اسپانیا (مادرید)</a></li>
+        </ul>
+
+        <h3>افزودن کشور جدید به اروپا</h3>
+        <form id="add-country-form">
+            <input type="text" id="country-name" placeholder="نام کشور" required>
+            <input type="text" id="timezone" placeholder="Timezone (مثلا Europe/Vienna)" required>
+            <button type="submit">افزودن به لیست</button>
+        </form>
+    </div>
+</body>
+
+</body>
+</html>
