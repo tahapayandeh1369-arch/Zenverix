@@ -1,677 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeBark - Professional Code Editor</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./Csses/code-bark-style.css">
-    <link rel="icon" type="image/x-icon" href="./image/favicon.ico">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeBark — Zenverix Code Editor</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./Csses/code-bark-style.css">
+<link rel="icon" type="image/x-icon" href="./image/favicon.ico">
 </head>
-<body>
+<body class="codebark-app">
 
-    <!-- ===== LOADING SCREEN ===== -->
-    <div id="loadingScreen">
-        <div class="loader-wrapper">
-            <div class="loader-logo">
-                <div class="ring1"></div><div class="ring2"></div><div class="ring3"></div>
-                <div class="logo-icon"><i class="fas fa-pencil-ruler"></i></div>
-            </div>
-            <div class="loader-title">Code<span>Bark</span></div>
-            <div class="loader-sub">Professional Code Editor</div>
-            <div class="loader-bar-wrap">
-                <div class="loader-bar"><div class="bar-fill" id="barFill"></div></div>
-                <div class="loader-percent" id="percentText">0%</div>
-            </div>
-            <div class="loader-dots"><span></span><span></span><span></span></div>
-        </div>
+<div id="loadingScreen" class="cb-loading">
+  <div class="loader-wrapper">
+    <div class="loader-logo">
+      <div class="ring1"></div><div class="ring2"></div><div class="ring3"></div>
+      <div class="logo-icon"><i class="fas fa-pencil-ruler"></i></div>
+    </div>
+    <div class="loader-title">Code<span>Bark</span></div>
+    <div class="loader-sub">Professional Code Editor</div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"><div class="bar-fill" id="barFill"></div></div>
+      <div class="loader-percent" id="percentText">0%</div>
+    </div>
+    <div class="loader-dots"><span></span><span></span><span></span></div>
+  </div>
+</div>
+
+<nav class="cb-navbar">
+  <div class="brand" onclick="navigateTo('home')">
+    <div class="icon"><i class="fas fa-pencil-ruler"></i></div>
+    <div><h1>Code<span>Bark</span></h1><small>Zenverix Code Editor</small></div>
+  </div>
+
+  <div class="nav-links">
+    <a href="#" class="active" onclick="navigateTo('home');return false;"><i class="fas fa-home"></i> Home</a>
+    <a href="#" onclick="navigateTo('editor');return false;"><i class="fas fa-code"></i> Editor</a>
+    <a href="#" onclick="showNotif('🚀 Projects coming soon...');return false;"><i class="fas fa-folder"></i> Projects</a>
+    <a href="#" onclick="showNotif('📚 Learn section coming soon...');return false;"><i class="fas fa-graduation-cap"></i> Learn</a>
+  </div>
+
+  <div class="tools">
+    <button onclick="toggleTheme()"><i class="fas fa-moon"></i><span id="themeLabel">Dark</span></button>
+    <button onclick="showNotif('👤 Profile coming soon...')"><i class="fas fa-user"></i></button>
+    <button class="primary" onclick="downloadProject()"><i class="fas fa-download"></i><span>Export</span></button>
+    <button class="back-btn" onclick="goZenverix()"><i class="fas fa-arrow-left"></i><span>Zenverix</span></button>
+  </div>
+</nav>
+
+<main id="mainContent">
+  <section id="homePage" class="cb-page active">
+    <div class="home-hero">
+      <span class="badge">🔥 Zenverix Tool</span>
+      <h1>Welcome to <span>CodeBark</span></h1>
+      <p>Professional code editor with live preview and essential tools for modern developers.</p>
+      <button class="start-btn" onclick="navigateTo('editor')"><i class="fas fa-play"></i> Start Coding</button>
     </div>
 
-    <!-- ===== NAVBAR ===== -->
-    <nav class="navbar">
-        <div class="brand" onclick="navigateTo('home')">
-            <div class="icon"><i class="fas fa-pencil-ruler"></i></div>
-            <div>
-                <h1>Code<span>Bark</span></h1>
-                <small>Professional Editor</small>
-            </div>
-        </div>
-        <div class="nav-links">
-            <a href="#" class="active" onclick="navigateTo('home')"><i class="fas fa-home"></i> Home</a>
-            <a href="#" onclick="navigateTo('editor')"><i class="fas fa-code"></i> Editor</a>
-            <a href="#" onclick="showNotif('🚀 Coming soon...')"><i class="fas fa-folder"></i> Projects</a>
-            <a href="#" onclick="showNotif('📚 Coming soon...')"><i class="fas fa-graduation-cap"></i> Learn</a>
-        </div>
-        <div class="tools">
-            <button onclick="toggleTheme()"><i class="fas fa-moon"></i> <span id="themeLabel">Dark</span></button>
-            <button onclick="showNotif('👤 Profile coming soon...')"><i class="fas fa-user"></i></button>
-            <button class="primary" onclick="downloadProject()"><i class="fas fa-download"></i> <span>Export</span></button>
-        </div>
-    </nav>
+    <div class="home-stats">
+      <div class="stat-card"><div class="num">10+</div><div class="label">Active Projects</div></div>
+      <div class="stat-card"><div class="num">1,240</div><div class="label">Lines of Code</div></div>
+      <div class="stat-card"><div class="num">5</div><div class="label">Design Themes</div></div>
+      <div class="stat-card"><div class="num">100%</div><div class="label">User Satisfaction</div></div>
+    </div>
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <div id="mainContent">
-        
-        <!-- ===== HOME PAGE ===== -->
-        <div id="homePage" class="active">
-            <div class="home-hero">
-                <span class="badge">🔥 New Version</span>
-                <h1>Welcome to <span>CodeBark</span></h1>
-                <p>Professional code editor with advanced features for developers</p>
-                <button class="tools primary" onclick="navigateTo('editor')" style="margin: 0 auto; padding: 12px 32px; font-size: 16px;">
-                    <i class="fas fa-play"></i> Start Coding
-                </button>
-            </div>
+    <div class="features-grid">
+      <div class="feature-card"><span class="icon">⚡</span><h3>Live Preview</h3><p>Write code and see results instantly.</p></div>
+      <div class="feature-card"><span class="icon">🌙</span><h3>Dark / Light Mode</h3><p>Choose the environment you prefer.</p></div>
+      <div class="feature-card"><span class="icon">📱</span><h3>Responsive Preview</h3><p>Test desktop, tablet and mobile layouts.</p></div>
+      <div class="feature-card"><span class="icon">💾</span><h3>Auto Save</h3><p>Your code is saved automatically.</p></div>
+      <div class="feature-card"><span class="icon">🎨</span><h3>Auto Format</h3><p>Clean up your code with one click.</p></div>
+      <div class="feature-card"><span class="icon">📦</span><h3>Export Project</h3><p>Download your current project as HTML.</p></div>
+    </div>
+  </section>
 
-            <div class="home-stats">
-                <div class="stat-card"><div class="num">10+</div><div class="label">Active Projects</div></div>
-                <div class="stat-card"><div class="num">1,240</div><div class="label">Lines of Code</div></div>
-                <div class="stat-card"><div class="num">5</div><div class="label">Design Themes</div></div>
-                <div class="stat-card"><div class="num">100%</div><div class="label">User Satisfaction</div></div>
-            </div>
-
-            <div class="features-grid">
-                <div class="feature-card">
-                    <span class="icon">⚡</span>
-                    <h3>Live Preview</h3>
-                    <p>Write code and see results instantly</p>
-                </div>
-                <div class="feature-card">
-                    <span class="icon">🌙</span>
-                    <h3>Dark/Light Mode</h3>
-                    <p>Code in any lighting condition</p>
-                </div>
-                <div class="feature-card">
-                    <span class="icon">📱</span>
-                    <h3>Responsive Preview</h3>
-                    <p>View on desktop, tablet & mobile</p>
-                </div>
-                <div class="feature-card">
-                    <span class="icon">💾</span>
-                    <h3>Auto Save</h3>
-                    <p>Your code is saved automatically</p>
-                </div>
-                <div class="feature-card">
-                    <span class="icon">🎨</span>
-                    <h3>Auto Format</h3>
-                    <p>Format code with one click</p>
-                </div>
-                <div class="feature-card">
-                    <span class="icon">📦</span>
-                    <h3>Export Project</h3>
-                    <p>Download complete project output</p>
-                </div>
-            </div>
+  <section id="editorPage" class="cb-page">
+    <div class="editor-container">
+      <div class="editor-panel">
+        <div class="panel-header">
+          <span><i class="fab fa-html5 html-icon"></i> HTML <span class="dot html-dot"></span></span>
+          <span><span id="htmlLines">0</span> lines</span>
         </div>
+        <textarea id="htmlEditor" spellcheck="false"><div class="hero">
+  <div class="badge">🔥 New</div>
+  <h1>Welcome to CodeBark</h1>
+  <p>Write your code and see the result</p>
+  <div class="btn-group">
+    <button class="btn-primary" id="actionBtn">Get Started</button>
+    <button class="btn-secondary">Learn More</button>
+  </div>
+</div></textarea>
+      </div>
 
-        <!-- ===== EDITOR PAGE ===== -->
-        <div id="editorPage">
-            <div class="editor-container">
-                
-                <!-- HTML -->
-                <div class="editor-panel">
-                    <div class="panel-header">
-                        <span><i class="fab fa-html5" style="color:#e44d26;"></i> HTML <span class="dot html-dot"></span></span>
-                        <span><span id="htmlLines">0</span> lines</span>
-                    </div>
-                    <textarea id="htmlEditor" spellcheck="false">&lt;div class="hero"&gt;
-    &lt;div class="badge"&gt;🔥 New&lt;/div&gt;
-    &lt;h1&gt;Welcome to CodeBark&lt;/h1&gt;
-    &lt;p&gt;Write your code and see the result&lt;/p&gt;
-    &lt;div class="btn-group"&gt;
-        &lt;button class="btn-primary" id="actionBtn"&gt;Get Started&lt;/button&gt;
-        &lt;button class="btn-secondary"&gt;Learn More&lt;/button&gt;
-    &lt;/div&gt;
-&lt;/div&gt;</textarea>
-                </div>
-                
-                <!-- CSS -->
-                <div class="editor-panel">
-                    <div class="panel-header">
-                        <span><i class="fab fa-css3-alt" style="color:#264de4;"></i> CSS <span class="dot css-dot"></span></span>
-                        <span><span id="cssLines">0</span> lines</span>
-                    </div>
-                    <textarea id="cssEditor" spellcheck="false">.hero {
-    text-align: center;
-    padding: 60px 30px;
-    background: linear-gradient(135deg, #fef3c7, #fde68a);
-    border-radius: 32px;
-    max-width: 550px;
-    margin: 20px auto;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+      <div class="editor-panel">
+        <div class="panel-header">
+          <span><i class="fab fa-css3-alt css-icon"></i> CSS <span class="dot css-dot"></span></span>
+          <span><span id="cssLines">0</span> lines</span>
+        </div>
+        <textarea id="cssEditor" spellcheck="false">.hero {
+  text-align: center;
+  padding: 60px 30px;
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border-radius: 32px;
+  max-width: 550px;
+  margin: 20px auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.06);
 }
 
 .badge {
-    display: inline-block;
-    background: #ef4444;
-    color: white;
-    padding: 4px 18px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    letter-spacing: 1px;
+  display: inline-block;
+  background: #ef4444;
+  color: white;
+  padding: 4px 18px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
 }
 
 .hero h1 {
-    font-size: 36px;
-    font-weight: 800;
-    color: #1e293b;
-    margin-bottom: 12px;
+  font-size: 36px;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 12px;
 }
 
 .hero p {
-    color: #475569;
-    font-size: 18px;
-    margin-bottom: 28px;
-    line-height: 1.6;
+  color: #475569;
+  font-size: 18px;
+  margin-bottom: 28px;
+  line-height: 1.6;
 }
 
 .btn-group {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #f97316, #ef4444);
-    border: none;
-    padding: 14px 40px;
-    border-radius: 50px;
-    color: white;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+  background: linear-gradient(135deg, #f97316, #ef4444);
+  border: none;
+  padding: 14px 40px;
+  border-radius: 50px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(249, 115, 22, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(249, 115, 22, 0.4);
 }
 
 .btn-secondary {
-    background: transparent;
-    border: 2px solid #cbd5e1;
-    padding: 12px 36px;
-    border-radius: 50px;
-    color: #475569;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
+  background: transparent;
+  border: 2px solid #cbd5e1;
+  padding: 12px 36px;
+  border-radius: 50px;
+  color: #475569;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .btn-secondary:hover {
-    border-color: #f97316;
-    color: #f97316;
-    background: #fff7ed;
+  border-color: #f97316;
+  color: #f97316;
+  background: #fff7ed;
 }</textarea>
-                </div>
-                
-                <!-- Preview -->
-                <div class="editor-panel preview-panel">
-                    <div class="panel-header">
-                        <span><i class="fas fa-eye" style="color:#22c55e;"></i> Preview <span class="dot preview-dot"></span></span>
-                        <span><i class="fas fa-sync-alt"></i> <span id="previewTime">Live</span></span>
-                    </div>
-                    <div class="tab-bar">
-                        <button class="tab active-tab" onclick="setPreviewSize('desktop')"><i class="fas fa-desktop"></i></button>
-                        <button class="tab" onclick="setPreviewSize('tablet')"><i class="fas fa-tablet-alt"></i></button>
-                        <button class="tab" onclick="setPreviewSize('mobile')"><i class="fas fa-mobile-alt"></i></button>
-                        <button class="tab" onclick="toggleFullscreen()"><i class="fas fa-expand"></i></button>
-                    </div>
-                    <iframe id="previewWindow" sandbox="allow-scripts allow-modals"></iframe>
-                </div>
-                
-            </div>
+      </div>
+
+      <div class="editor-panel preview-panel">
+        <div class="panel-header">
+          <span><i class="fas fa-eye preview-icon"></i> Preview <span class="dot preview-dot"></span></span>
+          <span><i class="fas fa-sync-alt"></i> <span id="previewTime">Live</span></span>
         </div>
-
-        <!-- ===== FOOTER BAR ===== -->
-        <div class="footer-bar">
-            <div class="info-item"><i class="fas fa-code"></i> <span id="lineCounter">Lines: 0</span></div>
-            <div class="info-item"><i class="fas fa-font"></i> <span id="charCounter">Characters: 0</span></div>
-            <div class="info-item"><i class="fas fa-clock"></i> <span id="timeDisplay"></span></div>
-            <div class="info-item"><span class="status-badge" id="statusBadge"><i class="fas fa-circle" style="font-size:8px;"></i> Ready</span></div>
+        <div class="tab-bar">
+          <button class="tab active-tab" onclick="setPreviewSize('desktop')"><i class="fas fa-desktop"></i></button>
+          <button class="tab" onclick="setPreviewSize('tablet')"><i class="fas fa-tablet-alt"></i></button>
+          <button class="tab" onclick="setPreviewSize('mobile')"><i class="fas fa-mobile-alt"></i></button>
+          <button class="tab" onclick="toggleFullscreen()"><i class="fas fa-expand"></i></button>
+          <button class="tab" onclick="formatCode()"><i class="fas fa-wand-magic-sparkles"></i></button>
+          <button class="tab" onclick="showModal()"><i class="fas fa-rotate-left"></i></button>
         </div>
-
+        <iframe id="previewWindow" sandbox="allow-scripts allow-modals"></iframe>
+      </div>
     </div>
+  </section>
 
-    <!-- ===== NOTIFICATION ===== -->
-    <div class="notification" id="notifBox">
-        <i class="fas fa-check-circle"></i>
-        <span id="notifText">Success!</span>
+  <footer class="footer-bar">
+    <div class="info-item"><i class="fas fa-code"></i><span id="lineCounter">Lines: 0</span></div>
+    <div class="info-item"><i class="fas fa-font"></i><span id="charCounter">Characters: 0</span></div>
+    <div class="info-item"><i class="fas fa-clock"></i><span id="timeDisplay"></span></div>
+    <div class="info-item"><span class="status-badge" id="statusBadge"><i class="fas fa-circle"></i> Ready</span></div>
+  </footer>
+</main>
+
+<div class="notification" id="notifBox"><i class="fas fa-check-circle"></i><span id="notifText">Success!</span></div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <span class="modal-icon">🔄</span>
+    <h2>Reset Code</h2>
+    <p>Are you sure you want to reset the code to default?</p>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-confirm" onclick="confirmReset()">Yes, Reset</button>
     </div>
+  </div>
+</div>
 
-    <!-- ===== MODAL ===== -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-box">
-            <span class="modal-icon">🔄</span>
-            <h2>Reset Code</h2>
-            <p>Are you sure you want to reset the code to default?</p>
-            <div class="modal-actions">
-                <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-                <button class="btn-confirm" onclick="confirmReset()">Yes, Reset</button>
-            </div>
-        </div>
-    </div>
+<script>
+const htmlArea = document.getElementById('htmlEditor');
+const cssArea = document.getElementById('cssEditor');
+const previewFrame = document.getElementById('previewWindow');
+const lineCount = document.getElementById('lineCounter');
+const charCount = document.getElementById('charCounter');
+const htmlLines = document.getElementById('htmlLines');
+const cssLines = document.getElementById('cssLines');
+const previewTime = document.getElementById('previewTime');
+const statusBadge = document.getElementById('statusBadge');
+const timeDisplay = document.getElementById('timeDisplay');
+const notifBox = document.getElementById('notifBox');
+const notifText = document.getElementById('notifText');
+const modalOverlay = document.getElementById('modalOverlay');
 
-    <script>
-        // ===== LOADING =====
-        var loadingScreen = document.getElementById('loadingScreen');
-        var barFill = document.getElementById('barFill');
-        var percentText = document.getElementById('percentText');
-        var mainContent = document.getElementById('mainContent');
-        var progress = 0;
-        var loaded = false;
-        
-        function startLoading() {
-            if (loaded) return;
-            var increment = progress < 30 ? 5 + Math.random() * 8 :
-                           progress < 70 ? 3 + Math.random() * 5 :
-                           progress < 90 ? 1 + Math.random() * 3 : 0.5 + Math.random();
-            progress = Math.min(progress + increment, 100);
-            var percent = Math.floor(progress);
-            percentText.textContent = percent + '%';
-            barFill.style.width = progress + '%';
-            
-            if (progress < 100) {
-                var delay = progress < 30 ? 120 : progress < 70 ? 150 : progress < 90 ? 200 : 300;
-                setTimeout(startLoading, delay);
-            } else {
-                loaded = true;
-                setTimeout(function() {
-                    loadingScreen.classList.add('fade-out');
-                    setTimeout(function() {
-                        mainContent.style.display = 'block';
-                        setTimeout(function() {
-                            loadingScreen.classList.add('hidden');
-                            document.body.style.overflow = 'auto';
-                            runPreview();
-                            updateCounters();
-                            loadSavedCode();
-                            console.log('🚀 CodeBark is ready!');
-                        }, 300);
-                    }, 800);
-                }, 500);
-            }
-        }
-        
-        // ===== NAVIGATION =====
-        function navigateTo(page) {
-            var home = document.getElementById('homePage');
-            var editor = document.getElementById('editorPage');
-            var links = document.querySelectorAll('.nav-links a');
-            
-            links.forEach(function(l) { l.classList.remove('active'); });
-            
-            if (page === 'home') {
-                home.classList.add('active');
-                editor.classList.remove('active');
-                links[0].classList.add('active');
-            } else if (page === 'editor') {
-                home.classList.remove('active');
-                editor.classList.add('active');
-                links[1].classList.add('active');
-                setTimeout(runPreview, 100);
-            }
-            showNotif('📄 ' + (page === 'home' ? 'Home Page' : 'Code Editor'));
-        }
-        
-        // ===== AUTO SAVE =====
-        function autoSave() {
-            var html = document.getElementById('htmlEditor').value;
-            var css = document.getElementById('cssEditor').value;
-            try {
-                localStorage.setItem('codebark_html', html);
-                localStorage.setItem('codebark_css', css);
-                localStorage.setItem('codebark_saved', Date.now().toString());
-            } catch(e) {}
-        }
-        
-        function loadSavedCode() {
-            try {
-                var html = localStorage.getItem('codebark_html');
-                var css = localStorage.getItem('codebark_css');
-                if (html) document.getElementById('htmlEditor').value = html;
-                if (css) document.getElementById('cssEditor').value = css;
-                if (html || css) {
-                    showNotif('💾 Saved code restored');
-                    runPreview();
-                    updateCounters();
-                }
-            } catch(e) {}
-        }
-        
-        // ===== ELEMENTS =====
-        var htmlArea = document.getElementById('htmlEditor');
-        var cssArea = document.getElementById('cssEditor');
-        var previewFrame = document.getElementById('previewWindow');
-        var lineCount = document.getElementById('lineCounter');
-        var charCount = document.getElementById('charCounter');
-        var htmlLines = document.getElementById('htmlLines');
-        var cssLines = document.getElementById('cssLines');
-        var previewTime = document.getElementById('previewTime');
-        var statusBadge = document.getElementById('statusBadge');
-        var timeDisplay = document.getElementById('timeDisplay');
-        var notifBox = document.getElementById('notifBox');
-        var notifText = document.getElementById('notifText');
-        var modalOverlay = document.getElementById('modalOverlay');
-        var notifTimer = null;
-        var isDark = false;
-        var autoSaveTimer = null;
-        
-        // ===== CLOCK =====
-        function updateClock() {
-            var now = new Date();
-            timeDisplay.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-        }
-        updateClock();
-        setInterval(updateClock, 1000);
-        
-        // ===== NOTIFICATION =====
-        function showNotif(msg, isError) {
-            isError = isError || false;
-            notifText.textContent = msg;
-            notifBox.classList.add('show');
-            var icon = notifBox.querySelector('i');
-            icon.style.color = isError ? '#ef4444' : '#f97316';
-            clearTimeout(notifTimer);
-            notifTimer = setTimeout(function() { notifBox.classList.remove('show'); }, 2800);
-        }
-        window.showNotif = showNotif;
-        
-        // ===== COUNTERS =====
-        function updateCounters() {
-            var html = htmlArea.value;
-            var css = cssArea.value;
-            var combined = html + css;
-            var lines = combined.split('\n').length;
-            var chars = combined.length;
-            
-            lineCount.textContent = 'Lines: ' + lines;
-            charCount.textContent = 'Characters: ' + chars;
-            htmlLines.textContent = html.split('\n').length;
-            cssLines.textContent = css.split('\n').length;
-        }
-        
-        // ===== RUN PREVIEW =====
-        function runPreview() {
-            var html = htmlArea.value;
-            var css = cssArea.value;
-            
-            try {
-                var doc = '<!DOCTYPE html>\n<html>\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<style>' + css + '</style>\n</head>\n<body>\n' + html + '\n<script>\ndocument.getElementById("actionBtn")?.addEventListener("click", function() {\nalert("🎉 Welcome to CodeBark!");\n});\n<\/script>\n</body>\n</html>';
-                
-                var blob = new Blob([doc], { type: 'text/html' });
-                var url = URL.createObjectURL(blob);
-                previewFrame.src = url;
-                setTimeout(function() { URL.revokeObjectURL(url); }, 5000);
-                
-                previewTime.textContent = '✅ ' + new Date().toLocaleTimeString('en-US');
-                statusBadge.className = 'status-badge';
-                statusBadge.innerHTML = '<i class="fas fa-circle" style="font-size:8px;"></i> Running';
-                showNotif('✅ Code executed successfully');
-            } catch(e) {
-                statusBadge.className = 'status-badge error';
-                statusBadge.innerHTML = '<i class="fas fa-exclamation-circle" style="font-size:8px;"></i> Error';
-                showNotif('❌ Error executing code', true);
-            }
-            updateCounters();
-            autoSave();
-        }
-        
-        // ===== FORMAT =====
-        function formatCode() {
-            try {
-                var html = htmlArea.value;
-                html = html.replace(/>\s*</g, '>\n<');
-                html = html.split('\n').filter(function(l) { return l.trim(); }).join('\n');
-                htmlArea.value = html;
-                
-                var css = cssArea.value;
-                css = css.replace(/\s*\{\s*/g, ' {\n  ');
-                css = css.replace(/\s*\}\s*/g, '\n}\n');
-                css = css.replace(/;\s*/g, ';\n  ');
-                css = css.split('\n').filter(function(l) { return l.trim(); }).join('\n');
-                cssArea.value = css;
-                
-                runPreview();
-                showNotif('✨ Code formatted successfully');
-            } catch(e) {
-                showNotif('❌ Error formatting code', true);
-            }
-        }
-        
-        // ===== THEME =====
-        function toggleTheme() {
-            isDark = !isDark;
-            var body = document.body;
-            var panels = document.querySelectorAll('.editor-panel');
-            var navbar = document.querySelector('.navbar');
-            var footer = document.querySelector('.footer-bar');
-            var label = document.getElementById('themeLabel');
-            
-            if (isDark) {
-                body.style.background = '#0f172a';
-                body.style.color = '#e2e8f0';
-                navbar.style.background = '#1e293b';
-                navbar.style.borderColor = '#334155';
-                footer.style.background = '#1e293b';
-                footer.style.borderColor = '#334155';
-                footer.style.color = '#94a3b8';
-                document.querySelectorAll('.nav-links a').forEach(function(a) {
-                    a.style.color = '#94a3b8';
-                });
-                document.querySelectorAll('.nav-links a.active').forEach(function(a) {
-                    a.style.color = '#f97316';
-                    a.style.background = '#2d1b4e';
-                });
-                panels.forEach(function(p) {
-                    p.style.background = '#1e293b';
-                    p.style.borderColor = '#334155';
-                });
-                document.querySelectorAll('.panel-header').forEach(function(el) {
-                    el.style.background = '#162032';
-                    el.style.borderColor = '#334155';
-                    el.style.color = '#94a3b8';
-                });
-                document.querySelectorAll('.editor-panel textarea').forEach(function(el) {
-                    el.style.background = '#0f172a';
-                    el.style.color = '#e2e8f0';
-                });
-                document.querySelectorAll('.tab-bar').forEach(function(el) {
-                    el.style.background = '#162032';
-                    el.style.borderColor = '#334155';
-                });
-                document.querySelectorAll('.tab-bar .tab').forEach(function(el) {
-                    el.style.color = '#94a3b8';
-                });
-                document.querySelectorAll('.home-hero').forEach(function(el) {
-                    el.style.background = '#1e293b';
-                });
-                document.querySelectorAll('.stat-card, .feature-card').forEach(function(el) {
-                    el.style.background = '#1e293b';
-                    el.style.borderColor = '#334155';
-                    el.style.color = '#e2e8f0';
-                });
-                label.textContent = 'Light';
-                showNotif('🌙 Dark mode');
-            } else {
-                body.style.background = '#f8fafc';
-                body.style.color = '#1e293b';
-                navbar.style.background = 'rgba(255,255,255,0.95)';
-                navbar.style.borderColor = '#e2e8f0';
-                footer.style.background = '#ffffff';
-                footer.style.borderColor = '#e2e8f0';
-                footer.style.color = '#94a3b8';
-                document.querySelectorAll('.nav-links a').forEach(function(a) {
-                    a.style.color = '#64748b';
-                });
-                document.querySelectorAll('.nav-links a.active').forEach(function(a) {
-                    a.style.color = '#f97316';
-                    a.style.background = '#fff7ed';
-                });
-                panels.forEach(function(p) {
-                    p.style.background = '#ffffff';
-                    p.style.borderColor = '#e2e8f0';
-                });
-                document.querySelectorAll('.panel-header').forEach(function(el) {
-                    el.style.background = '#fafbfc';
-                    el.style.borderColor = '#e2e8f0';
-                    el.style.color = '#475569';
-                });
-                document.querySelectorAll('.editor-panel textarea').forEach(function(el) {
-                    el.style.background = '#fafcff';
-                    el.style.color = '#1e293b';
-                });
-                document.querySelectorAll('.tab-bar').forEach(function(el) {
-                    el.style.background = '#f8fafc';
-                    el.style.borderColor = '#e2e8f0';
-                });
-                document.querySelectorAll('.tab-bar .tab').forEach(function(el) {
-                    el.style.color = '#94a3b8';
-                });
-                document.querySelectorAll('.home-hero').forEach(function(el) {
-                    el.style.background = 'linear-gradient(135deg, #fef3c7, #fde68a)';
-                });
-                document.querySelectorAll('.stat-card, .feature-card').forEach(function(el) {
-                    el.style.background = '#ffffff';
-                    el.style.borderColor = '#e2e8f0';
-                    el.style.color = '#1e293b';
-                });
-                label.textContent = 'Dark';
-                showNotif('☀️ Light mode');
-            }
-        }
-        
-        // ===== PREVIEW SIZE =====
-        function setPreviewSize(size) {
-            var iframe = previewFrame;
-            var tabs = document.querySelectorAll('.tab-bar .tab');
-            tabs.forEach(function(t) { t.classList.remove('active-tab'); });
-            
-            if (size === 'desktop') {
-                iframe.style.width = '100%';
-                iframe.style.maxWidth = '100%';
-                iframe.style.margin = '0 auto';
-                tabs[0].classList.add('active-tab');
-                showNotif('💻 Desktop');
-            } else if (size === 'tablet') {
-                iframe.style.width = '768px';
-                iframe.style.maxWidth = '90%';
-                iframe.style.margin = '0 auto';
-                tabs[1].classList.add('active-tab');
-                showNotif('📱 Tablet');
-            } else if (size === 'mobile') {
-                iframe.style.width = '375px';
-                iframe.style.maxWidth = '90%';
-                iframe.style.margin = '0 auto';
-                tabs[2].classList.add('active-tab');
-                showNotif('📱 Mobile');
-            }
-        }
-        
-        // ===== FULLSCREEN =====
-        function toggleFullscreen() {
-            var iframe = previewFrame;
-            if (iframe.requestFullscreen) {
-                iframe.requestFullscreen();
-                showNotif('⛶ Fullscreen mode');
-            } else {
-                showNotif('⚠️ Browser does not support fullscreen', true);
-            }
-        }
-        
-        // ===== MODAL =====
-        function showModal() { modalOverlay.classList.add('active'); }
-        function closeModal() { modalOverlay.classList.remove('active'); }
-        
-        function confirmReset() {
-            closeModal();
-            htmlArea.value = '<div class="hero">\n    <div class="badge">🔥 New</div>\n    <h1>Welcome to CodeBark</h1>\n    <p>Write your code and see the result</p>\n    <div class="btn-group">\n        <button class="btn-primary" id="actionBtn">Get Started</button>\n        <button class="btn-secondary">Learn More</button>\n    </div>\n</div>';
-            cssArea.value = '.hero {\n    text-align: center;\n    padding: 60px 30px;\n    background: linear-gradient(135deg, #fef3c7, #fde68a);\n    border-radius: 32px;\n    max-width: 550px;\n    margin: 20px auto;\n    box-shadow: 0 20px 60px rgba(0,0,0,0.06);\n}\n\n.badge {\n    display: inline-block;\n    background: #ef4444;\n    color: white;\n    padding: 4px 18px;\n    border-radius: 20px;\n    font-size: 12px;\n    font-weight: 700;\n    margin-bottom: 16px;\n    letter-spacing: 1px;\n}\n\n.hero h1 {\n    font-size: 36px;\n    font-weight: 800;\n    color: #1e293b;\n    margin-bottom: 12px;\n}\n\n.hero p {\n    color: #475569;\n    font-size: 18px;\n    margin-bottom: 28px;\n    line-height: 1.6;\n}\n\n.btn-group {\n    display: flex;\n    gap: 12px;\n    justify-content: center;\n    flex-wrap: wrap;\n}\n\n.btn-primary {\n    background: linear-gradient(135deg, #f97316, #ef4444);\n    border: none;\n    padding: 14px 40px;\n    border-radius: 50px;\n    color: white;\n    font-size: 16px;\n    font-weight: 700;\n    cursor: pointer;\n    transition: 0.3s;\n    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);\n}\n\n.btn-primary:hover {\n    transform: translateY(-3px);\n    box-shadow: 0 8px 30px rgba(249, 115, 22, 0.4);\n}\n\n.btn-secondary {\n    background: transparent;\n    border: 2px solid #cbd5e1;\n    padding: 12px 36px;\n    border-radius: 50px;\n    color: #475569;\n    font-size: 16px;\n    font-weight: 600;\n    cursor: pointer;\n    transition: 0.3s;\n}\n\n.btn-secondary:hover {\n    border-color: #f97316;\n    color: #f97316;\n    background: #fff7ed;\n}';
-            runPreview();
-            showNotif('🔄 Code reset');
-        }
-        
-        // ===== DOWNLOAD =====
-        function downloadProject() {
-            var html = htmlArea.value;
-            var css = cssArea.value;
-            var full = '<!DOCTYPE html>\n<html>\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>CodeBark Project</title>\n<style>' + css + '</style>\n</head>\n<body>\n' + html + '\n<script>\ndocument.getElementById("actionBtn")?.addEventListener("click", function() {\nalert("🎉 Welcome to CodeBark!");\n});\n<\/script>\n</body>\n</html>';
-            
-            var blob = new Blob([full], { type: 'text/html' });
-            var url = URL.createObjectURL(blob);
-            var link = document.createElement('a');
-            link.href = url;
-            link.download = 'codebark-project.html';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-            showNotif('📥 File downloaded');
-        }
-        
-        // ===== AUTO RUN =====
-        var autoTimer = null;
-        function scheduleRun() {
-            clearTimeout(autoTimer);
-            autoTimer = setTimeout(runPreview, 500);
-        }
-        
-        // ===== EVENTS =====
-        htmlArea.addEventListener('input', function() {
-            updateCounters();
-            scheduleRun();
-            clearTimeout(autoSaveTimer);
-            autoSaveTimer = setTimeout(autoSave, 1000);
-        });
-        cssArea.addEventListener('input', function() {
-            updateCounters();
-            scheduleRun();
-            clearTimeout(autoSaveTimer);
-            autoSaveTimer = setTimeout(autoSave, 1000);
-        });
-        
-        modalOverlay.addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-        
-        document.addEventListener('keydown', function(e) {
-            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-                e.preventDefault();
-                runPreview();
-            }
-            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-                e.preventDefault();
-                autoSave();
-                showNotif('💾 Saved!');
-            }
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
-        
-        // ===== GLOBAL FUNCTIONS =====
-        window.navigateTo = navigateTo;
-        window.runPreview = runPreview;
-        window.formatCode = formatCode;
-        window.toggleTheme = toggleTheme;
-        window.setPreviewSize = setPreviewSize;
-        window.toggleFullscreen = toggleFullscreen;
-        window.showModal = showModal;
-        window.closeModal = closeModal;
-        window.confirmReset = confirmReset;
-        window.downloadProject = downloadProject;
-        
-        // ===== START =====
-        document.body.style.overflow = 'hidden';
-        setTimeout(startLoading, 300);
-    </script>
+let notifTimer = null, autoTimer = null, autoSaveTimer = null, isDark = false;
+const defaultHTML = htmlArea.value;
+const defaultCSS = cssArea.value;
+
+function showNotif(msg, isError = false) {
+  notifText.textContent = msg;
+  notifBox.classList.add('show');
+  const icon = notifBox.querySelector('i');
+  icon.style.color = isError ? '#ef4444' : '#f97316';
+  clearTimeout(notifTimer);
+  notifTimer = setTimeout(() => notifBox.classList.remove('show'), 2800);
+}
+
+function navigateTo(page) {
+  document.getElementById('homePage').classList.toggle('active', page === 'home');
+  document.getElementById('editorPage').classList.toggle('active', page === 'editor');
+  document.querySelectorAll('.nav-links a').forEach((a, i) => a.classList.toggle('active', (page === 'home' && i === 0) || (page === 'editor' && i === 1)));
+  if (page === 'editor') setTimeout(runPreview, 80);
+}
+
+function goZenverix() {
+  window.location.href = './index.html';
+}
+
+function updateClock() {
+  timeDisplay.textContent = new Date().toLocaleTimeString('en-US', {
+    hour: '2-digit', minute: '2-digit', second: '2-digit'
+  });
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+function updateCounters() {
+  const html = htmlArea.value, css = cssArea.value;
+  lineCount.textContent = 'Lines: ' + (html + css).split('\n').length;
+  charCount.textContent = 'Characters: ' + (html + css).length;
+  htmlLines.textContent = html.split('\n').length;
+  cssLines.textContent = css.split('\n').length;
+}
+
+function autoSave() {
+  localStorage.setItem('codebark_html', htmlArea.value);
+  localStorage.setItem('codebark_css', cssArea.value);
+  localStorage.setItem('codebark_saved', Date.now().toString());
+}
+
+function loadSavedCode() {
+  const html = localStorage.getItem('codebark_html');
+  const css = localStorage.getItem('codebark_css');
+  if (html !== null) htmlArea.value = html;
+  if (css !== null) cssArea.value = css;
+}
+
+function runPreview() {
+  const html = htmlArea.value;
+  const css = cssArea.value;
+  try {
+    const doc = `<!DOCTYPE html><html><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<style>${css}</style></head><body>${html}
+<script>
+document.getElementById("actionBtn")?.addEventListener("click",function(){
+  alert("🎉 Welcome to CodeBark!");
+});
+<\/script></body></html>`;
+    const blob = new Blob([doc], {type:'text/html'});
+    const url = URL.createObjectURL(blob);
+    previewFrame.src = url;
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
+    previewTime.textContent = 'Live • ' + new Date().toLocaleTimeString('en-US');
+    statusBadge.className = 'status-badge';
+    statusBadge.innerHTML = '<i class="fas fa-circle"></i> Running';
+    updateCounters();
+    autoSave();
+  } catch (e) {
+    statusBadge.className = 'status-badge error';
+    statusBadge.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error';
+    showNotif('❌ Error executing code', true);
+  }
+}
+
+function scheduleRun() {
+  clearTimeout(autoTimer);
+  autoTimer = setTimeout(runPreview, 500);
+}
+
+function formatCode() {
+  let html = htmlArea.value.replace(/>\s*</g, '>\n<').split('\n').filter(x => x.trim()).join('\n');
+  htmlArea.value = html;
+  cssArea.value = cssArea.value
+    .replace(/\s*{\s*/g, ' {\n  ')
+    .replace(/\s*}\s*/g, '\n}\n')
+    .replace(/;\s*/g, ';\n  ')
+    .split('\n').filter(x => x.trim()).join('\n');
+  runPreview();
+  showNotif('✨ Code formatted');
+}
+
+function toggleTheme() {
+  isDark = !isDark;
+  document.body.classList.toggle('dark-mode', isDark);
+  document.getElementById('themeLabel').textContent = isDark ? 'Light' : 'Dark';
+  showNotif(isDark ? '🌙 Dark mode' : '☀️ Light mode');
+  localStorage.setItem('codebark_theme', isDark ? 'dark' : 'light');
+}
+
+function setPreviewSize(size) {
+  const tabs = document.querySelectorAll('.tab-bar .tab');
+  tabs.forEach(t => t.classList.remove('active-tab'));
+  const widths = {desktop:'100%', tablet:'768px', mobile:'375px'};
+  if (widths[size]) {
+    previewFrame.style.width = widths[size];
+    previewFrame.style.maxWidth = size === 'desktop' ? '100%' : '90%';
+    previewFrame.style.margin = '0 auto';
+  }
+  const index = {desktop:0, tablet:1, mobile:2}[size];
+  if (index !== undefined) tabs[index].classList.add('active-tab');
+  showNotif(size === 'desktop' ? '💻 Desktop' : '📱 ' + size[0].toUpperCase()+size.slice(1));
+}
+
+function toggleFullscreen() {
+  if (previewFrame.requestFullscreen) {
+    previewFrame.requestFullscreen();
+    showNotif('⛶ Fullscreen mode');
+  } else showNotif('⚠️ Fullscreen is not supported', true);
+}
+
+function showModal(){ modalOverlay.classList.add('active'); }
+function closeModal(){ modalOverlay.classList.remove('active'); }
+
+function confirmReset() {
+  closeModal();
+  htmlArea.value = defaultHTML;
+  cssArea.value = defaultCSS;
+  localStorage.removeItem('codebark_html');
+  localStorage.removeItem('codebark_css');
+  runPreview();
+  showNotif('🔄 Code reset');
+}
+
+function downloadProject() {
+  const full = `<!DOCTYPE html><html><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CodeBark Project</title><style>${cssArea.value}</style></head>
+<body>${htmlArea.value}<script>
+document.getElementById("actionBtn")?.addEventListener("click",function(){
+alert("🎉 Welcome to CodeBark!");
+});
+<\/script></body></html>`;
+  const blob = new Blob([full], {type:'text/html'});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'codebark-project.html';
+  link.click();
+  URL.revokeObjectURL(url);
+  showNotif('📥 Project exported');
+}
+
+htmlArea.addEventListener('input', () => {
+  updateCounters(); scheduleRun();
+  clearTimeout(autoSaveTimer); autoSaveTimer = setTimeout(autoSave, 1000);
+});
+cssArea.addEventListener('input', () => {
+  updateCounters(); scheduleRun();
+  clearTimeout(autoSaveTimer); autoSaveTimer = setTimeout(autoSave, 1000);
+});
+
+modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
+
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); runPreview(); }
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') { e.preventDefault(); autoSave(); showNotif('💾 Saved!'); }
+  if (e.key === 'Escape') closeModal();
+});
+
+function startLoading() {
+  let progress = 0;
+  const barFill = document.getElementById('barFill');
+  const percentText = document.getElementById('percentText');
+  const loading = document.getElementById('loadingScreen');
+
+  const timer = setInterval(() => {
+    progress += progress < 70 ? Math.random()*7+4 : Math.random()*3+1;
+    progress = Math.min(progress, 100);
+    barFill.style.width = progress + '%';
+    percentText.textContent = Math.floor(progress) + '%';
+    if (progress >= 100) {
+      clearInterval(timer);
+      setTimeout(() => {
+        loading.classList.add('fade-out');
+        setTimeout(() => {
+          loading.remove();
+          document.body.classList.add('ready');
+          loadSavedCode();
+          isDark = localStorage.getItem('codebark_theme') === 'dark';
+          document.body.classList.toggle('dark-mode', isDark);
+          document.getElementById('themeLabel').textContent = isDark ? 'Light' : 'Dark';
+          updateCounters();
+          runPreview();
+        }, 700);
+      }, 350);
+    }
+  }, 100);
+}
+document.body.style.overflow = 'hidden';
+setTimeout(startLoading, 250);
+</script>
 </body>
 </html>

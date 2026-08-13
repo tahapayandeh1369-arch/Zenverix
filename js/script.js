@@ -250,7 +250,7 @@ const translations = {
 let currentLanguage = localStorage.getItem('language') || 'en';
 
 /* ============================================================
-   🌐 APPLY LANGUAGE - (تعریف قبل از استفاده)
+   🌐 APPLY LANGUAGE
 ============================================================ */
 function applyLanguage(lang) {
     currentLanguage = lang;
@@ -388,21 +388,6 @@ setTimeout(function () {
 }, 2000);
 
 /* ============================================================
-   CONTACT FORM
-============================================================ */
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const msg = currentLanguage === 'en'
-            ? 'Thank you for your message! I\'ll get back to you soon.'
-            : 'از پیام شما متشکرم! به زودی با شما تماس می‌گیرم.';
-        alert(msg);
-        this.reset();
-    });
-}
-
-/* ============================================================
    📊 STATS COUNTER
 ============================================================ */
 function animateCounter(element, target, duration = 2000) {
@@ -461,13 +446,57 @@ setInterval(function () {
 }, 1000);
 
 /* ============================================================
-   💬 COMMENTS
+   💬 COMMENTS - ذخیره‌سازی دائمی با JSONBin
 ============================================================ */
-let comments = JSON.parse(localStorage.getItem('comments')) || [];
 
-function renderComments() {
+// ========== گرفتن نظرات از سرور ==========
+async function getComments() {
+    try {
+        const response = await fetch(`${CONFIG.BASE_URL}${CONFIG.BIN_ID}/latest`, {
+            headers: {
+                'X-Master-Key': CONFIG.API_KEY
+            }
+        });
+        
+        if (!response.ok) throw new Error('خطا در دریافت نظرات');
+        
+        const data = await response.json();
+        return data.record.comments || [];
+    } catch (error) {
+        console.error('Error fetching comments:', error);
+        return JSON.parse(localStorage.getItem('comments_backup') || '[]');
+    }
+}
+
+// ========== ذخیره نظرات در سرور ==========
+async function saveComments(comments) {
+    try {
+        const response = await fetch(`${CONFIG.BASE_URL}${CONFIG.BIN_ID}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Master-Key': CONFIG.API_KEY
+            },
+            body: JSON.stringify({ comments: comments })
+        });
+        
+        if (!response.ok) throw new Error('خطا در ذخیره');
+        
+        localStorage.setItem('comments_backup', JSON.stringify(comments));
+        return true;
+    } catch (error) {
+        console.error('Error saving comments:', error);
+        localStorage.setItem('comments_backup', JSON.stringify(comments));
+        return false;
+    }
+}
+
+// ========== نمایش نظرات ==========
+async function renderComments() {
     const commentsList = document.getElementById('commentsList');
     if (!commentsList) return;
+
+    const comments = await getComments();
 
     if (comments.length === 0) {
         const emptyText = currentLanguage === 'en'
@@ -483,40 +512,146 @@ function renderComments() {
     }
 
     const deleteText = currentLanguage === 'en' ? 'Delete' : 'حذف';
+    const replyText = currentLanguage === 'en' ? 'Reply' : 'پاسخ';
+    
     commentsList.innerHTML = comments.map(function (comment, index) {
+        const isAdmin = comment.isAdmin || false;
+        const bgColor = isAdmin ? 'linear-gradient(135deg, #f0f4ff, #e8eeff)' : '#f8fafc';
+        const borderColor = isAdmin ? '2px solid #3b82f6' : '1px solid #e2e8f0';
+        
         return `
-            <div class="comment-item">
-                <div class="comment-header">
-                    <span class="comment-author">
-                        <i class="fas fa-user" style="color: var(--primary); margin-right: 8px;"></i>
-                        ${comment.name}
-                    </span>
-                    <span class="comment-time">${comment.time}</span>
+            <div class="comment-item" style="
+                background: ${bgColor};
+                border-radius: 12px;
+                padding: 20px;
+                margin-bottom: 15px;
+                border: ${borderColor};
+                transition: all 0.3s ease;
+            ">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+                    <div style="
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        background: ${isAdmin ? '#3b82f6' : '#e2e8f0'};
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: ${isAdmin ? 'white' : '#64748b'};
+                        font-weight: bold;
+                        font-size: 16px;
+                    ">
+                        ${comment.name.charAt(0).toUpperCase()}
+                    </div>
+                    <div>
+                        <strong style="color:#1e293b;">${escapeHTML(comment.name)}</strong>
+                        ${isAdmin ? '<span style="background:#3b82f6;color:white;padding:2px 10px;border-radius:12px;font-size:11px;margin-left:8px;">مدیر</span>' : ''}
+                        <div style="font-size:12px;color:#94a3b8;margin-top:2px;">
+                            ${comment.time || comment.date || 'لحظاتی پیش'}
+                        </div>
+                    </div>
                 </div>
-                <div class="comment-text">${comment.text}</div>
-                <div class="comment-actions">
-                    <button onclick="likeComment(${index})">
-                        <i class="fas fa-heart"></i> ${comment.likes || 0}
+                
+                <p style="color:#334155;line-height:1.6;margin:10px 0 15px 0;">
+                    ${escapeHTML(comment.text)}
+                </p>
+                
+                <div style="display:flex;gap:15px;align-items:center;border-top:1px solid #e2e8f0;padding-top:12px;">
+                    <button onclick="likeComment(${index})" style="
+                        background:none;
+                        border:none;
+                        color: ${comment.userLiked ? '#ef4444' : '#64748b'};
+                        cursor:pointer;
+                        display:flex;
+                        align-items:center;
+                        gap:5px;
+                        padding:5px 12px;
+                        border-radius:8px;
+                        transition:all 0.3s;
+                        font-size:14px;
+                    ">
+                        <i class="fas fa-heart"></i>
+                        <span>${comment.likes || 0}</span>
                     </button>
-                    <button onclick="deleteComment(${index})">
-                        <i class="fas fa-trash"></i> ${deleteText}
+                    
+                    <button onclick="replyToComment(${index})" style="
+                        background:none;
+                        border:none;
+                        color:#64748b;
+                        cursor:pointer;
+                        display:flex;
+                        align-items:center;
+                        gap:5px;
+                        padding:5px 12px;
+                        border-radius:8px;
+                        transition:all 0.3s;
+                        font-size:14px;
+                    ">
+                        <i class="fas fa-reply"></i> ${replyText}
                     </button>
+                    
+                    ${comment.userId === getUserId() || isAdmin ? `
+                        <button onclick="deleteComment(${index})" style="
+                            background:none;
+                            border:none;
+                            color:#ef4444;
+                            cursor:pointer;
+                            padding:5px 12px;
+                            border-radius:8px;
+                            transition:all 0.3s;
+                            font-size:14px;
+                            margin-left:auto;
+                        ">
+                            <i class="fas fa-trash"></i> ${deleteText}
+                        </button>
+                    ` : ''}
                 </div>
+                
+                ${comment.replies && comment.replies.length > 0 ? comment.replies.map(reply => `
+                    <div style="
+                        background:#f1f5f9;
+                        border-radius:8px;
+                        padding:12px 15px;
+                        margin-top:12px;
+                        margin-left:20px;
+                        border-right:3px solid #3b82f6;
+                    ">
+                        <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+                            <strong style="color:#1e293b;font-size:13px;">${escapeHTML(reply.name)}</strong>
+                            <span style="color:#94a3b8;font-size:11px;">${reply.date || 'لحظاتی پیش'}</span>
+                        </div>
+                        <p style="color:#334155;font-size:14px;margin:0;">${escapeHTML(reply.text)}</p>
+                    </div>
+                `).join('') : ''}
             </div>
         `;
     }).join('');
 }
 
+// ========== ثبت نظر جدید ==========
 const commentForm = document.getElementById('commentForm');
 if (commentForm) {
-    commentForm.addEventListener('submit', function (e) {
+    commentForm.addEventListener('submit', async function (e) {
         e.preventDefault();
+        
         const nameInput = document.getElementById('commentName');
         const textInput = document.getElementById('commentText');
-
+        
+        const name = nameInput.value.trim() || 'Anonymous';
+        const text = textInput.value.trim();
+        
+        if (!text) {
+            const msg = currentLanguage === 'en' ? 'Please write a comment!' : 'لطفاً یک نظر بنویسید!';
+            alert(msg);
+            return;
+        }
+        
+        const comments = await getComments();
+        
         const newComment = {
-            name: nameInput.value.trim() || 'Anonymous',
-            text: textInput.value.trim(),
+            id: Date.now(),
+            name: name,
+            text: text,
             time: new Date().toLocaleString('en-US', {
                 month: 'short',
                 day: 'numeric',
@@ -524,36 +659,495 @@ if (commentForm) {
                 hour: '2-digit',
                 minute: '2-digit'
             }),
-            likes: 0
+            date: new Date().toLocaleString('fa-IR'),
+            timestamp: Date.now(),
+            likes: 0,
+            userId: getUserId(),
+            isAdmin: name.toLowerCase() === 'taha' || name.toLowerCase() === 'admin',
+            userLiked: false,
+            replies: []
         };
+        
+        comments.unshift(newComment);
+        
+        const saved = await saveComments(comments);
+        
+        if (saved) {
+            this.reset();
+            await renderComments();
+            const msg = currentLanguage === 'en' 
+                ? '✅ Your comment has been posted!' 
+                : '✅ نظر شما با موفقیت ثبت شد!';
+            showNotification(msg, 'success');
+        } else {
+            const msg = currentLanguage === 'en'
+                ? '⚠️ Your comment was saved offline and will sync later.'
+                : '⚠️ نظر شما به صورت آفلاین ذخیره شد و بعداً همگام‌سازی می‌شود.';
+            showNotification(msg, 'warning');
+        }
+    });
+}
 
-        if (newComment.text) {
-            comments.unshift(newComment);
-            localStorage.setItem('comments', JSON.stringify(comments));
-            renderComments();
+// ========== لایک کردن نظر ==========
+window.likeComment = async function (index) {
+    const comments = await getComments();
+    
+    if (!comments[index]) return;
+    
+    const userId = getUserId();
+    if (comments[index].userLiked) {
+        const msg = currentLanguage === 'en' 
+            ? 'You already liked this comment!' 
+            : 'شما قبلاً به این نظر لایک داده‌اید!';
+        showNotification(msg, 'info');
+        return;
+    }
+    
+    comments[index].likes = (comments[index].likes || 0) + 1;
+    comments[index].userLiked = true;
+    
+    await saveComments(comments);
+    await renderComments();
+};
+
+// ========== پاسخ به نظر ==========
+window.replyToComment = async function (index) {
+    const replyText = prompt('📝 ' + (currentLanguage === 'en' ? 'Write your reply:' : 'پاسخ خود را بنویسید:'));
+    if (!replyText || replyText.trim() === '') return;
+    
+    const comments = await getComments();
+    
+    if (!comments[index]) return;
+    
+    if (!comments[index].replies) comments[index].replies = [];
+    
+    comments[index].replies.push({
+        name: currentLanguage === 'en' ? 'You' : 'شما',
+        text: replyText.trim(),
+        date: new Date().toLocaleString('fa-IR'),
+        timestamp: Date.now()
+    });
+    
+    await saveComments(comments);
+    await renderComments();
+    
+    const msg = currentLanguage === 'en' 
+        ? '✅ Your reply has been posted!' 
+        : '✅ پاسخ شما ثبت شد!';
+    showNotification(msg, 'success');
+};
+
+// ========== حذف نظر ==========
+window.deleteComment = async function (index) {
+    const confirmText = currentLanguage === 'en'
+        ? 'Are you sure you want to delete this comment?'
+        : 'آیا مطمئن هستید که می‌خواهید این نظر را حذف کنید؟';
+    
+    if (!confirm(confirmText)) return;
+    
+    const comments = await getComments();
+    
+    if (!comments[index]) return;
+    
+    comments.splice(index, 1);
+    await saveComments(comments);
+    await renderComments();
+    
+    const msg = currentLanguage === 'en' 
+        ? '🗑️ Comment deleted!' 
+        : '🗑️ نظر با موفقیت حذف شد!';
+    showNotification(msg, 'info');
+};
+
+// ========== ابزارهای کمکی ==========
+
+function getUserId() {
+    let userId = localStorage.getItem('userId');
+    if (!userId) {
+        userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('userId', userId);
+    }
+    return userId;
+}
+
+function escapeHTML(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function showNotification(message, type = 'info') {
+    const colors = {
+        success: '#22c55e',
+        error: '#ef4444',
+        info: '#3b82f6',
+        warning: '#f59e0b'
+    };
+    
+    const existing = document.querySelector('.notification');
+    if (existing) existing.remove();
+    
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: ${colors[type] || '#3b82f6'};
+        color: white;
+        padding: 15px 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        z-index: 10000;
+        font-weight: 500;
+        animation: slideUp 0.3s ease;
+        max-width: 90%;
+        text-align: center;
+    `;
+    
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transition = 'opacity 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 4000);
+}
+
+/* ============================================================
+   📨 PROJECT REQUEST - ذخیره‌سازی دائمی
+============================================================ */
+
+// ========== ذخیره درخواست در JSONBin ==========
+async function saveProjectRequest(requestData) {
+    try {
+        const response = await fetch(`${CONFIG.BASE_URL}${CONFIG.BIN_ID}/latest`, {
+            headers: {
+                'X-Master-Key': CONFIG.API_KEY
+            }
+        });
+        
+        if (!response.ok) throw new Error('خطا در دریافت داده‌ها');
+        
+        const data = await response.json();
+        const currentData = data.record;
+        
+        if (!currentData.requests) {
+            currentData.requests = [];
+        }
+        
+        currentData.requests.push(requestData);
+        
+        const updateResponse = await fetch(`${CONFIG.BASE_URL}${CONFIG.BIN_ID}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Master-Key': CONFIG.API_KEY
+            },
+            body: JSON.stringify(currentData)
+        });
+        
+        if (!updateResponse.ok) throw new Error('خطا در ذخیره درخواست');
+        
+        localStorage.setItem('requests_backup', JSON.stringify(currentData.requests));
+        return true;
+    } catch (error) {
+        console.error('Error saving request:', error);
+        const backup = JSON.parse(localStorage.getItem('requests_backup') || '[]');
+        backup.push(requestData);
+        localStorage.setItem('requests_backup', JSON.stringify(backup));
+        return false;
+    }
+}
+
+// ========== دریافت تمام درخواست‌ها ==========
+async function getProjectRequests() {
+    try {
+        const response = await fetch(`${CONFIG.BASE_URL}${CONFIG.BIN_ID}/latest`, {
+            headers: {
+                'X-Master-Key': CONFIG.API_KEY
+            }
+        });
+        
+        if (!response.ok) throw new Error('خطا در دریافت');
+        
+        const data = await response.json();
+        return data.record.requests || [];
+    } catch (error) {
+        console.error('Error fetching requests:', error);
+        return JSON.parse(localStorage.getItem('requests_backup') || '[]');
+    }
+}
+
+// ========== ارسال درخواست پروژه ==========
+const requestForm = document.getElementById('requestForm');
+if (requestForm) {
+    requestForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        
+        const projectType = this.querySelector('select').value;
+        const budget = this.querySelector('input[type="number"]').value;
+        const timeline = this.querySelectorAll('input[type="number"]')[1]?.value || '';
+        const details = this.querySelector('textarea').value.trim();
+        const name = this.querySelectorAll('input[type="text"]')[0]?.value.trim() || '';
+        const email = this.querySelector('input[type="email"]').value.trim();
+        
+        if (!projectType || !details || !name || !email) {
+            const msg = currentLanguage === 'en'
+                ? '⚠️ Please fill in all required fields!'
+                : '⚠️ لطفاً همه فیلدهای ضروری را پر کنید!';
+            showNotification(msg, 'error');
+            return;
+        }
+        
+        const requestData = {
+            id: Date.now(),
+            type: projectType,
+            budget: budget || 'Not specified',
+            timeline: timeline || 'Not specified',
+            details: details,
+            name: name,
+            email: email,
+            date: new Date().toLocaleString('fa-IR'),
+            timestamp: Date.now(),
+            status: 'pending',
+            userId: getUserId()
+        };
+        
+        const saved = await saveProjectRequest(requestData);
+        
+        if (saved) {
+            const subject = encodeURIComponent(`درخواست پروژه از ${name}`);
+            const body = encodeURIComponent(`
+        📋 درخواست پروژه جدید
+
+        👤 نام: ${name}
+        📧 ایمیل: ${email}
+        📂 نوع پروژه: ${projectType}
+        💰 بودجه: $${budget || 'نامشخص'}
+        ⏱️ زمان: ${timeline || 'نامشخص'} روز
+        📝 توضیحات:
+        ${details}
+
+        تاریخ: ${requestData.date}
+        وضعیت: در انتظار بررسی
+            `);
+            
+            window.open(`mailto:taha.payandeh.1369@gmail.com?subject=${subject}&body=${body}`, '_blank');
+            
+            const msg = currentLanguage === 'en'
+                ? '✅ Your project request has been sent successfully! I\'ll get back to you within 24 hours.'
+                : '✅ درخواست پروژه شما با موفقیت ارسال شد! ظرف ۲۴ ساعت با شما تماس می‌گیرم.';
+            showNotification(msg, 'success');
+            this.reset();
+        } else {
+            const msg = currentLanguage === 'en'
+                ? '⚠️ Your request was saved offline and will sync later.'
+                : '⚠️ درخواست شما به صورت آفلاین ذخیره شد و بعداً همگام‌سازی می‌شود.';
+            showNotification(msg, 'warning');
             this.reset();
         }
     });
 }
 
-window.likeComment = function (index) {
-    comments[index].likes = (comments[index].likes || 0) + 1;
-    localStorage.setItem('comments', JSON.stringify(comments));
-    renderComments();
-};
+/* ============================================================
+   📧 CONTACT FORM - ذخیره‌سازی دائمی
+============================================================ */
 
-window.deleteComment = function (index) {
-    const confirmText = currentLanguage === 'en'
-        ? 'Are you sure you want to delete this comment?'
-        : 'آیا مطمئن هستید که می‌خواهید این نظر را حذف کنید؟';
-    if (confirm(confirmText)) {
-        comments.splice(index, 1);
-        localStorage.setItem('comments', JSON.stringify(comments));
-        renderComments();
+// ========== ذخیره پیام تماس در JSONBin ==========
+async function saveContactMessage(messageData) {
+    try {
+        const response = await fetch(`${CONFIG.BASE_URL}${CONFIG.BIN_ID}/latest`, {
+            headers: {
+                'X-Master-Key': CONFIG.API_KEY
+            }
+        });
+        
+        if (!response.ok) throw new Error('خطا در دریافت داده‌ها');
+        
+        const data = await response.json();
+        const currentData = data.record;
+        
+        if (!currentData.messages) {
+            currentData.messages = [];
+        }
+        
+        currentData.messages.push(messageData);
+        
+        const updateResponse = await fetch(`${CONFIG.BASE_URL}${CONFIG.BIN_ID}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Master-Key': CONFIG.API_KEY
+            },
+            body: JSON.stringify(currentData)
+        });
+        
+        if (!updateResponse.ok) throw new Error('خطا در ذخیره پیام');
+        
+        localStorage.setItem('messages_backup', JSON.stringify(currentData.messages));
+        return true;
+    } catch (error) {
+        console.error('Error saving message:', error);
+        const backup = JSON.parse(localStorage.getItem('messages_backup') || '[]');
+        backup.push(messageData);
+        localStorage.setItem('messages_backup', JSON.stringify(backup));
+        return false;
     }
-};
+}
 
-renderComments();
+// ========== دریافت تمام پیام‌ها ==========
+async function getContactMessages() {
+    try {
+        const response = await fetch(`${CONFIG.BASE_URL}${CONFIG.BIN_ID}/latest`, {
+            headers: {
+                'X-Master-Key': CONFIG.API_KEY
+            }
+        });
+        
+        if (!response.ok) throw new Error('خطا در دریافت');
+        
+        const data = await response.json();
+        return data.record.messages || [];
+    } catch (error) {
+        console.error('Error fetching messages:', error);
+        return JSON.parse(localStorage.getItem('messages_backup') || '[]');
+    }
+}
+
+// ========== ارسال پیام تماس ==========
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        
+        const name = this.querySelector('input[type="text"]').value.trim();
+        const email = this.querySelector('input[type="email"]').value.trim();
+        const message = this.querySelector('textarea').value.trim();
+        
+        if (!name || !email || !message) {
+            const msg = currentLanguage === 'en'
+                ? '⚠️ Please fill in all fields!'
+                : '⚠️ لطفاً همه فیلدها را پر کنید!';
+            showNotification(msg, 'error');
+            return;
+        }
+        
+        const messageData = {
+            id: Date.now(),
+            name: name,
+            email: email,
+            message: message,
+            date: new Date().toLocaleString('fa-IR'),
+            timestamp: Date.now(),
+            userId: getUserId(),
+            status: 'unread' // unread, read, replied
+        };
+        
+        const saved = await saveContactMessage(messageData);
+        
+        if (saved) {
+            const subject = encodeURIComponent(`پیام از ${name} - Zenverix`);
+            const body = encodeURIComponent(`
+        📧 پیام جدید از سایت Zenverix
+
+        👤 نام: ${name}
+        📧 ایمیل: ${email}
+        📅 تاریخ: ${messageData.date}
+
+        📝 پیام:
+        ${message}
+
+        ---
+        این پیام از طریق فرم تماس سایت ارسال شده است.
+            `);
+            
+            window.open(`mailto:taha.payandeh.1369@gmail.com?subject=${subject}&body=${body}`, '_blank');
+            
+            const msg = currentLanguage === 'en'
+                ? '✅ Your message has been sent successfully! I\'ll get back to you soon.'
+                : '✅ پیام شما با موفقیت ارسال شد! به زودی با شما تماس می‌گیرم.';
+            showNotification(msg, 'success');
+            this.reset();
+        } else {
+            const msg = currentLanguage === 'en'
+                ? '⚠️ Your message was saved offline and will sync later.'
+                : '⚠️ پیام شما به صورت آفلاین ذخیره شد و بعداً همگام‌سازی می‌شود.';
+            showNotification(msg, 'warning');
+            this.reset();
+        }
+    });
+}
+
+// ========== نمایش پیام‌ها در کنسول (برای مدیر) ==========
+async function showMessages() {
+    const messages = await getContactMessages();
+    console.log('📧 لیست پیام‌های تماس:');
+    console.table(messages.map(m => ({
+        نام: m.name,
+        ایمیل: m.email,
+        تاریخ: m.date,
+        وضعیت: m.status
+    })));
+    return messages;
+}
+
+// ========== نمایش درخواست‌ها در کنسول ==========
+async function showRequests() {
+    const requests = await getProjectRequests();
+    console.log('📋 لیست درخواست‌های پروژه:');
+    console.table(requests.map(r => ({
+        نام: r.name,
+        ایمیل: r.email,
+        نوع: r.type,
+        بودجه: r.budget,
+        تاریخ: r.date,
+        وضعیت: r.status
+    })));
+    return requests;
+}
+
+// ========== به‌روزرسانی وضعیت درخواست ==========
+async function updateRequestStatus(requestId, newStatus) {
+    try {
+        const response = await fetch(`${CONFIG.BASE_URL}${CONFIG.BIN_ID}/latest`, {
+            headers: {
+                'X-Master-Key': CONFIG.API_KEY
+            }
+        });
+        
+        if (!response.ok) throw new Error('خطا');
+        
+        const data = await response.json();
+        const currentData = data.record;
+        
+        if (!currentData.requests) return false;
+        
+        const index = currentData.requests.findIndex(r => r.id === requestId);
+        if (index === -1) return false;
+        
+        currentData.requests[index].status = newStatus;
+        
+        const updateResponse = await fetch(`${CONFIG.BASE_URL}${CONFIG.BIN_ID}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Master-Key': CONFIG.API_KEY
+            },
+            body: JSON.stringify(currentData)
+        });
+        
+        if (!updateResponse.ok) throw new Error('خطا در به‌روزرسانی');
+        
+        console.log(`✅ وضعیت درخواست ${requestId} به ${newStatus} تغییر یافت`);
+        return true;
+    } catch (error) {
+        console.error('Error updating status:', error);
+        return false;
+    }
+}
 
 /* ============================================================
    🔍 SEARCH
@@ -691,7 +1285,6 @@ document.addEventListener('DOMContentLoaded', function () {
 ============================================================ */
 document.addEventListener('DOMContentLoaded', function () {
 
-    // صبر کن تا Typed.js لود بشه
     function startTyping() {
         if (typeof Typed === 'undefined') {
             setTimeout(startTyping, 200);
@@ -701,20 +1294,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const element = document.querySelector('.typed-text');
         if (!element) return;
 
-        // متن‌ها برای تایپ
         const texts = currentLanguage === 'en'
             ? ['Developer & Creative Thinker', 'Web Developer', 'AI Enthusiast', 'Problem Solver']
             : ['توسعه‌دهنده و متفکر خلاق', 'توسعه‌دهنده وب', 'علاقه‌مند به هوش مصنوعی', 'حل‌کننده مسئله'];
 
-        // اگر نمونه قبلی هست، حذفش کن
         if (window.typedInstance) {
             window.typedInstance.destroy();
         }
 
-        // پاک کردن متن قبلی
         element.textContent = '';
 
-        // اجرای تایپینگ
         window.typedInstance = new Typed('.typed-text', {
             strings: texts,
             typeSpeed: 100,
@@ -730,22 +1319,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     startTyping();
 });
-
-
-/* ============================================================
-   📨 PROJECT REQUEST FORM
-============================================================ */
-const requestForm = document.getElementById('requestForm');
-if (requestForm) {
-    requestForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const msg = currentLanguage === 'en'
-            ? '✅ Your project request has been sent! I\'ll get back to you within 24 hours.'
-            : '✅ درخواست پروژه شما ارسال شد! ظرف ۲۴ ساعت با شما تماس می‌گیرم.';
-        alert(msg);
-        this.reset();
-    });
-}
 
 /* ============================================================
    🌌 INTERACTIVE SPACE - REALISTIC 3D PLANETS
@@ -1052,7 +1625,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* ============================================================
-   🎯 THEME SYSTEM - با گزینه Default
+   🎯 THEME SYSTEM
 ============================================================ */
 
 const themeStyles = {
@@ -1231,6 +1804,206 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* ============================================================
+   📦 JSONBin MANAGEMENT - مدیریت Bin
+============================================================ */
+
+// ========== 1. READ - خواندن داده‌ها ==========
+async function readBin() {
+    try {
+        const response = await fetch(`${CONFIG.BASE_URL}${CONFIG.BIN_ID}/latest`, {
+            headers: {
+                'X-Master-Key': CONFIG.API_KEY
+            }
+        });
+        
+        if (!response.ok) throw new Error(`خطا: ${response.status}`);
+        
+        const data = await response.json();
+        console.log('📖 داده‌های موجود:', data.record);
+        return data.record;
+    } catch (error) {
+        console.error('❌ خطا در خواندن:', error);
+        return null;
+    }
+}
+
+// ========== 2. CREATE - ایجاد Bin جدید ==========
+async function createBin(data = { comments: [], requests: [], messages: [] }) {
+    try {
+        const response = await fetch('https://api.jsonbin.io/v3/b', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Master-Key': CONFIG.API_KEY
+            },
+            body: JSON.stringify(data)
+        });
+        
+        if (!response.ok) throw new Error(`خطا: ${response.status}`);
+        
+        const result = await response.json();
+        console.log('✅ Bin جدید ساخته شد!');
+        console.log('📌 Bin ID:', result.metadata?.id);
+        return result;
+    } catch (error) {
+        console.error('❌ خطا در ساخت Bin:', error);
+        return null;
+    }
+}
+
+// ========== 3. UPDATE - به‌روزرسانی Bin ==========
+async function updateBin(newData) {
+    try {
+        const response = await fetch(`${CONFIG.BASE_URL}${CONFIG.BIN_ID}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Master-Key': CONFIG.API_KEY
+            },
+            body: JSON.stringify(newData)
+        });
+        
+        if (!response.ok) throw new Error(`خطا: ${response.status}`);
+        
+        const result = await response.json();
+        console.log('✅ Bin به‌روزرسانی شد!');
+        return result;
+    } catch (error) {
+        console.error('❌ خطا در به‌روزرسانی:', error);
+        return null;
+    }
+}
+
+// ========== 4. DELETE - حذف Bin ==========
+async function deleteBin() {
+    const confirmText = currentLanguage === 'en'
+        ? '⚠️ Are you sure you want to delete this Bin? This cannot be undone!'
+        : '⚠️ آیا مطمئن هستید که می‌خواهید این Bin را حذف کنید؟ این عمل قابل بازگشت نیست!';
+    
+    if (!confirm(confirmText)) return;
+    
+    try {
+        const response = await fetch(`${CONFIG.BASE_URL}${CONFIG.BIN_ID}`, {
+            method: 'DELETE',
+            headers: {
+                'X-Master-Key': CONFIG.API_KEY
+            }
+        });
+        
+        if (!response.ok) throw new Error(`خطا: ${response.status}`);
+        
+        console.log('✅ Bin با موفقیت حذف شد!');
+        alert('🗑️ Bin حذف شد!');
+        return true;
+    } catch (error) {
+        console.error('❌ خطا در حذف:', error);
+        alert('❌ خطا در حذف Bin!');
+        return false;
+    }
+}
+
+// ========== 5. دکمه‌های مدیریت در کنسول ==========
+console.log('📦 مدیریت Bin:');
+console.log('🔹 readBin()    - خواندن داده‌ها');
+console.log('🔹 createBin()  - ساخت Bin جدید');
+console.log('🔹 updateBin()  - به‌روزرسانی Bin');
+console.log('🔹 deleteBin()  - حذف Bin');
+console.log('📋 مدیریت درخواست‌ها:');
+console.log('🔹 showRequests() - نمایش همه درخواست‌ها');
+console.log('🔹 showMessages() - نمایش همه پیام‌ها');
+console.log('🔹 updateRequestStatus(id, "status") - تغییر وضعیت');
+
+// ========== 6. ایجاد رابط کاربری برای مدیریت ==========
+function createManagementUI() {
+    const container = document.createElement('div');
+    container.style.cssText = `
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    `;
+    
+    const buttons = [
+        { text: '📖 Read', color: '#3b82f6', action: async () => {
+            const data = await readBin();
+            alert(`📖 داده‌ها:\n${JSON.stringify(data, null, 2)}`);
+        }},
+        { text: '📋 Requests', color: '#8b5cf6', action: async () => {
+            const requests = await showRequests();
+            const msg = requests.map((r, i) => 
+                `${i+1}. ${r.name} - ${r.type} (${r.status})\n   💰 ${r.budget} | 📧 ${r.email}`
+            ).join('\n\n');
+            alert(`📋 لیست درخواست‌ها (${requests.length} مورد):\n\n${msg || 'هیچ درخواستی وجود ندارد'}`);
+        }},
+        { text: '📧 Messages', color: '#22c55e', action: async () => {
+            const messages = await showMessages();
+            const msg = messages.map((m, i) => 
+                `${i+1}. ${m.name} - ${m.email}\n   📝 ${m.message.substring(0, 50)}...`
+            ).join('\n\n');
+            alert(`📧 لیست پیام‌ها (${messages.length} مورد):\n\n${msg || 'هیچ پیامی وجود ندارد'}`);
+        }},
+        { text: '🗑️ Delete', color: '#ef4444', action: deleteBin }
+    ];
+    
+    buttons.forEach(btn => {
+        const button = document.createElement('button');
+        button.textContent = btn.text;
+        button.style.cssText = `
+            background: ${btn.color};
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            min-width: 100px;
+        `;
+        button.onmouseover = () => {
+            button.style.transform = 'scale(1.05)';
+        };
+        button.onmouseout = () => {
+            button.style.transform = 'scale(1)';
+        };
+        button.onclick = btn.action;
+        container.appendChild(button);
+    });
+    
+    document.body.appendChild(container);
+}
+
+// ========== 7. فعال‌سازی مدیریت (فقط برای مدیر) ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
+    
+    window.enableAdmin = function() {
+        localStorage.setItem('isAdmin', 'true');
+        createManagementUI();
+        console.log('✅ حالت مدیر فعال شد!');
+    };
+    
+    window.disableAdmin = function() {
+        localStorage.setItem('isAdmin', 'false');
+        const ui = document.querySelector('[style*="position: fixed; bottom: 100px;"]');
+        if (ui) ui.remove();
+        console.log('❌ حالت مدیر غیرفعال شد!');
+    };
+    
+    if (isAdmin) {
+        createManagementUI();
+        console.log('👑 حالت مدیر فعال است!');
+    }
+    
+    console.log('🔑 برای فعال‌سازی مدیر: enableAdmin()');
+    console.log('🔑 برای غیرفعال‌سازی: disableAdmin()');
+});
+
+/* ============================================================
    LANGUAGE TOGGLE - INIT
 ============================================================ */
 document.addEventListener('DOMContentLoaded', function () {
@@ -1241,18 +2014,25 @@ document.addEventListener('DOMContentLoaded', function () {
         langToggle.addEventListener('click', function () {
             const newLang = currentLanguage === 'en' ? 'fa' : 'en';
             applyLanguage(newLang);
+            
+            setTimeout(async function() {
+                await renderComments();
+            }, 300);
         });
     }
+    
+    setTimeout(async function() {
+        await renderComments();
+    }, 500);
 });
-
-/* ============================================================
-   SCROLL PROGRESS (Duplicate removed - merged with above)
-============================================================ */
-// تابع updateScrollProgress قبلاً در بخش SCROLL PROGRESS BAR تعریف شده
 
 console.log('🚀 Zenverix v2.1 Loaded Successfully!');
 console.log('🌙 Dark Mode: Click the moon/sun icon to toggle');
 console.log('🌐 Language: Click the globe icon to switch between English and Persian');
+console.log('💬 Comments: Stored permanently on JSONBin');
+console.log('📨 Project Requests: Stored permanently on JSONBin');
+console.log('📧 Contact Messages: Stored permanently on JSONBin');
 console.log('🤖 AI Chatbot: Click the robot icon');
 console.log('🌌 Interactive Space: Move your mouse in the space section');
 console.log('🪐 8 Realistic Planets with tooltips!');
+console.log('👑 برای فعال‌سازی مدیر: enableAdmin()');
