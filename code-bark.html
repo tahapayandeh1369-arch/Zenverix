@@ -3,101 +3,392 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CodeBark — Zenverix Code Editor</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<title>CodeBark — Zenverix Code Editor | Clean UI</title>
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet">
+
 <link rel="stylesheet" href="./Csses/code-bark-style.css">
 <link rel="icon" type="image/x-icon" href="./image/favicon.ico">
 </head>
+
 <body class="codebark-app">
 
+<!-- =========================
+     LOADING SCREEN
+========================= -->
 <div id="loadingScreen" class="cb-loading">
-  <div class="loader-wrapper">
-    <div class="loader-logo">
-      <div class="ring1"></div><div class="ring2"></div><div class="ring3"></div>
-      <div class="logo-icon"><i class="fas fa-pencil-ruler"></i></div>
+    <div class="loader-wrapper">
+
+        <div class="loader-logo">
+            <div class="ring1"></div>
+            <div class="ring2"></div>
+            <div class="ring3"></div>
+
+            <div class="logo-icon">
+                <i class="fas fa-pencil-ruler"></i>
+            </div>
+        </div>
+
+        <div class="loader-title">
+            Code<span>Bark</span>
+        </div>
+
+        <div class="loader-sub">
+            Professional Code Editor
+        </div>
+
+        <div class="loader-bar-wrap">
+            <div class="loader-bar">
+                <div class="bar-fill" id="barFill"></div>
+            </div>
+
+            <div class="loader-percent" id="percentText">
+                0%
+            </div>
+        </div>
+
+        <div class="loader-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
     </div>
-    <div class="loader-title">Code<span>Bark</span></div>
-    <div class="loader-sub">Professional Code Editor</div>
-    <div class="loader-bar-wrap">
-      <div class="loader-bar"><div class="bar-fill" id="barFill"></div></div>
-      <div class="loader-percent" id="percentText">0%</div>
-    </div>
-    <div class="loader-dots"><span></span><span></span><span></span></div>
-  </div>
 </div>
 
+
+<!-- =========================
+     NAVBAR
+========================= -->
 <nav class="cb-navbar">
-  <div class="brand" onclick="navigateTo('home')">
-    <div class="icon"><i class="fas fa-pencil-ruler"></i></div>
-    <div><h1>Code<span>Bark</span></h1><small>Zenverix Code Editor</small></div>
-  </div>
 
-  <div class="nav-links">
-    <a href="#" class="active" onclick="navigateTo('home');return false;"><i class="fas fa-home"></i> Home</a>
-    <a href="#" onclick="navigateTo('editor');return false;"><i class="fas fa-code"></i> Editor</a>
-    <a href="#" onclick="showNotif('🚀 Projects coming soon...');return false;"><i class="fas fa-folder"></i> Projects</a>
-    <a href="#" onclick="showNotif('📚 Learn section coming soon...');return false;"><i class="fas fa-graduation-cap"></i> Learn</a>
-  </div>
+    <div class="brand" onclick="navigateTo('home')">
 
-  <div class="tools">
-    <button onclick="toggleTheme()"><i class="fas fa-moon"></i><span id="themeLabel">Dark</span></button>
-    <button onclick="showNotif('👤 Profile coming soon...')"><i class="fas fa-user"></i></button>
-    <button class="primary" onclick="downloadProject()"><i class="fas fa-download"></i><span>Export</span></button>
-    <button class="back-btn" onclick="goZenverix()"><i class="fas fa-arrow-left"></i><span>Zenverix</span></button>
-  </div>
+        <div class="icon">
+            <i class="fas fa-pencil-ruler"></i>
+        </div>
+
+        <div>
+            <h1>
+                Code<span>Bark</span>
+            </h1>
+
+            <small>
+                Zenverix Code Editor
+            </small>
+        </div>
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="#"
+           class="active"
+           onclick="navigateTo('home'); return false;">
+            <i class="fas fa-home"></i>
+            Home
+        </a>
+
+        <a href="#"
+           onclick="navigateTo('editor'); return false;">
+            <i class="fas fa-code"></i>
+            Editor
+        </a>
+
+        <a href="#"
+           onclick="showNotif('Projects coming soon...'); return false;">
+            <i class="fas fa-folder"></i>
+            Projects
+        </a>
+
+        <a href="#"
+           onclick="showNotif('Learn section coming soon...'); return false;">
+            <i class="fas fa-graduation-cap"></i>
+            Learn
+        </a>
+
+    </div>
+
+
+    <div class="tools">
+
+        <button onclick="toggleTheme()">
+            <i class="fas fa-moon"></i>
+            <span id="themeLabel">Dark</span>
+        </button>
+
+        <button onclick="showNotif('Profile coming soon...')">
+            <i class="fas fa-user"></i>
+        </button>
+
+        <button class="primary"
+                onclick="downloadProject()">
+
+            <i class="fas fa-download"></i>
+            <span>Export</span>
+
+        </button>
+
+        <button class="back-btn"
+                onclick="goZenverix()">
+
+            <i class="fas fa-arrow-left"></i>
+            <span>Zenverix</span>
+
+        </button>
+
+    </div>
+
 </nav>
 
+
+<!-- =========================
+     MAIN
+========================= -->
 <main id="mainContent">
-  <section id="homePage" class="cb-page active">
-    <div class="home-hero">
-      <span class="badge">🔥 Zenverix Tool</span>
-      <h1>Welcome to <span>CodeBark</span></h1>
-      <p>Professional code editor with live preview and essential tools for modern developers.</p>
-      <button class="start-btn" onclick="navigateTo('editor')"><i class="fas fa-play"></i> Start Coding</button>
-    </div>
 
-    <div class="home-stats">
-      <div class="stat-card"><div class="num">10+</div><div class="label">Active Projects</div></div>
-      <div class="stat-card"><div class="num">1,240</div><div class="label">Lines of Code</div></div>
-      <div class="stat-card"><div class="num">5</div><div class="label">Design Themes</div></div>
-      <div class="stat-card"><div class="num">100%</div><div class="label">User Satisfaction</div></div>
-    </div>
 
-    <div class="features-grid">
-      <div class="feature-card"><span class="icon">⚡</span><h3>Live Preview</h3><p>Write code and see results instantly.</p></div>
-      <div class="feature-card"><span class="icon">🌙</span><h3>Dark / Light Mode</h3><p>Choose the environment you prefer.</p></div>
-      <div class="feature-card"><span class="icon">📱</span><h3>Responsive Preview</h3><p>Test desktop, tablet and mobile layouts.</p></div>
-      <div class="feature-card"><span class="icon">💾</span><h3>Auto Save</h3><p>Your code is saved automatically.</p></div>
-      <div class="feature-card"><span class="icon">🎨</span><h3>Auto Format</h3><p>Clean up your code with one click.</p></div>
-      <div class="feature-card"><span class="icon">📦</span><h3>Export Project</h3><p>Download your current project as HTML.</p></div>
-    </div>
-  </section>
+    <!-- =========================
+         HOME PAGE
+    ========================= -->
+    <section id="homePage"
+             class="cb-page active">
 
-  <section id="editorPage" class="cb-page">
-    <div class="editor-container">
-      <div class="editor-panel">
-        <div class="panel-header">
-          <span><i class="fab fa-html5 html-icon"></i> HTML <span class="dot html-dot"></span></span>
-          <span><span id="htmlLines">0</span> lines</span>
+        <div class="home-hero">
+
+            <span class="badge">
+                Zenverix Tool
+            </span>
+
+            <h1>
+                Welcome to <span>CodeBark</span>
+            </h1>
+
+            <p>
+                Professional code editor with live preview
+                and essential tools for modern developers.
+            </p>
+
+            <button class="start-btn"
+                    onclick="navigateTo('editor')">
+
+                <i class="fas fa-play"></i>
+                Start Coding
+
+            </button>
+
         </div>
-        <textarea id="htmlEditor" spellcheck="false"><div class="hero">
-  <div class="badge">🔥 New</div>
-  <h1>Welcome to CodeBark</h1>
-  <p>Write your code and see the result</p>
-  <div class="btn-group">
-    <button class="btn-primary" id="actionBtn">Get Started</button>
-    <button class="btn-secondary">Learn More</button>
+
+
+        <!-- STATS -->
+        <div class="home-stats">
+
+            <div class="stat-card">
+                <div class="num">10+</div>
+                <div class="label">Active Projects</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="num">1,240</div>
+                <div class="label">Lines of Code</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="num">5</div>
+                <div class="label">Design Themes</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="num">100%</div>
+                <div class="label">User Satisfaction</div>
+            </div>
+
+        </div>
+
+
+        <!-- FEATURES -->
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <span class="icon">
+                    <i class="fas fa-bolt"></i>
+                </span>
+
+                <h3>Live Preview</h3>
+
+                <p>
+                    Write code and see results instantly.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <span class="icon">
+                    <i class="fas fa-moon"></i>
+                </span>
+
+                <h3>Dark / Light Mode</h3>
+
+                <p>
+                    Choose the environment you prefer.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <span class="icon">
+                    <i class="fas fa-mobile-screen"></i>
+                </span>
+
+                <h3>Responsive Preview</h3>
+
+                <p>
+                    Test desktop, tablet and mobile layouts.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <span class="icon">
+                    <i class="fas fa-floppy-disk"></i>
+                </span>
+
+                <h3>Auto Save</h3>
+
+                <p>
+                    Your code is saved automatically.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <span class="icon">
+                    <i class="fas fa-palette"></i>
+                </span>
+
+                <h3>Auto Format</h3>
+
+                <p>
+                    Clean up your code with one click.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <span class="icon">
+                    <i class="fas fa-box"></i>
+                </span>
+
+                <h3>Export Project</h3>
+
+                <p>
+                    Download your current project as HTML.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EDITOR PAGE
+    ========================= -->
+    <section id="editorPage"
+             class="cb-page">
+
+        <div class="editor-container">
+
+
+            <!-- HTML EDITOR -->
+            <div class="editor-panel">
+
+                <div class="panel-header">
+
+                    <span>
+
+                        <i class="fab fa-html5 html-icon"></i>
+
+                        HTML
+
+                        <span class="dot html-dot"></span>
+
+                    </span>
+
+                    <span>
+                        <span id="htmlLines">0</span>
+                        lines
+                    </span>
+
+                </div>
+
+
+                <textarea
+                    id="htmlEditor"
+                    spellcheck="false"><div class="hero">
+
+  <div class="badge">
+    New
   </div>
-</div></textarea>
-      </div>
 
-      <div class="editor-panel">
-        <div class="panel-header">
-          <span><i class="fab fa-css3-alt css-icon"></i> CSS <span class="dot css-dot"></span></span>
-          <span><span id="cssLines">0</span> lines</span>
-        </div>
-        <textarea id="cssEditor" spellcheck="false">.hero {
+  <h1>
+    Welcome to CodeBark
+  </h1>
+
+  <p>
+    Write your code and see the result
+  </p>
+
+  <div class="btn-group">
+
+    <button class="btn-primary"
+            id="actionBtn">
+      Get Started
+    </button>
+
+    <button class="btn-secondary">
+      Learn More
+    </button>
+
+  </div>
+
+</div></textarea>
+
+            </div>
+
+
+            <!-- CSS EDITOR -->
+            <div class="editor-panel">
+
+                <div class="panel-header">
+
+                    <span>
+
+                        <i class="fab fa-css3-alt css-icon"></i>
+
+                        CSS
+
+                        <span class="dot css-dot"></span>
+
+                    </span>
+
+                    <span>
+                        <span id="cssLines">0</span>
+                        lines
+                    </span>
+
+                </div>
+
+
+                <textarea
+                    id="cssEditor"
+                    spellcheck="false">.hero {
   text-align: center;
   padding: 60px 30px;
   background: linear-gradient(135deg, #fef3c7, #fde68a);
@@ -175,270 +466,1269 @@
   color: #f97316;
   background: #fff7ed;
 }</textarea>
-      </div>
 
-      <div class="editor-panel preview-panel">
-        <div class="panel-header">
-          <span><i class="fas fa-eye preview-icon"></i> Preview <span class="dot preview-dot"></span></span>
-          <span><i class="fas fa-sync-alt"></i> <span id="previewTime">Live</span></span>
-        </div>
-        <div class="tab-bar">
-          <button class="tab active-tab" onclick="setPreviewSize('desktop')"><i class="fas fa-desktop"></i></button>
-          <button class="tab" onclick="setPreviewSize('tablet')"><i class="fas fa-tablet-alt"></i></button>
-          <button class="tab" onclick="setPreviewSize('mobile')"><i class="fas fa-mobile-alt"></i></button>
-          <button class="tab" onclick="toggleFullscreen()"><i class="fas fa-expand"></i></button>
-          <button class="tab" onclick="formatCode()"><i class="fas fa-wand-magic-sparkles"></i></button>
-          <button class="tab" onclick="showModal()"><i class="fas fa-rotate-left"></i></button>
-        </div>
-        <iframe id="previewWindow" sandbox="allow-scripts allow-modals"></iframe>
-      </div>
-    </div>
-  </section>
+            </div>
 
-  <footer class="footer-bar">
-    <div class="info-item"><i class="fas fa-code"></i><span id="lineCounter">Lines: 0</span></div>
-    <div class="info-item"><i class="fas fa-font"></i><span id="charCounter">Characters: 0</span></div>
-    <div class="info-item"><i class="fas fa-clock"></i><span id="timeDisplay"></span></div>
-    <div class="info-item"><span class="status-badge" id="statusBadge"><i class="fas fa-circle"></i> Ready</span></div>
-  </footer>
+
+            <!-- PREVIEW -->
+            <div class="editor-panel preview-panel">
+
+                <div class="panel-header">
+
+                    <span>
+
+                        <i class="fas fa-eye preview-icon"></i>
+
+                        Preview
+
+                        <span class="dot preview-dot"></span>
+
+                    </span>
+
+
+                    <span>
+
+                        <i class="fas fa-sync-alt"></i>
+
+                        <span id="previewTime">
+                            Live
+                        </span>
+
+                    </span>
+
+                </div>
+
+
+                <div class="tab-bar">
+
+                    <button
+                        class="tab active-tab"
+                        onclick="setPreviewSize('desktop')">
+
+                        <i class="fas fa-desktop"></i>
+
+                    </button>
+
+
+                    <button
+                        class="tab"
+                        onclick="setPreviewSize('tablet')">
+
+                        <i class="fas fa-tablet-alt"></i>
+
+                    </button>
+
+
+                    <button
+                        class="tab"
+                        onclick="setPreviewSize('mobile')">
+
+                        <i class="fas fa-mobile-alt"></i>
+
+                    </button>
+
+
+                    <button
+                        class="tab"
+                        onclick="toggleFullscreen()">
+
+                        <i class="fas fa-expand"></i>
+
+                    </button>
+
+
+                    <button
+                        class="tab"
+                        onclick="formatCode()">
+
+                        <i class="fas fa-wand-magic-sparkles"></i>
+
+                    </button>
+
+
+                    <button
+                        class="tab"
+                        onclick="showModal()">
+
+                        <i class="fas fa-rotate-left"></i>
+
+                    </button>
+
+                </div>
+
+
+                <iframe
+                    id="previewWindow"
+                    sandbox="allow-scripts allow-modals">
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+    <footer class="footer-bar">
+
+        <div class="info-item">
+
+            <i class="fas fa-code"></i>
+
+            <span id="lineCounter">
+                Lines: 0
+            </span>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <i class="fas fa-font"></i>
+
+            <span id="charCounter">
+                Characters: 0
+            </span>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <i class="fas fa-clock"></i>
+
+            <span id="timeDisplay"></span>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span
+                class="status-badge"
+                id="statusBadge">
+
+                <i class="fas fa-circle"></i>
+                Ready
+
+            </span>
+
+        </div>
+
+    </footer>
+
 </main>
 
-<div class="notification" id="notifBox"><i class="fas fa-check-circle"></i><span id="notifText">Success!</span></div>
 
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal-box">
-    <span class="modal-icon">🔄</span>
-    <h2>Reset Code</h2>
-    <p>Are you sure you want to reset the code to default?</p>
-    <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-      <button class="btn-confirm" onclick="confirmReset()">Yes, Reset</button>
-    </div>
-  </div>
+<!-- =========================
+     NOTIFICATION
+========================= -->
+<div class="notification"
+     id="notifBox">
+
+    <i class="fas fa-check-circle"></i>
+
+    <span id="notifText">
+        Success!
+    </span>
+
 </div>
 
+
+<!-- =========================
+     RESET MODAL
+========================= -->
+<div class="modal-overlay"
+     id="modalOverlay">
+
+    <div class="modal-box">
+
+        <span class="modal-icon">
+            <i class="fas fa-rotate-left"></i>
+        </span>
+
+        <h2>
+            Reset Code
+        </h2>
+
+        <p>
+            Are you sure you want to reset the code to default?
+        </p>
+
+
+        <div class="modal-actions">
+
+            <button
+                class="btn-cancel"
+                onclick="closeModal()">
+
+                Cancel
+
+            </button>
+
+
+            <button
+                class="btn-confirm"
+                onclick="confirmReset()">
+
+                Yes, Reset
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 <script>
-const htmlArea = document.getElementById('htmlEditor');
-const cssArea = document.getElementById('cssEditor');
-const previewFrame = document.getElementById('previewWindow');
-const lineCount = document.getElementById('lineCounter');
-const charCount = document.getElementById('charCounter');
-const htmlLines = document.getElementById('htmlLines');
-const cssLines = document.getElementById('cssLines');
-const previewTime = document.getElementById('previewTime');
-const statusBadge = document.getElementById('statusBadge');
-const timeDisplay = document.getElementById('timeDisplay');
-const notifBox = document.getElementById('notifBox');
-const notifText = document.getElementById('notifText');
-const modalOverlay = document.getElementById('modalOverlay');
 
-let notifTimer = null, autoTimer = null, autoSaveTimer = null, isDark = false;
-const defaultHTML = htmlArea.value;
-const defaultCSS = cssArea.value;
+const htmlArea =
+    document.getElementById('htmlEditor');
 
-function showNotif(msg, isError = false) {
-  notifText.textContent = msg;
-  notifBox.classList.add('show');
-  const icon = notifBox.querySelector('i');
-  icon.style.color = isError ? '#ef4444' : '#f97316';
-  clearTimeout(notifTimer);
-  notifTimer = setTimeout(() => notifBox.classList.remove('show'), 2800);
+const cssArea =
+    document.getElementById('cssEditor');
+
+const previewFrame =
+    document.getElementById('previewWindow');
+
+const lineCount =
+    document.getElementById('lineCounter');
+
+const charCount =
+    document.getElementById('charCounter');
+
+const htmlLines =
+    document.getElementById('htmlLines');
+
+const cssLines =
+    document.getElementById('cssLines');
+
+const previewTime =
+    document.getElementById('previewTime');
+
+const statusBadge =
+    document.getElementById('statusBadge');
+
+const timeDisplay =
+    document.getElementById('timeDisplay');
+
+const notifBox =
+    document.getElementById('notifBox');
+
+const notifText =
+    document.getElementById('notifText');
+
+const modalOverlay =
+    document.getElementById('modalOverlay');
+
+
+let notifTimer = null;
+let autoTimer = null;
+let autoSaveTimer = null;
+let isDark = false;
+
+
+const defaultHTML =
+    htmlArea.value;
+
+const defaultCSS =
+    cssArea.value;
+
+
+/* =========================
+   NOTIFICATION
+========================= */
+
+function showNotif(message, isError = false) {
+
+    notifText.textContent = message;
+
+    notifBox.classList.add('show');
+
+    const icon =
+        notifBox.querySelector('i');
+
+    icon.style.color =
+        isError ? '#ef4444' : '#f97316';
+
+    clearTimeout(notifTimer);
+
+    notifTimer = setTimeout(() => {
+
+        notifBox.classList.remove('show');
+
+    }, 2800);
+
 }
+
+
+/* =========================
+   NAVIGATION
+========================= */
 
 function navigateTo(page) {
-  document.getElementById('homePage').classList.toggle('active', page === 'home');
-  document.getElementById('editorPage').classList.toggle('active', page === 'editor');
-  document.querySelectorAll('.nav-links a').forEach((a, i) => a.classList.toggle('active', (page === 'home' && i === 0) || (page === 'editor' && i === 1)));
-  if (page === 'editor') setTimeout(runPreview, 80);
+
+    document
+        .getElementById('homePage')
+        .classList
+        .toggle('active', page === 'home');
+
+    document
+        .getElementById('editorPage')
+        .classList
+        .toggle('active', page === 'editor');
+
+
+    document
+        .querySelectorAll('.nav-links a')
+        .forEach((link, index) => {
+
+            const active =
+                (page === 'home' && index === 0) ||
+                (page === 'editor' && index === 1);
+
+            link.classList.toggle(
+                'active',
+                active
+            );
+
+        });
+
+
+    if (page === 'editor') {
+
+        setTimeout(
+            runPreview,
+            80
+        );
+
+    }
+
 }
+
+
+/* =========================
+   ZENVERIX
+========================= */
 
 function goZenverix() {
-  window.location.href = './index.html';
+
+    window.location.href =
+        './index.html';
+
 }
+
+
+/* =========================
+   CLOCK
+========================= */
 
 function updateClock() {
-  timeDisplay.textContent = new Date().toLocaleTimeString('en-US', {
-    hour: '2-digit', minute: '2-digit', second: '2-digit'
-  });
+
+    timeDisplay.textContent =
+        new Date().toLocaleTimeString(
+            'en-US',
+            {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            }
+        );
+
 }
-setInterval(updateClock, 1000);
+
+
+setInterval(
+    updateClock,
+    1000
+);
+
 updateClock();
 
+
+/* =========================
+   COUNTERS
+========================= */
+
 function updateCounters() {
-  const html = htmlArea.value, css = cssArea.value;
-  lineCount.textContent = 'Lines: ' + (html + css).split('\n').length;
-  charCount.textContent = 'Characters: ' + (html + css).length;
-  htmlLines.textContent = html.split('\n').length;
-  cssLines.textContent = css.split('\n').length;
+
+    const html =
+        htmlArea.value;
+
+    const css =
+        cssArea.value;
+
+
+    const combined =
+        html + css;
+
+
+    lineCount.textContent =
+        'Lines: ' +
+        combined.split('\n').length;
+
+
+    charCount.textContent =
+        'Characters: ' +
+        combined.length;
+
+
+    htmlLines.textContent =
+        html.split('\n').length;
+
+
+    cssLines.textContent =
+        css.split('\n').length;
+
 }
+
+
+/* =========================
+   AUTO SAVE
+========================= */
 
 function autoSave() {
-  localStorage.setItem('codebark_html', htmlArea.value);
-  localStorage.setItem('codebark_css', cssArea.value);
-  localStorage.setItem('codebark_saved', Date.now().toString());
+
+    localStorage.setItem(
+        'codebark_html',
+        htmlArea.value
+    );
+
+
+    localStorage.setItem(
+        'codebark_css',
+        cssArea.value
+    );
+
+
+    localStorage.setItem(
+        'codebark_saved',
+        Date.now().toString()
+    );
+
 }
+
+
+/* =========================
+   LOAD SAVED CODE
+========================= */
 
 function loadSavedCode() {
-  const html = localStorage.getItem('codebark_html');
-  const css = localStorage.getItem('codebark_css');
-  if (html !== null) htmlArea.value = html;
-  if (css !== null) cssArea.value = css;
+
+    const html =
+        localStorage.getItem(
+            'codebark_html'
+        );
+
+    const css =
+        localStorage.getItem(
+            'codebark_css'
+        );
+
+
+    if (html !== null) {
+
+        htmlArea.value =
+            html;
+
+    }
+
+
+    if (css !== null) {
+
+        cssArea.value =
+            css;
+
+    }
+
 }
+
+
+/* =========================
+   LIVE PREVIEW
+========================= */
 
 function runPreview() {
-  const html = htmlArea.value;
-  const css = cssArea.value;
-  try {
-    const doc = `<!DOCTYPE html><html><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<style>${css}</style></head><body>${html}
+
+    const html =
+        htmlArea.value;
+
+    const css =
+        cssArea.value;
+
+
+    try {
+
+        const doc = `
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<style>
+
+${css}
+
+</style>
+
+</head>
+
+<body>
+
+${html}
+
 <script>
-document.getElementById("actionBtn")?.addEventListener("click",function(){
-  alert("🎉 Welcome to CodeBark!");
-});
-<\/script></body></html>`;
-    const blob = new Blob([doc], {type:'text/html'});
-    const url = URL.createObjectURL(blob);
-    previewFrame.src = url;
-    setTimeout(() => URL.revokeObjectURL(url), 5000);
-    previewTime.textContent = 'Live • ' + new Date().toLocaleTimeString('en-US');
-    statusBadge.className = 'status-badge';
-    statusBadge.innerHTML = '<i class="fas fa-circle"></i> Running';
-    updateCounters();
-    autoSave();
-  } catch (e) {
-    statusBadge.className = 'status-badge error';
-    statusBadge.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error';
-    showNotif('❌ Error executing code', true);
-  }
+
+document
+.getElementById("actionBtn")
+?.addEventListener(
+"click",
+function(){
+
+    alert("Welcome to CodeBark!");
+
 }
+);
+
+<\/script>
+
+</body>
+
+</html>
+`;
+
+
+        const blob =
+            new Blob(
+                [doc],
+                {
+                    type: 'text/html'
+                }
+            );
+
+
+        const url =
+            URL.createObjectURL(blob);
+
+
+        previewFrame.src =
+            url;
+
+
+        setTimeout(() => {
+
+            URL.revokeObjectURL(
+                url
+            );
+
+        }, 5000);
+
+
+        previewTime.textContent =
+            'Live • ' +
+            new Date()
+                .toLocaleTimeString(
+                    'en-US'
+                );
+
+
+        statusBadge.className =
+            'status-badge';
+
+
+        statusBadge.innerHTML =
+            '<i class="fas fa-circle"></i> Running';
+
+
+        updateCounters();
+
+        autoSave();
+
+
+    } catch (error) {
+
+        statusBadge.className =
+            'status-badge error';
+
+
+        statusBadge.innerHTML =
+            '<i class="fas fa-exclamation-circle"></i> Error';
+
+
+        showNotif(
+            'Error executing code',
+            true
+        );
+
+    }
+
+}
+
+
+/* =========================
+   SCHEDULE PREVIEW
+========================= */
 
 function scheduleRun() {
-  clearTimeout(autoTimer);
-  autoTimer = setTimeout(runPreview, 500);
+
+    clearTimeout(
+        autoTimer
+    );
+
+
+    autoTimer =
+        setTimeout(
+            runPreview,
+            500
+        );
+
 }
+
+
+/* =========================
+   FORMAT CODE
+========================= */
 
 function formatCode() {
-  let html = htmlArea.value.replace(/>\s*</g, '>\n<').split('\n').filter(x => x.trim()).join('\n');
-  htmlArea.value = html;
-  cssArea.value = cssArea.value
-    .replace(/\s*{\s*/g, ' {\n  ')
-    .replace(/\s*}\s*/g, '\n}\n')
-    .replace(/;\s*/g, ';\n  ')
-    .split('\n').filter(x => x.trim()).join('\n');
-  runPreview();
-  showNotif('✨ Code formatted');
+
+    let html =
+        htmlArea.value
+        .replace(/>\s*</g, '>\n<')
+        .split('\n')
+        .filter(x => x.trim())
+        .join('\n');
+
+
+    htmlArea.value =
+        html;
+
+
+    cssArea.value =
+        cssArea.value
+
+        .replace(
+            /\s*{\s*/g,
+            ' {\n  '
+        )
+
+        .replace(
+            /\s*}\s*/g,
+            '\n}\n'
+        )
+
+        .replace(
+            /;\s*/g,
+            ';\n  '
+        )
+
+        .split('\n')
+
+        .filter(
+            x => x.trim()
+        )
+
+        .join('\n');
+
+
+    updateCounters();
+
+    runPreview();
+
+    showNotif(
+        'Code formatted'
+    );
+
 }
+
+
+/* =========================
+   THEME
+========================= */
 
 function toggleTheme() {
-  isDark = !isDark;
-  document.body.classList.toggle('dark-mode', isDark);
-  document.getElementById('themeLabel').textContent = isDark ? 'Light' : 'Dark';
-  showNotif(isDark ? '🌙 Dark mode' : '☀️ Light mode');
-  localStorage.setItem('codebark_theme', isDark ? 'dark' : 'light');
+
+    isDark =
+        !isDark;
+
+
+    document.body.classList.toggle(
+        'dark-mode',
+        isDark
+    );
+
+
+    document.getElementById(
+        'themeLabel'
+    ).textContent =
+        isDark
+            ? 'Light'
+            : 'Dark';
+
+
+    showNotif(
+        isDark
+            ? 'Dark mode'
+            : 'Light mode'
+    );
+
+
+    localStorage.setItem(
+        'codebark_theme',
+        isDark
+            ? 'dark'
+            : 'light'
+    );
+
 }
+
+
+/* =========================
+   PREVIEW SIZE
+========================= */
 
 function setPreviewSize(size) {
-  const tabs = document.querySelectorAll('.tab-bar .tab');
-  tabs.forEach(t => t.classList.remove('active-tab'));
-  const widths = {desktop:'100%', tablet:'768px', mobile:'375px'};
-  if (widths[size]) {
-    previewFrame.style.width = widths[size];
-    previewFrame.style.maxWidth = size === 'desktop' ? '100%' : '90%';
-    previewFrame.style.margin = '0 auto';
-  }
-  const index = {desktop:0, tablet:1, mobile:2}[size];
-  if (index !== undefined) tabs[index].classList.add('active-tab');
-  showNotif(size === 'desktop' ? '💻 Desktop' : '📱 ' + size[0].toUpperCase()+size.slice(1));
+
+    const tabs =
+        document.querySelectorAll(
+            '.tab-bar .tab'
+        );
+
+
+    tabs.forEach(tab => {
+
+        tab.classList.remove(
+            'active-tab'
+        );
+
+    });
+
+
+    const widths = {
+
+        desktop: '100%',
+        tablet: '768px',
+        mobile: '375px'
+
+    };
+
+
+    if (widths[size]) {
+
+        previewFrame.style.width =
+            widths[size];
+
+
+        previewFrame.style.maxWidth =
+            size === 'desktop'
+                ? '100%'
+                : '90%';
+
+
+        previewFrame.style.margin =
+            '0 auto';
+
+    }
+
+
+    const index = {
+
+        desktop: 0,
+        tablet: 1,
+        mobile: 2
+
+    }[size];
+
+
+    if (index !== undefined) {
+
+        tabs[index]
+            .classList
+            .add('active-tab');
+
+    }
+
+
+    const label =
+        size.charAt(0).toUpperCase() +
+        size.slice(1);
+
+
+    showNotif(
+        label + ' preview'
+    );
+
 }
+
+
+/* =========================
+   FULLSCREEN
+========================= */
 
 function toggleFullscreen() {
-  if (previewFrame.requestFullscreen) {
-    previewFrame.requestFullscreen();
-    showNotif('⛶ Fullscreen mode');
-  } else showNotif('⚠️ Fullscreen is not supported', true);
+
+    if (
+        previewFrame.requestFullscreen
+    ) {
+
+        previewFrame.requestFullscreen();
+
+        showNotif(
+            'Fullscreen mode'
+        );
+
+    } else {
+
+        showNotif(
+            'Fullscreen is not supported',
+            true
+        );
+
+    }
+
 }
 
-function showModal(){ modalOverlay.classList.add('active'); }
-function closeModal(){ modalOverlay.classList.remove('active'); }
+
+/* =========================
+   MODAL
+========================= */
+
+function showModal() {
+
+    modalOverlay.classList.add(
+        'active'
+    );
+
+}
+
+
+function closeModal() {
+
+    modalOverlay.classList.remove(
+        'active'
+    );
+
+}
+
+
+/* =========================
+   RESET
+========================= */
 
 function confirmReset() {
-  closeModal();
-  htmlArea.value = defaultHTML;
-  cssArea.value = defaultCSS;
-  localStorage.removeItem('codebark_html');
-  localStorage.removeItem('codebark_css');
-  runPreview();
-  showNotif('🔄 Code reset');
+
+    closeModal();
+
+
+    htmlArea.value =
+        defaultHTML;
+
+
+    cssArea.value =
+        defaultCSS;
+
+
+    localStorage.removeItem(
+        'codebark_html'
+    );
+
+
+    localStorage.removeItem(
+        'codebark_css'
+    );
+
+
+    updateCounters();
+
+    runPreview();
+
+
+    showNotif(
+        'Code reset'
+    );
+
 }
+
+
+/* =========================
+   EXPORT
+========================= */
 
 function downloadProject() {
-  const full = `<!DOCTYPE html><html><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>CodeBark Project</title><style>${cssArea.value}</style></head>
-<body>${htmlArea.value}<script>
-document.getElementById("actionBtn")?.addEventListener("click",function(){
-alert("🎉 Welcome to CodeBark!");
-});
-<\/script></body></html>`;
-  const blob = new Blob([full], {type:'text/html'});
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = 'codebark-project.html';
-  link.click();
-  URL.revokeObjectURL(url);
-  showNotif('📥 Project exported');
+
+    const full = `
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>
+CodeBark Project
+</title>
+
+<style>
+
+${cssArea.value}
+
+</style>
+
+</head>
+
+<body>
+
+${htmlArea.value}
+
+<script>
+
+document
+.getElementById("actionBtn")
+?.addEventListener(
+"click",
+function(){
+
+    alert("Welcome to CodeBark!");
+
+}
+);
+
+<\/script>
+
+</body>
+
+</html>
+`;
+
+
+    const blob =
+        new Blob(
+            [full],
+            {
+                type: 'text/html'
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const link =
+        document.createElement('a');
+
+
+    link.href =
+        url;
+
+
+    link.download =
+        'codebark-project.html';
+
+
+    document.body.appendChild(
+        link
+    );
+
+
+    link.click();
+
+
+    link.remove();
+
+
+    URL.revokeObjectURL(
+        url
+    );
+
+
+    showNotif(
+        'Project exported'
+    );
+
 }
 
-htmlArea.addEventListener('input', () => {
-  updateCounters(); scheduleRun();
-  clearTimeout(autoSaveTimer); autoSaveTimer = setTimeout(autoSave, 1000);
-});
-cssArea.addEventListener('input', () => {
-  updateCounters(); scheduleRun();
-  clearTimeout(autoSaveTimer); autoSaveTimer = setTimeout(autoSave, 1000);
-});
 
-modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
+/* =========================
+   EDITOR EVENTS
+========================= */
 
-document.addEventListener('keydown', e => {
-  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); runPreview(); }
-  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') { e.preventDefault(); autoSave(); showNotif('💾 Saved!'); }
-  if (e.key === 'Escape') closeModal();
-});
+htmlArea.addEventListener(
+    'input',
+    () => {
+
+        updateCounters();
+
+        scheduleRun();
+
+
+        clearTimeout(
+            autoSaveTimer
+        );
+
+
+        autoSaveTimer =
+            setTimeout(
+                autoSave,
+                1000
+            );
+
+    }
+);
+
+
+cssArea.addEventListener(
+    'input',
+    () => {
+
+        updateCounters();
+
+        scheduleRun();
+
+
+        clearTimeout(
+            autoSaveTimer
+        );
+
+
+        autoSaveTimer =
+            setTimeout(
+                autoSave,
+                1000
+            );
+
+    }
+);
+
+
+/* =========================
+   MODAL CLICK
+========================= */
+
+modalOverlay.addEventListener(
+    'click',
+    event => {
+
+        if (
+            event.target ===
+            modalOverlay
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   KEYBOARD SHORTCUTS
+========================= */
+
+document.addEventListener(
+    'keydown',
+    event => {
+
+        if (
+            (event.ctrlKey ||
+             event.metaKey) &&
+            event.key === 'Enter'
+        ) {
+
+            event.preventDefault();
+
+            runPreview();
+
+        }
+
+
+        if (
+            (event.ctrlKey ||
+             event.metaKey) &&
+            event.key.toLowerCase() === 's'
+        ) {
+
+            event.preventDefault();
+
+            autoSave();
+
+            showNotif(
+                'Saved'
+            );
+
+        }
+
+
+        if (
+            event.key === 'Escape'
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   LOADING SYSTEM
+========================= */
 
 function startLoading() {
-  let progress = 0;
-  const barFill = document.getElementById('barFill');
-  const percentText = document.getElementById('percentText');
-  const loading = document.getElementById('loadingScreen');
 
-  const timer = setInterval(() => {
-    progress += progress < 70 ? Math.random()*7+4 : Math.random()*3+1;
-    progress = Math.min(progress, 100);
-    barFill.style.width = progress + '%';
-    percentText.textContent = Math.floor(progress) + '%';
-    if (progress >= 100) {
-      clearInterval(timer);
-      setTimeout(() => {
-        loading.classList.add('fade-out');
-        setTimeout(() => {
-          loading.remove();
-          document.body.classList.add('ready');
-          loadSavedCode();
-          isDark = localStorage.getItem('codebark_theme') === 'dark';
-          document.body.classList.toggle('dark-mode', isDark);
-          document.getElementById('themeLabel').textContent = isDark ? 'Light' : 'Dark';
-          updateCounters();
-          runPreview();
-        }, 700);
-      }, 350);
-    }
-  }, 100);
+    let progress = 0;
+
+
+    const barFill =
+        document.getElementById(
+            'barFill'
+        );
+
+
+    const percentText =
+        document.getElementById(
+            'percentText'
+        );
+
+
+    const loading =
+        document.getElementById(
+            'loadingScreen'
+        );
+
+
+    const timer =
+        setInterval(() => {
+
+            progress +=
+                progress < 70
+                    ? Math.random() * 7 + 4
+                    : Math.random() * 3 + 1;
+
+
+            progress =
+                Math.min(
+                    progress,
+                    100
+                );
+
+
+            barFill.style.width =
+                progress + '%';
+
+
+            percentText.textContent =
+                Math.floor(progress) +
+                '%';
+
+
+            if (
+                progress >= 100
+            ) {
+
+                clearInterval(
+                    timer
+                );
+
+
+                setTimeout(() => {
+
+                    loading.classList.add(
+                        'fade-out'
+                    );
+
+
+                    setTimeout(() => {
+
+                        loading.remove();
+
+
+                        document.body.classList.add(
+                            'ready'
+                        );
+
+
+                        document.body.style.overflow =
+                            'auto';
+
+
+                        document.documentElement.style.overflowY =
+                            'auto';
+
+
+                        loadSavedCode();
+
+
+                        isDark =
+                            localStorage.getItem(
+                                'codebark_theme'
+                            ) === 'dark';
+
+
+                        document.body.classList.toggle(
+                            'dark-mode',
+                            isDark
+                        );
+
+
+                        document.getElementById(
+                            'themeLabel'
+                        ).textContent =
+                            isDark
+                                ? 'Light'
+                                : 'Dark';
+
+
+                        updateCounters();
+
+                        runPreview();
+
+                    }, 700);
+
+                }, 350);
+
+            }
+
+        }, 100);
+
 }
-document.body.style.overflow = 'hidden';
-setTimeout(startLoading, 250);
+
+
+/* =========================
+   INITIALIZATION
+========================= */
+
+document.body.style.overflow =
+    'hidden';
+
+
+setTimeout(
+    startLoading,
+    250
+);
+
 </script>
+
 </body>
 </html>
